@@ -1,0 +1,50 @@
+export type { Property } from "./property";
+export type { BlogPost, BlogCategory } from "./blog";
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  location?: string;
+  rating: number;
+  text: string;
+  date?: string;
+  source?: "Google" | "ProvenExpert" | "ImmobilienScout24";
+}
+
+export interface FAQItem {
+  id: string;
+  question: string;
+  answer: string;
+  category?: string;
+}
+
+export interface PricingTier {
+  id: string;
+  name: string;
+  price: string;
+  priceNote: string;
+  description: string;
+  features: string[];
+  highlighted?: boolean;
+  ctaText: string;
+  ctaHref: string;
+}
+
+export interface NavItem {
+  label: string;
+  href: string;
+}
+
+export interface Benefit {
+  icon: string;
+  title: string;
+  description: string;
+  stat?: string;
+}
+
+export interface ProcessStep {
+  number: string;
+  title: string;
+  description: string;
+  icon: string;
+}

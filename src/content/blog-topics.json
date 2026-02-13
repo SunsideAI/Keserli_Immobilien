@@ -1,0 +1,34 @@
+{
+  "categories": [
+    {
+      "name": "Immobilienverkauf",
+      "slug": "immobilienverkauf",
+      "description": "Tipps und Leitfäden zum Immobilienverkauf"
+    },
+    {
+      "name": "Immobilienbewertung",
+      "slug": "immobilienbewertung",
+      "description": "Alles rund um die Bewertung Ihrer Immobilie"
+    },
+    {
+      "name": "Finanzierung",
+      "slug": "finanzierung",
+      "description": "Informationen zur Immobilienfinanzierung"
+    },
+    {
+      "name": "Marktbericht",
+      "slug": "marktbericht",
+      "description": "Aktuelle Marktberichte und Analysen"
+    },
+    {
+      "name": "Tipps & Ratgeber",
+      "slug": "tipps-ratgeber",
+      "description": "Praktische Tipps für Käufer und Verkäufer"
+    },
+    {
+      "name": "Recht & Steuern",
+      "slug": "recht-steuern",
+      "description": "Rechtliche und steuerliche Themen"
+    }
+  ]
+}

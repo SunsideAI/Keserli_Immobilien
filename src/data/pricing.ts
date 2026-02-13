@@ -1,0 +1,56 @@
+import { PricingTier } from "@/types";
+
+export const pricingTiers: PricingTier[] = [
+  {
+    id: "basis",
+    name: "Homefin Basis",
+    price: "1,95%",
+    priceNote: "inkl. MwSt.",
+    description: "Unser fairstes Angebot für den Immobilienverkauf",
+    features: [
+      "Professionelle Immobilienbewertung",
+      "Exposé-Erstellung",
+      "Vermarktung auf allen Portalen",
+      "Besichtigungen",
+      "Vertragsabwicklung",
+    ],
+    highlighted: false,
+    ctaText: "Jetzt starten",
+    ctaHref: "/kontakt",
+  },
+  {
+    id: "premium",
+    name: "Homefin Premium+",
+    price: "2,94%",
+    priceNote: "inkl. MwSt.",
+    description: "Voller Maklerservice mit Premium-Vermarktung",
+    features: [
+      "Alles aus Basis",
+      "Professionelle Fotografie",
+      "Home Staging Beratung",
+      "Virtuelle 360°-Tour",
+      "Käuferdatenbank-Zugang",
+      "Premium-Platzierung auf Portalen",
+      "Persönlicher Ansprechpartner",
+    ],
+    highlighted: true,
+    ctaText: "Empfohlen",
+    ctaHref: "/kontakt",
+  },
+  {
+    id: "select",
+    name: "Homefin Select",
+    price: "ab 99€",
+    priceNote: "pro Monat",
+    description: "Für Eigentümer die selbst verkaufen möchten",
+    features: [
+      "Kostenlose Marktwertermittlung",
+      "Exposé-Vorlage",
+      "Beratung bei Bedarf",
+      "Rechtliche Checklisten",
+    ],
+    highlighted: false,
+    ctaText: "Mehr erfahren",
+    ctaHref: "/kontakt",
+  },
+];
