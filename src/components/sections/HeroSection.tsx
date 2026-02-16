@@ -117,10 +117,25 @@ export default function HeroSection() {
       {/* ═══════════ Hero content ═══════════ */}
       <Container className="relative z-10">
         <div className="relative min-h-[calc(100vh-5rem)] lg:min-h-[620px] xl:min-h-[680px]">
-          {/* ── Desktop 3-column layout: TEXT | AWARD | MAKLER ── */}
-          <div className="hidden lg:grid lg:grid-cols-[1fr_auto_auto] gap-4 xl:gap-6 min-h-[inherit] items-end">
-            {/* COL 1 — Text content (LEFT, vertically centered) */}
-            <div className="self-center pb-16 xl:pb-20">
+          {/* ── Desktop 3-column layout: MAKLER | TEXT | AWARD ── */}
+          <div className="hidden lg:grid lg:grid-cols-[auto_1fr_auto] gap-6 xl:gap-10 min-h-[inherit] items-end">
+            {/* COL 1 — Makler person (LEFT, anchored to bottom) */}
+            <div
+              className={`self-end z-20 transition-all duration-1000 ease-out delay-200 ${
+                visible
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-16"
+              }`}
+            >
+              <img
+                src="/Makler.png"
+                alt="Ihr Immobilienmakler"
+                className="w-[280px] xl:w-[340px] 2xl:w-[380px] h-auto max-h-[560px] xl:max-h-[620px] object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
+              />
+            </div>
+
+            {/* COL 2 — Text content (CENTER, vertically centered) */}
+            <div className="self-center pb-20 xl:pb-24 text-center">
               {/* Badge */}
               <div className={anim(visible, "delay-[0ms]")}>
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest bg-primary/10 text-primary border border-primary/10 mb-7">
@@ -129,16 +144,14 @@ export default function HeroSection() {
                 </span>
               </div>
 
-              {/* Headline — 3 lines */}
+              {/* Headline — 2 lines */}
               <h1
                 className={`text-5xl xl:text-6xl 2xl:text-7xl font-extrabold text-slate-dark leading-[1.08] mb-5 ${anim(
                   visible,
                   "delay-[100ms]"
                 )}`}
               >
-                Fairste
-                <br />
-                Provision
+                Fairste Provision
                 <br />
                 <span className="relative inline-block">
                   der Region
@@ -167,7 +180,7 @@ export default function HeroSection() {
 
               {/* Subtitle */}
               <p
-                className={`text-base xl:text-lg text-slate-body mb-8 max-w-md leading-relaxed ${anim(
+                className={`text-base xl:text-lg text-slate-body mb-8 max-w-lg mx-auto leading-relaxed ${anim(
                   visible,
                   "delay-[200ms]"
                 )}`}
@@ -195,8 +208,8 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* COL 2 — IDA Award (CENTER, vertically centered, VERY BIG) */}
-            <div className="self-center pb-16 xl:pb-20">
+            {/* COL 3 — IDA Award (RIGHT, vertically centered, BIG) */}
+            <div className="self-center pb-20 xl:pb-24">
               <div
                 className={`relative flex flex-col items-center transition-all duration-1000 ease-out delay-300 ${
                   visible
@@ -223,28 +236,13 @@ export default function HeroSection() {
                   </div>
                 </div>
 
-                {/* Award image — very big */}
+                {/* Award image — big */}
                 <img
                   src="/IDA_Award.png"
                   alt="IDA Immobilien Dienstleister Award 2022"
-                  className="relative w-72 xl:w-96 2xl:w-[28rem] h-auto object-contain drop-shadow-2xl animate-float"
+                  className="relative w-64 xl:w-80 2xl:w-96 h-auto object-contain drop-shadow-2xl animate-float"
                 />
               </div>
-            </div>
-
-            {/* COL 3 — Makler person (RIGHT, anchored to bottom, BIG) */}
-            <div
-              className={`self-end transition-all duration-1000 ease-out delay-200 ${
-                visible
-                  ? "opacity-100 translate-x-0 scale-100"
-                  : "opacity-0 translate-x-12 scale-95"
-              }`}
-            >
-              <img
-                src="/Makler.png"
-                alt="Ihr Immobilienmakler"
-                className="w-[300px] xl:w-[360px] 2xl:w-[400px] h-auto max-h-[580px] xl:max-h-[640px] object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
-              />
             </div>
           </div>
 
