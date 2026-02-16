@@ -62,7 +62,7 @@ export default function HeroSection() {
       : `${animatedCount}+`;
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-x-clip overflow-y-visible">
       {/* ═══════════ Background: House image + gradient overlays ═══════════ */}
       <div className="absolute inset-0">
         {/* House photo - blurred background */}
@@ -114,28 +114,28 @@ export default function HeroSection() {
         />
       </div>
 
+      {/* ── Makler — on SECTION level, bottom-right, pushed far right ── */}
+      <div
+        className={`hidden lg:block absolute bottom-0 right-0 translate-x-[30%] z-20 transition-all duration-1000 ease-out delay-200 ${
+          visible
+            ? "opacity-100"
+            : "opacity-0 translate-x-[40%]"
+        }`}
+      >
+        <img
+          src="/Keseli_Makler.png"
+          alt="Ihr Immobilienmakler"
+          className="h-[500px] xl:h-[560px] 2xl:h-[620px] w-auto object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
+        />
+      </div>
+
       {/* ═══════════ Hero content ═══════════ */}
       <Container className="relative z-10">
         <div className="relative min-h-[calc(100vh-5rem)] lg:min-h-[620px] xl:min-h-[680px]">
 
-          {/* ── Makler — absolutely positioned, far bottom-RIGHT ── */}
+          {/* ── IDA Award — centered horizontally, bottom-aligned with CTA (z-10) ── */}
           <div
-            className={`hidden lg:block absolute bottom-0 -right-20 xl:-right-16 2xl:-right-12 z-20 transition-all duration-1000 ease-out delay-200 ${
-              visible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-20"
-            }`}
-          >
-            <img
-              src="/Keseli_Makler.png"
-              alt="Ihr Immobilienmakler"
-              className="h-[500px] xl:h-[560px] 2xl:h-[620px] w-auto object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
-            />
-          </div>
-
-          {/* ── IDA Award — centered horizontally, pushed down, behind text (z-10) ── */}
-          <div
-            className={`hidden lg:flex absolute inset-0 items-end justify-center pb-[140px] xl:pb-[150px] z-10 pointer-events-none transition-all duration-1000 ease-out delay-300 ${
+            className={`hidden lg:flex absolute inset-0 items-end justify-center pb-[100px] xl:pb-[110px] z-10 pointer-events-none transition-all duration-1000 ease-out delay-300 ${
               visible
                 ? "opacity-100 scale-100"
                 : "opacity-0 scale-90"
