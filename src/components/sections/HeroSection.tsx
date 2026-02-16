@@ -118,7 +118,7 @@ export default function HeroSection() {
       <Container className="relative z-10">
         <div className="relative min-h-[calc(100vh-5rem)] lg:min-h-[620px] xl:min-h-[680px]">
           {/* ── Desktop 3-column layout: MAKLER | TEXT | AWARD ── */}
-          <div className="hidden lg:grid lg:grid-cols-[auto_1fr_auto] gap-8 xl:gap-12 min-h-[inherit] items-end">
+          <div className="hidden lg:grid lg:grid-cols-[220px_1fr_240px] xl:grid-cols-[260px_1fr_280px] 2xl:grid-cols-[300px_1fr_320px] gap-6 xl:gap-8 min-h-[inherit] items-end">
             {/* COL 1 — Makler person (LEFT, anchored to bottom, overlaps stats) */}
             <div
               className={`self-end z-20 transition-all duration-1000 ease-out delay-200 ${
@@ -130,7 +130,7 @@ export default function HeroSection() {
               <img
                 src="/Makler.png"
                 alt="Ihr Immobilienmakler"
-                className="w-[300px] xl:w-[360px] 2xl:w-[400px] h-auto max-h-[580px] xl:max-h-[640px] object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
+                className="w-full h-auto max-h-[520px] xl:max-h-[580px] object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
               />
             </div>
 
@@ -138,22 +138,22 @@ export default function HeroSection() {
             <div className="self-center pb-20 xl:pb-24">
               {/* Badge */}
               <div className={anim(visible, "delay-[0ms]")}>
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest bg-primary/10 text-primary border border-primary/10 mb-7">
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest bg-primary/10 text-primary border border-primary/10 mb-6">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                   Ihre Immobilienexperten
                 </span>
               </div>
 
-              {/* Headline — 2 lines */}
+              {/* Headline — 2 lines, whitespace-nowrap to prevent wrapping */}
               <h1
-                className={`text-5xl xl:text-6xl 2xl:text-7xl font-extrabold text-slate-dark leading-[1.08] mb-5 ${anim(
+                className={`text-4xl lg:text-5xl xl:text-6xl font-extrabold text-slate-dark leading-[1.08] mb-5 ${anim(
                   visible,
                   "delay-[100ms]"
                 )}`}
               >
-                Fairste Provision
+                <span className="whitespace-nowrap">Fairste Provision</span>
                 <br />
-                <span className="relative inline-block">
+                <span className="relative inline-block whitespace-nowrap">
                   der Region
                   <svg
                     className="absolute -bottom-1.5 left-0 w-full h-3"
@@ -193,7 +193,7 @@ export default function HeroSection() {
               </p>
 
               {/* CTA */}
-              <div className={anim(visible, "delay-[350ms]")}>
+              <div className={`${anim(visible, "delay-[350ms]")} inline-block`}>
                 <Button
                   href="/immobilienbewertung"
                   size="lg"
@@ -208,7 +208,7 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* COL 3 — IDA Award (RIGHT, vertically centered, BIG) */}
+            {/* COL 3 — IDA Award (RIGHT, vertically centered) */}
             <div className="self-center pb-20 xl:pb-24">
               <div
                 className={`relative flex flex-col items-center transition-all duration-1000 ease-out delay-300 ${
@@ -218,29 +218,29 @@ export default function HeroSection() {
                 }`}
               >
                 {/* Glow */}
-                <div className="absolute inset-0 -m-16">
+                <div className="absolute inset-0 -m-10">
                   <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/10 via-gold/10 to-primary/5 blur-3xl animate-pulse-soft" />
                 </div>
 
                 {/* AUSGEZEICHNET badge — top-right of award */}
                 <div
-                  className={`absolute -top-6 -right-4 z-10 transition-all duration-700 ease-out delay-500 ${
+                  className={`absolute -top-5 -right-3 z-10 transition-all duration-700 ease-out delay-500 ${
                     visible
                       ? "opacity-100 translate-y-0 scale-100"
                       : "opacity-0 -translate-y-4 scale-90"
                   }`}
                 >
-                  <div className="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-full shadow-btn text-xs font-bold">
-                    <Award size={14} />
+                  <div className="flex items-center gap-1.5 bg-primary text-white px-4 py-2 rounded-full shadow-btn text-[11px] font-bold">
+                    <Award size={12} />
                     AUSGEZEICHNET
                   </div>
                 </div>
 
-                {/* Award image — very big */}
+                {/* Award image — fits column width */}
                 <img
                   src="/IDA_Award.png"
                   alt="IDA Immobilien Dienstleister Award 2022"
-                  className="relative w-72 xl:w-[22rem] 2xl:w-[26rem] h-auto object-contain drop-shadow-2xl animate-float"
+                  className="relative w-full h-auto object-contain drop-shadow-2xl animate-float"
                 />
               </div>
             </div>
