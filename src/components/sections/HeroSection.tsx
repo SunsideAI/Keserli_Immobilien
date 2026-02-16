@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowRight, Star, TrendingUp, Users, Award } from "lucide-react";
+import { ArrowRight, Star, TrendingUp, Users } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { siteConfig } from "@/data/site-config";
@@ -207,10 +207,10 @@ export default function HeroSection() {
           </div>
 
           {/* ── Mobile layout ── */}
-          <div className="lg:hidden flex flex-col items-center text-center py-20 sm:py-24 gap-10">
+          <div className="lg:hidden flex flex-col items-center text-center pt-16 sm:pt-20 pb-8 gap-5">
             {/* Badge */}
             <div className={anim(visible, "delay-[0ms]")}>
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest bg-primary/10 text-primary border border-primary/10">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-widest bg-primary/10 text-primary border border-primary/10">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                 Ihre Immobilienexperten
               </span>
@@ -218,7 +218,7 @@ export default function HeroSection() {
 
             {/* Headline */}
             <h1
-              className={`text-4xl sm:text-5xl font-extrabold text-slate-dark leading-[1.08] ${anim(
+              className={`text-3xl sm:text-4xl font-extrabold text-slate-dark leading-[1.1] ${anim(
                 visible,
                 "delay-[100ms]"
               )}`}
@@ -230,7 +230,7 @@ export default function HeroSection() {
 
             {/* Subtitle */}
             <p
-              className={`text-base sm:text-lg text-slate-body max-w-md leading-relaxed -mt-4 ${anim(
+              className={`text-sm sm:text-base text-slate-body max-w-xs sm:max-w-sm leading-relaxed ${anim(
                 visible,
                 "delay-[200ms]"
               )}`}
@@ -242,51 +242,40 @@ export default function HeroSection() {
               </span>
             </p>
 
-            {/* Makler image (mobile) */}
-            <div
-              className={`relative transition-all duration-1000 ease-out delay-300 ${
-                visible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-              }`}
-            >
-              <div className="absolute inset-0 -m-4 bg-gradient-to-b from-primary/5 to-transparent rounded-full blur-2xl" />
-              <img
-                src="/Keseli_Makler.png"
-                alt="Ihr Immobilienmakler"
-                className="relative w-56 sm:w-64 h-auto object-contain mx-auto"
-              />
-            </div>
-
-            {/* IDA Award (mobile) */}
-            <div
-              className={`relative ${anim(visible, "delay-[400ms]")}`}
-            >
-              <div className="absolute inset-0 -m-4 rounded-full bg-gradient-to-br from-primary/10 via-gold/10 to-primary/5 blur-2xl" />
-              <div className="flex items-center gap-1.5 bg-primary text-white px-4 py-2 rounded-full shadow-btn text-xs font-bold mx-auto w-fit mb-3">
-                <Award size={14} />
-                AUSGEZEICHNET
-              </div>
-              <img
-                src="/IDA_Award.png"
-                alt="IDA Immobilien Dienstleister Award 2022"
-                className="relative w-40 h-auto object-contain mx-auto"
-              />
-            </div>
-
             {/* CTA */}
-            <div className={anim(visible, "delay-[500ms]")}>
+            <div className={`mt-1 ${anim(visible, "delay-[300ms]")}`}>
               <Button
                 href="/immobilienbewertung"
                 size="lg"
-                className="text-base px-8 py-4 shadow-btn hover:shadow-lg group"
+                className="text-sm px-6 py-3 shadow-btn hover:shadow-lg group"
               >
                 Kostenlose Bewertung erhalten
                 <ArrowRight
-                  size={18}
+                  size={16}
                   className="ml-2 transition-transform duration-300 group-hover:translate-x-1"
                 />
               </Button>
+            </div>
+
+            {/* Makler + Award side by side */}
+            <div className={`relative flex items-end justify-center gap-0 mt-2 ${anim(visible, "delay-[400ms]")}`}>
+              {/* IDA Award — left */}
+              <div className="relative -mr-6 z-10">
+                <img
+                  src="/IDA_Award.png"
+                  alt="IDA Immobilien Dienstleister Award 2022"
+                  className="w-28 sm:w-32 h-auto object-contain drop-shadow-lg"
+                />
+              </div>
+
+              {/* Makler — right, overlapping */}
+              <div className="relative">
+                <img
+                  src="/Keseli_Makler.png"
+                  alt="Ihr Immobilienmakler"
+                  className="w-40 sm:w-48 h-auto object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>
