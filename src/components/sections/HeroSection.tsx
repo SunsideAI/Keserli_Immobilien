@@ -62,9 +62,9 @@ export default function HeroSection() {
       : `${animatedCount}+`;
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative">
       {/* ═══════════ Background: House image + gradient overlays ═══════════ */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         {/* House photo - blurred background */}
         <img
           src="/images/hero-bg.jpg"
@@ -79,7 +79,7 @@ export default function HeroSection() {
       </div>
 
       {/* ═══════════ Background effects ═══════════ */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Gradient orbs */}
         <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-primary/[0.07] blur-3xl" />
         <div className="absolute bottom-0 -left-32 w-[500px] h-[500px] rounded-full bg-primary/[0.05] blur-3xl" />
