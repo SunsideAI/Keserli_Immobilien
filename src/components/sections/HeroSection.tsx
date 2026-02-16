@@ -116,7 +116,7 @@ export default function HeroSection() {
 
       {/* ── Makler — right side, standing on stats bar ── */}
       <div
-        className={`hidden lg:block absolute bottom-[60px] lg:bottom-[68px] right-[15%] xl:right-[18%] z-20 transition-all duration-1000 ease-out delay-200 ${
+        className={`hidden lg:block absolute bottom-[60px] lg:bottom-[68px] right-[8%] xl:right-[11%] z-20 transition-all duration-1000 ease-out delay-200 ${
           visible
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-10"
@@ -125,7 +125,7 @@ export default function HeroSection() {
         <img
           src="/Keseli_Makler.png"
           alt="Ihr Immobilienmakler"
-          className="h-[340px] xl:h-[380px] 2xl:h-[420px] w-auto object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
+          className="h-[390px] xl:h-[430px] 2xl:h-[470px] w-auto object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
         />
       </div>
 
