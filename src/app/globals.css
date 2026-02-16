@@ -36,7 +36,7 @@
     @apply prose-strong:text-slate-dark;
   }
 
-  /* Button Shimmer / Glanz Effect */
+  /* Button Shimmer / Glanz Effect — narrow sweep with pause */
   .btn-shimmer {
     position: relative;
     overflow: hidden;
@@ -49,18 +49,18 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(
-      105deg,
-      transparent 40%,
-      rgba(255, 255, 255, 0.12) 45%,
-      rgba(255, 255, 255, 0.18) 50%,
-      rgba(255, 255, 255, 0.12) 55%,
-      transparent 60%
+      120deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.08) 37%,
+      rgba(255, 255, 255, 0.2) 40%,
+      rgba(255, 255, 255, 0.08) 43%,
+      transparent 50%
     );
     transform: translateX(-100%);
-    animation: shimmer 3s ease-in-out infinite;
+    animation: shimmer-sweep 4s ease-in-out infinite;
   }
   .btn-shimmer:hover::after {
-    animation: shimmer 1.5s ease-in-out infinite;
+    animation: shimmer-sweep 2s ease-in-out infinite;
   }
 
   /* Shimmer for outline/secondary buttons */
@@ -76,15 +76,15 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(
-      105deg,
-      transparent 40%,
-      rgba(45, 122, 122, 0.08) 45%,
-      rgba(45, 122, 122, 0.15) 50%,
-      rgba(45, 122, 122, 0.08) 55%,
-      transparent 60%
+      120deg,
+      transparent 30%,
+      rgba(45, 122, 122, 0.05) 37%,
+      rgba(45, 122, 122, 0.12) 40%,
+      rgba(45, 122, 122, 0.05) 43%,
+      transparent 50%
     );
     transform: translateX(-100%);
-    animation: shimmer 3.5s ease-in-out infinite;
+    animation: shimmer-sweep 4.5s ease-in-out infinite;
   }
 
   /* Scroll-triggered fade-in animation */
@@ -118,9 +118,12 @@
   .stagger-children.is-visible > *:nth-child(7) { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
 }
 
-@keyframes shimmer {
+@keyframes shimmer-sweep {
   0% {
     transform: translateX(-100%);
+  }
+  20% {
+    transform: translateX(100%);
   }
   100% {
     transform: translateX(100%);
