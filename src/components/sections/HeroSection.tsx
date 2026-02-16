@@ -262,7 +262,7 @@ export default function HeroSection() {
               <img
                 src="/IDA_Award.png"
                 alt="IDA Immobilien Dienstleister Award 2022"
-                className="w-28 sm:w-36 h-auto object-contain drop-shadow-lg mx-auto opacity-90"
+                className="w-44 sm:w-52 h-auto object-contain drop-shadow-lg mx-auto opacity-90"
               />
             </div>
           </div>
