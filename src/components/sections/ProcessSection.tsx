@@ -32,11 +32,6 @@ export default function ProcessSection() {
                   key={step.number}
                   className="bg-white/10 backdrop-blur-sm rounded-card p-6 border border-white/10 hover:bg-white/15 transition-colors relative"
                 >
-                  {/* Large decorative step number */}
-                  <div className="absolute top-4 right-4 text-5xl font-extrabold text-white/[0.07] leading-none select-none">
-                    {step.number}
-                  </div>
-
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 bg-primary-400/20 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Icon size={20} className="text-primary-300" />
