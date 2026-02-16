@@ -57,10 +57,10 @@
       transparent 50%
     );
     transform: translateX(-100%);
-    animation: shimmer-sweep 4s ease-in-out infinite;
+    animation: shimmer-sweep 6s ease-in-out infinite;
   }
   .btn-shimmer:hover::after {
-    animation: shimmer-sweep 2s ease-in-out infinite;
+    animation: shimmer-sweep 3s ease-in-out infinite;
   }
 
   /* Shimmer for outline/secondary buttons */
@@ -84,7 +84,7 @@
       transparent 50%
     );
     transform: translateX(-100%);
-    animation: shimmer-sweep 4.5s ease-in-out infinite;
+    animation: shimmer-sweep 6.5s ease-in-out infinite;
   }
 
   /* Scroll-triggered fade-in animation */
