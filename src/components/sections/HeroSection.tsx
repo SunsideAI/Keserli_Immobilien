@@ -114,18 +114,18 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* ── Makler — on SECTION level, bottom-right, pushed far right ── */}
+      {/* ── Makler — right side, standing on stats bar ── */}
       <div
-        className={`hidden lg:block absolute bottom-0 right-0 translate-x-[20%] z-20 transition-all duration-1000 ease-out delay-200 ${
+        className={`hidden lg:block absolute bottom-[40px] lg:bottom-[44px] right-[5%] xl:right-[8%] z-20 transition-all duration-1000 ease-out delay-200 ${
           visible
-            ? "opacity-100"
-            : "opacity-0 translate-x-[30%]"
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-10"
         }`}
       >
         <img
           src="/Keseli_Makler.png"
           alt="Ihr Immobilienmakler"
-          className="h-[500px] xl:h-[560px] 2xl:h-[620px] w-auto object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
+          className="h-[340px] xl:h-[380px] 2xl:h-[420px] w-auto object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
         />
       </div>
 
