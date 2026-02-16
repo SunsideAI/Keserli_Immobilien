@@ -120,7 +120,7 @@ export default function HeroSection() {
 
           {/* ── Makler — absolutely positioned, far bottom-RIGHT ── */}
           <div
-            className={`hidden lg:block absolute bottom-0 -right-8 xl:-right-4 z-20 transition-all duration-1000 ease-out delay-200 ${
+            className={`hidden lg:block absolute bottom-0 -right-20 xl:-right-16 2xl:-right-12 z-20 transition-all duration-1000 ease-out delay-200 ${
               visible
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 translate-x-20"
@@ -133,20 +133,20 @@ export default function HeroSection() {
             />
           </div>
 
-          {/* ── IDA Award — centered, large, behind text (z-10) ── */}
+          {/* ── IDA Award — centered horizontally, pushed down, behind text (z-10) ── */}
           <div
-            className={`hidden lg:flex absolute inset-0 items-center justify-center z-10 pointer-events-none transition-all duration-1000 ease-out delay-300 ${
+            className={`hidden lg:flex absolute inset-0 items-end justify-center pb-[140px] xl:pb-[150px] z-10 pointer-events-none transition-all duration-1000 ease-out delay-300 ${
               visible
                 ? "opacity-100 scale-100"
                 : "opacity-0 scale-90"
             }`}
           >
             {/* Glow */}
-            <div className="absolute w-[500px] h-[500px] rounded-full bg-gradient-to-br from-primary/8 via-gold/8 to-primary/4 blur-3xl animate-pulse-soft" />
+            <div className="absolute bottom-[180px] left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-primary/8 via-gold/8 to-primary/4 blur-3xl animate-pulse-soft" />
 
-            {/* AUSGEZEICHNET badge */}
+            {/* AUSGEZEICHNET badge — positioned above award */}
             <div
-              className={`absolute top-[15%] left-1/2 -translate-x-1/2 translate-x-[120px] xl:translate-x-[140px] z-10 transition-all duration-700 ease-out delay-500 ${
+              className={`absolute bottom-[480px] xl:bottom-[540px] left-1/2 translate-x-[40px] xl:translate-x-[60px] z-10 transition-all duration-700 ease-out delay-500 ${
                 visible
                   ? "opacity-100 translate-y-0 scale-100"
                   : "opacity-0 -translate-y-4 scale-90"
@@ -158,7 +158,7 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Award image — BIG & CENTERED */}
+            {/* Award image — BIG, centered, bottom-aligned with CTA button */}
             <img
               src="/IDA_Award.png"
               alt="IDA Immobilien Dienstleister Award 2022"
