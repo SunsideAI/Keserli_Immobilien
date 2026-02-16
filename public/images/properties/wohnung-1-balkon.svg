@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a5c5c"/>
+      <stop offset="50%" style="stop-color:#2D7A7A"/>
+      <stop offset="100%" style="stop-color:#3a9e9e"/>
+    </linearGradient>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95"/>
+      <stop offset="100%" style="stop-color:#e0f0f0;stop-opacity:0.85"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <circle cx="400" cy="300" r="280" fill="rgba(255,255,255,0.04)"/>
+  <circle cx="400" cy="300" r="200" fill="rgba(255,255,255,0.03)"/>
+  <!-- Balcony icon -->
+  <g transform="translate(400, 240)" opacity="0.93">
+    <!-- Wall / building facade section -->
+    <rect x="-130" y="-120" width="260" height="200" rx="3" fill="url(#iconGrad)" opacity="0.2"/>
+    <rect x="-130" y="-120" width="260" height="200" rx="3" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+    <!-- French door / balcony door -->
+    <rect x="-50" y="-100" width="100" height="160" rx="3" fill="#2D7A7A" opacity="0.4"/>
+    <rect x="-50" y="-100" width="100" height="160" rx="3" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+    <line x1="0" y1="-100" x2="0" y2="60" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+    <!-- Door glass panels -->
+    <rect x="-45" y="-95" width="42" height="70" rx="1" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <rect x="3" y="-95" width="42" height="70" rx="1" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <!-- Door handles -->
+    <circle cx="-10" cy="-10" r="3" fill="rgba(255,255,255,0.7)"/>
+    <circle cx="10" cy="-10" r="3" fill="rgba(255,255,255,0.7)"/>
+    <!-- Balcony platform -->
+    <rect x="-140" y="60" width="280" height="12" rx="2" fill="url(#iconGrad)" opacity="0.8"/>
+    <!-- Balcony railing -->
+    <rect x="-135" y="72" width="270" height="4" rx="1" fill="url(#iconGrad)" opacity="0.6"/>
+    <!-- Railing top bar -->
+    <rect x="-138" y="68" width="276" height="5" rx="2" fill="url(#iconGrad)" opacity="0.7"/>
+    <!-- Railing balusters -->
+    <g stroke="rgba(255,255,255,0.5)" stroke-width="2.5">
+      <line x1="-120" y1="72" x2="-120" y2="120"/>
+      <line x1="-95" y1="72" x2="-95" y2="120"/>
+      <line x1="-70" y1="72" x2="-70" y2="120"/>
+      <line x1="-45" y1="72" x2="-45" y2="120"/>
+      <line x1="-20" y1="72" x2="-20" y2="120"/>
+      <line x1="5" y1="72" x2="5" y2="120"/>
+      <line x1="30" y1="72" x2="30" y2="120"/>
+      <line x1="55" y1="72" x2="55" y2="120"/>
+      <line x1="80" y1="72" x2="80" y2="120"/>
+      <line x1="105" y1="72" x2="105" y2="120"/>
+      <line x1="130" y1="72" x2="130" y2="120"/>
+    </g>
+    <!-- Railing bottom bar -->
+    <rect x="-138" y="118" width="276" height="5" rx="2" fill="url(#iconGrad)" opacity="0.7"/>
+    <!-- Plant pot on balcony -->
+    <g transform="translate(-100, 95)">
+      <polygon points="-12,0 12,0 8,22 -8,22" fill="url(#iconGrad)" opacity="0.5"/>
+      <ellipse cx="0" cy="-8" rx="14" ry="10" fill="url(#iconGrad)" opacity="0.4"/>
+    </g>
+    <!-- Another plant -->
+    <g transform="translate(100, 95)">
+      <polygon points="-10,0 10,0 7,20 -7,20" fill="url(#iconGrad)" opacity="0.5"/>
+      <ellipse cx="0" cy="-6" rx="12" ry="8" fill="url(#iconGrad)" opacity="0.4"/>
+    </g>
+  </g>
+  <!-- Text label -->
+  <text x="400" y="440" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="600" fill="white" letter-spacing="2" opacity="0.95">Balkon</text>
+  <text x="400" y="475" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="white" letter-spacing="4" opacity="0.5">KESERLI IMMOBILIEN</text>
+  <!-- Corner accents -->
+  <line x1="30" y1="30" x2="80" y2="30" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  <line x1="30" y1="30" x2="30" y2="80" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  <line x1="720" y1="570" x2="770" y2="570" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  <line x1="770" y1="520" x2="770" y2="570" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+</svg>

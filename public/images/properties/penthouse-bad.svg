@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a5c5c"/>
+      <stop offset="50%" style="stop-color:#2D7A7A"/>
+      <stop offset="100%" style="stop-color:#3a9e9e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <circle cx="400" cy="300" r="280" fill="rgba(255,255,255,0.04)"/>
+  <g transform="translate(400, 230)" fill="white" opacity="0.9">
+    <ellipse cx="0" cy="20" rx="100" ry="40" fill="none" stroke="white" stroke-width="3" opacity="0.85"/>
+    <ellipse cx="0" cy="20" rx="85" ry="30" fill="white" opacity="0.15"/>
+    <line x1="80" y1="-20" x2="80" y2="10" stroke="white" stroke-width="4" opacity="0.7"/>
+    <path d="M 70,-20 Q 80,-30 90,-20" fill="none" stroke="white" stroke-width="3" opacity="0.7"/>
+    <line x1="-85" y1="60" x2="-80" y2="75" stroke="white" stroke-width="3" opacity="0.6"/>
+    <line x1="85" y1="60" x2="80" y2="75" stroke="white" stroke-width="3" opacity="0.6"/>
+    <rect x="-40" y="-110" width="80" height="60" rx="6" fill="none" stroke="white" stroke-width="3" opacity="0.6"/>
+    <rect x="-35" y="-105" width="70" height="50" rx="4" fill="white" opacity="0.1"/>
+  </g>
+  <text x="400" y="430" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="32" font-weight="600" fill="white" letter-spacing="2" opacity="0.95">Badezimmer</text>
+  <text x="400" y="465" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16" fill="white" letter-spacing="4" opacity="0.5">HOMEFIN</text>
+  <line x1="30" y1="30" x2="80" y2="30" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  <line x1="30" y1="30" x2="30" y2="80" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  <line x1="720" y1="570" x2="770" y2="570" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  <line x1="770" y1="520" x2="770" y2="570" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+</svg>

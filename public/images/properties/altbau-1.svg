@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a5c5c"/>
+      <stop offset="50%" style="stop-color:#2D7A7A"/>
+      <stop offset="100%" style="stop-color:#3a9e9e"/>
+    </linearGradient>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95"/>
+      <stop offset="100%" style="stop-color:#e0f0f0;stop-opacity:0.85"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <circle cx="400" cy="300" r="280" fill="rgba(255,255,255,0.04)"/>
+  <circle cx="400" cy="300" r="200" fill="rgba(255,255,255,0.03)"/>
+  <!-- Altbau (Classic/Historic building) -->
+  <g transform="translate(400, 245)" opacity="0.93">
+    <!-- Main facade -->
+    <rect x="-120" y="-160" width="240" height="280" rx="3" fill="url(#iconGrad)" opacity="0.3"/>
+    <rect x="-120" y="-160" width="240" height="280" rx="3" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+    <!-- Ornate cornice top -->
+    <rect x="-130" y="-168" width="260" height="12" rx="3" fill="url(#iconGrad)" opacity="0.7"/>
+    <rect x="-125" y="-172" width="250" height="6" rx="2" fill="url(#iconGrad)" opacity="0.5"/>
+    <!-- Decorative frieze -->
+    <g stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none">
+      <path d="M-110,-156 Q-100,-150 -90,-156 Q-80,-150 -70,-156 Q-60,-150 -50,-156 Q-40,-150 -30,-156 Q-20,-150 -10,-156 Q0,-150 10,-156 Q20,-150 30,-156 Q40,-150 50,-156 Q60,-150 70,-156 Q80,-150 90,-156 Q100,-150 110,-156"/>
+    </g>
+    <!-- Floor division lines -->
+    <line x1="-120" y1="-70" x2="120" y2="-70" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+    <rect x="-125" y="-73" width="250" height="6" rx="1" fill="url(#iconGrad)" opacity="0.3"/>
+    <line x1="-120" y1="20" x2="120" y2="20" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+    <rect x="-125" y="17" width="250" height="6" rx="1" fill="url(#iconGrad)" opacity="0.3"/>
+    <!-- Top floor windows (arched) -->
+    <g fill="#2D7A7A" opacity="0.5">
+      <path d="M-90,-140 L-90,-105 Q-90,-95 -75,-95 Q-60,-95 -60,-105 L-60,-140 Q-60,-150 -75,-150 Q-90,-150 -90,-140 Z"/>
+      <path d="M-30,-140 L-30,-105 Q-30,-95 -15,-95 Q0,-95 0,-105 L0,-140 Q0,-150 -15,-150 Q-30,-150 -30,-140 Z"/>
+      <path d="M30,-140 L30,-105 Q30,-95 45,-95 Q60,-95 60,-105 L60,-140 Q60,-150 45,-150 Q30,-150 30,-140 Z"/>
+    </g>
+    <!-- Keystones on arches -->
+    <g fill="url(#iconGrad)" opacity="0.5">
+      <polygon points="-75,-152 -72,-145 -78,-145"/>
+      <polygon points="-15,-152 -12,-145 -18,-145"/>
+      <polygon points="45,-152 48,-145 42,-145"/>
+    </g>
+    <!-- Middle floor windows (tall rectangular) -->
+    <rect x="-90" y="-60" width="30" height="50" rx="2" fill="#2D7A7A" opacity="0.5"/>
+    <rect x="-90" y="-60" width="30" height="50" rx="2" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <rect x="-30" y="-60" width="30" height="50" rx="2" fill="#2D7A7A" opacity="0.5"/>
+    <rect x="-30" y="-60" width="30" height="50" rx="2" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <rect x="30" y="-60" width="30" height="50" rx="2" fill="#2D7A7A" opacity="0.5"/>
+    <rect x="30" y="-60" width="30" height="50" rx="2" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <!-- Window sills middle floor -->
+    <rect x="-93" y="-10" width="36" height="4" rx="1" fill="url(#iconGrad)" opacity="0.4"/>
+    <rect x="-33" y="-10" width="36" height="4" rx="1" fill="url(#iconGrad)" opacity="0.4"/>
+    <rect x="27" y="-10" width="36" height="4" rx="1" fill="url(#iconGrad)" opacity="0.4"/>
+    <!-- Bottom floor windows -->
+    <rect x="-90" y="35" width="30" height="40" rx="2" fill="#2D7A7A" opacity="0.5"/>
+    <rect x="30" y="35" width="30" height="40" rx="2" fill="#2D7A7A" opacity="0.5"/>
+    <!-- Grand entrance door -->
+    <rect x="-25" y="35" width="50" height="85" rx="3" fill="url(#iconGrad)" opacity="0.65"/>
+    <path d="M-25,35 L-25,45 Q0,30 25,45 L25,35 Z" fill="url(#iconGrad)" opacity="0.4"/>
+    <line x1="0" y1="35" x2="0" y2="120" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+    <circle cx="-8" cy="80" r="3" fill="#2D7A7A" opacity="0.5"/>
+    <circle cx="8" cy="80" r="3" fill="#2D7A7A" opacity="0.5"/>
+    <!-- Balconettes on middle floor -->
+    <g fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5">
+      <path d="M-93,-10 L-93,-3 L-57,-3 L-57,-10"/>
+      <path d="M-33,-10 L-33,-3 L3,-3 L3,-10"/>
+      <path d="M27,-10 L27,-3 L63,-3 L63,-10"/>
+    </g>
+  </g>
+  <!-- Ground line -->
+  <line x1="200" y1="365" x2="600" y2="365" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  <!-- Text label -->
+  <text x="400" y="435" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="600" fill="white" letter-spacing="2" opacity="0.95">Altbauwohnung</text>
+  <text x="400" y="470" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="white" letter-spacing="4" opacity="0.5">KESERLI IMMOBILIEN</text>
+  <!-- Corner accents -->
+  <line x1="30" y1="30" x2="80" y2="30" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  <line x1="30" y1="30" x2="30" y2="80" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  <line x1="720" y1="570" x2="770" y2="570" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  <line x1="770" y1="520" x2="770" y2="570" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+</svg>

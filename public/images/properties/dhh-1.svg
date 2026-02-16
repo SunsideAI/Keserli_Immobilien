@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a5c5c"/>
+      <stop offset="50%" style="stop-color:#2D7A7A"/>
+      <stop offset="100%" style="stop-color:#3a9e9e"/>
+    </linearGradient>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95"/>
+      <stop offset="100%" style="stop-color:#e0f0f0;stop-opacity:0.85"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <circle cx="400" cy="300" r="280" fill="rgba(255,255,255,0.04)"/>
+  <circle cx="400" cy="300" r="200" fill="rgba(255,255,255,0.03)"/>
+  <!-- Semi-detached house (Doppelhaushälfte) -->
+  <g transform="translate(400, 250)" opacity="0.93">
+    <!-- Left house (highlighted) -->
+    <!-- Roof left -->
+    <polygon points="-140,-80 0,-80 -70,-150" fill="url(#iconGrad)" opacity="0.7"/>
+    <!-- Body left -->
+    <rect x="-130" y="-80" width="130" height="150" rx="3" fill="url(#iconGrad)" opacity="0.45"/>
+    <!-- Window left house top -->
+    <rect x="-110" y="-55" width="35" height="30" rx="2" fill="#2D7A7A" opacity="0.5"/>
+    <line x1="-92" y1="-55" x2="-92" y2="-25" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <line x1="-110" y1="-40" x2="-75" y2="-40" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <rect x="-55" y="-55" width="35" height="30" rx="2" fill="#2D7A7A" opacity="0.5"/>
+    <line x1="-37" y1="-55" x2="-37" y2="-25" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <line x1="-55" y1="-40" x2="-20" y2="-40" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <!-- Door left -->
+    <rect x="-90" y="15" width="35" height="55" rx="2" fill="url(#iconGrad)" opacity="0.7"/>
+    <circle cx="-80" cy="45" r="2.5" fill="#2D7A7A" opacity="0.6"/>
+    <!-- Window beside door -->
+    <rect x="-45" y="15" width="30" height="30" rx="2" fill="#2D7A7A" opacity="0.5"/>
+    <!-- Highlight border on left house -->
+    <rect x="-133" y="-83" width="136" height="156" rx="4" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2.5" stroke-dasharray="none"/>
+
+    <!-- Dividing wall -->
+    <line x1="0" y1="-80" x2="0" y2="70" stroke="rgba(255,255,255,0.6)" stroke-width="2.5"/>
+
+    <!-- Right house (dimmer) -->
+    <!-- Roof right -->
+    <polygon points="0,-80 140,-80 70,-150" fill="url(#iconGrad)" opacity="0.4"/>
+    <!-- Body right -->
+    <rect x="0" y="-80" width="130" height="150" rx="3" fill="url(#iconGrad)" opacity="0.25"/>
+    <!-- Window right house top -->
+    <rect x="20" y="-55" width="35" height="30" rx="2" fill="#2D7A7A" opacity="0.35"/>
+    <rect x="75" y="-55" width="35" height="30" rx="2" fill="#2D7A7A" opacity="0.35"/>
+    <!-- Door right -->
+    <rect x="55" y="15" width="35" height="55" rx="2" fill="url(#iconGrad)" opacity="0.4"/>
+    <!-- Window beside door right -->
+    <rect x="15" y="15" width="30" height="30" rx="2" fill="#2D7A7A" opacity="0.35"/>
+  </g>
+  <!-- Ground line -->
+  <line x1="180" y1="320" x2="620" y2="320" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  <!-- Text label -->
+  <text x="400" y="400" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="600" fill="white" letter-spacing="2" opacity="0.95">Doppelhaushälfte</text>
+  <text x="400" y="435" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="white" letter-spacing="4" opacity="0.5">KESERLI IMMOBILIEN</text>
+  <!-- Corner accents -->
+  <line x1="30" y1="30" x2="80" y2="30" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  <line x1="30" y1="30" x2="30" y2="80" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  <line x1="720" y1="570" x2="770" y2="570" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  <line x1="770" y1="520" x2="770" y2="570" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+</svg>

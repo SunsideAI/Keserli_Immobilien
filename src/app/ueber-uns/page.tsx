@@ -84,9 +84,12 @@ export default function UeberUnsPage() {
 
             <div className="bg-mint rounded-card p-8">
               <div className="text-center mb-6">
-                <div className="w-24 h-24 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-primary font-bold text-3xl">OK</span>
-                </div>
+                <img
+                  src={siteConfig.owner.photo}
+                  alt={siteConfig.owner.name}
+                  className="w-24 h-24 rounded-full object-cover object-top border-3 border-primary/20 mx-auto mb-4"
+                />
+
                 <h3 className="text-xl font-bold text-slate-dark">
                   {siteConfig.owner.name}
                 </h3>

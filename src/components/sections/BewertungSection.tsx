@@ -33,10 +33,12 @@ export default function BewertungSection() {
                 ))}
               </ul>
 
-              <div className="flex items-center gap-4 p-4 bg-white rounded-card">
-                <div className="w-14 h-14 bg-primary-100 rounded-full flex items-center justify-center">
-                  <span className="text-primary font-bold text-lg">OK</span>
-                </div>
+              <div className="flex items-center gap-4 p-4 bg-white rounded-card shadow-sm">
+                <img
+                  src={siteConfig.owner.photo}
+                  alt={siteConfig.owner.name}
+                  className="w-14 h-14 rounded-full object-cover object-top border-2 border-primary/20"
+                />
                 <div>
                   <div className="font-semibold text-slate-dark">
                     {siteConfig.owner.name}

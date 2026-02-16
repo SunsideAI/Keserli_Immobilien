@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a5c5c"/>
+      <stop offset="50%" style="stop-color:#2D7A7A"/>
+      <stop offset="100%" style="stop-color:#3a9e9e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <circle cx="400" cy="300" r="280" fill="rgba(255,255,255,0.04)"/>
+  <g transform="translate(400, 230)" fill="white" opacity="0.9">
+    <rect x="-120" y="40" width="240" height="8" rx="2" fill="white" opacity="0.85"/>
+    <line x1="-120" y1="0" x2="-120" y2="40" stroke="white" stroke-width="3" opacity="0.7"/>
+    <line x1="-80" y1="0" x2="-80" y2="40" stroke="white" stroke-width="2" opacity="0.5"/>
+    <line x1="-40" y1="0" x2="-40" y2="40" stroke="white" stroke-width="2" opacity="0.5"/>
+    <line x1="0" y1="0" x2="0" y2="40" stroke="white" stroke-width="2" opacity="0.5"/>
+    <line x1="40" y1="0" x2="40" y2="40" stroke="white" stroke-width="2" opacity="0.5"/>
+    <line x1="80" y1="0" x2="80" y2="40" stroke="white" stroke-width="2" opacity="0.5"/>
+    <line x1="120" y1="0" x2="120" y2="40" stroke="white" stroke-width="3" opacity="0.7"/>
+    <line x1="-120" y1="0" x2="120" y2="0" stroke="white" stroke-width="3" opacity="0.7"/>
+    <line x1="60" y1="-100" x2="60" y2="40" stroke="white" stroke-width="3" opacity="0.7"/>
+    <path d="M 20,-100 Q 60,-130 100,-100 L 60,-90 Z" fill="white" opacity="0.8"/>
+    <rect x="-100" y="48" width="70" height="8" rx="3" fill="white" opacity="0.7"/>
+    <circle cx="-60" cy="-90" r="25" fill="white" opacity="0.15"/>
+  </g>
+  <text x="400" y="430" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="32" font-weight="600" fill="white" letter-spacing="2" opacity="0.95">Terrasse</text>
+  <text x="400" y="465" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16" fill="white" letter-spacing="4" opacity="0.5">HOMEFIN</text>
+  <line x1="30" y1="30" x2="80" y2="30" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  <line x1="30" y1="30" x2="30" y2="80" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  <line x1="720" y1="570" x2="770" y2="570" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  <line x1="770" y1="520" x2="770" y2="570" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+</svg>

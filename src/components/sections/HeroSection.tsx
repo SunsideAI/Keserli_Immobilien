@@ -127,7 +127,7 @@ export default function HeroSection() {
             }`}
           >
             <img
-              src="/Makler.png"
+              src="/Keseli_Makler.png"
               alt="Ihr Immobilienmakler"
               className="h-[480px] xl:h-[540px] 2xl:h-[600px] w-auto object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
             />
@@ -315,7 +315,7 @@ export default function HeroSection() {
             >
               <div className="absolute inset-0 -m-4 bg-gradient-to-b from-primary/5 to-transparent rounded-full blur-2xl" />
               <img
-                src="/Makler.png"
+                src="/Keseli_Makler.png"
                 alt="Ihr Immobilienmakler"
                 className="relative w-56 sm:w-64 h-auto object-contain mx-auto"
               />

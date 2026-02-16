@@ -4,7 +4,7 @@ export const siteConfig = {
   owner: {
     name: "Orhan Keserli",
     title: "Immobilienmakler (IHK)",
-    photo: "/images/team/orhan-keserli.jpg",
+    photo: "/Keseli_Makler.png",
   },
   contact: {
     phone: "+49 (0)800 5888 015",

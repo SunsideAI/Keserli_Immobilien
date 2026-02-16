@@ -31,11 +31,11 @@ export const properties: Property[] = [
     shortDescription:
       "Hochwertiges Einfamilienhaus mit Garten und Garage in bevorzugter Lage.",
     images: [
-      "https://placehold.co/800x600/2D7A7A/ffffff?text=Haus+1",
-      "https://placehold.co/800x600/1a5c5c/ffffff?text=Garten",
-      "https://placehold.co/800x600/0f766e/ffffff?text=Küche",
+      "/images/properties/haus-1.svg",
+      "/images/properties/haus-1-garten.svg",
+      "/images/properties/haus-1-kueche.svg",
     ],
-    thumbnailImage: "https://placehold.co/600x400/2D7A7A/ffffff?text=Haus+1",
+    thumbnailImage: "/images/properties/haus-1.svg",
     highlights: [
       "Einbauküche",
       "Garten",
@@ -74,11 +74,10 @@ export const properties: Property[] = [
     shortDescription:
       "Moderne 3-Zimmer-Wohnung mit Balkon und Aufzug in Langenfeld.",
     images: [
-      "https://placehold.co/800x600/2D7A7A/ffffff?text=Wohnung+1",
-      "https://placehold.co/800x600/1a5c5c/ffffff?text=Balkon",
+      "/images/properties/wohnung-1.svg",
+      "/images/properties/wohnung-1-balkon.svg",
     ],
-    thumbnailImage:
-      "https://placehold.co/600x400/2D7A7A/ffffff?text=Wohnung+1",
+    thumbnailImage: "/images/properties/wohnung-1.svg",
     highlights: [
       "Balkon",
       "Aufzug",
@@ -118,10 +117,10 @@ export const properties: Property[] = [
     shortDescription:
       "Gepflegte Doppelhaushälfte mit Garten und Garage in Leverkusen.",
     images: [
-      "https://placehold.co/800x600/2D7A7A/ffffff?text=DHH+1",
-      "https://placehold.co/800x600/1a5c5c/ffffff?text=Garten",
+      "/images/properties/dhh-1.svg",
+      "/images/properties/dhh-1-garten.svg",
     ],
-    thumbnailImage: "https://placehold.co/600x400/2D7A7A/ffffff?text=DHH+1",
+    thumbnailImage: "/images/properties/dhh-1.svg",
     highlights: [
       "Garten",
       "Garage",
@@ -159,10 +158,9 @@ export const properties: Property[] = [
     shortDescription:
       "Stilvolle Altbauwohnung mit Charme im Kölner Zentrum.",
     images: [
-      "https://placehold.co/800x600/2D7A7A/ffffff?text=Altbau+1",
+      "/images/properties/altbau-1.svg",
     ],
-    thumbnailImage:
-      "https://placehold.co/600x400/2D7A7A/ffffff?text=Altbau+1",
+    thumbnailImage: "/images/properties/altbau-1.svg",
     highlights: [
       "Altbaucharme",
       "Stuck & Dielen",
@@ -201,12 +199,11 @@ export const properties: Property[] = [
     shortDescription:
       "Exklusives Penthouse mit Dachterrasse in Düsseldorf.",
     images: [
-      "https://placehold.co/800x600/2D7A7A/ffffff?text=Penthouse+1",
-      "https://placehold.co/800x600/1a5c5c/ffffff?text=Terrasse",
-      "https://placehold.co/800x600/0f766e/ffffff?text=Bad",
+      "/images/properties/penthouse-1.svg",
+      "/images/properties/penthouse-terrasse.svg",
+      "/images/properties/penthouse-bad.svg",
     ],
-    thumbnailImage:
-      "https://placehold.co/600x400/2D7A7A/ffffff?text=Penthouse+1",
+    thumbnailImage: "/images/properties/penthouse-1.svg",
     highlights: [
       "Dachterrasse",
       "Neubau",
@@ -239,10 +236,9 @@ export const properties: Property[] = [
     shortDescription:
       "Voll erschlossenes Baugrundstück in ruhiger Lage.",
     images: [
-      "https://placehold.co/800x600/2D7A7A/ffffff?text=Grundstück",
+      "/images/properties/grundstueck.svg",
     ],
-    thumbnailImage:
-      "https://placehold.co/600x400/2D7A7A/ffffff?text=Grundstück",
+    thumbnailImage: "/images/properties/grundstueck.svg",
     highlights: [
       "Voll erschlossen",
       "Ruhige Lage",
