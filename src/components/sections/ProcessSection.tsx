@@ -25,23 +25,31 @@ export default function ProcessSection() {
 
         <ScrollAnimator stagger>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {processSteps.map((step) => {
+            {processSteps.map((step, index) => {
               const Icon = iconMap[step.icon] || Search;
               return (
                 <div
                   key={step.number}
-                  className="bg-white/10 backdrop-blur-sm rounded-card p-6 border border-white/10 hover:bg-white/15 transition-colors"
+                  className="bg-white/10 backdrop-blur-sm rounded-card p-6 border border-white/10 hover:bg-white/15 transition-colors relative"
                 >
-                  <div className="text-primary-300 text-sm font-bold mb-3">
+                  {/* Large decorative step number */}
+                  <div className="absolute top-4 right-4 text-5xl font-extrabold text-white/[0.07] leading-none select-none">
                     {step.number}
                   </div>
-                  <div className="w-10 h-10 bg-primary-400/20 rounded-lg flex items-center justify-center mb-4">
-                    <Icon size={20} className="text-primary-200" />
+
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-primary-400/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Icon size={20} className="text-primary-300" />
+                    </div>
+                    <span className="text-primary-300 text-xs font-semibold tracking-widest uppercase">
+                      Schritt {index + 1}
+                    </span>
                   </div>
+
                   <h3 className="text-lg font-semibold text-white mb-2">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-gray-300 leading-relaxed">
+                  <p className="text-sm text-primary-100/70 leading-relaxed">
                     {step.description}
                   </p>
                 </div>

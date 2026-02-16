@@ -7,6 +7,7 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import KaeuferdatenbankCTA from "@/components/sections/KaeuferdatenbankCTA";
 import PromiseSection from "@/components/sections/PromiseSection";
 import UeberHomefinSection from "@/components/sections/UeberHomefinSection";
+import RatgeberSection from "@/components/sections/RatgeberSection";
 import PricingSection from "@/components/sections/PricingSection";
 import MapContactSection from "@/components/sections/MapContactSection";
 import FAQSection from "@/components/sections/FAQSection";
@@ -23,6 +24,7 @@ export default function HomePage() {
       <KaeuferdatenbankCTA />
       <PromiseSection />
       <UeberHomefinSection />
+      <RatgeberSection />
       <PricingSection />
       <MapContactSection />
       <FAQSection />

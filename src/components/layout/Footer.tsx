@@ -14,7 +14,7 @@ export default function Footer() {
               <img
                 src="/Homefin_Logo.svg"
                 alt="homefin"
-                className="h-9 w-auto brightness-0 invert"
+                className="h-9 w-auto"
               />
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed">

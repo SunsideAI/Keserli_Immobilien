@@ -19,12 +19,12 @@ export default function PricingSection() {
         </ScrollAnimator>
 
         <ScrollAnimator stagger>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-stretch">
             {pricingTiers.map((tier) => (
               <div
                 key={tier.id}
                 className={cn(
-                  "bg-white rounded-card p-6 sm:p-8 relative",
+                  "bg-white rounded-card p-6 sm:p-8 relative flex flex-col",
                   tier.highlighted
                     ? "ring-2 ring-primary shadow-card-hover scale-[1.02]"
                     : "shadow-card"
@@ -55,7 +55,7 @@ export default function PricingSection() {
                   </p>
                 </div>
 
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-3 mb-8 flex-1">
                   {tier.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2">
                       <Check
@@ -70,7 +70,7 @@ export default function PricingSection() {
                 <Button
                   href={tier.ctaHref}
                   variant={tier.highlighted ? "primary" : "secondary"}
-                  className="w-full"
+                  className="w-full mt-auto"
                 >
                   {tier.ctaText}
                 </Button>
