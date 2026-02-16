@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { footerNavItems } from "@/data/navigation";
 import { siteConfig } from "@/data/site-config";
+import Logo from "@/components/ui/Logo";
 
 export default function Footer() {
   return (
@@ -10,12 +11,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Logo & Description */}
           <div>
-            <Link href="/" className="inline-block mb-4">
-              <img
-                src="/sm2x.png"
-                alt="homefin"
-                className="h-9 w-auto brightness-0 invert"
-              />
+            <Link href="/" className="flex items-center mb-4 group">
+              <Logo variant="white" size="md" />
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed">
               Ihr lokaler Immobilienmakler in {siteConfig.contact.address.city}.
