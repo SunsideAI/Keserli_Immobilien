@@ -133,9 +133,9 @@ export default function HeroSection() {
       <Container className="relative z-10">
         <div className="relative min-h-[calc(100vh-5rem)] lg:min-h-[620px] xl:min-h-[680px]">
 
-          {/* ── IDA Award — centered, slightly below middle, behind text (z-10) ── */}
+          {/* ── IDA Award — centered horizontally, pushed down (z-10) ── */}
           <div
-            className={`hidden lg:flex absolute inset-0 items-center justify-center pt-16 z-10 pointer-events-none transition-all duration-1000 ease-out delay-300 ${
+            className={`hidden lg:flex absolute inset-0 items-end justify-center pb-12 z-10 pointer-events-none transition-all duration-1000 ease-out delay-300 ${
               visible
                 ? "opacity-100 scale-100"
                 : "opacity-0 scale-90"
@@ -144,28 +144,12 @@ export default function HeroSection() {
             {/* Glow */}
             <div className="absolute w-[500px] h-[500px] rounded-full bg-gradient-to-br from-primary/8 via-gold/8 to-primary/4 blur-3xl animate-pulse-soft" />
 
-            <div className="relative">
-              {/* AUSGEZEICHNET badge — top-right of award */}
-              <div
-                className={`absolute -top-6 -right-4 z-10 transition-all duration-700 ease-out delay-500 ${
-                  visible
-                    ? "opacity-100 translate-y-0 scale-100"
-                    : "opacity-0 -translate-y-4 scale-90"
-                }`}
-              >
-                <div className="flex items-center gap-1.5 bg-primary text-white px-4 py-2 rounded-full shadow-btn text-xs font-bold pointer-events-auto">
-                  <Award size={13} />
-                  AUSGEZEICHNET
-                </div>
-              </div>
-
-              {/* Award image — BIG & CENTERED */}
-              <img
-                src="/IDA_Award.png"
-                alt="IDA Immobilien Dienstleister Award 2022"
-                className="w-[320px] xl:w-[380px] 2xl:w-[420px] h-auto object-contain drop-shadow-2xl animate-float opacity-85"
-              />
-            </div>
+            {/* Award image — BIG & LOW */}
+            <img
+              src="/IDA_Award.png"
+              alt="IDA Immobilien Dienstleister Award 2022"
+              className="w-[320px] xl:w-[380px] 2xl:w-[420px] h-auto object-contain drop-shadow-2xl animate-float opacity-85"
+            />
           </div>
 
           {/* ── Desktop: Text overlapping Award (z-20) ── */}
