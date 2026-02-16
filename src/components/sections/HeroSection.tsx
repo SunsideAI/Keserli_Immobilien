@@ -62,13 +62,28 @@ export default function HeroSection() {
       : `${animatedCount}+`;
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-mint via-mint-light to-white">
+    <section className="relative overflow-hidden">
+      {/* ═══════════ Background: House image + gradient overlays ═══════════ */}
+      <div className="absolute inset-0">
+        {/* House photo - blurred background */}
+        <img
+          src="/images/hero-bg.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover scale-110 blur-[2px]"
+        />
+        {/* Gradient overlays for the mint/teal brand look */}
+        <div className="absolute inset-0 bg-gradient-to-br from-mint/90 via-mint-light/85 to-white/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-white/30" />
+      </div>
+
       {/* ═══════════ Background effects ═══════════ */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Gradient orbs */}
-        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-primary/[0.05] blur-3xl" />
-        <div className="absolute bottom-0 -left-32 w-[500px] h-[500px] rounded-full bg-primary/[0.04] blur-3xl" />
-        <div className="absolute top-1/3 right-0 w-[450px] h-[450px] rounded-full bg-gold/[0.04] blur-3xl" />
+        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-primary/[0.07] blur-3xl" />
+        <div className="absolute bottom-0 -left-32 w-[500px] h-[500px] rounded-full bg-primary/[0.05] blur-3xl" />
+        <div className="absolute top-1/3 right-0 w-[450px] h-[450px] rounded-full bg-gold/[0.05] blur-3xl" />
 
         {/* Bokeh sparkles */}
         {sparkles.map((s, i) => (
@@ -103,7 +118,7 @@ export default function HeroSection() {
       <Container className="relative z-10">
         <div className="relative min-h-[calc(100vh-5rem)] lg:min-h-[620px] xl:min-h-[680px]">
           {/* ── Desktop 3-column layout ── */}
-          <div className="hidden lg:grid lg:grid-cols-[260px_1fr_220px] xl:grid-cols-[300px_1fr_260px] gap-6 xl:gap-10 min-h-[inherit] items-end">
+          <div className="hidden lg:grid lg:grid-cols-[260px_1fr_280px] xl:grid-cols-[300px_1fr_320px] gap-6 xl:gap-10 min-h-[inherit] items-end">
             {/* COL 1 — Makler person */}
             <div
               className={`self-end transition-all duration-1000 ease-out delay-200 ${
@@ -215,8 +230,8 @@ export default function HeroSection() {
                       : "opacity-0 -translate-y-4 scale-90"
                   }`}
                 >
-                  <div className="flex items-center gap-1.5 bg-primary text-white px-4 py-2 rounded-full shadow-btn text-xs font-bold">
-                    <Award size={14} />
+                  <div className="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-full shadow-btn text-sm font-bold">
+                    <Award size={16} />
                     AUSGEZEICHNET
                   </div>
                 </div>
@@ -225,7 +240,7 @@ export default function HeroSection() {
                 <img
                   src="/IDA_Award.png"
                   alt="IDA Immobilien Dienstleister Award 2022"
-                  className="relative w-44 xl:w-52 h-auto object-contain drop-shadow-2xl animate-float"
+                  className="relative w-56 xl:w-72 h-auto object-contain drop-shadow-2xl animate-float"
                 />
               </div>
             </div>

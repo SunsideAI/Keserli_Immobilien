@@ -36,7 +36,7 @@ export default function Header() {
             <img
               src="/Homefin_Logo.png"
               alt="homefin"
-              className="h-8 lg:h-10 w-auto"
+              className="h-10 lg:h-14 w-auto"
             />
           </Link>
 
