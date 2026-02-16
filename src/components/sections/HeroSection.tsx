@@ -117,8 +117,8 @@ export default function HeroSection() {
       {/* ═══════════ Hero content ═══════════ */}
       <Container className="relative z-10">
         <div className="relative min-h-[calc(100vh-5rem)] lg:min-h-[620px] xl:min-h-[680px]">
-          {/* ── Desktop 3-column layout: TEXT | MAKLER | AWARD ── */}
-          <div className="hidden lg:grid lg:grid-cols-[1fr_auto_auto] xl:grid-cols-[1fr_auto_auto] gap-4 xl:gap-8 min-h-[inherit] items-end">
+          {/* ── Desktop 3-column layout: TEXT | AWARD | MAKLER ── */}
+          <div className="hidden lg:grid lg:grid-cols-[1fr_auto_auto] gap-4 xl:gap-6 min-h-[inherit] items-end">
             {/* COL 1 — Text content (LEFT, vertically centered) */}
             <div className="self-center pb-16 xl:pb-20">
               {/* Badge */}
@@ -129,14 +129,16 @@ export default function HeroSection() {
                 </span>
               </div>
 
-              {/* Headline */}
+              {/* Headline — 3 lines */}
               <h1
                 className={`text-5xl xl:text-6xl 2xl:text-7xl font-extrabold text-slate-dark leading-[1.08] mb-5 ${anim(
                   visible,
                   "delay-[100ms]"
                 )}`}
               >
-                Fairste Provision
+                Fairste
+                <br />
+                Provision
                 <br />
                 <span className="relative inline-block">
                   der Region
@@ -193,22 +195,7 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* COL 2 — Makler person (CENTER, anchored to bottom, BIG) */}
-            <div
-              className={`self-end transition-all duration-1000 ease-out delay-200 ${
-                visible
-                  ? "opacity-100 translate-y-0 scale-100"
-                  : "opacity-0 translate-y-12 scale-95"
-              }`}
-            >
-              <img
-                src="/Makler.png"
-                alt="Ihr Immobilienmakler"
-                className="w-[320px] xl:w-[380px] 2xl:w-[420px] h-auto max-h-[600px] xl:max-h-[660px] object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
-              />
-            </div>
-
-            {/* COL 3 — IDA Award (RIGHT, vertically centered, BIG) */}
+            {/* COL 2 — IDA Award (CENTER, vertically centered, VERY BIG) */}
             <div className="self-center pb-16 xl:pb-20">
               <div
                 className={`relative flex flex-col items-center transition-all duration-1000 ease-out delay-300 ${
@@ -218,7 +205,7 @@ export default function HeroSection() {
                 }`}
               >
                 {/* Glow */}
-                <div className="absolute inset-0 -m-12">
+                <div className="absolute inset-0 -m-16">
                   <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/10 via-gold/10 to-primary/5 blur-3xl animate-pulse-soft" />
                 </div>
 
@@ -236,13 +223,28 @@ export default function HeroSection() {
                   </div>
                 </div>
 
-                {/* Award image — much bigger */}
+                {/* Award image — very big */}
                 <img
                   src="/IDA_Award.png"
                   alt="IDA Immobilien Dienstleister Award 2022"
-                  className="relative w-64 xl:w-80 2xl:w-96 h-auto object-contain drop-shadow-2xl animate-float"
+                  className="relative w-72 xl:w-96 2xl:w-[28rem] h-auto object-contain drop-shadow-2xl animate-float"
                 />
               </div>
+            </div>
+
+            {/* COL 3 — Makler person (RIGHT, anchored to bottom, BIG) */}
+            <div
+              className={`self-end transition-all duration-1000 ease-out delay-200 ${
+                visible
+                  ? "opacity-100 translate-x-0 scale-100"
+                  : "opacity-0 translate-x-12 scale-95"
+              }`}
+            >
+              <img
+                src="/Makler.png"
+                alt="Ihr Immobilienmakler"
+                className="w-[300px] xl:w-[360px] 2xl:w-[400px] h-auto max-h-[580px] xl:max-h-[640px] object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
+              />
             </div>
           </div>
 
