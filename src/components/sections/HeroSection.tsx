@@ -302,7 +302,7 @@ export default function HeroSection() {
                 : "opacity-0 translate-y-12"
             }`}
           >
-            <div className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-white/60 p-5 lg:p-0 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-shadow duration-500">
+            <div className="bg-white rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-gray-100 p-5 lg:p-0 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-shadow duration-500">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 lg:gap-0 lg:divide-x lg:divide-gray-100">
                 {/* Stat 1 — Faire Provision */}
                 <div className="flex items-center gap-4 lg:px-8 lg:py-6 group cursor-default">
