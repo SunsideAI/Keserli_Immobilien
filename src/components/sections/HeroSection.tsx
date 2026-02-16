@@ -75,7 +75,7 @@ export default function HeroSection() {
         {/* Gradient overlays for the mint/teal brand look */}
         <div className="absolute inset-0 bg-gradient-to-br from-mint/90 via-mint-light/85 to-white/80" />
         <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-white/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-white/30" />
       </div>
 
       {/* ═══════════ Background effects ═══════════ */}
@@ -336,8 +336,8 @@ export default function HeroSection() {
         </div>
       </Container>
 
-      {/* ═══════════ Floating Stats Bar ═══════════ */}
-      <div className="relative z-30 -mt-14 lg:-mt-12 pb-6 lg:pb-8">
+      {/* ═══════════ Floating Stats Bar — overlaps into next section ═══════════ */}
+      <div className="relative z-30 -mt-14 lg:-mt-12 mb-[-40px] lg:mb-[-48px]">
         <Container>
           <div
             className={`transition-all duration-700 ease-out delay-[650ms] ${

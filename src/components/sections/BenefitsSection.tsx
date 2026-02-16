@@ -26,7 +26,7 @@ const iconMap: Record<string, React.ElementType> = {
 
 export default function BenefitsSection() {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding pt-20 lg:pt-24 bg-white">
       <Container>
         <ScrollAnimator>
           <SectionHeading
