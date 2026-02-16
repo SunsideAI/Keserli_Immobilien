@@ -9,15 +9,16 @@ interface ButtonProps {
   onClick?: () => void;
   className?: string;
   type?: "button" | "submit";
+  shimmer?: boolean;
 }
 
 const variants = {
   primary:
-    "bg-primary text-white hover:bg-primary-800 shadow-btn",
+    "bg-primary text-white hover:bg-primary-800 shadow-btn hover:shadow-lg",
   secondary:
     "border-2 border-primary text-primary hover:bg-primary hover:text-white",
   white:
-    "bg-white text-primary hover:bg-gray-50",
+    "bg-white text-primary hover:bg-gray-50 shadow-btn",
   ghost:
     "text-primary hover:bg-primary-50",
 };
@@ -36,11 +37,20 @@ export default function Button({
   onClick,
   className,
   type = "button",
+  shimmer = true,
 }: ButtonProps) {
+  const shimmerClass =
+    shimmer && (variant === "primary" || variant === "white")
+      ? "btn-shimmer"
+      : shimmer && variant === "secondary"
+      ? "btn-shimmer-outline"
+      : "";
+
   const classes = cn(
-    "inline-flex items-center justify-center font-semibold rounded-btn transition-all duration-200",
+    "inline-flex items-center justify-center font-semibold rounded-btn transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]",
     variants[variant],
     sizes[size],
+    shimmerClass,
     className
   );
 
