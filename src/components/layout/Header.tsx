@@ -7,7 +7,6 @@ import { Menu, X } from "lucide-react";
 import { mainNavItems } from "@/data/navigation";
 import { cn } from "@/lib/utils";
 import Button from "@/components/ui/Button";
-import Logo from "@/components/ui/Logo";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -33,8 +32,12 @@ export default function Header() {
     >
       <div className="mx-auto max-w-container px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <Link href="/" className="flex items-center group">
-            <Logo size="md" />
+          <Link href="/" className="flex items-center">
+            <img
+              src="/Homefin_Logo.png"
+              alt="homefin"
+              className="h-8 lg:h-10 w-auto"
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
