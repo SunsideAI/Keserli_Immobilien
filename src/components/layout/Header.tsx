@@ -34,7 +34,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link href="/" className="flex items-center">
             <img
-              src="/Homefin_Logo.png"
+              src="/Homefin_Logo.svg"
               alt="homefin"
               className="h-10 lg:h-14 w-auto"
             />
