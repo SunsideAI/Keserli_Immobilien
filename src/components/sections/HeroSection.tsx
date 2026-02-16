@@ -131,7 +131,7 @@ export default function HeroSection() {
 
       {/* ═══════════ Hero content ═══════════ */}
       <Container className="relative z-10">
-        <div className="relative min-h-[calc(100vh-5rem)] lg:min-h-[620px] xl:min-h-[680px]">
+        <div className="relative min-h-[calc(100svh-5rem)] lg:min-h-[620px] xl:min-h-[680px]">
 
           {/* ── IDA Award — centered horizontally, pushed down (z-10) ── */}
           <div
@@ -207,10 +207,10 @@ export default function HeroSection() {
           </div>
 
           {/* ── Mobile layout ── */}
-          <div className="lg:hidden flex flex-col items-center text-center pt-16 sm:pt-20 pb-8 gap-5">
+          <div className="lg:hidden flex flex-col items-center text-center pt-20 sm:pt-24 pb-10 gap-6 px-2">
             {/* Badge */}
             <div className={anim(visible, "delay-[0ms]")}>
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-widest bg-primary/10 text-primary border border-primary/10">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest bg-white/70 text-primary border border-primary/15 backdrop-blur-sm shadow-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                 Ihre Immobilienexperten
               </span>
@@ -218,7 +218,7 @@ export default function HeroSection() {
 
             {/* Headline */}
             <h1
-              className={`text-3xl sm:text-4xl font-extrabold text-slate-dark leading-[1.1] ${anim(
+              className={`text-[2rem] sm:text-4xl font-extrabold text-slate-dark leading-[1.08] ${anim(
                 visible,
                 "delay-[100ms]"
               )}`}
@@ -230,7 +230,7 @@ export default function HeroSection() {
 
             {/* Subtitle */}
             <p
-              className={`text-sm sm:text-base text-slate-body max-w-xs sm:max-w-sm leading-relaxed ${anim(
+              className={`text-sm sm:text-base text-slate-body max-w-[320px] sm:max-w-sm leading-relaxed ${anim(
                 visible,
                 "delay-[200ms]"
               )}`}
@@ -243,11 +243,11 @@ export default function HeroSection() {
             </p>
 
             {/* CTA */}
-            <div className={`mt-1 ${anim(visible, "delay-[300ms]")}`}>
+            <div className={`mt-2 ${anim(visible, "delay-[300ms]")}`}>
               <Button
                 href="/immobilienbewertung"
                 size="lg"
-                className="text-sm px-6 py-3 shadow-btn hover:shadow-lg group"
+                className="text-sm px-7 py-3.5 shadow-btn hover:shadow-lg group"
               >
                 Kostenlose Bewertung erhalten
                 <ArrowRight
@@ -257,32 +257,20 @@ export default function HeroSection() {
               </Button>
             </div>
 
-            {/* Makler + Award side by side */}
-            <div className={`relative flex items-end justify-center gap-0 mt-2 ${anim(visible, "delay-[400ms]")}`}>
-              {/* IDA Award — left */}
-              <div className="relative -mr-6 z-10">
-                <img
-                  src="/IDA_Award.png"
-                  alt="IDA Immobilien Dienstleister Award 2022"
-                  className="w-28 sm:w-32 h-auto object-contain drop-shadow-lg"
-                />
-              </div>
-
-              {/* Makler — right, overlapping */}
-              <div className="relative">
-                <img
-                  src="/Keseli_Makler.png"
-                  alt="Ihr Immobilienmakler"
-                  className="w-40 sm:w-48 h-auto object-contain"
-                />
-              </div>
+            {/* IDA Award — centered, no Makler on mobile */}
+            <div className={`relative mt-4 ${anim(visible, "delay-[400ms]")}`}>
+              <img
+                src="/IDA_Award.png"
+                alt="IDA Immobilien Dienstleister Award 2022"
+                className="w-28 sm:w-36 h-auto object-contain drop-shadow-lg mx-auto opacity-90"
+              />
             </div>
           </div>
         </div>
       </Container>
 
       {/* ═══════════ Floating Stats Bar — overlaps into next section ═══════════ */}
-      <div className="relative z-30 -mt-14 lg:-mt-12 mb-[-40px] lg:mb-[-48px]">
+      <div className="relative z-30 -mt-8 lg:-mt-12 mb-[-40px] lg:mb-[-48px]">
         <Container>
           <div
             className={`transition-all duration-700 ease-out delay-[650ms] ${
@@ -291,48 +279,49 @@ export default function HeroSection() {
                 : "opacity-0 translate-y-12"
             }`}
           >
-            <div className="bg-white rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-gray-100 p-5 lg:p-0 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-shadow duration-500">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 lg:gap-0 lg:divide-x lg:divide-gray-100">
+            <div className="bg-white rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-gray-100 p-4 sm:p-5 lg:p-0 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-shadow duration-500">
+              <div className="grid grid-cols-3 gap-3 sm:gap-5 lg:gap-0 lg:divide-x lg:divide-gray-100">
                 {/* Stat 1 — Faire Provision */}
-                <div className="flex items-center gap-4 lg:px-8 lg:py-6 group cursor-default">
-                  <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 group-hover:shadow-btn">
+                <div className="flex flex-col items-center text-center gap-1.5 sm:flex-row sm:text-left sm:items-center sm:gap-4 lg:px-8 lg:py-6 group cursor-default">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 group-hover:shadow-btn">
                     <TrendingUp
-                      size={20}
-                      className="text-primary transition-colors duration-300 group-hover:text-white"
+                      size={18}
+                      className="text-primary transition-colors duration-300 group-hover:text-white sm:w-5 sm:h-5"
                     />
                   </div>
                   <div>
-                    <div className="text-xl font-extrabold text-slate-dark leading-tight">
+                    <div className="text-base sm:text-xl font-extrabold text-slate-dark leading-tight">
                       1,95&nbsp;%
                     </div>
-                    <div className="text-sm text-slate-body">
-                      Faire Provision inkl. MwSt.
+                    <div className="text-[11px] sm:text-sm text-slate-body leading-tight">
+                      Faire Provision
                     </div>
                   </div>
                 </div>
 
                 {/* Stat 2 — Vermittelte Immobilien */}
-                <div className="flex items-center gap-4 lg:px-8 lg:py-6 group cursor-default">
-                  <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 group-hover:shadow-btn">
+                <div className="flex flex-col items-center text-center gap-1.5 sm:flex-row sm:text-left sm:items-center sm:gap-4 lg:px-8 lg:py-6 group cursor-default">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 group-hover:shadow-btn">
                     <Users
-                      size={20}
-                      className="text-primary transition-colors duration-300 group-hover:text-white"
+                      size={18}
+                      className="text-primary transition-colors duration-300 group-hover:text-white sm:w-5 sm:h-5"
                     />
                   </div>
                   <div>
-                    <div className="text-xl font-extrabold text-slate-dark leading-tight tabular-nums">
+                    <div className="text-base sm:text-xl font-extrabold text-slate-dark leading-tight tabular-nums">
                       {formattedCount}
                     </div>
-                    <div className="text-sm text-slate-body">
-                      Vermittelte Immobilien
+                    <div className="text-[11px] sm:text-sm text-slate-body leading-tight">
+                      Immobilien
                     </div>
                   </div>
                 </div>
 
                 {/* Stat 3 — Google Bewertung */}
-                <div className="flex items-center gap-4 lg:px-8 lg:py-6 group cursor-default">
+                <div className="flex flex-col items-center text-center gap-1.5 sm:flex-row sm:text-left sm:items-center sm:gap-4 lg:px-8 lg:py-6 group cursor-default">
+                  {/* Avatar stack hidden on mobile, show icon instead */}
                   <div className="flex-shrink-0">
-                    <div className="flex -space-x-2.5">
+                    <div className="hidden sm:flex -space-x-2.5">
                       {[
                         { bg: "bg-primary-700", initials: "OK" },
                         { bg: "bg-primary-500", initials: "TM" },
@@ -348,26 +337,29 @@ export default function HeroSection() {
                         </div>
                       ))}
                     </div>
+                    <div className="sm:hidden w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Star size={18} className="text-primary fill-primary" />
+                    </div>
                   </div>
                   <div>
-                    <div className="flex items-center gap-0.5 mb-0.5">
+                    <div className="flex items-center gap-0.5 mb-0.5 justify-center sm:justify-start">
                       {[1, 2, 3, 4, 5].map((s) => (
                         <Star
                           key={s}
-                          size={15}
-                          className={
+                          size={12}
+                          className={`sm:w-[15px] sm:h-[15px] ${
                             s <= Math.floor(siteConfig.stats.googleRating)
                               ? "fill-gold text-gold"
                               : "fill-gold/30 text-gold/30"
-                          }
+                          }`}
                         />
                       ))}
-                      <span className="ml-1 text-sm font-bold text-slate-dark">
+                      <span className="ml-1 text-xs sm:text-sm font-bold text-slate-dark">
                         {siteConfig.stats.googleRating}
                       </span>
                     </div>
-                    <div className="text-sm text-slate-body">
-                      Google Bewertungen
+                    <div className="text-[11px] sm:text-sm text-slate-body leading-tight">
+                      Google
                     </div>
                   </div>
                 </div>
