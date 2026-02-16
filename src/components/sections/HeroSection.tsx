@@ -135,7 +135,7 @@ export default function HeroSection() {
 
           {/* ── IDA Award — centered horizontally, pushed down (z-10) ── */}
           <div
-            className={`hidden lg:flex absolute inset-0 items-end justify-center pb-12 z-10 pointer-events-none transition-all duration-1000 ease-out delay-300 ${
+            className={`hidden lg:flex absolute inset-0 items-end justify-center pb-2 z-10 pointer-events-none transition-all duration-1000 ease-out delay-300 ${
               visible
                 ? "opacity-100 scale-100"
                 : "opacity-0 scale-90"
