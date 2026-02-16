@@ -117,25 +117,26 @@ export default function HeroSection() {
       {/* ═══════════ Hero content ═══════════ */}
       <Container className="relative z-10">
         <div className="relative min-h-[calc(100vh-5rem)] lg:min-h-[620px] xl:min-h-[680px]">
-          {/* ── Desktop 3-column layout: MAKLER | TEXT | AWARD ── */}
-          <div className="hidden lg:grid lg:grid-cols-[220px_1fr_240px] xl:grid-cols-[260px_1fr_280px] 2xl:grid-cols-[300px_1fr_320px] gap-6 xl:gap-8 min-h-[inherit] items-end">
-            {/* COL 1 — Makler person (LEFT, anchored to bottom, overlaps stats) */}
-            <div
-              className={`self-end z-20 transition-all duration-1000 ease-out delay-200 ${
-                visible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 -translate-x-16"
-              }`}
-            >
-              <img
-                src="/Makler.png"
-                alt="Ihr Immobilienmakler"
-                className="w-full h-auto max-h-[520px] xl:max-h-[580px] object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
-              />
-            </div>
 
-            {/* COL 2 — Text content (LEFT-ALIGNED, vertically centered) */}
-            <div className="self-center pb-20 xl:pb-24">
+          {/* ── Makler — absolutely positioned, bottom-left, overlaps stats bar ── */}
+          <div
+            className={`hidden lg:block absolute bottom-0 left-0 z-20 transition-all duration-1000 ease-out delay-200 ${
+              visible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-16"
+            }`}
+          >
+            <img
+              src="/Makler.png"
+              alt="Ihr Immobilienmakler"
+              className="h-[480px] xl:h-[540px] 2xl:h-[600px] w-auto object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
+            />
+          </div>
+
+          {/* ── Desktop 2-column layout: TEXT | AWARD ── */}
+          <div className="hidden lg:grid lg:grid-cols-[1fr_280px] xl:grid-cols-[1fr_320px] gap-8 xl:gap-12 min-h-[inherit] items-center lg:pl-[240px] xl:pl-[280px] 2xl:pl-[320px]">
+            {/* COL 1 — Text content (LEFT-ALIGNED) */}
+            <div className="py-20">
               {/* Badge */}
               <div className={anim(visible, "delay-[0ms]")}>
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest bg-primary/10 text-primary border border-primary/10 mb-6">
@@ -144,16 +145,16 @@ export default function HeroSection() {
                 </span>
               </div>
 
-              {/* Headline — 2 lines, whitespace-nowrap to prevent wrapping */}
+              {/* Headline — 2 lines */}
               <h1
                 className={`text-4xl lg:text-5xl xl:text-6xl font-extrabold text-slate-dark leading-[1.08] mb-5 ${anim(
                   visible,
                   "delay-[100ms]"
                 )}`}
               >
-                <span className="whitespace-nowrap">Fairste Provision</span>
+                Fairste Provision
                 <br />
-                <span className="relative inline-block whitespace-nowrap">
+                <span className="relative inline-block">
                   der Region
                   <svg
                     className="absolute -bottom-1.5 left-0 w-full h-3"
@@ -193,7 +194,7 @@ export default function HeroSection() {
               </p>
 
               {/* CTA */}
-              <div className={`${anim(visible, "delay-[350ms]")} inline-block`}>
+              <div className={anim(visible, "delay-[350ms]")}>
                 <Button
                   href="/immobilienbewertung"
                   size="lg"
@@ -208,8 +209,8 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* COL 3 — IDA Award (RIGHT, vertically centered) */}
-            <div className="self-center pb-20 xl:pb-24">
+            {/* COL 2 — IDA Award (RIGHT) */}
+            <div>
               <div
                 className={`relative flex flex-col items-center transition-all duration-1000 ease-out delay-300 ${
                   visible
@@ -222,21 +223,21 @@ export default function HeroSection() {
                   <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/10 via-gold/10 to-primary/5 blur-3xl animate-pulse-soft" />
                 </div>
 
-                {/* AUSGEZEICHNET badge — top-right of award */}
+                {/* AUSGEZEICHNET badge — top-right */}
                 <div
-                  className={`absolute -top-5 -right-3 z-10 transition-all duration-700 ease-out delay-500 ${
+                  className={`absolute -top-5 -right-2 z-10 transition-all duration-700 ease-out delay-500 ${
                     visible
                       ? "opacity-100 translate-y-0 scale-100"
                       : "opacity-0 -translate-y-4 scale-90"
                   }`}
                 >
-                  <div className="flex items-center gap-1.5 bg-primary text-white px-4 py-2 rounded-full shadow-btn text-[11px] font-bold">
-                    <Award size={12} />
+                  <div className="flex items-center gap-1.5 bg-primary text-white px-4 py-2 rounded-full shadow-btn text-xs font-bold">
+                    <Award size={13} />
                     AUSGEZEICHNET
                   </div>
                 </div>
 
-                {/* Award image — fits column width */}
+                {/* Award image */}
                 <img
                   src="/IDA_Award.png"
                   alt="IDA Immobilien Dienstleister Award 2022"
