@@ -116,7 +116,7 @@ export default function HeroSection() {
 
       {/* ── Makler — right side, standing on stats bar ── */}
       <div
-        className={`hidden lg:block absolute bottom-[60px] lg:bottom-[68px] right-[8%] xl:right-[11%] z-20 transition-all duration-1000 ease-out delay-200 ${
+        className={`hidden lg:block absolute bottom-[60px] lg:bottom-[68px] right-[8%] xl:right-[11%] z-20 transition-all duration-1000 ease-out delay-[900ms] ${
           visible
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-10"
@@ -172,29 +172,7 @@ export default function HeroSection() {
               >
                 Fairste Provision
                 <br />
-                <span className="relative inline-block">
-                  der Region
-                  <svg
-                    className="absolute -bottom-1.5 left-0 w-full h-3"
-                    viewBox="0 0 300 12"
-                    fill="none"
-                    preserveAspectRatio="none"
-                  >
-                    <path
-                      d="M2 8 Q75 2, 150 6 Q225 10, 298 4"
-                      stroke="#2D7A7A"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      style={{
-                        strokeDasharray: 400,
-                        strokeDashoffset: visible ? 0 : 400,
-                        opacity: visible ? 0.35 : 0,
-                        transition:
-                          "stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1) 0.6s, opacity 0.4s ease 0.6s",
-                      }}
-                    />
-                  </svg>
-                </span>
+                der Region
               </h1>
 
               {/* Subtitle */}
@@ -247,29 +225,7 @@ export default function HeroSection() {
             >
               Fairste Provision
               <br />
-              <span className="relative inline-block">
-                der Region
-                <svg
-                  className="absolute -bottom-1.5 left-0 w-full h-3"
-                  viewBox="0 0 300 12"
-                  fill="none"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M2 8 Q75 2, 150 6 Q225 10, 298 4"
-                    stroke="#2D7A7A"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    style={{
-                      strokeDasharray: 400,
-                      strokeDashoffset: visible ? 0 : 400,
-                      opacity: visible ? 0.35 : 0,
-                      transition:
-                        "stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1) 0.6s, opacity 0.4s ease 0.6s",
-                    }}
-                  />
-                </svg>
-              </span>
+              der Region
             </h1>
 
             {/* Subtitle */}
