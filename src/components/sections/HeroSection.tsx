@@ -116,7 +116,7 @@ export default function HeroSection() {
 
       {/* ── Makler — right side, standing on stats bar ── */}
       <div
-        className={`hidden lg:block absolute bottom-[40px] lg:bottom-[44px] right-[5%] xl:right-[8%] z-20 transition-all duration-1000 ease-out delay-200 ${
+        className={`hidden lg:block absolute bottom-[60px] lg:bottom-[68px] right-[15%] xl:right-[18%] z-20 transition-all duration-1000 ease-out delay-200 ${
           visible
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-10"
