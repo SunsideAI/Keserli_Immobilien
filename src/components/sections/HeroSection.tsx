@@ -1,5 +1,3 @@
-"use client";
-
 import { ArrowRight, Star } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
@@ -91,44 +89,14 @@ export default function HeroSection() {
 
               {/* Award Card */}
               <div className="relative bg-white rounded-[1.5rem] shadow-card-hover p-8 transform -rotate-1 hover:rotate-0 transition-transform duration-500">
-                {/* IDA Award Image */}
                 <div className="flex flex-col items-center text-center">
-                  {/* Award Badge - uses real image if available, otherwise placeholder */}
-                  <div className="w-40 h-40 mb-6 animate-float">
+                  {/* IDA Award Image */}
+                  <div className="mb-6 animate-float">
                     <img
-                      src="/ida-award.png"
+                      src="/IDA_Award.png"
                       alt="IDA Immobilien Dienstleister Award 2022"
-                      className="w-full h-full object-contain"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        const fallback = target.nextElementSibling as HTMLElement;
-                        if (fallback) fallback.style.display = 'flex';
-                      }}
+                      className="w-64 h-auto object-contain mx-auto"
                     />
-                    {/* Fallback placeholder if image not yet available */}
-                    <div
-                      className="w-full h-full rounded-full bg-gradient-to-br from-gold to-gold-light items-center justify-center shadow-lg hidden"
-                    >
-                      <div className="text-center">
-                        <div className="text-xs font-bold text-white uppercase tracking-wider">
-                          IDA
-                        </div>
-                        <div className="text-[10px] text-white/80">
-                          Award
-                        </div>
-                        <div className="text-lg font-extrabold text-white">
-                          2022
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="text-lg font-bold text-slate-dark mb-1">
-                    Immobilien Dienstleister
-                  </div>
-                  <div className="text-sm text-slate-body mb-6">
-                    Award 2022
                   </div>
 
                   {/* Stats Grid inside Award Card */}
