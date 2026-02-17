@@ -51,7 +51,7 @@ export default function RelatedPosts({
               >
                 {/* Icon header */}
                 <div
-                  className={`h-32 bg-gradient-to-br ${config.gradient} flex items-center justify-center relative overflow-hidden`}
+                  className={`h-32 ${config.gradientClass} flex items-center justify-center relative overflow-hidden`}
                 >
                   <div className="absolute inset-0 opacity-10">
                     <Icon

@@ -20,7 +20,7 @@ export default function BlogCard({ post }: BlogCardProps) {
     >
       {/* Category visual header */}
       <div
-        className={`h-48 bg-gradient-to-br ${config.gradient} flex items-center justify-center relative overflow-hidden`}
+        className={`h-48 ${config.gradientClass} flex items-center justify-center relative overflow-hidden`}
       >
         {/* Decorative background icons */}
         <div className="absolute inset-0 opacity-10">

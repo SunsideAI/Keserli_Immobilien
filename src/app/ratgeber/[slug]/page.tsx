@@ -153,7 +153,7 @@ export default function RatgeberDetailPage({ params }: PageProps) {
       </section>
 
       {/* Article hero with category gradient */}
-      <section className={`bg-gradient-to-br ${config.gradient} py-12 sm:py-16`}>
+      <section className={`${config.gradientClass} py-12 sm:py-16`}>
         <Container>
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 text-white text-sm font-semibold uppercase tracking-wide mb-4">
