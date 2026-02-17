@@ -7,9 +7,18 @@ import Button from "@/components/ui/Button";
 import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
-  title: "Über uns",
+  title: "Über uns – Orhan Keserli & homefin GmbH",
   description:
-    "Lernen Sie homefin GmbH kennen – Ihr lokaler Immobilienmakler in Monheim am Rhein. Über 10 Jahre Erfahrung und 1.000+ vermittelte Immobilien.",
+    "Lernen Sie homefin GmbH und Orhan Keserli kennen – Ihr IHK-zertifizierter Immobilienmakler in Monheim am Rhein. Über 10 Jahre Erfahrung, 1.000+ vermittelte Immobilien und 4,9 Sterne bei Google.",
+  alternates: { canonical: "https://www.myhomefin.de/ueber-uns" },
+  openGraph: {
+    title: "Über homefin GmbH – Ihr Makler im Rheinland",
+    description: "IHK-zertifizierter Immobilienmakler mit über 10 Jahren Erfahrung.",
+    url: "https://www.myhomefin.de/ueber-uns",
+    type: "website",
+    locale: "de_DE",
+    siteName: "homefin GmbH",
+  },
 };
 
 export default function UeberUnsPage() {

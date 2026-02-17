@@ -8,9 +8,25 @@ import { pricingTiers } from "@/data/pricing";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Preise & Leistungen",
+  title: "Preise & Leistungen – Faire Maklerprovision ab 1,95%",
   description:
-    "Transparente Maklerprovisionen ab 1,95% inkl. MwSt. Vergleichen Sie unsere Leistungspakete für den Immobilienverkauf.",
+    "Transparente Maklerprovisionen ab 1,95% inkl. MwSt. – eine der fairsten in NRW. Vergleichen Sie unsere Leistungspakete für den Immobilienverkauf.",
+  keywords: [
+    "Maklerprovision",
+    "faire Provision",
+    "Maklerkosten",
+    "Immobilienverkauf Kosten",
+    "1,95% Provision",
+  ],
+  alternates: { canonical: "https://www.myhomefin.de/preise" },
+  openGraph: {
+    title: "Faire Maklerprovision ab 1,95% | homefin GmbH",
+    description: "Transparente Preise, keine versteckten Kosten. Vergleichen Sie unsere Leistungspakete.",
+    url: "https://www.myhomefin.de/preise",
+    type: "website",
+    locale: "de_DE",
+    siteName: "homefin GmbH",
+  },
 };
 
 const pricingFAQ = [

@@ -6,9 +6,26 @@ import ContactForm from "@/components/ui/ContactForm";
 import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
-  title: "Kostenlose Immobilienbewertung",
+  title: "Kostenlose Immobilienbewertung in 48h – Was ist Ihre Immobilie wert?",
   description:
-    "Kostenlose Immobilienbewertung in Monheim am Rhein, Langenfeld, Leverkusen, Köln & Düsseldorf. Professionelle Marktwertanalyse innerhalb von 48 Stunden.",
+    "Kostenlose Immobilienbewertung in Monheim am Rhein, Langenfeld, Leverkusen, Köln & Düsseldorf. Professionelle Marktwertanalyse innerhalb von 48 Stunden – unverbindlich und kostenlos.",
+  keywords: [
+    "Immobilienbewertung kostenlos",
+    "Haus bewerten lassen",
+    "Wohnung bewerten",
+    "Marktwertanalyse",
+    "Was ist meine Immobilie wert",
+    "Immobilienwert ermitteln",
+  ],
+  alternates: { canonical: "https://www.myhomefin.de/immobilienbewertung" },
+  openGraph: {
+    title: "Kostenlose Immobilienbewertung in 48h | homefin",
+    description: "Professionelle Marktwertanalyse – kostenlos und unverbindlich.",
+    url: "https://www.myhomefin.de/immobilienbewertung",
+    type: "website",
+    locale: "de_DE",
+    siteName: "homefin GmbH",
+  },
 };
 
 export default function ImmobilienbewertungPage() {

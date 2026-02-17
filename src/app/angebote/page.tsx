@@ -4,9 +4,25 @@ import Badge from "@/components/ui/Badge";
 import PropertyFilters from "@/components/properties/PropertyFilters";
 
 export const metadata: Metadata = {
-  title: "Aktuelle Immobilienangebote",
+  title: "Aktuelle Immobilienangebote – Häuser, Wohnungen & Grundstücke",
   description:
-    "Entdecken Sie unsere aktuellen Immobilienangebote in Monheim am Rhein, Langenfeld, Leverkusen, Köln & Düsseldorf. Häuser, Wohnungen und Grundstücke.",
+    "Entdecken Sie unsere aktuellen Immobilienangebote in Monheim am Rhein, Langenfeld, Leverkusen, Köln & Düsseldorf. Häuser, Wohnungen und Grundstücke zum Kauf.",
+  keywords: [
+    "Immobilien kaufen",
+    "Haus kaufen Monheim",
+    "Wohnung kaufen Langenfeld",
+    "Grundstück kaufen",
+    "Immobilienangebote Rheinland",
+  ],
+  alternates: { canonical: "https://www.myhomefin.de/angebote" },
+  openGraph: {
+    title: "Aktuelle Immobilienangebote | homefin GmbH",
+    description: "Häuser, Wohnungen und Grundstücke in der Region Monheim, Langenfeld, Leverkusen, Köln & Düsseldorf.",
+    url: "https://www.myhomefin.de/angebote",
+    type: "website",
+    locale: "de_DE",
+    siteName: "homefin GmbH",
+  },
 };
 
 export default function AngebotePage() {

@@ -4,6 +4,15 @@
  * Automatisches Blog-Generierungsskript für homefin
  *
  * Generiert SEO-optimierte Blog-Artikel zu Immobilienthemen.
+ * Artikel erhalten automatisch Icons basierend auf der Kategorie
+ * (definiert in src/lib/blog-categories.ts):
+ *
+ *   Immobilienverkauf    → Home (teal/emerald gradient)
+ *   Immobilienbewertung  → TrendingUp (blue/cyan gradient)
+ *   Finanzierung         → Banknote (emerald/green gradient)
+ *   Marktbericht         → BarChart3 (violet/purple gradient)
+ *   Tipps & Ratgeber     → Lightbulb (amber/orange gradient)
+ *   Recht & Steuern      → Scale (slate/indigo gradient)
  *
  * Usage:
  *   node scripts/generate-blog.js           # Alle Artikel generieren

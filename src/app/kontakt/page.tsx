@@ -7,9 +7,18 @@ import MapWrapper from "@/components/map/MapWrapper";
 import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
-  title: "Kontakt",
+  title: "Kontakt – Kostenlose Beratung anfordern",
   description:
-    "Kontaktieren Sie homefin GmbH – Ihren Immobilienmakler in Monheim am Rhein. Telefon, E-Mail oder persönlich vor Ort.",
+    "Kontaktieren Sie homefin GmbH – Ihren Immobilienmakler in Monheim am Rhein. Kostenlose Beratung unter 0800 5888 015 oder per E-Mail an info@myhomefin.de.",
+  alternates: { canonical: "https://www.myhomefin.de/kontakt" },
+  openGraph: {
+    title: "Kontakt | homefin GmbH – Immobilienmakler",
+    description: "Kostenlose und unverbindliche Beratung – rufen Sie uns an oder schreiben Sie uns.",
+    url: "https://www.myhomefin.de/kontakt",
+    type: "website",
+    locale: "de_DE",
+    siteName: "homefin GmbH",
+  },
 };
 
 export default function KontaktPage() {

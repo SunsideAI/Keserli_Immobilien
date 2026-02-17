@@ -24,6 +24,30 @@ export const metadata: Metadata = {
   title: "Immobilie verkaufen – Ihr Makler in Monheim & Umgebung",
   description:
     "Immobilie verkaufen in Monheim am Rhein, Langenfeld, Leverkusen, Köln & Düsseldorf. Faire Provision ab 1,95% inkl. MwSt. Kostenlose Bewertung in 48h.",
+  keywords: [
+    "Immobilie verkaufen",
+    "Haus verkaufen",
+    "Wohnung verkaufen",
+    "Makler Monheim",
+    "Immobilienmakler Langenfeld",
+    "Immobilienmakler Leverkusen",
+    "Immobilienmakler Köln",
+    "Immobilienmakler Düsseldorf",
+    "faire Provision",
+    "Immobilienbewertung kostenlos",
+  ],
+  alternates: {
+    canonical: "https://www.myhomefin.de/verkauf",
+  },
+  openGraph: {
+    title: "Immobilie verkaufen – Ihr Makler in Monheim & Umgebung | homefin",
+    description:
+      "Faire Provision ab 1,95% inkl. MwSt. Persönlicher Rundum-Service vom Erstgespräch bis zum Notartermin.",
+    url: "https://www.myhomefin.de/verkauf",
+    type: "website",
+    locale: "de_DE",
+    siteName: "homefin GmbH",
+  },
 };
 
 const verkaufProcess = [
