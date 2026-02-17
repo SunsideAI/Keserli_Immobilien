@@ -17,32 +17,32 @@ export interface CategoryConfig {
 export const categoryConfig: Record<BlogCategory, CategoryConfig> = {
   Immobilienverkauf: {
     icon: Home,
-    gradientClass: "bg-gradient-to-br from-teal-500 to-emerald-600",
+    gradientClass: "bg-gradient-to-br from-primary-600 to-primary-900",
     label: "Immobilienverkauf",
   },
   Immobilienbewertung: {
     icon: TrendingUp,
-    gradientClass: "bg-gradient-to-br from-blue-500 to-cyan-600",
+    gradientClass: "bg-gradient-to-br from-primary-500 to-primary-700",
     label: "Immobilienbewertung",
   },
   Finanzierung: {
     icon: Banknote,
-    gradientClass: "bg-gradient-to-br from-emerald-500 to-green-600",
+    gradientClass: "bg-gradient-to-br from-primary-400 to-primary-600",
     label: "Finanzierung",
   },
   Marktbericht: {
     icon: BarChart3,
-    gradientClass: "bg-gradient-to-br from-violet-500 to-purple-600",
+    gradientClass: "bg-gradient-to-br from-primary-700 to-primary-950",
     label: "Marktbericht",
   },
   "Tipps & Ratgeber": {
     icon: Lightbulb,
-    gradientClass: "bg-gradient-to-br from-amber-400 to-orange-500",
+    gradientClass: "bg-gradient-to-br from-primary-300 to-primary-600",
     label: "Tipps & Ratgeber",
   },
   "Recht & Steuern": {
     icon: Scale,
-    gradientClass: "bg-gradient-to-br from-slate-500 to-indigo-600",
+    gradientClass: "bg-gradient-to-br from-primary-800 to-primary-950",
     label: "Recht & Steuern",
   },
 };
