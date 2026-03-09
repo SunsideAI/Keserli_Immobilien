@@ -99,7 +99,7 @@ export default async function FeaturedProperty() {
                       {featured.priceLabel || "Kaufpreis"}
                     </div>
                     <div className="text-2xl font-bold text-primary">
-                      {formatCurrency(featured.price)}
+                      {featured.price > 0 ? formatCurrency(featured.price) : "Preis auf Anfrage"}
                     </div>
                   </div>
                   <div className="flex gap-3">

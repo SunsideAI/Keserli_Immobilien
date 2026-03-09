@@ -120,7 +120,7 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                       {property.priceLabel || "Kaufpreis"}
                     </div>
                     <div className="text-3xl font-extrabold text-primary">
-                      {formatCurrency(property.price)}
+                      {property.price > 0 ? formatCurrency(property.price) : "Preis auf Anfrage"}
                     </div>
                   </div>
                 </div>

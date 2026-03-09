@@ -75,7 +75,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
         {/* Price */}
         <div className="pt-3 border-t border-gray-100">
           <div className="text-xl font-bold text-primary">
-            {formatCurrency(property.price)}
+            {property.price > 0 ? formatCurrency(property.price) : "Preis auf Anfrage"}
           </div>
         </div>
       </div>

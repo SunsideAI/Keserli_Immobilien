@@ -3,88 +3,105 @@ import { Property } from "@/types/property";
 const API_KEY = process.env.PROPSTACK_API_KEY || "";
 const API_URL = process.env.PROPSTACK_API_URL || "https://api.propstack.de/v1";
 
-interface PropstackImage {
-  original?: string;
-  big?: string;
-  medium?: string;
-  thumb?: string;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnyObject = Record<string, any>;
+
+/**
+ * Unwrap Propstack values - detail endpoint wraps fields as {label, value},
+ * list endpoint returns plain values.
+ */
+function unwrap(val: unknown): unknown {
+  if (val && typeof val === "object" && "value" in (val as AnyObject)) {
+    return (val as AnyObject).value;
+  }
+  return val;
 }
 
-interface PropstackUnit {
-  id: number;
-  title?: string;
-  name?: string;
-  street?: string;
-  house_number?: string;
-  zip_code?: string;
-  city?: string;
-  lat?: number;
-  lng?: number;
-  number_of_rooms?: number;
-  number_of_bed_rooms?: number;
-  number_of_bath_rooms?: number;
-  living_space?: number;
-  plot_area?: number;
-  number_of_floors?: number;
-  price?: number;
-  price_per_sqm?: number;
-  courtage?: string;
-  images?: PropstackImage[];
-  status?: { name?: string };
-  marketing_type?: string;
-  rs_type?: string;
-  object_type?: string;
-  description_note?: string;
-  location_note?: string;
-  furnishing_note?: string;
-  other_note?: string;
-  hide_address?: boolean;
-  fields?: {
-    construction_year?: number;
-    [key: string]: unknown;
-  };
-  furnishings?: {
-    lift?: boolean;
-    balcony?: boolean;
-    garden?: boolean;
-    built_in_kitchen?: boolean;
-    terrace?: boolean;
-    guest_toilet?: boolean;
-    cellar?: boolean;
-    garage?: boolean;
-    [key: string]: unknown;
-  };
-  created_at?: string;
-  updated_at?: string;
+function unwrapString(val: unknown): string | undefined {
+  const v = unwrap(val);
+  return typeof v === "string" ? v : undefined;
 }
 
-function mapPropertyType(unit: PropstackUnit): Property["type"] {
-  const rsType = (unit.rs_type || "").toUpperCase();
-  const objectType = (unit.object_type || "").toUpperCase();
+function unwrapNumber(val: unknown): number | undefined {
+  const v = unwrap(val);
+  if (typeof v === "number") return v;
+  if (typeof v === "string") {
+    const n = parseFloat(v);
+    return isNaN(n) ? undefined : n;
+  }
+  return undefined;
+}
 
-  if (rsType === "HOUSE" || rsType === "HAUS") return "Haus";
-  if (rsType === "APARTMENT" || rsType === "WOHNUNG") return "Wohnung";
-  if (rsType === "LIVING" && objectType === "LIVING") return "Wohnung";
-  if (rsType === "TRADE_SITE" || rsType === "GRUNDSTUECK" || rsType === "PLOT") return "Grundstück";
-  if (objectType === "TRADE" || objectType === "GEWERBE") return "Gewerbe";
+function unwrapBool(val: unknown): boolean {
+  const v = unwrap(val);
+  return v === true || v === "true" || v === "Ja";
+}
+
+/**
+ * Extract images - list endpoint uses {original, big, medium, thumb},
+ * detail endpoint uses {url, big_url, medium_url, thumb_url}
+ */
+function extractImages(images: AnyObject[] | undefined | null): string[] {
+  if (!images || !Array.isArray(images)) return [];
+  return images
+    .filter((img) => !img.is_floorplan && !img.is_private)
+    .map((img) =>
+      img.big_url || img.big || img.url || img.original || img.medium_url || img.medium || ""
+    )
+    .filter(Boolean);
+}
+
+function extractThumbnail(images: AnyObject[] | undefined | null): string {
+  if (!images || !Array.isArray(images) || images.length === 0) {
+    return "/images/properties/placeholder.svg";
+  }
+  const first = images.find((img) => !img.is_floorplan && !img.is_private) || images[0];
+  return first.medium_url || first.medium || first.big_url || first.big || first.url || first.original || "/images/properties/placeholder.svg";
+}
+
+function mapPropertyType(unit: AnyObject): Property["type"] {
+  const rsType = (unwrapString(unit.rs_type) || "").toUpperCase();
+  const objectType = (unwrapString(unit.object_type) || "").toUpperCase();
+
+  if (rsType === "HOUSE") return "Haus";
+  if (rsType === "APARTMENT") return "Wohnung";
+  if (rsType === "TRADE_SITE") return "Grundstück";
+  if (rsType.includes("OFFICE") || rsType.includes("STORE") || rsType.includes("GASTRONOMY") || rsType.includes("INDUSTRY")) return "Gewerbe";
+  if (objectType === "COMMERCIAL" || objectType === "INVESTMENT") return "Gewerbe";
 
   // Fallback based on title/name
-  const title = (unit.title || unit.name || "").toLowerCase();
+  const title = ((unwrapString(unit.title) || unwrapString(unit.name)) || "").toLowerCase();
   if (title.includes("haus") || title.includes("villa") || title.includes("reihen") || title.includes("doppel")) return "Haus";
-  if (title.includes("wohnung") || title.includes("apartment") || title.includes("penthouse") || title.includes("etage")) return "Wohnung";
+  if (title.includes("wohnung") || title.includes("apartment") || title.includes("penthouse") || title.includes("etage") || title.includes("maisonette")) return "Wohnung";
   if (title.includes("grundstück") || title.includes("grundstueck") || title.includes("bauland")) return "Grundstück";
   if (title.includes("gewerbe") || title.includes("büro") || title.includes("laden")) return "Gewerbe";
 
   return "Wohnung";
 }
 
-function mapStatus(statusName?: string): Property["status"] {
-  if (!statusName) return "Verfügbar";
-  const s = statusName.toLowerCase();
+function getStatusName(status: unknown): string | undefined {
+  if (!status) return undefined;
+  if (typeof status === "object" && status !== null) {
+    const s = status as AnyObject;
+    return s.name || undefined;
+  }
+  return undefined;
+}
+
+function mapStatus(status: unknown): Property["status"] {
+  const name = getStatusName(status);
+  if (!name) return "Verfügbar";
+  const s = name.toLowerCase();
   if (s.includes("reserviert")) return "Reserviert";
-  if (s.includes("verkauft") || s.includes("verloren")) return "Verkauft";
-  // "In Vermarktung", "Aktiv", "Akquise", "In Vorbereitung", "Neuer Lead" → Verfügbar
+  if (s.includes("verkauft")) return "Verkauft";
   return "Verfügbar";
+}
+
+function isExcludedStatus(status: unknown): boolean {
+  const name = getStatusName(status);
+  if (!name) return false;
+  const s = name.toLowerCase();
+  return s.includes("verloren") || s.includes("storniert");
 }
 
 function mapMarketingLabel(marketingType?: string): string {
@@ -103,47 +120,76 @@ function slugify(text: string): string {
     .replace(/(^-|-$)/g, "");
 }
 
-function buildHighlights(unit: PropstackUnit): string[] {
+function buildHighlights(unit: AnyObject): string[] {
   const highlights: string[] = [];
-  const f = unit.furnishings || {};
+  const f = unit.furnishings;
 
-  if (f.built_in_kitchen) highlights.push("Einbauküche");
-  if (f.balcony) highlights.push("Balkon");
-  if (f.terrace) highlights.push("Terrasse");
-  if (f.garden) highlights.push("Garten");
-  if (f.garage) highlights.push("Garage");
-  if (f.lift) highlights.push("Aufzug");
-  if (f.guest_toilet) highlights.push("Gäste-WC");
-  if (f.cellar) highlights.push("Keller");
+  if (f && typeof f === "object") {
+    if (unwrapBool(f.built_in_kitchen)) highlights.push("Einbauküche");
+    if (unwrapBool(f.balcony)) highlights.push("Balkon");
+    if (unwrapBool(f.terrace)) highlights.push("Terrasse");
+    if (unwrapBool(f.garden)) highlights.push("Garten");
+    if (unwrapBool(f.garage)) highlights.push("Garage");
+    if (unwrapBool(f.lift)) highlights.push("Aufzug");
+    if (unwrapBool(f.guest_toilet)) highlights.push("Gäste-WC");
+    if (unwrapBool(f.cellar)) highlights.push("Keller");
+  }
 
-  if (unit.fields?.construction_year && unit.fields.construction_year >= 2020) {
-    highlights.push("Neubau");
+  // Parse highlights from furnishing_note if furnishings object is empty
+  if (highlights.length === 0) {
+    const furnNote = unwrapString(unit.furnishing_note) || "";
+    if (furnNote.toLowerCase().includes("balkon")) highlights.push("Balkon");
+    if (furnNote.toLowerCase().includes("terrasse")) highlights.push("Terrasse");
+    if (furnNote.toLowerCase().includes("garten")) highlights.push("Garten");
+    if (furnNote.toLowerCase().includes("aufzug") || furnNote.toLowerCase().includes("fahrstuhl")) highlights.push("Aufzug");
+    if (furnNote.toLowerCase().includes("einbauküche") || furnNote.toLowerCase().includes("ebk")) highlights.push("Einbauküche");
+    if (furnNote.toLowerCase().includes("parkett")) highlights.push("Parkett");
+    if (furnNote.toLowerCase().includes("fußbodenheizung")) highlights.push("Fußbodenheizung");
+    if (furnNote.toLowerCase().includes("garage") || furnNote.toLowerCase().includes("stellplatz")) highlights.push("Stellplatz");
+    if (furnNote.toLowerCase().includes("keller")) highlights.push("Keller");
   }
 
   return highlights.slice(0, 6);
 }
 
-function buildShortDescription(unit: PropstackUnit): string {
-  const type = mapPropertyType(unit);
-  const title = unit.title || unit.name || type;
+function buildTitle(unit: AnyObject): string {
+  const title = unwrapString(unit.title);
+  if (title) return title;
+  const name = unwrapString(unit.name);
+  if (name) return name;
+  return "Immobilie";
+}
+
+function buildShortDescription(unit: AnyObject, title: string): string {
   const city = unit.city || "";
-  const rooms = unit.number_of_rooms;
-  const area = unit.living_space;
+  const rooms = unwrapNumber(unit.number_of_rooms);
+  const area = unwrapNumber(unit.living_space);
 
   let desc = title;
   if (city && !desc.includes(city)) desc += ` in ${city}`;
-  if (rooms && !desc.includes("Zimmer") && !desc.includes("Zi")) desc += ` – ${rooms} Zimmer`;
-  if (area && !desc.includes("m²")) desc += `, ${area} m²`;
+  if (rooms && !desc.includes("Zimmer") && !desc.includes("Zi")) desc += ` – ${Math.floor(rooms)} Zimmer`;
+  if (area && !desc.includes("m²")) desc += `, ${Math.floor(area)} m²`;
   return desc + ".";
 }
 
-function mapPropstackToProperty(unit: PropstackUnit): Property {
-  const title = unit.title || unit.name || "Immobilie";
-  const images = (unit.images || [])
-    .map((img) => img.big || img.original || img.medium || "")
-    .filter(Boolean);
-  const thumbnail = images[0] ||
-    (unit.images?.[0]?.thumb || unit.images?.[0]?.medium || "/images/properties/placeholder.svg");
+function buildDescription(unit: AnyObject, title: string): string {
+  const parts = [
+    unwrapString(unit.description_note),
+    unwrapString(unit.location_note),
+    unwrapString(unit.furnishing_note),
+    unwrapString(unit.other_note),
+  ].filter(Boolean);
+
+  return parts.length > 0 ? parts.join("\n\n") : title;
+}
+
+function mapPropstackToProperty(unit: AnyObject): Property {
+  const title = buildTitle(unit);
+  const images = extractImages(unit.images);
+  const thumbnail = extractThumbnail(unit.images);
+  const price = unwrapNumber(unit.price) || 0;
+  const rooms = unwrapNumber(unit.number_of_rooms) || 0;
+  const livingArea = unwrapNumber(unit.living_space) || unwrapNumber(unit.property_space_value) || 0;
 
   const street = unit.street
     ? `${unit.street}${unit.house_number ? ` ${unit.house_number}` : ""}`
@@ -154,33 +200,31 @@ function mapPropstackToProperty(unit: PropstackUnit): Property {
     title,
     slug: slugify(`${title}-${unit.id}`),
     type: mapPropertyType(unit),
-    status: mapStatus(unit.status?.name),
-    price: unit.price || 0,
-    priceLabel: mapMarketingLabel(unit.marketing_type),
+    status: mapStatus(unit.status),
+    price,
+    priceLabel: price > 0 ? mapMarketingLabel(unit.marketing_type) : "Preis auf Anfrage",
     address: {
-      street: unit.hide_address ? undefined : street,
+      street: unit.hide_address === true ? undefined : street,
       city: unit.city || "",
       zip: unit.zip_code || "",
       region: unit.city || "",
     },
     features: {
-      rooms: unit.number_of_rooms || 0,
-      bedrooms: unit.number_of_bed_rooms || undefined,
-      bathrooms: unit.number_of_bath_rooms || undefined,
-      livingArea: unit.living_space || 0,
-      plotArea: unit.plot_area || undefined,
-      floors: unit.number_of_floors || undefined,
-      yearBuilt: unit.fields?.construction_year || undefined,
-      garage: unit.furnishings?.garage || false,
-      balcony: unit.furnishings?.balcony || false,
-      garden: unit.furnishings?.garden || false,
-      elevator: unit.furnishings?.lift || false,
-      energyClass: undefined,
+      rooms: Math.floor(rooms),
+      bedrooms: unwrapNumber(unit.number_of_bed_rooms),
+      bathrooms: unwrapNumber(unit.number_of_bath_rooms),
+      livingArea: Math.floor(livingArea),
+      plotArea: unwrapNumber(unit.plot_area),
+      floors: unwrapNumber(unit.number_of_floors),
+      yearBuilt: unwrapNumber(unit.construction_year) || unwrapNumber(unit.fields?.construction_year),
+      garage: unwrapBool(unit.furnishings?.garage),
+      balcony: unwrapBool(unit.furnishings?.balcony),
+      garden: unwrapBool(unit.furnishings?.garden),
+      elevator: unwrapBool(unit.furnishings?.lift),
+      energyClass: unwrapString(unit.energy_efficiency_class),
     },
-    description: [unit.description_note, unit.location_note, unit.furnishing_note, unit.other_note]
-      .filter(Boolean)
-      .join("\n\n") || title,
-    shortDescription: buildShortDescription(unit),
+    description: buildDescription(unit, title),
+    shortDescription: buildShortDescription(unit, title),
     images: images.length > 0 ? images : ["/images/properties/placeholder.svg"],
     thumbnailImage: thumbnail,
     highlights: buildHighlights(unit),
@@ -214,20 +258,32 @@ export async function fetchProperties(): Promise<Property[]> {
   }
 
   try {
-    const data = await fetchFromPropstack("/units?per_page=100") as PropstackUnit[];
+    const data = await fetchFromPropstack("/units?per_page=100") as AnyObject[];
 
     const properties = data
-      .filter((unit) => {
-        const status = unit.status?.name?.toLowerCase() || "";
-        // Exclude lost/inactive properties
-        return !status.includes("verloren") && !status.includes("storniert");
-      })
-      .map(mapPropstackToProperty)
-      .filter((p) => p.price > 0);
+      .filter((unit) => !isExcludedStatus(unit.status))
+      .map(mapPropstackToProperty);
 
-    // Mark the first available property as featured
-    const firstAvailable = properties.find((p) => p.status === "Verfügbar");
-    if (firstAvailable) firstAvailable.featured = true;
+    // Mark the first available property with highest price as featured
+    const available = properties
+      .filter((p) => p.status === "Verfügbar" && p.price > 0)
+      .sort((a, b) => b.price - a.price);
+    if (available.length > 0) available[0].featured = true;
+
+    // Sort: featured first, then by price (properties with price before those without)
+    properties.sort((a, b) => {
+      if (a.featured && !b.featured) return -1;
+      if (!a.featured && b.featured) return 1;
+      if (a.price > 0 && b.price === 0) return -1;
+      if (a.price === 0 && b.price > 0) return 1;
+      return b.price - a.price;
+    });
+
+    if (properties.length === 0) {
+      console.warn("No properties from Propstack, using fallback data");
+      const { properties: fallback } = await import("@/data/properties");
+      return fallback;
+    }
 
     return properties;
   } catch (error) {
@@ -244,7 +300,7 @@ export async function fetchProperty(id: string): Promise<Property | null> {
   }
 
   try {
-    const unit = await fetchFromPropstack(`/units/${id}`) as PropstackUnit;
+    const unit = await fetchFromPropstack(`/units/${id}?new=1`) as AnyObject;
     return mapPropstackToProperty(unit);
   } catch (error) {
     console.error(`Failed to fetch property ${id}:`, error);
@@ -259,12 +315,9 @@ export async function fetchPropertyIds(): Promise<string[]> {
   }
 
   try {
-    const data = await fetchFromPropstack("/units?per_page=100") as PropstackUnit[];
+    const data = await fetchFromPropstack("/units?per_page=100") as AnyObject[];
     return data
-      .filter((unit) => {
-        const status = unit.status?.name?.toLowerCase() || "";
-        return !status.includes("verloren") && !status.includes("storniert");
-      })
+      .filter((unit) => !isExcludedStatus(unit.status))
       .map((unit) => String(unit.id));
   } catch (error) {
     console.error("Failed to fetch property IDs:", error);
