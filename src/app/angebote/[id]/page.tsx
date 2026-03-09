@@ -15,21 +15,20 @@ import {
 import Container from "@/components/ui/Container";
 import Badge from "@/components/ui/Badge";
 import ContactForm from "@/components/ui/ContactForm";
-import { properties } from "@/data/properties";
+import { fetchProperty, fetchPropertyIds } from "@/lib/propstack";
 import { formatCurrency } from "@/lib/utils";
 
 interface PageProps {
   params: { id: string };
 }
 
-export function generateStaticParams() {
-  return properties.map((property) => ({
-    id: property.id,
-  }));
+export async function generateStaticParams() {
+  const ids = await fetchPropertyIds();
+  return ids.map((id) => ({ id }));
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
-  const property = properties.find((p) => p.id === params.id);
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const property = await fetchProperty(params.id);
   if (!property) return { title: "Immobilie nicht gefunden" };
 
   return {
@@ -38,8 +37,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function PropertyDetailPage({ params }: PageProps) {
-  const property = properties.find((p) => p.id === params.id);
+export default async function PropertyDetailPage({ params }: PageProps) {
+  const property = await fetchProperty(params.id);
   if (!property) notFound();
 
   const statusVariant =
@@ -127,16 +126,18 @@ export default function PropertyDetailPage({ params }: PageProps) {
                 </div>
 
                 {/* Highlights */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {property.highlights.map((h) => (
-                    <span
-                      key={h}
-                      className="px-3 py-1 bg-mint text-primary text-sm rounded-full font-medium"
-                    >
-                      {h}
-                    </span>
-                  ))}
-                </div>
+                {property.highlights.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {property.highlights.map((h) => (
+                      <span
+                        key={h}
+                        className="px-3 py-1 bg-mint text-primary text-sm rounded-full font-medium"
+                      >
+                        {h}
+                      </span>
+                    ))}
+                  </div>
+                )}
 
                 {/* Features Grid */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-gray-50 rounded-btn">
@@ -189,9 +190,9 @@ export default function PropertyDetailPage({ params }: PageProps) {
                 <h2 className="text-xl font-bold text-slate-dark mb-4">
                   Beschreibung
                 </h2>
-                <p className="text-slate-body leading-relaxed">
+                <div className="text-slate-body leading-relaxed whitespace-pre-line">
                   {property.description}
-                </p>
+                </div>
               </div>
             </div>
 

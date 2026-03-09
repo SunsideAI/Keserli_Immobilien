@@ -4,11 +4,14 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
 import ScrollAnimator from "@/components/ui/ScrollAnimator";
-import { properties } from "@/data/properties";
+import { fetchProperties } from "@/lib/propstack";
 import { formatCurrency } from "@/lib/utils";
 
-export default function FeaturedProperty() {
+export default async function FeaturedProperty() {
+  const properties = await fetchProperties();
   const featured = properties.find((p) => p.featured) || properties[0];
+
+  if (!featured) return null;
 
   return (
     <section className="section-padding bg-white">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Container from "@/components/ui/Container";
 import Badge from "@/components/ui/Badge";
 import PropertyFilters from "@/components/properties/PropertyFilters";
+import { fetchProperties } from "@/lib/propstack";
 
 export const metadata: Metadata = {
   title: "Aktuelle Immobilienangebote – Häuser, Wohnungen & Grundstücke",
@@ -25,7 +26,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AngebotePage() {
+export default async function AngebotePage() {
+  const properties = await fetchProperties();
+
   return (
     <>
       <section className="bg-gradient-to-br from-mint-light to-mint py-20">
@@ -48,7 +51,7 @@ export default function AngebotePage() {
 
       <section className="section-padding bg-gray-50">
         <Container>
-          <PropertyFilters />
+          <PropertyFilters properties={properties} />
         </Container>
       </section>
     </>

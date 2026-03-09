@@ -3,12 +3,16 @@
 import { useState } from "react";
 import { Search } from "lucide-react";
 import PropertyCard from "./PropertyCard";
-import { properties } from "@/data/properties";
 import { siteConfig } from "@/data/site-config";
+import { Property } from "@/types/property";
 
 const propertyTypes = ["Alle", "Haus", "Wohnung", "Grundstück", "Gewerbe"];
 
-export default function PropertyFilters() {
+interface PropertyFiltersProps {
+  properties: Property[];
+}
+
+export default function PropertyFilters({ properties }: PropertyFiltersProps) {
   const [typeFilter, setTypeFilter] = useState("Alle");
   const [regionFilter, setRegionFilter] = useState("Alle");
   const [sortBy, setSortBy] = useState("newest");
