@@ -172,15 +172,17 @@ function buildShortDescription(unit: AnyObject, title: string): string {
   return desc + ".";
 }
 
-function buildDescription(unit: AnyObject, title: string): string {
-  const parts = [
-    unwrapString(unit.description_note),
-    unwrapString(unit.location_note),
-    unwrapString(unit.furnishing_note),
-    unwrapString(unit.other_note),
-  ].filter(Boolean);
 
-  return parts.length > 0 ? parts.join("\n\n") : title;
+function unwrapStringArray(val: unknown): string[] | undefined {
+  const v = unwrap(val);
+  if (Array.isArray(v) && v.length > 0) return v.filter((x): x is string => typeof x === "string");
+  return undefined;
+}
+
+function mapSubType(unit: AnyObject): string | undefined {
+  const cat = unwrapString(unit.rs_category);
+  const aptType = unwrapString(unit.apartment_type);
+  return aptType || cat || undefined;
 }
 
 function mapPropstackToProperty(unit: AnyObject): Property {
@@ -191,23 +193,38 @@ function mapPropstackToProperty(unit: AnyObject): Property {
   const rooms = unwrapNumber(unit.number_of_rooms) || 0;
   const livingArea = unwrapNumber(unit.living_space) || unwrapNumber(unit.property_space_value) || 0;
 
+  // Detail endpoint uses property_status, list endpoint uses status
+  const status = unit.property_status || unit.status;
+
   const street = unit.street
     ? `${unit.street}${unit.house_number ? ` ${unit.house_number}` : ""}`
     : undefined;
+
+  const hideAddress = unwrap(unit.hide_address) === true;
+
+  // Furnishings - can be null or an object
+  const furn = unit.furnishings && typeof unit.furnishings === "object" ? unit.furnishings : {};
 
   return {
     id: String(unit.id),
     title,
     slug: slugify(`${title}-${unit.id}`),
     type: mapPropertyType(unit),
-    status: mapStatus(unit.status),
+    subType: mapSubType(unit),
+    status: mapStatus(status),
     price,
     priceLabel: price > 0 ? mapMarketingLabel(unit.marketing_type) : "Preis auf Anfrage",
+    pricePerSqm: unwrapNumber(unit.price_per_sqm),
+    courtage: unwrapString(unit.courtage),
+    courtageNote: unwrapString(unit.courtage_note),
     address: {
-      street: unit.hide_address === true ? undefined : street,
+      street: hideAddress ? undefined : street,
       city: unit.city || "",
       zip: unit.zip_code || "",
+      district: unwrapString(unit.district),
       region: unit.city || "",
+      lat: typeof unit.lat === "number" ? unit.lat : undefined,
+      lng: typeof unit.lng === "number" ? unit.lng : undefined,
     },
     features: {
       rooms: Math.floor(rooms),
@@ -215,21 +232,38 @@ function mapPropstackToProperty(unit: AnyObject): Property {
       bathrooms: unwrapNumber(unit.number_of_bath_rooms),
       livingArea: Math.floor(livingArea),
       plotArea: unwrapNumber(unit.plot_area),
+      floor: unwrapNumber(unit.floor),
       floors: unwrapNumber(unit.number_of_floors),
       yearBuilt: unwrapNumber(unit.construction_year) || unwrapNumber(unit.fields?.construction_year),
-      garage: unwrapBool(unit.furnishings?.garage),
-      balcony: unwrapBool(unit.furnishings?.balcony),
-      garden: unwrapBool(unit.furnishings?.garden),
-      elevator: unwrapBool(unit.furnishings?.lift),
+      garage: unwrapBool(furn.garage) || unwrapBool(unit.garage),
+      balcony: unwrapBool(furn.balcony) || unwrapBool(unit.balcony),
+      balconyArea: unwrapNumber(unit.balcony_space),
+      garden: unwrapBool(furn.garden) || unwrapBool(unit.garden),
+      elevator: unwrapBool(furn.lift) || unwrapBool(unit.lift),
+      cellar: unwrapBool(furn.cellar) || unwrapBool(unit.cellar) || unwrapBool(unit.storeroom),
+      builtInKitchen: unwrapBool(furn.built_in_kitchen) || unwrapBool(unit.built_in_kitchen),
+      parkingSpaces: unwrapNumber(unit.number_of_parking_spaces),
+      parkingType: unwrapString(unit.parking_space_type),
       energyClass: unwrapString(unit.energy_efficiency_class),
+      energyValue: unwrapNumber(unit.energy_efficiency_value) || unwrapNumber(unit.thermal_characteristic),
+      energyCertificateType: unwrapString(unit.building_energy_rating_type),
+      heatingType: unwrapString(unit.heating_type),
+      condition: unwrapString(unit.condition),
+      flooring: unwrapStringArray(unit.flooring_type),
+      bathroomFeatures: unwrapStringArray(unit.bathroom),
     },
-    description: buildDescription(unit, title),
+    description: unwrapString(unit.description_note) || title,
+    locationDescription: unwrapString(unit.location_note),
+    furnishingDescription: unwrapString(unit.furnishing_note),
+    otherDescription: unwrapString(unit.other_note),
     shortDescription: buildShortDescription(unit, title),
     images: images.length > 0 ? images : ["/images/properties/placeholder.svg"],
     thumbnailImage: thumbnail,
     highlights: buildHighlights(unit),
+    freeFrom: unwrapString(unit.free_from),
     createdAt: unit.created_at || new Date().toISOString(),
     featured: false,
+    exposeUrl: unwrapString(unit.public_expose_url),
   };
 }
 
@@ -261,7 +295,7 @@ export async function fetchProperties(): Promise<Property[]> {
     const data = await fetchFromPropstack("/units?per_page=100") as AnyObject[];
 
     const properties = data
-      .filter((unit) => !isExcludedStatus(unit.status))
+      .filter((unit) => !isExcludedStatus(unit.property_status || unit.status))
       .map(mapPropstackToProperty);
 
     // Mark the first available property with highest price as featured
@@ -317,7 +351,7 @@ export async function fetchPropertyIds(): Promise<string[]> {
   try {
     const data = await fetchFromPropstack("/units?per_page=100") as AnyObject[];
     return data
-      .filter((unit) => !isExcludedStatus(unit.status))
+      .filter((unit) => !isExcludedStatus(unit.property_status || unit.status))
       .map((unit) => String(unit.id));
   } catch (error) {
     console.error("Failed to fetch property IDs:", error);

@@ -6,15 +6,17 @@ import {
   Home,
   Maximize2,
   Calendar,
-  Car,
-  Zap,
   MapPin,
   Building2,
   Trees,
+  Bath,
+  BedDouble,
+  Layers,
 } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Badge from "@/components/ui/Badge";
 import ContactForm from "@/components/ui/ContactForm";
+import PropertyMapWrapper from "@/components/properties/PropertyMapWrapper";
 import { fetchProperty, fetchPropertyIds } from "@/lib/propstack";
 import { formatCurrency } from "@/lib/utils";
 
@@ -48,6 +50,9 @@ export default async function PropertyDetailPage({ params }: PageProps) {
       ? "gold"
       : "neutral";
 
+  const hasCoordinates = property.address.lat && property.address.lng;
+  const hideExactLocation = !property.address.street;
+
   return (
     <>
       <section className="bg-gray-50 py-6">
@@ -80,6 +85,11 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                 >
                   {property.status}
                 </Badge>
+                {property.subType && (
+                  <span className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-primary font-bold text-sm px-3 py-1 rounded-full">
+                    {property.subType}
+                  </span>
+                )}
               </div>
 
               {/* Additional images */}
@@ -112,6 +122,7 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                       <span>
                         {property.address.street && `${property.address.street}, `}
                         {property.address.zip} {property.address.city}
+                        {property.address.district && ` (${property.address.district})`}
                       </span>
                     </div>
                   </div>
@@ -122,6 +133,11 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                     <div className="text-3xl font-extrabold text-primary">
                       {property.price > 0 ? formatCurrency(property.price) : "Preis auf Anfrage"}
                     </div>
+                    {property.pricePerSqm && property.pricePerSqm > 0 && (
+                      <div className="text-sm text-slate-body mt-1">
+                        {formatCurrency(Math.round(property.pricePerSqm))}/m²
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -139,51 +155,99 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                   </div>
                 )}
 
-                {/* Features Grid */}
+                {/* Key Features Grid */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-gray-50 rounded-btn">
                   {property.features.rooms > 0 && (
                     <FeatureItem icon={Home} label="Zimmer" value={`${property.features.rooms}`} />
                   )}
                   {property.features.livingArea > 0 && (
-                    <FeatureItem
-                      icon={Maximize2}
-                      label="Wohnfläche"
-                      value={`${property.features.livingArea} m²`}
-                    />
+                    <FeatureItem icon={Maximize2} label="Wohnfläche" value={`${property.features.livingArea} m²`} />
                   )}
                   {property.features.plotArea && property.features.plotArea > 0 && (
-                    <FeatureItem
-                      icon={Trees}
-                      label="Grundstück"
-                      value={`${property.features.plotArea} m²`}
-                    />
+                    <FeatureItem icon={Trees} label="Grundstück" value={`${property.features.plotArea} m²`} />
                   )}
                   {property.features.yearBuilt && (
-                    <FeatureItem
-                      icon={Calendar}
-                      label="Baujahr"
-                      value={`${property.features.yearBuilt}`}
-                    />
+                    <FeatureItem icon={Calendar} label="Baujahr" value={`${property.features.yearBuilt}`} />
+                  )}
+                  {property.features.bedrooms && (
+                    <FeatureItem icon={BedDouble} label="Schlafzimmer" value={`${property.features.bedrooms}`} />
+                  )}
+                  {property.features.bathrooms && (
+                    <FeatureItem icon={Bath} label="Badezimmer" value={`${property.features.bathrooms}`} />
+                  )}
+                  {property.features.floor !== undefined && property.features.floor > 0 && (
+                    <FeatureItem icon={Layers} label="Etage" value={`${property.features.floor}. OG`} />
                   )}
                   {property.features.floors && (
-                    <FeatureItem
-                      icon={Building2}
-                      label="Etagen"
-                      value={`${property.features.floors}`}
-                    />
-                  )}
-                  {property.features.garage && (
-                    <FeatureItem icon={Car} label="Garage" value="Ja" />
-                  )}
-                  {property.features.energyClass && (
-                    <FeatureItem
-                      icon={Zap}
-                      label="Energieklasse"
-                      value={property.features.energyClass}
-                    />
+                    <FeatureItem icon={Building2} label="Etagen" value={`${property.features.floors}`} />
                   )}
                 </div>
               </div>
+
+              {/* Detailed Info Table */}
+              <div className="bg-white rounded-card shadow-card p-6">
+                <h2 className="text-xl font-bold text-slate-dark mb-4">
+                  Objektdetails
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+                  <DetailRow label="Objekttyp" value={`${property.type}${property.subType ? ` – ${property.subType}` : ""}`} />
+                  {property.features.rooms > 0 && <DetailRow label="Zimmer" value={`${property.features.rooms}`} />}
+                  {property.features.livingArea > 0 && <DetailRow label="Wohnfläche" value={`${property.features.livingArea} m²`} />}
+                  {property.features.plotArea && property.features.plotArea > 0 && <DetailRow label="Grundstücksfläche" value={`${property.features.plotArea} m²`} />}
+                  {property.features.bedrooms && <DetailRow label="Schlafzimmer" value={`${property.features.bedrooms}`} />}
+                  {property.features.bathrooms && <DetailRow label="Badezimmer" value={`${property.features.bathrooms}`} />}
+                  {property.features.floor !== undefined && property.features.floor > 0 && <DetailRow label="Etage" value={`${property.features.floor}. Obergeschoss`} />}
+                  {property.features.yearBuilt && <DetailRow label="Baujahr" value={`${property.features.yearBuilt}`} />}
+                  {property.features.condition && <DetailRow label="Zustand" value={property.features.condition} />}
+                  {property.features.builtInKitchen && <DetailRow label="Einbauküche" value="Ja" />}
+                  {property.features.balcony && <DetailRow label="Balkon" value={property.features.balconyArea ? `Ja (${property.features.balconyArea} m²)` : "Ja"} />}
+                  {property.features.garden && <DetailRow label="Garten" value="Ja" />}
+                  {property.features.elevator && <DetailRow label="Aufzug" value="Ja" />}
+                  {property.features.cellar && <DetailRow label="Keller/Abstellraum" value="Ja" />}
+                  {property.features.parkingType && <DetailRow label="Stellplatz" value={`${property.features.parkingType}${property.features.parkingSpaces ? ` (${property.features.parkingSpaces}x)` : ""}`} />}
+                  {property.features.flooring && property.features.flooring.length > 0 && <DetailRow label="Bodenbelag" value={property.features.flooring.join(", ")} />}
+                  {property.features.bathroomFeatures && property.features.bathroomFeatures.length > 0 && <DetailRow label="Bad" value={property.features.bathroomFeatures.join(", ")} />}
+                  {property.freeFrom && <DetailRow label="Verfügbar ab" value={property.freeFrom} />}
+                </div>
+              </div>
+
+              {/* Price & Commission */}
+              {(property.price > 0 || property.courtage) && (
+                <div className="bg-white rounded-card shadow-card p-6">
+                  <h2 className="text-xl font-bold text-slate-dark mb-4">
+                    Preisdetails
+                  </h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+                    {property.price > 0 && <DetailRow label={property.priceLabel || "Kaufpreis"} value={formatCurrency(property.price)} />}
+                    {property.pricePerSqm && property.pricePerSqm > 0 && <DetailRow label="Preis pro m²" value={formatCurrency(Math.round(property.pricePerSqm))} />}
+                    {property.courtage && <DetailRow label="Provision" value={`${property.courtage}${property.courtageNote ? ` ${property.courtageNote}` : ""}`} />}
+                  </div>
+                </div>
+              )}
+
+              {/* Energy */}
+              {(property.features.energyClass || property.features.energyValue || property.features.heatingType) && (
+                <div className="bg-white rounded-card shadow-card p-6">
+                  <h2 className="text-xl font-bold text-slate-dark mb-4">
+                    Energie & Heizung
+                  </h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+                    {property.features.energyCertificateType && <DetailRow label="Energieausweis" value={property.features.energyCertificateType} />}
+                    {property.features.energyClass && (
+                      <div className="flex justify-between py-2 border-b border-gray-100">
+                        <span className="text-slate-body">Energieeffizienzklasse</span>
+                        <span className="font-semibold text-slate-dark">
+                          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white text-sm font-bold">
+                            {property.features.energyClass}
+                          </span>
+                        </span>
+                      </div>
+                    )}
+                    {property.features.energyValue && <DetailRow label="Energieverbrauch" value={`${property.features.energyValue} kWh/(m²·a)`} />}
+                    {property.features.heatingType && <DetailRow label="Heizungsart" value={property.features.heatingType} />}
+                  </div>
+                </div>
+              )}
 
               {/* Description */}
               <div className="bg-white rounded-card shadow-card p-6">
@@ -194,18 +258,93 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                   {property.description}
                 </div>
               </div>
+
+              {/* Location Description */}
+              {property.locationDescription && (
+                <div className="bg-white rounded-card shadow-card p-6">
+                  <h2 className="text-xl font-bold text-slate-dark mb-4">
+                    Lage
+                  </h2>
+                  <div className="text-slate-body leading-relaxed whitespace-pre-line">
+                    {property.locationDescription}
+                  </div>
+                </div>
+              )}
+
+              {/* Furnishing Description */}
+              {property.furnishingDescription && (
+                <div className="bg-white rounded-card shadow-card p-6">
+                  <h2 className="text-xl font-bold text-slate-dark mb-4">
+                    Ausstattung
+                  </h2>
+                  <div className="text-slate-body leading-relaxed whitespace-pre-line">
+                    {property.furnishingDescription}
+                  </div>
+                </div>
+              )}
+
+              {/* Map */}
+              {hasCoordinates && (
+                <div className="bg-white rounded-card shadow-card p-6">
+                  <h2 className="text-xl font-bold text-slate-dark mb-4">
+                    Standort
+                  </h2>
+                  <PropertyMapWrapper
+                    lat={property.address.lat!}
+                    lng={property.address.lng!}
+                    title={property.title}
+                    city={property.address.city}
+                    hideExactLocation={hideExactLocation}
+                  />
+                  {hideExactLocation && (
+                    <p className="text-xs text-slate-body mt-2">
+                      Die genaue Adresse wird nach einer Kontaktaufnahme mitgeteilt.
+                    </p>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Sidebar */}
             <div className="space-y-6">
+              {/* Contact Form */}
               <div className="bg-white rounded-card shadow-card p-6 sticky top-24">
-                <h3 className="text-lg font-bold text-slate-dark mb-4">
+                <h3 className="text-lg font-bold text-slate-dark mb-2">
                   Interesse an dieser Immobilie?
                 </h3>
-                <p className="text-sm text-slate-body mb-6">
+                <p className="text-sm text-slate-body mb-4">
                   Kontaktieren Sie uns für ein Exposé oder einen
                   Besichtigungstermin.
                 </p>
+
+                {/* Quick Info */}
+                <div className="bg-mint rounded-btn p-4 mb-6 space-y-2">
+                  {property.price > 0 && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-slate-body">{property.priceLabel || "Kaufpreis"}</span>
+                      <span className="font-bold text-primary">{formatCurrency(property.price)}</span>
+                    </div>
+                  )}
+                  {property.features.livingArea > 0 && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-slate-body">Wohnfläche</span>
+                      <span className="font-semibold text-slate-dark">{property.features.livingArea} m²</span>
+                    </div>
+                  )}
+                  {property.features.rooms > 0 && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-slate-body">Zimmer</span>
+                      <span className="font-semibold text-slate-dark">{property.features.rooms}</span>
+                    </div>
+                  )}
+                  {property.courtage && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-slate-body">Provision</span>
+                      <span className="font-semibold text-slate-dark">{property.courtage}</span>
+                    </div>
+                  )}
+                </div>
+
                 <ContactForm />
               </div>
             </div>
@@ -230,6 +369,15 @@ function FeatureItem({
       <Icon size={18} className="mx-auto text-primary mb-1" />
       <div className="text-xs text-slate-body">{label}</div>
       <div className="text-sm font-semibold text-slate-dark">{value}</div>
+    </div>
+  );
+}
+
+function DetailRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex justify-between py-2 border-b border-gray-100">
+      <span className="text-slate-body">{label}</span>
+      <span className="font-semibold text-slate-dark text-right">{value}</span>
     </div>
   );
 }

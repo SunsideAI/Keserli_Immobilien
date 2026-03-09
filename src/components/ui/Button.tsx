@@ -10,6 +10,7 @@ interface ButtonProps {
   className?: string;
   type?: "button" | "submit";
   shimmer?: boolean;
+  disabled?: boolean;
 }
 
 const variants = {
@@ -38,6 +39,7 @@ export default function Button({
   className,
   type = "button",
   shimmer = true,
+  disabled = false,
 }: ButtonProps) {
   const shimmerClass =
     shimmer && (variant === "primary" || variant === "white")
@@ -51,6 +53,7 @@ export default function Button({
     variants[variant],
     sizes[size],
     shimmerClass,
+    disabled && "opacity-60 cursor-not-allowed",
     className
   );
 
@@ -63,7 +66,7 @@ export default function Button({
   }
 
   return (
-    <button type={type} onClick={onClick} className={classes}>
+    <button type={type} onClick={onClick} disabled={disabled} className={classes}>
       {children}
     </button>
   );

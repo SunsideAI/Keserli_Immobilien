@@ -10,6 +10,37 @@ interface ContactFormProps {
 
 export default function ContactForm({ variant = "default", className }: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
+
+  const formName = variant === "bewertung" ? "bewertung" : "kontakt";
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setSubmitting(true);
+    setError(false);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        setError(true);
+      }
+    } catch {
+      setError(true);
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   if (submitted) {
     return (
@@ -31,21 +62,19 @@ export default function ContactForm({ variant = "default", className }: ContactF
     <form
       className={className}
       data-netlify="true"
-      name={variant === "bewertung" ? "bewertung" : "kontakt"}
-      onSubmit={(e) => {
-        e.preventDefault();
-        setSubmitted(true);
-      }}
+      name={formName}
+      method="POST"
+      onSubmit={handleSubmit}
     >
-      <input type="hidden" name="form-name" value={variant === "bewertung" ? "bewertung" : "kontakt"} />
+      <input type="hidden" name="form-name" value={formName} />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
         <div>
-          <label htmlFor="vorname" className="block text-sm font-medium text-slate-dark mb-1">
+          <label htmlFor={`${formName}-vorname`} className="block text-sm font-medium text-slate-dark mb-1">
             Vorname *
           </label>
           <input
             type="text"
-            id="vorname"
+            id={`${formName}-vorname`}
             name="vorname"
             required
             className="w-full px-4 py-3 border border-gray-300 rounded-btn focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
@@ -53,12 +82,12 @@ export default function ContactForm({ variant = "default", className }: ContactF
           />
         </div>
         <div>
-          <label htmlFor="nachname" className="block text-sm font-medium text-slate-dark mb-1">
+          <label htmlFor={`${formName}-nachname`} className="block text-sm font-medium text-slate-dark mb-1">
             Nachname *
           </label>
           <input
             type="text"
-            id="nachname"
+            id={`${formName}-nachname`}
             name="nachname"
             required
             className="w-full px-4 py-3 border border-gray-300 rounded-btn focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
@@ -69,12 +98,12 @@ export default function ContactForm({ variant = "default", className }: ContactF
 
       {variant === "bewertung" && (
         <div className="mb-4">
-          <label htmlFor="adresse" className="block text-sm font-medium text-slate-dark mb-1">
+          <label htmlFor={`${formName}-adresse`} className="block text-sm font-medium text-slate-dark mb-1">
             Immobilienadresse *
           </label>
           <input
             type="text"
-            id="adresse"
+            id={`${formName}-adresse`}
             name="adresse"
             required
             className="w-full px-4 py-3 border border-gray-300 rounded-btn focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
@@ -85,12 +114,12 @@ export default function ContactForm({ variant = "default", className }: ContactF
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-slate-dark mb-1">
+          <label htmlFor={`${formName}-email`} className="block text-sm font-medium text-slate-dark mb-1">
             E-Mail *
           </label>
           <input
             type="email"
-            id="email"
+            id={`${formName}-email`}
             name="email"
             required
             className="w-full px-4 py-3 border border-gray-300 rounded-btn focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
@@ -98,12 +127,12 @@ export default function ContactForm({ variant = "default", className }: ContactF
           />
         </div>
         <div>
-          <label htmlFor="telefon" className="block text-sm font-medium text-slate-dark mb-1">
+          <label htmlFor={`${formName}-telefon`} className="block text-sm font-medium text-slate-dark mb-1">
             Telefon
           </label>
           <input
             type="tel"
-            id="telefon"
+            id={`${formName}-telefon`}
             name="telefon"
             className="w-full px-4 py-3 border border-gray-300 rounded-btn focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
             placeholder="+49 ..."
@@ -112,11 +141,11 @@ export default function ContactForm({ variant = "default", className }: ContactF
       </div>
 
       <div className="mb-6">
-        <label htmlFor="nachricht" className="block text-sm font-medium text-slate-dark mb-1">
+        <label htmlFor={`${formName}-nachricht`} className="block text-sm font-medium text-slate-dark mb-1">
           Nachricht
         </label>
         <textarea
-          id="nachricht"
+          id={`${formName}-nachricht`}
           name="nachricht"
           rows={4}
           className="w-full px-4 py-3 border border-gray-300 rounded-btn focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition resize-none"
@@ -128,8 +157,18 @@ export default function ContactForm({ variant = "default", className }: ContactF
         />
       </div>
 
-      <Button type="submit" size="lg" className="w-full">
-        {variant === "bewertung" ? "Bewertung anfordern" : "Nachricht senden"}
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-btn p-3 mb-4 text-sm text-red-700 text-center">
+          Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.
+        </div>
+      )}
+
+      <Button type="submit" size="lg" className="w-full" disabled={submitting}>
+        {submitting
+          ? "Wird gesendet..."
+          : variant === "bewertung"
+          ? "Bewertung anfordern"
+          : "Nachricht senden"}
       </Button>
 
       <p className="text-xs text-gray-400 mt-3 text-center">

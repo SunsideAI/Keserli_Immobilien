@@ -3,14 +3,21 @@ export interface Property {
   title: string;
   slug: string;
   type: "Wohnung" | "Haus" | "Grundstück" | "Gewerbe";
+  subType?: string;
   status: "Verfügbar" | "Reserviert" | "Verkauft";
   price: number;
   priceLabel?: string;
+  pricePerSqm?: number;
+  courtage?: string;
+  courtageNote?: string;
   address: {
     street?: string;
     city: string;
     zip: string;
+    district?: string;
     region: string;
+    lat?: number;
+    lng?: number;
   };
   features: {
     rooms: number;
@@ -18,19 +25,36 @@ export interface Property {
     bathrooms?: number;
     livingArea: number;
     plotArea?: number;
+    floor?: number;
     floors?: number;
     yearBuilt?: number;
     garage?: boolean;
     balcony?: boolean;
+    balconyArea?: number;
     garden?: boolean;
     elevator?: boolean;
+    cellar?: boolean;
+    builtInKitchen?: boolean;
+    parkingSpaces?: number;
+    parkingType?: string;
     energyClass?: string;
+    energyValue?: number;
+    energyCertificateType?: string;
+    heatingType?: string;
+    condition?: string;
+    flooring?: string[];
+    bathroomFeatures?: string[];
   };
   description: string;
+  locationDescription?: string;
+  furnishingDescription?: string;
+  otherDescription?: string;
   shortDescription: string;
   images: string[];
   thumbnailImage: string;
   highlights: string[];
+  freeFrom?: string;
   createdAt: string;
   featured?: boolean;
+  exposeUrl?: string;
 }
