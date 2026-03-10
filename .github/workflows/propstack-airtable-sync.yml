@@ -1,0 +1,29 @@
+name: Propstack → Airtable Sync
+
+on:
+  schedule:
+    # Alle 6 Stunden synchronisieren
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Manuell auslösen
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests openai
+
+      - name: Run Propstack → Airtable Sync
+        env:
+          PROPSTACK_API_KEY: ${{ secrets.PROPSTACK_API_KEY }}
+          AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN }}
+          AIRTABLE_BASE: ${{ secrets.AIRTABLE_BASE }}
+          AIRTABLE_TABLE_ID: ${{ secrets.AIRTABLE_TABLE_ID }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/propstack_airtable_sync.py
