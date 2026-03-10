@@ -97,11 +97,17 @@ function mapStatus(status: unknown): Property["status"] {
   return "Verfügbar";
 }
 
-function isExcludedStatus(status: unknown): boolean {
+/**
+ * Only allow properties with an explicitly public status.
+ * "In Vermarktung" = actively marketed, "Reserviert" = reserved, "Verkauft" = sold.
+ * Everything else (Akquise, Aktiv, In Vorbereitung, Neuer Lead, Verloren, etc.)
+ * are internal workflow stages and must not appear on the website.
+ */
+function isPublishedStatus(status: unknown): boolean {
   const name = getStatusName(status);
   if (!name) return false;
   const s = name.toLowerCase();
-  return s.includes("verloren") || s.includes("storniert");
+  return s.includes("vermarktung") || s.includes("reserviert") || s.includes("verkauft");
 }
 
 function mapMarketingLabel(marketingType?: string): string {
@@ -295,7 +301,7 @@ export async function fetchProperties(): Promise<Property[]> {
     const data = await fetchFromPropstack("/units?per_page=100") as AnyObject[];
 
     const properties = data
-      .filter((unit) => !isExcludedStatus(unit.property_status || unit.status))
+      .filter((unit) => isPublishedStatus(unit.property_status || unit.status))
       .map(mapPropstackToProperty);
 
     // Mark the first available property with highest price as featured
@@ -351,7 +357,7 @@ export async function fetchPropertyIds(): Promise<string[]> {
   try {
     const data = await fetchFromPropstack("/units?per_page=100") as AnyObject[];
     return data
-      .filter((unit) => !isExcludedStatus(unit.property_status || unit.status))
+      .filter((unit) => isPublishedStatus(unit.property_status || unit.status))
       .map((unit) => String(unit.id));
   } catch (error) {
     console.error("Failed to fetch property IDs:", error);
