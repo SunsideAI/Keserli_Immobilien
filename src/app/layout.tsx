@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SchemaMarkup from "@/components/seo/SchemaMarkup";
+import VoiceflowChat from "@/components/layout/VoiceflowChat";
 import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
@@ -79,6 +80,7 @@ export default function RootLayout({
         <Header />
         <main className="pt-16 lg:pt-20">{children}</main>
         <Footer />
+        <VoiceflowChat />
       </body>
     </html>
   );
