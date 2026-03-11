@@ -24,13 +24,36 @@ export default function ContactForm({ variant = "default", className }: ContactF
     const formData = new FormData(form);
 
     try {
-      const response = await fetch("/", {
+      // 1. Netlify Forms (Backup / E-Mail-Benachrichtigung)
+      const netlifyPromise = fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
       });
 
-      if (response.ok) {
+      // 2. Propstack CRM (Kontakt anlegen)
+      const propstackPayload = {
+        vorname: formData.get("vorname") || "",
+        nachname: formData.get("nachname") || "",
+        email: formData.get("email") || "",
+        telefon: formData.get("telefon") || "",
+        nachricht: formData.get("nachricht") || "",
+        adresse: formData.get("adresse") || "",
+        formType: formName,
+      };
+
+      const propstackPromise = fetch("/.netlify/functions/submit-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(propstackPayload),
+      });
+
+      // Beide parallel ausführen, Netlify Forms ist führend für Erfolg/Fehler
+      const [netlifyRes] = await Promise.all([netlifyPromise, propstackPromise.catch((err) => {
+        console.warn("Propstack submission failed:", err);
+      })]);
+
+      if (netlifyRes.ok) {
         setSubmitted(true);
       } else {
         setError(true);
