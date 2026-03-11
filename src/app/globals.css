@@ -24,7 +24,7 @@
 
 @layer components {
   .section-padding {
-    @apply py-section;
+    @apply py-section-sm lg:py-section;
   }
   .section-padding-sm {
     @apply py-section-sm;

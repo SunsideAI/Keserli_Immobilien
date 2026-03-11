@@ -130,7 +130,7 @@ export default function HeroSection() {
             className="h-[390px] xl:h-[430px] 2xl:h-[470px] w-auto object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
           />
         </div>
-        <div className="relative min-h-[calc(100svh-5rem)] lg:min-h-[620px] xl:min-h-[680px]">
+        <div className="relative min-h-0 lg:min-h-[620px] xl:min-h-[680px]">
 
           {/* ── IDA Award — centered horizontally, pushed down (z-10) ── */}
           <div
@@ -206,10 +206,10 @@ export default function HeroSection() {
           </div>
 
           {/* ── Mobile layout ── */}
-          <div className="lg:hidden flex flex-col items-center text-center pt-20 sm:pt-24 pb-10 gap-6 px-2">
+          <div className="lg:hidden flex flex-col items-center text-center pt-20 sm:pt-24 pb-6 px-2">
             {/* Badge */}
             <div className={anim(visible, "delay-[0ms]")}>
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest bg-white/70 text-primary border border-primary/15 backdrop-blur-sm shadow-sm">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.15em] bg-white/80 text-primary border border-primary/15 backdrop-blur-md shadow-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                 Ihre Immobilienexperten
               </span>
@@ -217,19 +217,19 @@ export default function HeroSection() {
 
             {/* Headline */}
             <h1
-              className={`text-[2rem] sm:text-4xl font-extrabold text-slate-dark leading-[1.08] ${anim(
+              className={`mt-5 text-[2.25rem] sm:text-[2.75rem] font-extrabold text-slate-dark leading-[1.05] tracking-tight ${anim(
                 visible,
                 "delay-[100ms]"
               )}`}
             >
               Fairste Provision
               <br />
-              der Region
+              <span className="text-primary">der Region</span>
             </h1>
 
             {/* Subtitle */}
             <p
-              className={`text-sm sm:text-base text-slate-body max-w-[320px] sm:max-w-sm leading-relaxed ${anim(
+              className={`mt-4 text-[15px] sm:text-base text-slate-body max-w-[340px] sm:max-w-sm leading-relaxed ${anim(
                 visible,
                 "delay-[200ms]"
               )}`}
@@ -242,26 +242,27 @@ export default function HeroSection() {
             </p>
 
             {/* CTA */}
-            <div className={`mt-2 ${anim(visible, "delay-[300ms]")}`}>
+            <div className={`mt-6 ${anim(visible, "delay-[300ms]")}`}>
               <Button
                 href="/immobilienbewertung"
                 size="lg"
-                className="text-sm px-7 py-3.5 shadow-btn hover:shadow-lg group"
+                className="text-[15px] px-8 py-4 shadow-btn hover:shadow-lg group rounded-xl"
               >
                 Kostenlose Bewertung erhalten
                 <ArrowRight
-                  size={16}
+                  size={18}
                   className="ml-2 transition-transform duration-300 group-hover:translate-x-1"
                 />
               </Button>
             </div>
 
-            {/* IDA Award — centered, no Makler on mobile */}
-            <div className={`relative mt-4 ${anim(visible, "delay-[400ms]")}`}>
+            {/* IDA Award — with subtle glow */}
+            <div className={`relative mt-8 ${anim(visible, "delay-[400ms]")}`}>
+              <div className="absolute inset-0 w-40 h-40 mx-auto rounded-full bg-gradient-to-br from-gold/10 via-primary/5 to-transparent blur-2xl" />
               <img
                 src="/Ida_Award_Mobile.png"
                 alt="IDA Immobilien Dienstleister Award 2022"
-                className="w-44 sm:w-52 h-auto object-contain drop-shadow-lg mx-auto opacity-90"
+                className="relative w-36 sm:w-44 h-auto object-contain drop-shadow-lg mx-auto"
               />
             </div>
           </div>
@@ -269,7 +270,7 @@ export default function HeroSection() {
       </Container>
 
       {/* ═══════════ Floating Stats Bar — overlaps into next section ═══════════ */}
-      <div className="relative z-30 -mt-8 lg:-mt-12 mb-[-40px] lg:mb-[-48px]">
+      <div className="relative z-30 -mt-4 lg:-mt-12 mb-[-40px] lg:mb-[-48px]">
         <Container>
           <div
             className={`transition-all duration-700 ease-out delay-[650ms] ${
@@ -278,46 +279,46 @@ export default function HeroSection() {
                 : "opacity-0 translate-y-12"
             }`}
           >
-            <div className="bg-white rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-gray-100 p-4 sm:p-5 lg:p-0 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-shadow duration-500">
-              <div className="grid grid-cols-3 gap-3 sm:gap-5 lg:gap-0 lg:divide-x lg:divide-gray-100">
+            <div className="bg-white rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-gray-100 p-3 sm:p-5 lg:p-0 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-shadow duration-500">
+              <div className="grid grid-cols-3 gap-2 sm:gap-5 lg:gap-0 lg:divide-x lg:divide-gray-100">
                 {/* Stat 1 — Faire Provision */}
-                <div className="flex flex-col items-center text-center gap-1.5 sm:flex-row sm:text-left sm:items-center sm:gap-4 lg:px-8 lg:py-6 group cursor-default">
-                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 group-hover:shadow-btn">
+                <div className="flex flex-col items-center text-center gap-1 sm:flex-row sm:text-left sm:items-center sm:gap-4 lg:px-8 lg:py-6 py-2 group cursor-default">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 group-hover:shadow-btn">
                     <TrendingUp
-                      size={18}
+                      size={20}
                       className="text-primary transition-colors duration-300 group-hover:text-white sm:w-5 sm:h-5"
                     />
                   </div>
                   <div>
-                    <div className="text-base sm:text-xl font-extrabold text-slate-dark leading-tight">
+                    <div className="text-lg sm:text-xl font-extrabold text-slate-dark leading-tight">
                       1,95&nbsp;%
                     </div>
-                    <div className="text-[11px] sm:text-sm text-slate-body leading-tight">
+                    <div className="text-[10px] sm:text-sm text-slate-body leading-tight mt-0.5">
                       Faire Provision
                     </div>
                   </div>
                 </div>
 
                 {/* Stat 2 — Vermittelte Immobilien */}
-                <div className="flex flex-col items-center text-center gap-1.5 sm:flex-row sm:text-left sm:items-center sm:gap-4 lg:px-8 lg:py-6 group cursor-default">
-                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 group-hover:shadow-btn">
+                <div className="flex flex-col items-center text-center gap-1 sm:flex-row sm:text-left sm:items-center sm:gap-4 lg:px-8 lg:py-6 py-2 group cursor-default">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 group-hover:shadow-btn">
                     <Users
-                      size={18}
+                      size={20}
                       className="text-primary transition-colors duration-300 group-hover:text-white sm:w-5 sm:h-5"
                     />
                   </div>
                   <div>
-                    <div className="text-base sm:text-xl font-extrabold text-slate-dark leading-tight tabular-nums">
+                    <div className="text-lg sm:text-xl font-extrabold text-slate-dark leading-tight tabular-nums">
                       {formattedCount}
                     </div>
-                    <div className="text-[11px] sm:text-sm text-slate-body leading-tight">
+                    <div className="text-[10px] sm:text-sm text-slate-body leading-tight mt-0.5">
                       Immobilien
                     </div>
                   </div>
                 </div>
 
                 {/* Stat 3 — Google Bewertung */}
-                <div className="flex flex-col items-center text-center gap-1.5 sm:flex-row sm:text-left sm:items-center sm:gap-4 lg:px-8 lg:py-6 group cursor-default">
+                <div className="flex flex-col items-center text-center gap-1 sm:flex-row sm:text-left sm:items-center sm:gap-4 lg:px-8 lg:py-6 py-2 group cursor-default">
                   {/* Avatar stack hidden on mobile, show icon instead */}
                   <div className="flex-shrink-0">
                     <div className="hidden sm:flex -space-x-2.5">
@@ -336,8 +337,8 @@ export default function HeroSection() {
                         </div>
                       ))}
                     </div>
-                    <div className="sm:hidden w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
-                      <Star size={18} className="text-primary fill-primary" />
+                    <div className="sm:hidden w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Star size={20} className="text-primary fill-primary" />
                     </div>
                   </div>
                   <div>
@@ -345,7 +346,7 @@ export default function HeroSection() {
                       {[1, 2, 3, 4, 5].map((s) => (
                         <Star
                           key={s}
-                          size={12}
+                          size={13}
                           className={`sm:w-[15px] sm:h-[15px] ${
                             s <= Math.floor(siteConfig.stats.googleRating)
                               ? "fill-gold text-gold"
@@ -353,11 +354,11 @@ export default function HeroSection() {
                           }`}
                         />
                       ))}
-                      <span className="ml-1 text-xs sm:text-sm font-bold text-slate-dark">
+                      <span className="ml-1 text-sm sm:text-sm font-bold text-slate-dark">
                         {siteConfig.stats.googleRating}
                       </span>
                     </div>
-                    <div className="text-[11px] sm:text-sm text-slate-body leading-tight">
+                    <div className="text-[10px] sm:text-sm text-slate-body leading-tight">
                       Google
                     </div>
                   </div>
