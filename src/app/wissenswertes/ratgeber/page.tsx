@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { Download, FileText, Star, Award, BookOpen } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Star, Award, BookOpen } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Badge from "@/components/ui/Badge";
 import { ratgeberDownloads } from "@/data/ratgeber-downloads";
@@ -8,13 +10,15 @@ import { siteConfig } from "@/data/site-config";
 export const metadata: Metadata = {
   title: "Kostenlose Immobilien-Ratgeber zum Download",
   description:
-    "Laden Sie unsere ausführlichen Ratgeber kostenlos herunter: Immobilie verkaufen, Bewertung, Erbimmobilie, Scheidung und mehr. PDF-Leitfäden mit Checklisten.",
+    "Laden Sie unsere ausführlichen Ratgeber kostenlos herunter: Energetische Sanierung, Erbimmobilie, Scheidung, Finanzierung und mehr. PDF-Leitfäden mit Checklisten.",
   keywords: [
     "Immobilien Ratgeber PDF",
     "Haus verkaufen Ratgeber",
     "Immobilienbewertung Ratgeber",
     "Erbimmobilie Ratgeber",
     "kostenloser Ratgeber",
+    "energetische Sanierung",
+    "Immobilie finanzieren",
   ],
   alternates: {
     canonical: `${siteConfig.url}/wissenswertes/ratgeber`,
@@ -41,8 +45,8 @@ export default function RatgeberDownloadsPage() {
               RATGEBER
             </Badge>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-dark mb-4 leading-tight">
-              Kostenlose Ratgeber{" "}
-              <span className="text-primary">zum Download</span>
+              Profitieren Sie von unserer{" "}
+              <span className="text-primary">Erfahrung</span>
             </h1>
             <p className="text-base sm:text-lg text-slate-body mb-6">
               Ausführliche Leitfäden und Checklisten als PDF – erarbeitet von
@@ -70,67 +74,33 @@ export default function RatgeberDownloadsPage() {
       {/* Ratgeber Grid */}
       <section className="section-padding bg-gray-50">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-dark mb-8">
+            Ratgeber
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {ratgeberDownloads.map((item) => (
-              <div
+              <Link
                 key={item.id}
-                className="bg-white rounded-card shadow-card overflow-hidden hover:shadow-card-hover transition-all hover:-translate-y-1 duration-300 flex flex-col"
+                href={`/wissenswertes/ratgeber/${item.slug}`}
+                className="group bg-white rounded-card shadow-card overflow-hidden hover:shadow-card-hover transition-all hover:-translate-y-1 duration-300 flex flex-col"
               >
-                {/* Visual header */}
-                <div className="h-44 bg-gradient-to-br from-gold to-yellow-600 flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 opacity-10">
-                    <FileText
-                      size={160}
-                      className="absolute -bottom-4 -right-4 text-white"
-                      strokeWidth={1}
+                <div className="p-6 flex flex-col items-center text-center flex-1">
+                  <h3 className="font-bold text-lg text-primary mb-4 group-hover:text-primary-800 transition-colors min-h-[3.5rem] flex items-center">
+                    {item.title}
+                  </h3>
+                  <div className="w-44 h-56 relative mb-5">
+                    <Image
+                      src={item.coverImage}
+                      alt={`Ratgeber: ${item.title}`}
+                      fill
+                      className="object-cover rounded-lg shadow-md"
                     />
                   </div>
-                  <div className="relative z-10 text-center">
-                    <div className="w-16 h-16 mx-auto bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/30 mb-3">
-                      <FileText size={32} className="text-white" />
-                    </div>
-                    <span className="text-white/80 text-xs font-medium">
-                      PDF · {item.pages} Seiten
-                    </span>
-                  </div>
+                  <span className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 bg-primary text-white text-sm font-semibold rounded-btn group-hover:bg-primary-700 transition-colors shadow-btn mt-auto">
+                    Mehr erfahren
+                  </span>
                 </div>
-
-                {/* Content */}
-                <div className="p-5 flex flex-col flex-1">
-                  <Badge variant="gold" className="mb-3 self-start">
-                    {item.category}
-                  </Badge>
-                  <h2 className="font-bold text-slate-dark mb-2 line-clamp-2">
-                    {item.title}
-                  </h2>
-                  <p className="text-sm text-slate-body line-clamp-3 mb-4 flex-1">
-                    {item.description}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {item.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Download Button */}
-                  <a
-                    href={item.downloadUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 bg-primary text-white text-sm font-semibold rounded-btn hover:bg-primary-700 transition-colors shadow-btn"
-                  >
-                    <Download size={16} />
-                    Kostenlos herunterladen
-                  </a>
-                </div>
-              </div>
+              </Link>
             ))}
           </div>
         </Container>
