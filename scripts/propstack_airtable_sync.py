@@ -328,8 +328,64 @@ def load_kurzbeschreibung_cache():
         print(f"[WARN] Cache-Laden fehlgeschlagen: {e}")
 
 
+_KURZ_SYSTEM_PROMPT = """\
+# Rolle
+Du bist ein präziser Immobilien-Datenanalyst und Parser. Deine Aufgabe ist es, \
+aus unstrukturierten Immobilienanzeigen ausschließlich objektive, explizit \
+genannte Fakten zu extrahieren und streng strukturiert auszugeben. Du arbeitest \
+regelbasiert, deterministisch und formatgenau. Kreative Ergänzungen sind untersagt.
+
+# Aufgabe
+1. Analysiere die bereitgestellte Immobilienanzeige vollständig.
+2. Extrahiere nur eindeutig genannte, objektive Fakten.
+3. Gib die strukturierte Kurzbeschreibung exakt im vorgegebenen Zeilenformat aus.
+4. Lasse jedes Feld vollständig weg, zu dem keine eindeutige Angabe vorliegt.
+
+# Erlaubte Felder (Whitelist – verbindlich)
+Es dürfen ausschließlich die folgenden Felder verwendet werden. \
+Jedes andere Feld ist strikt verboten.
+Objekttyp Baujahr Wohnfläche Grundstück Zimmer Preis Standort \
+Energieeffizienz Besonderheiten
+
+# Ausgabeformat (verbindlich)
+Die Ausgabe muss exakt diesem Muster folgen. Jede Eigenschaft steht in einer \
+eigenen Zeile. Keine Leerzeilen, keine zusätzlichen Texte, keine \
+Markdown-Formatierung.
+Objekttyp: [Einfamilienhaus | Mehrfamilienhaus | Eigentumswohnung | \
+Baugrundstück | Reihenhaus | Doppelhaushälfte | Sonstiges]
+Baujahr: [Jahr]
+Wohnfläche: [Zahl in m²]
+Grundstück: [Zahl in m²]
+Zimmer: [Anzahl]
+Preis: [Zahl in €]
+Standort: [Ort oder PLZ Ort]
+Energieeffizienz: [Klasse]
+Besonderheiten: [kommaseparierte Liste]
+
+# Strikte Regeln (bindend)
+• Es ist strengstens untersagt, eigene Felder zu erfinden.
+• Felder wie „Schlafzimmer", „Kategorie", „Etage", „Ausstattung", \
+„Kauf/Miete" oder ähnliche sind ausnahmslos verboten.
+• Es dürfen keine Platzhalter verwendet werden (z. B. „-", „—", „k. A.", \
+„unbekannt").
+• Wenn ein Feld nicht eindeutig ermittelbar ist, darf die gesamte Zeile \
+nicht ausgegeben werden.
+• Die Reihenfolge der Zeilen muss exakt der Vorgabe entsprechen.
+• Es darf niemals mehr als ein Feld pro Zeile stehen.
+• Verwende ausschließlich arabische Ziffern.
+• Einheiten exakt wie folgt anhängen:
+  – Wohnfläche und Grundstück: m²
+  – Preis: €
+• Keine Interpretationen, keine Schätzungen, keine Ableitungen.
+• Im Zweifel gilt: lieber weniger Felder ausgeben, niemals mehr.
+
+# Ziel
+Die Ausgabe wird automatisiert weiterverarbeitet (z. B. Airtable, Voiceflow, \
+Such- und Filterlogiken). Jede Abweichung vom Format gilt als Fehler."""
+
+
 def generate_kurzbeschreibung(record: dict) -> str:
-    """Erzeuge Kurzbeschreibung via OpenAI"""
+    """Erzeuge Kurzbeschreibung via OpenAI mit regelbasiertem System-Prompt"""
     obj_nr = record.get("Objektnummer", "")
     if obj_nr and obj_nr in _kurz_cache:
         return _kurz_cache[obj_nr]
@@ -341,28 +397,28 @@ def generate_kurzbeschreibung(record: dict) -> str:
         import openai
         client = openai.OpenAI(api_key=OPENAI_API_KEY)
 
-        details = []
-        for key in ["Zimmer", "Wohnfläche", "Grundstücksfläche", "Baujahr", "Etage"]:
-            if record.get(key):
-                details.append(f"{key}: {record[key]}")
+        titel = record.get("Titel", "")
+        kategorie = record.get("Kategorie", "")
+        preis = record.get("Preis_Text", "")
+        ort = record.get("Standort", "")
+        beschreibung = record.get("Beschreibung", "")
 
-        prompt = (
-            f"Erstelle eine kurze, ansprechende Zusammenfassung (max. 3 Sätze) "
-            f"für folgendes Immobilienangebot:\n\n"
-            f"Titel: {record.get('Titel', '')}\n"
-            f"Ort: {record.get('Standort', '')}\n"
-            f"Kategorie: {record.get('Kategorie', '')}\n"
-            f"Preis: {record.get('Preis_Text', '')}\n"
-            f"Details: {', '.join(details)}\n\n"
-            f"Beschreibung:\n{record.get('Beschreibung', '')[:800]}\n\n"
-            f"Antworte auf Deutsch, ohne Überschrift, nur der Fließtext."
+        user_prompt = (
+            f"TITEL: {titel}\n"
+            f"KATEGORIE: {kategorie}\n"
+            f"PREIS: {preis}\n"
+            f"STANDORT: {ort}\n"
+            f"BESCHREIBUNG: {beschreibung[:3000]}"
         )
 
         response = client.chat.completions.create(
             model="gpt-4o-mini",
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=200,
-            temperature=0.7,
+            messages=[
+                {"role": "system", "content": _KURZ_SYSTEM_PROMPT},
+                {"role": "user", "content": user_prompt},
+            ],
+            max_tokens=300,
+            temperature=0.0,
         )
         result = response.choices[0].message.content.strip()
         if obj_nr:
