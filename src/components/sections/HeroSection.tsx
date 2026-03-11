@@ -118,7 +118,7 @@ export default function HeroSection() {
       <Container className="relative z-10">
         {/* ── Makler — right side, standing on stats bar ── */}
         <div
-          className={`hidden lg:block absolute bottom-[60px] lg:bottom-[68px] right-0 xl:right-[3%] z-20 transition-all duration-1000 ease-out delay-[900ms] ${
+          className={`hidden lg:block absolute bottom-0 lg:bottom-0 -right-[8%] xl:-right-[5%] z-20 transition-all duration-1000 ease-out delay-[900ms] ${
             visible
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-10"
