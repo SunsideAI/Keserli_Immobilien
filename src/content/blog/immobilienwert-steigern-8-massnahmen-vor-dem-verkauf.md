@@ -5,6 +5,20 @@ author: "Orhan Keserli"
 category: "Immobilienbewertung"
 tags: ["Wertsteigerung", "Renovierung", "Tipps"]
 excerpt: "Mit gezielten Maßnahmen können Sie den Wert Ihrer Immobilie vor dem Verkauf steigern. Diese 8 Tipps helfen."
+keyFacts:
+  - "Energetische Verbesserungen bieten mit bis zu 15 % die höchste potenzielle Wertsteigerung."
+  - "Eine Küchenmodernisierung kann bei Kosten von 3.000-10.000 Euro eine Wertsteigerung von bis zu 10 % erzielen."
+  - "Professionelles Home Staging kann den Verkaufspreis um 10-15 % steigern und die Verkaufsdauer deutlich verkürzen."
+  - "Ein frischer Anstrich ist eine der einfachsten und effektivsten Maßnahmen mit bis zu 5 % Wertsteigerung bei Kosten ab 2.000 Euro."
+faq:
+  - question: "Welche Maßnahmen zur Wertsteigerung bieten den besten Return on Investment?"
+    answer: "Energetische Verbesserungen und Home Staging bieten mit bis zu 15 % die höchste Wertsteigerung. Auch die Küchenmodernisierung (bis zu 10 %) und das Auffrischen des Badezimmers (bis zu 8 %) sind besonders effektiv."
+  - question: "Lohnt sich eine energetische Sanierung vor dem Verkauf?"
+    answer: "Ja, bessere Energiewerte bedeuten niedrigere Nebenkosten und eine höhere Energieeffizienzklasse. Maßnahmen wie Fensterdichtung, Dachdämmung oder Heizungsmodernisierung können eine Wertsteigerung von bis zu 15 % erzielen."
+  - question: "Muss ich alle 8 Maßnahmen umsetzen?"
+    answer: "Nein, nicht jede Maßnahme ist bei jeder Immobilie sinnvoll. Lassen Sie sich vorab beraten, welche Investitionen sich bei Ihrer spezifischen Immobilie wirklich auszahlen. Manchmal reichen bereits wenige gezielte Maßnahmen."
+  - question: "Kann Smart-Home-Technologie den Immobilienwert steigern?"
+    answer: "Ja, smarte Thermostate, Beleuchtung oder Sicherheitssysteme sprechen besonders jüngere Käufer an. Die Wertsteigerung liegt bei bis zu 3 % bei überschaubaren Kosten von 1.000-5.000 Euro."
 ---
 
 ## So steigern Sie den Wert Ihrer Immobilie

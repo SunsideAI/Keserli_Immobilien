@@ -5,6 +5,23 @@ author: "Orhan Keserli"
 category: "Tipps & Ratgeber"
 tags: ["Privatverkauf", "Makler", "Vergleich"]
 excerpt: "Privat verkaufen oder einen Makler beauftragen? Wir vergleichen beide Optionen ehrlich und transparent."
+keyFacts:
+  - "Ein Privatverkauf erfordert 20–40 Stunden Arbeit für Exposé, Anfragen, Besichtigungen und Verhandlungen."
+  - "Ohne professionelle Bewertung besteht die Gefahr, die Immobilie unter Wert zu verkaufen oder Käufer durch zu hohe Preise abzuschrecken."
+  - "Selbst mit Maklerprovision kann der Nettoerlös mit Makler höher ausfallen als beim Privatverkauf."
+  - "Fehlende Angaben im Exposé wie der Energieausweis können beim Privatverkauf zu Abmahnungen führen."
+  - "Professionell vermarktete Immobilien erzielen nachweislich höhere Verkaufspreise durch bessere Reichweite und Verhandlungsführung."
+faq:
+  - question: "Ist ein Privatverkauf günstiger als der Verkauf mit Makler?"
+    answer: "Nicht unbedingt. Obwohl Sie die Maklerprovision sparen, verkaufen Privatverkäufer ihre Immobilie oft unter Marktwert. Ein Makler kann durch professionelle Vermarktung und Verhandlungsführung einen höheren Preis erzielen, sodass der Nettoerlös trotz Provision höher ausfällt."
+  - question: "Wie viel Zeit kostet ein Privatverkauf?"
+    answer: "Rechnen Sie mit 20–40 Stunden Arbeit für Exposé-Erstellung, Beantwortung von Anfragen, Organisation und Durchführung von Besichtigungen, Bonitätsprüfung der Interessenten und Verhandlungsführung."
+  - question: "Welche rechtlichen Risiken gibt es beim Privatverkauf?"
+    answer: "Fehlende Pflichtangaben im Exposé wie der Energieausweis können zu Abmahnungen führen. Auch Mängel, die nicht korrekt offengelegt werden, können nach dem Verkauf rechtliche Probleme verursachen."
+  - question: "Wann lohnt sich ein Privatverkauf?"
+    answer: "Ein Privatverkauf kann sinnvoll sein, wenn Sie bereits einen konkreten Käufer haben, etwa aus dem Bekanntenkreis. In den meisten anderen Fällen überwiegen die Vorteile eines professionellen Maklers durch Marktkenntnis, Reichweite und Verhandlungserfahrung."
+  - question: "Was sind die größten Vorteile eines Maklers beim Immobilienverkauf?"
+    answer: "Ein Makler bietet professionelle Bewertung, hochwertige Vermarktung mit großer Reichweite, Käuferqualifizierung mit Bonitätsprüfung, erfahrene Verhandlungsführung und rechtssichere Abwicklung bis zum Notartermin. Das spart Ihnen Zeit und maximiert den Verkaufserlös."
 ---
 
 ## Privatverkauf vs. Makler – die große Frage

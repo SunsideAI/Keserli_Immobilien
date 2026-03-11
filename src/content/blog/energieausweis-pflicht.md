@@ -5,6 +5,23 @@ author: "Orhan Keserli"
 category: "Recht & Steuern"
 tags: ["Energieausweis", "Pflicht", "GEG"]
 excerpt: "Der Energieausweis ist beim Immobilienverkauf Pflicht. Erfahren Sie, welche Art Sie brauchen und was er kostet."
+keyFacts:
+  - "Der Energieausweis ist seit 2014 bei jedem Immobilienverkauf und jeder Neuvermietung gesetzlich vorgeschrieben."
+  - "Ohne gültigen Energieausweis droht ein Bußgeld von bis zu 10.000 Euro."
+  - "Ein Verbrauchsausweis kostet ca. 50–100 €, ein Bedarfsausweis ca. 300–500 €."
+  - "Der Energieausweis ist 10 Jahre gültig, sollte aber nach größeren Sanierungen neu erstellt werden."
+  - "Immobilien mit schlechten Energiekennwerten (Klasse F–H) erzielen oft deutlich niedrigere Verkaufspreise."
+faq:
+  - question: "Brauche ich einen Verbrauchs- oder einen Bedarfsausweis?"
+    answer: "Ein Bedarfsausweis ist Pflicht für Wohngebäude mit weniger als 5 Wohneinheiten, die vor 1977 gebaut und seitdem nicht entsprechend saniert wurden. In allen anderen Fällen können Sie frei zwischen beiden Varianten wählen."
+  - question: "Was kostet ein Energieausweis?"
+    answer: "Ein Verbrauchsausweis kostet ca. 50–100 € und ist oft online bestellbar. Ein Bedarfsausweis kostet ca. 300–500 € und erfordert eine Vor-Ort-Begehung durch einen Sachverständigen."
+  - question: "Welche Angaben müssen in der Immobilienanzeige stehen?"
+    answer: "In jeder Anzeige müssen Art des Energieausweises, Endenergiebedarf oder -verbrauch, wesentlicher Energieträger, Baujahr und Energieeffizienzklasse angegeben werden. Fehlen diese Angaben, kann ein Bußgeld verhängt werden."
+  - question: "Wie lange ist ein Energieausweis gültig?"
+    answer: "Ein Energieausweis ist 10 Jahre lang gültig. Wurde in der Zwischenzeit die Heizung getauscht oder die Fassade gedämmt, kann sich ein neuer Ausweis lohnen, der die verbesserten Werte ausweist."
+  - question: "Gibt es Ausnahmen von der Energieausweispflicht?"
+    answer: "Ja, Baudenkmäler, kleine Gebäude unter 50 m² Nutzfläche und abbruchreife Gebäude sind von der Pflicht ausgenommen. Für alle anderen Immobilien gilt die Pflicht bei Verkauf und Neuvermietung."
 ---
 
 Der Energieausweis gehört zu den Pflichtdokumenten bei jedem Immobilienverkauf in Deutschland. Wer ohne gültigen Ausweis verkauft oder inseriert, riskiert ein Bußgeld von bis zu 10.000 Euro. In diesem Ratgeber erklären wir Ihnen alles, was Sie als Verkäufer wissen müssen.

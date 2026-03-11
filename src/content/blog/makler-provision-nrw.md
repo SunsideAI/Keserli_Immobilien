@@ -5,6 +5,23 @@ author: "Orhan Keserli"
 category: "Recht & Steuern"
 tags: ["Provision", "NRW", "Maklerrecht"]
 excerpt: "Seit 2020 gelten neue Regeln für die Maklerprovision. Erfahren Sie, was das für Käufer und Verkäufer in NRW bedeutet."
+keyFacts:
+  - "Seit Dezember 2020 muss die Maklerprovision bei Wohnimmobilien in der Regel hälftig zwischen Käufer und Verkäufer geteilt werden."
+  - "Die übliche Gesamtprovision in NRW beträgt 7,14 % inkl. MwSt. (je 3,57 % für Käufer und Verkäufer)."
+  - "Die Maklerprovision wird erst nach erfolgreicher notarieller Beurkundung des Kaufvertrags fällig."
+  - "Die Gesamtkaufnebenkosten in NRW liegen für Käufer bei ca. 10,5–12 % des Kaufpreises."
+  - "Die Höhe der Maklerprovision ist grundsätzlich frei verhandelbar – es gibt keine gesetzlich festgelegte Höhe."
+faq:
+  - question: "Wie hoch ist die übliche Maklerprovision in NRW?"
+    answer: "Die übliche Gesamtprovision in NRW beträgt 7,14 % inkl. MwSt., aufgeteilt in je 3,57 % für Käufer und Verkäufer. Es gibt jedoch Makler wie homefin, die ab 1,95 % inkl. MwSt. anbieten."
+  - question: "Wann muss ich die Maklerprovision bezahlen?"
+    answer: "Die Provision wird erst nach der notariellen Beurkundung des Kaufvertrags fällig. Es fallen keine Vorabkosten an – Sie zahlen nur im Erfolgsfall, in der Regel innerhalb von 14 Tagen nach Beurkundung."
+  - question: "Kann ich die Maklerprovision steuerlich absetzen?"
+    answer: "Für Privatverkäufer ist die Provision nicht steuerlich absetzbar. Bei vermieteten Immobilien kann sie als Werbungskosten geltend gemacht werden. Käufer können sie bei Vermietung als Teil der Anschaffungskosten in die AfA einbeziehen."
+  - question: "Was passiert, wenn der Verkauf nicht zustande kommt?"
+    answer: "Bei einem erfolgsbasierten Provisionsmodell zahlen Sie nichts, wenn der Verkauf nicht zustande kommt. Nur wenn der Kaufvertrag tatsächlich notariell beurkundet wird, wird die Provision fällig."
+  - question: "Was ist der Unterschied zwischen Innen- und Außenprovision?"
+    answer: "Bei der Innenprovision zahlt nur der Verkäufer, bei der Außenprovision nur der Käufer. Seit der Gesetzesänderung 2020 ist eine reine Außenprovision bei Wohnimmobilien nicht mehr zulässig, wenn der Makler vom Verkäufer beauftragt wurde."
 ---
 
 Die Maklerprovision ist für viele Immobilienverkäufer und -käufer ein wichtiges Thema. Seit Ende 2020 gelten in Deutschland neue gesetzliche Regeln, die für mehr Fairness sorgen sollen. In diesem Artikel erklären wir, was die neuen Regelungen bedeuten, wie hoch die Provision in NRW üblicherweise ausfällt und warum homefin eine besonders faire Alternative bietet.

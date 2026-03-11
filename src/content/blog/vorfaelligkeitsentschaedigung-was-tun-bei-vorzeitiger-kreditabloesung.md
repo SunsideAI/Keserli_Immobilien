@@ -5,6 +5,22 @@ author: "Orhan Keserli"
 category: "Recht & Steuern"
 tags: ["Vorfälligkeitsentschädigung", "Kredit", "Kündigung"]
 excerpt: "Bei vorzeitiger Ablösung eines Immobilienkredits kann eine Vorfälligkeitsentschädigung fällig werden. Was Sie wissen müssen."
+keyFacts:
+  - "Nach § 489 BGB kann jeder Immobilienkredit nach 10 Jahren mit 6 Monaten Frist ohne Vorfälligkeitsentschädigung gekündigt werden."
+  - "Ein erheblicher Teil der Vorfälligkeitsentschädigungen wird laut Studien zu hoch berechnet."
+  - "Eine fehlerhafte Widerrufsbelehrung im Kreditvertrag kann zum Entfall der Vorfälligkeitsentschädigung führen."
+  - "Vereinbarte Sondertilgungsoptionen müssen bei der Berechnung der VFE berücksichtigt werden und reduzieren den Betrag."
+faq:
+  - question: "Wann wird eine Vorfälligkeitsentschädigung fällig?"
+    answer: "Die Vorfälligkeitsentschädigung wird fällig, wenn Sie Ihren Immobilienkredit vor Ablauf der Zinsbindung zurückzahlen – etwa beim Verkauf der Immobilie, bei einer Umschuldung zu einer anderen Bank oder bei einer Sondertilgung über die vereinbarte Grenze hinaus."
+  - question: "Wie kann ich die Vorfälligkeitsentschädigung vermeiden?"
+    answer: "Die wichtigste Möglichkeit ist das Sonderkündigungsrecht nach § 489 BGB: Nach 10 Jahren können Sie jeden Kredit mit 6 Monaten Frist kostenfrei kündigen. Auch eine fehlerhafte Widerrufsbelehrung kann zum Entfall der VFE führen."
+  - question: "Sollte ich die Berechnung der Bank prüfen lassen?"
+    answer: "Ja, unbedingt. Studien zeigen, dass ein erheblicher Teil der Vorfälligkeitsentschädigungen zu hoch berechnet wird. Ein unabhängiger Experte kann die Berechnung kontrollieren und gegebenenfalls eine Korrektur durchsetzen."
+  - question: "Kann der Käufer meinen bestehenden Kredit übernehmen?"
+    answer: "Grundsätzlich ist eine Kreditübernahme durch den Käufer möglich und würde die Vorfälligkeitsentschädigung vermeiden. In der Praxis ist dies jedoch selten, da der Käufer die Bonitätsprüfung bestehen muss und die Konditionen für ihn passen müssen."
+  - question: "Wie hoch fällt die Vorfälligkeitsentschädigung typischerweise aus?"
+    answer: "Die Höhe hängt von Restschuld, Restlaufzeit und der Zinsdifferenz ab. Bei einer Restschuld von 200.000 Euro und 5 Jahren Restlaufzeit liegt die VFE typischerweise bei 5.000-8.000 Euro. Je größer die Differenz zwischen Vertragszins und aktuellem Marktzins, desto höher die VFE."
 ---
 
 ## Was ist eine Vorfälligkeitsentschädigung?

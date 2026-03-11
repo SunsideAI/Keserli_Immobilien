@@ -5,6 +5,20 @@ author: "Orhan Keserli"
 category: "Immobilienbewertung"
 tags: ["Bodenrichtwert", "Grundstückswert", "Bewertung"]
 excerpt: "Der Bodenrichtwert ist eine wichtige Kennzahl bei der Immobilienbewertung. Wir erklären, was er bedeutet."
+keyFacts:
+  - "Der Bodenrichtwert gibt den durchschnittlichen Lagewert des Bodens in Euro pro Quadratmeter an und wird alle zwei Jahre aktualisiert."
+  - "In NRW kann der Bodenrichtwert kostenlos über das Portal BORIS.NRW abgerufen werden."
+  - "Der Bodenrichtwert ist ein Durchschnittswert und entspricht nicht dem individuellen Grundstückswert."
+  - "Die Grundsteuerreform nutzt den Bodenrichtwert als Berechnungsgrundlage."
+faq:
+  - question: "Was genau sagt der Bodenrichtwert aus?"
+    answer: "Der Bodenrichtwert gibt den durchschnittlichen Lagewert des Bodens pro Quadratmeter in einer bestimmten Zone an. Er wird von Gutachterausschüssen auf Basis tatsächlicher Kaufpreise ermittelt und dient als Orientierungswert."
+  - question: "Warum kann der tatsächliche Grundstückswert vom Bodenrichtwert abweichen?"
+    answer: "Der Bodenrichtwert ist ein Durchschnittswert für eine Zone. Der individuelle Wert Ihres Grundstücks kann durch Besonderheiten wie Grundstückszuschnitt, Hanglage, Altlasten, Baumbestand oder besondere Baurechte deutlich abweichen."
+  - question: "Wo finde ich den Bodenrichtwert für mein Grundstück in NRW?"
+    answer: "In Nordrhein-Westfalen können Sie den Bodenrichtwert kostenlos über das Online-Portal BORIS.NRW abrufen. Sie benötigen lediglich die Adresse oder die Flurstücksnummer Ihrer Immobilie."
+  - question: "Welche Rolle spielt der Bodenrichtwert bei Steuern?"
+    answer: "Der Bodenrichtwert ist relevant für die Grundsteuerberechnung im Rahmen der Grundsteuerreform sowie für die Bewertung bei Erbschaft- und Schenkungsteuer. Er fließt als wichtiger Faktor in die steuerliche Wertermittlung ein."
 ---
 
 ## Was ist der Bodenrichtwert?

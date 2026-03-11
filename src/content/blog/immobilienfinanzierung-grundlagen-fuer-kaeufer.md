@@ -5,6 +5,23 @@ author: "Orhan Keserli"
 category: "Finanzierung"
 tags: ["Finanzierung", "Kredit", "Baufinanzierung"]
 excerpt: "Die richtige Finanzierung ist der Schlüssel zum Immobilienkauf. Wir erklären die wichtigsten Grundlagen."
+keyFacts:
+  - "Mindestens 20-30 % des Kaufpreises sollten als Eigenkapital vorhanden sein, um gute Konditionen zu erhalten."
+  - "Die Kaufnebenkosten in NRW betragen ca. 10-12 % des Kaufpreises und sollten aus eigenen Mitteln bezahlt werden."
+  - "Jeder Prozentpunkt mehr Tilgung spart über die gesamte Laufzeit Zehntausende Euro an Zinsen."
+  - "Nach § 489 BGB kann jedes Darlehen nach 10 Jahren mit 6 Monaten Frist kostenfrei gekündigt werden."
+  - "Die monatliche Kreditrate sollte 35-40 % des Nettoeinkommens nicht übersteigen."
+faq:
+  - question: "Wie viel Immobilie kann ich mir leisten?"
+    answer: "Eine grobe Orientierung: Multiplizieren Sie Ihre verfügbare monatliche Rate mit 12 und teilen Sie durch den Zinssatz plus Tilgungssatz. Bei 1.400 Euro Rate und 5,8 % Gesamtbelastung ergibt sich ein maximaler Kredit von ca. 290.000 Euro."
+  - question: "Was ist besser: 10 oder 15 Jahre Zinsbindung?"
+    answer: "Bei niedrigen Zinsen empfehlen sich 15 oder sogar 20 Jahre, um den günstigen Zins lange zu sichern. Der Aufpreis ist oft gering und nach 10 Jahren können Sie gemäß § 489 BGB ohnehin kostenfrei kündigen."
+  - question: "Welche Förderprogramme gibt es für den Immobilienkauf?"
+    answer: "Die KfW bietet zinsgünstige Darlehen wie das Wohneigentumsprogramm (124) mit bis zu 100.000 Euro. Zusätzlich gibt es Programme für energieeffizientes Bauen und Sanieren sowie landesspezifische Förderungen der NRW.BANK."
+  - question: "Wie lange dauert die Finanzierungszusage einer Bank?"
+    answer: "In der Regel dauert es 1-3 Wochen von der Einreichung aller Unterlagen bis zur verbindlichen Zusage. Bei vollständigen Unterlagen kann es auch schneller gehen. Bereiten Sie alle Dokumente vor der Antragstellung vor."
+  - question: "Sollte ich einen Finanzierungsvermittler nutzen?"
+    answer: "Ein guter Vermittler hat Zugang zu vielen Banken und kann Ihnen den günstigsten Zinssatz finden. Die Vermittlung ist für Sie kostenlos, da der Vermittler von der Bank bezahlt wird. Holen Sie aber auch eigenständig Vergleichsangebote ein."
 ---
 
 ## Die Grundlagen der Immobilienfinanzierung

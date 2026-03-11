@@ -5,6 +5,23 @@ author: "Orhan Keserli"
 category: "Finanzierung"
 tags: ["Eigenkapital", "Finanzierung", "Kaufnebenkosten"]
 excerpt: "Wie viel Eigenkapital braucht man für den Immobilienkauf? Wir zeigen die verschiedenen Szenarien und ihre Auswirkungen."
+keyFacts:
+  - "Mit 30 % statt 10 % Eigenkapital sparen Sie bei 400.000 Euro Kaufpreis über 15 Jahre rund 43.000 Euro an Zinsen."
+  - "Die Kaufnebenkosten in NRW betragen ca. 10-12 % des Kaufpreises und sollten mindestens aus Eigenkapital finanziert werden."
+  - "Neben Bargeld zählen auch Bausparverträge, Wertpapiere, Eigenleistungen und Verwandtendarlehen als Eigenkapital."
+  - "Banken bewerten Wertpapiere als Eigenkapital häufig nur mit einem Sicherheitsabschlag von 50-80 % des Kurswerts."
+  - "Kinder können von jedem Elternteil alle 10 Jahre bis zu 400.000 Euro steuerfrei geschenkt bekommen."
+faq:
+  - question: "Wie viel Eigenkapital sollte man mindestens beim Immobilienkauf mitbringen?"
+    answer: "Als absolute Untergrenze sollten Sie zumindest die Kaufnebenkosten aus eigenen Mitteln finanzieren können, da diese keinen materiellen Gegenwert schaffen. Empfohlen werden mindestens 20 % des Kaufpreises plus die vollständigen Kaufnebenkosten."
+  - question: "Ist ein Immobilienkauf ganz ohne Eigenkapital möglich?"
+    answer: "Eine Vollfinanzierung ist bei wenigen Banken möglich, aber sehr schwierig und teuer. Sie benötigen eine hervorragende Bonität, ein hohes sicheres Einkommen und müssen mit einem Zinsaufschlag von 0,5-1,0 Prozentpunkten rechnen."
+  - question: "Sollte ich mein gesamtes Erspartes als Eigenkapital einsetzen?"
+    answer: "Nein, behalten Sie immer eine Sicherheitsreserve von mindestens 3-6 Monatsgehältern zurück. Unvorhergesehene Ausgaben wie Reparaturen oder berufliche Veränderungen dürfen Ihre Finanzierung nicht gefährden."
+  - question: "Werden Eigenleistungen wirklich als Eigenkapital anerkannt?"
+    answer: "Ja, allerdings nur begrenzt. Banken akzeptieren Eigenleistungen in der Regel bis zu 15 % der Bausumme. Sie müssen nachweisen können, dass Sie die Arbeiten fachgerecht ausführen können. Malerarbeiten und Bodenverlegung werden häufiger anerkannt als Elektro- oder Sanitärinstallation."
+  - question: "Lohnt es sich, mit dem Kauf zu warten und mehr Eigenkapital anzusparen?"
+    answer: "Das hängt von der Entwicklung der Immobilienpreise, der Zinsentwicklung und Ihrer Mietsituation ab. In einem Markt mit steigenden Preisen und Zinsen kann ein früherer Kauf mit weniger Eigenkapital wirtschaftlich sinnvoller sein als jahrelanges Sparen."
 ---
 
 ## Eigenkapital – der Schlüssel zur günstigen Finanzierung

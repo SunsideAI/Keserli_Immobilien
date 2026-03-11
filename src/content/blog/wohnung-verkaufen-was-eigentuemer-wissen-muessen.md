@@ -5,6 +5,20 @@ author: "Orhan Keserli"
 category: "Immobilienverkauf"
 tags: ["Wohnung", "Eigentumswohnung", "Verkauf"]
 excerpt: "Der Verkauf einer Eigentumswohnung hat besondere Anforderungen. Dieser Leitfaden erklärt alle wichtigen Schritte."
+keyFacts:
+  - "Beim Wohnungsverkauf werden zusätzliche Unterlagen wie Teilungserklärung, WEG-Protokolle und Hausgeldabrechnung benötigt."
+  - "Höhere Etagen, Süd-/Westausrichtung und ein Tiefgaragenstellplatz steigern den Wohnungswert erheblich."
+  - "Ein niedriges Hausgeld macht die Wohnung für potenzielle Käufer attraktiver."
+  - "Eine hohe Instandhaltungsrücklage gibt Käufern Sicherheit und kann den Verkaufspreis positiv beeinflussen."
+faq:
+  - question: "Welche zusätzlichen Unterlagen brauche ich beim Wohnungsverkauf?"
+    answer: "Neben den üblichen Dokumenten benötigen Sie die Teilungserklärung, Protokolle der Eigentümerversammlungen der letzten 3 Jahre, den Wirtschaftsplan, die Hausgeldabrechnung, die Höhe der Instandhaltungsrücklage und die Beschlusssammlung der WEG."
+  - question: "Worauf achten Käufer bei Eigentumswohnungen besonders?"
+    answer: "Käufer schauen vor allem auf die Höhe des monatlichen Hausgeldes, den Zustand des Gemeinschaftseigentums, geplante Sanierungen und Sonderumlagen sowie die Zusammensetzung der Eigentümergemeinschaft und den Vermietungsanteil im Haus."
+  - question: "Welche Faktoren bestimmen den Wert einer Eigentumswohnung?"
+    answer: "Neben Lage und Zustand spielen die Etage, Ausrichtung (Süd/West bevorzugt), Vorhandensein von Balkon oder Terrasse, ein Stellplatz oder Tiefgaragenplatz und ein Aufzug eine wichtige Rolle bei der Preisbildung."
+  - question: "Wie kann ich den Verkaufspreis meiner Wohnung optimieren?"
+    answer: "Optimieren Sie das Hausgeld, betonen Sie eine hohe Instandhaltungsrücklage, sorgen Sie für gepflegte Gemeinschaftsflächen und modernisieren Sie Küche und Bad. Diese Maßnahmen haben den größten Einfluss auf den erzielbaren Preis."
 ---
 
 ## Besonderheiten beim Wohnungsverkauf

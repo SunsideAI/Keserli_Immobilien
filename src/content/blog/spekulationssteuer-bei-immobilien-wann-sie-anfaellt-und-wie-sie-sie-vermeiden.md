@@ -5,6 +5,23 @@ author: "Orhan Keserli"
 category: "Recht & Steuern"
 tags: ["Spekulationssteuer", "Steuern", "Haltedauer"]
 excerpt: "Die Spekulationssteuer kann beim Immobilienverkauf teuer werden. Erfahren Sie, wann sie anfällt und wie Sie legal sparen."
+keyFacts:
+  - "Die Spekulationssteuer fällt an, wenn eine nicht selbst bewohnte Immobilie innerhalb von 10 Jahren nach dem Kauf mit Gewinn verkauft wird."
+  - "Der Gewinn wird mit dem persönlichen Einkommensteuersatz versteuert – bei 42 % können das bei 83.000 € Gewinn rund 34.860 € Steuer sein."
+  - "Bei Eigennutzung im Verkaufsjahr und den zwei vorangegangenen Jahren ist der Verkauf auch vor Ablauf der 10 Jahre steuerfrei."
+  - "Bei geerbten Immobilien wird die Haltedauer des Erblassers angerechnet."
+  - "Verluste aus anderen privaten Veräußerungsgeschäften können mit dem Gewinn verrechnet werden."
+faq:
+  - question: "Wann fällt die Spekulationssteuer bei Immobilien an?"
+    answer: "Die Steuer fällt an, wenn zwischen Kauf und Verkauf weniger als 10 Jahre liegen, die Immobilie nicht selbst bewohnt wurde und ein Gewinn erzielt wird. Maßgeblich für die Frist ist das Datum der notariellen Beurkundung."
+  - question: "Wie kann ich die Spekulationssteuer legal vermeiden?"
+    answer: "Sie können die 10-Jahres-Frist abwarten oder die Immobilie im Verkaufsjahr und den zwei vorangegangenen Jahren selbst bewohnen. Auch Verluste aus anderen privaten Veräußerungsgeschäften können gegengerechnet werden."
+  - question: "Wie wird die Spekulationssteuer berechnet?"
+    answer: "Der Gewinn ergibt sich aus Verkaufspreis minus Anschaffungskosten und Verkaufskosten, zuzüglich bereits vorgenommener Abschreibungen. Dieser Gewinn wird dann mit Ihrem persönlichen Einkommensteuersatz versteuert."
+  - question: "Fällt bei einer geerbten Immobilie Spekulationssteuer an?"
+    answer: "Bei geerbten Immobilien wird die Haltedauer des Erblassers angerechnet. Hatte der Verstorbene die Immobilie länger als 10 Jahre, ist der Verkauf für den Erben steuerfrei – unabhängig davon, wann geerbt wurde."
+  - question: "Was zählt als Eigennutzung bei der Spekulationssteuer?"
+    answer: "Für die Steuerbefreiung müssen Sie die Immobilie im Jahr des Verkaufs und den beiden vorangegangenen Kalenderjahren selbst bewohnt haben. Alternativ reicht es, wenn die Immobilie seit dem Kauf ausschließlich selbst genutzt wurde."
 ---
 
 ## Was ist die Spekulationssteuer?

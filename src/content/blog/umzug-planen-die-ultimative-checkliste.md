@@ -5,6 +5,20 @@ author: "Orhan Keserli"
 category: "Tipps & Ratgeber"
 tags: ["Umzug", "Checkliste", "Organisation"]
 excerpt: "Ein Umzug will gut geplant sein. Mit unserer Checkliste vergessen Sie nichts und sparen Zeit und Nerven."
+keyFacts:
+  - "Mit der Umzugsplanung sollte idealerweise 3 Monate vor dem Umzugstermin begonnen werden."
+  - "Die Ummeldung beim Einwohnermeldeamt muss innerhalb von 14 Tagen nach dem Umzug erfolgen."
+  - "Ein Nachsendeauftrag bei der Post sollte 6-8 Wochen vor dem Umzug eingerichtet werden."
+  - "Parkverbotszonen vor alter und neuer Adresse müssen rechtzeitig beantragt werden."
+faq:
+  - question: "Wann sollte ich mit der Umzugsplanung beginnen?"
+    answer: "Beginnen Sie idealerweise 3 Monate vor dem Umzug mit der Planung. In dieser Phase sollten Sie den Termin festlegen, ein Umzugsunternehmen beauftragen, die alte Wohnung kündigen und mit dem Entrümpeln beginnen."
+  - question: "Welche Adressänderungen muss ich bei einem Umzug vornehmen?"
+    answer: "Sie müssen sich beim Einwohnermeldeamt ummelden, das Auto bei der Zulassungsstelle umschreiben und Arbeitgeber, Bank, Versicherungen, Abonnements und Versorgungsunternehmen über die neue Adresse informieren. Ein Nachsendeauftrag bei der Post sichert die Übergangszeit ab."
+  - question: "Was sollte ich am Umzugstag beachten?"
+    answer: "Erstellen Sie ein Übergabeprotokoll für die alte Wohnung, dokumentieren Sie die Zählerstände, prüfen Sie alle Räume auf vergessene Gegenstände und übergeben Sie die Schlüssel gegen Quittung. Weisen Sie Helfer ein, wo Möbel und Kartons hinkommen sollen."
+  - question: "Wie lange habe ich Zeit für die Ummeldung nach dem Umzug?"
+    answer: "Die Ummeldung beim Einwohnermeldeamt muss innerhalb von 14 Tagen nach dem Einzug in die neue Wohnung erfolgen. Bei Versäumnis kann ein Bußgeld drohen."
 ---
 
 ## Stressfrei umziehen mit der richtigen Planung

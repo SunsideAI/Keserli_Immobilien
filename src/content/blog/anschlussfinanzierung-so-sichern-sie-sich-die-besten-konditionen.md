@@ -5,6 +5,23 @@ author: "Orhan Keserli"
 category: "Finanzierung"
 tags: ["Anschlussfinanzierung", "Zinsen", "Forward-Darlehen"]
 excerpt: "Wenn die Zinsbindung ausläuft, brauchen Sie eine Anschlussfinanzierung. So finden Sie die besten Konditionen."
+keyFacts:
+  - "Schon 0,3 Prozentpunkte Zinsunterschied können bei 210.000 Euro Restschuld über 10 Jahre rund 5.000 Euro ausmachen."
+  - "Es gibt drei Optionen für die Anschlussfinanzierung: Prolongation, Umschuldung und Forward-Darlehen."
+  - "Ein Forward-Darlehen sichert heutige Zinsen bis zu 66 Monate im Voraus, erfordert aber einen Zinsaufschlag."
+  - "Nach § 489 BGB kann jedes Darlehen nach 10 Jahren mit 6 Monaten Frist kostenfrei gekündigt werden."
+  - "Spätestens 6 Monate vor Ablauf der Zinsbindung sollte die Entscheidung zur Anschlussfinanzierung feststehen."
+faq:
+  - question: "Wann sollte ich mich um die Anschlussfinanzierung kümmern?"
+    answer: "Idealerweise beginnen Sie 2-3 Jahre vor Ablauf der Zinsbindung mit der Beobachtung des Zinsmarktes. Spätestens 1 Jahr vorher sollten Sie aktiv Angebote vergleichen und 6 Monate vorher die Entscheidung treffen."
+  - question: "Was ist der Unterschied zwischen Prolongation und Umschuldung?"
+    answer: "Bei der Prolongation verlängern Sie den Kredit bei Ihrer bisherigen Bank zu neuen Konditionen, was wenig Aufwand erfordert. Bei der Umschuldung wechseln Sie zu einer anderen Bank, was zwar Grundbuchkosten verursacht, aber oft deutlich bessere Zinsen bringt."
+  - question: "Für wen lohnt sich ein Forward-Darlehen?"
+    answer: "Ein Forward-Darlehen lohnt sich vor allem, wenn Sie mit steigenden Zinsen rechnen und Ihre Zinsbindung in 1-3 Jahren ausläuft. Bei längeren Vorlaufzeiten wird der Zinsaufschlag zunehmend teurer und die Ersparnis geringer."
+  - question: "Was passiert, wenn ich mich nicht rechtzeitig um die Anschlussfinanzierung kümmere?"
+    answer: "Ihre Bank stellt die Restschuld nicht sofort fällig, sondern führt den Kredit zu einem variablen Zinssatz weiter. Dieser variable Zins kann deutlich höher sein als ein Festzins und ändert sich alle 3-6 Monate."
+  - question: "Kann ich bei der Anschlussfinanzierung die Tilgungsrate ändern?"
+    answer: "Ja, die Anschlussfinanzierung ist eine gute Gelegenheit, die Tilgungsrate anzupassen. Wenn Ihr Einkommen gestiegen ist, können Sie die Tilgung erhöhen und so die Restlaufzeit erheblich verkürzen."
 ---
 
 ## Was ist eine Anschlussfinanzierung?

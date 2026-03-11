@@ -5,6 +5,25 @@ author: "Orhan Keserli"
 category: "Immobilienverkauf"
 tags: ["Scheidung", "Trennung", "Immobilienverkauf"]
 excerpt: "Bei einer Scheidung muss oft die gemeinsame Immobilie verkauft werden. So finden Sie eine faire Lösung."
+keyFacts:
+  - "Bei einer Scheidung gibt es vier Hauptoptionen: Verkauf und Erlösteilung, Auskauf eines Partners, gemeinsame Vermietung oder Teilungsversteigerung."
+  - "Der Erlös einer Teilungsversteigerung liegt 20–40 % unter dem Marktwert und sollte nur als letztes Mittel dienen."
+  - "Übertragungen von Immobilien zwischen Ehepartnern im Rahmen einer Scheidung sind von der Grunderwerbsteuer befreit."
+  - "Beim Zugewinnausgleich wird nicht der aktuelle Marktwert, sondern die Wertsteigerung während der Ehe berücksichtigt."
+  - "Lebt ein Partner nach der Trennung allein in der Immobilie, kann der andere eine Nutzungsentschädigung verlangen."
+faq:
+  - question: "Muss ich die Immobilie bei einer Scheidung verkaufen?"
+    answer: "Nein, es gibt keine gesetzliche Pflicht zum Verkauf. Sie können die Immobilie auch behalten, einem Partner übertragen oder gemeinsam vermieten. Nur wenn keine Einigung erzielt wird, kann eine Teilungsversteigerung beantragt werden."
+  - question: "Was ist eine Nutzungsentschädigung bei Trennung?"
+    answer: "Lebt ein Partner nach der Trennung allein in der gemeinsamen Immobilie, kann der andere eine Nutzungsentschädigung verlangen. Diese richtet sich nach der ortsüblichen Miete, reduziert um den eigenen Miteigentumsanteil."
+  - question: "Fällt Grunderwerbsteuer an, wenn ein Ehepartner die Immobilie übernimmt?"
+    answer: "Nein, Übertragungen zwischen Ehepartnern im Rahmen einer Scheidung sind gemäß § 3 Nr. 5 GrEStG von der Grunderwerbsteuer befreit. Das gilt auch für die Übertragung des Miteigentumsanteils."
+  - question: "Kann ein Partner den Verkauf der gemeinsamen Immobilie blockieren?"
+    answer: "Ja, solange beide Partner im Grundbuch stehen, kann keiner allein verkaufen. Blockiert ein Partner dauerhaft, bleibt als letztes Mittel die Teilungsversteigerung, deren Erlös aber meist deutlich unter dem Marktwert liegt."
+  - question: "Wie wird der Erlös bei einem Verkauf der Scheidungsimmobilie aufgeteilt?"
+    answer: "Vom Verkaufspreis werden Restschuld, Vorfälligkeitsentschädigung, Maklerprovision und Notarkosten abgezogen. Der Nettoerlös wird dann gemäß den Eigentumsanteilen (meist 50/50) zwischen den Partnern aufgeteilt."
+  - question: "Was ist die beste Lösung für die Immobilie bei einer Scheidung?"
+    answer: "Der einvernehmliche Verkauf ist oft die fairste Lösung, da er klare finanzielle Verhältnisse schafft. Wenn Kinder betroffen sind, kann die Übernahme durch einen Partner für Stabilität sorgen. Eine neutrale Wertermittlung ist in jedem Fall der erste wichtige Schritt."
 ---
 
 ## Immobilie bei Scheidung -- die häufigsten Fragen

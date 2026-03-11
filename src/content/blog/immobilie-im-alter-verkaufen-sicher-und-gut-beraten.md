@@ -5,6 +5,22 @@ author: "Orhan Keserli"
 category: "Immobilienverkauf"
 tags: ["Senioren", "Altersgerecht", "Verkauf"]
 excerpt: "Im Alter kann der Verkauf der Immobilie eine kluge Entscheidung sein. Wir begleiten Sie Schritt für Schritt."
+keyFacts:
+  - "Alternativen zum sofortigen Verkauf sind Leibrente, Teilverkauf und Rückmietkauf."
+  - "Nach mehr als 10 Jahren Eigennutzung ist der Verkaufsgewinn der Immobilie steuerfrei."
+  - "Bei der Leibrente erhalten Eigentümer ein lebenslanges Wohnrecht und monatliche Zahlungen."
+  - "Eine Schenkung zu Lebzeiten kann steuerlich günstiger sein als ein Verkauf – fachliche Beratung ist empfehlenswert."
+faq:
+  - question: "Wann ist der Verkauf der Immobilie im Alter sinnvoll?"
+    answer: "Ein Verkauf ist sinnvoll, wenn das Haus zu groß geworden ist, die Instandhaltung zur Belastung wird, eine barrierefreie Wohnung praktischer wäre oder das Kapital für den Lebensabend genutzt werden soll."
+  - question: "Was ist eine Leibrente und wie funktioniert sie?"
+    answer: "Bei der Leibrente verkaufen Sie Ihre Immobilie, erhalten aber ein lebenslanges Wohnrecht und monatliche Zahlungen. So bleiben Sie in Ihrem Zuhause und haben gleichzeitig zusätzliches Einkommen."
+  - question: "Muss ich beim Verkauf meiner langjährigen Immobilie Steuern zahlen?"
+    answer: "Wenn Sie Ihre Immobilie länger als 10 Jahre besitzen und selbst darin gewohnt haben, ist der Verkaufsgewinn steuerfrei. Bei kürzerer Haltedauer kann Spekulationssteuer anfallen."
+  - question: "Sollte ich die Immobilie verkaufen oder an meine Kinder verschenken?"
+    answer: "Das hängt von Ihrer individuellen Situation ab. Eine Schenkung kann steuerlich günstiger sein, da Kinder einen Freibetrag von 400.000 Euro pro Elternteil haben. Besprechen Sie die Optionen unbedingt mit einem Steuerberater."
+  - question: "Wie finde ich die richtige Unterstützung beim Immobilienverkauf im Alter?"
+    answer: "Achten Sie auf einen Makler, der persönlich und geduldig berät, transparente Kommunikation bietet und Sie auch bei der Wohnungssuche und Organisation des Umzugs unterstützt. Zeitdruck sollte vermieden werden."
 ---
 
 ## Wann ist der Verkauf im Alter sinnvoll?

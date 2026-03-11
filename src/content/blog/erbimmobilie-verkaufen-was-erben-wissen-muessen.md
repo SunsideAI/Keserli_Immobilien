@@ -5,6 +5,25 @@ author: "Orhan Keserli"
 category: "Immobilienverkauf"
 tags: ["Erbschaft", "Erbimmobilie", "Verkauf"]
 excerpt: "Nach einer Erbschaft stehen Erben vor wichtigen Entscheidungen. Dieser Ratgeber hilft bei der Orientierung."
+keyFacts:
+  - "Nach dem Erbfall haben Sie laut § 1944 BGB genau 6 Wochen Zeit, das Erbe anzunehmen oder auszuschlagen."
+  - "Die Grundbuchberichtigung ist innerhalb von 2 Jahren nach dem Erbfall kostenfrei."
+  - "Bei geerbten Immobilien wird die Haltedauer des Erblassers für die Spekulationssteuer angerechnet."
+  - "Bei einer Teilungsversteigerung liegt der Erlös oft 20–30 % unter dem Marktwert."
+  - "Der gesamte Verkaufsprozess vom Erbfall bis zum Abschluss dauert in der Regel 3–9 Monate."
+faq:
+  - question: "Wie lange habe ich Zeit, ein Erbe anzunehmen oder auszuschlagen?"
+    answer: "Sie haben laut § 1944 BGB genau 6 Wochen ab Kenntnis des Erbfalls Zeit. Bei Wohnsitz im Ausland verlängert sich die Frist auf 6 Monate. Das Erbe kann nur komplett angenommen oder ausgeschlagen werden."
+  - question: "Fällt beim Verkauf einer Erbimmobilie Spekulationssteuer an?"
+    answer: "Die Haltedauer des Erblassers wird angerechnet. Hatte der Verstorbene die Immobilie länger als 10 Jahre, ist der Verkauf spekulationssteuerfrei. Bei kürzerer Haltedauer müssen Sie die verbleibende Frist abwarten oder die Steuer auf den Gewinn zahlen."
+  - question: "Was passiert, wenn sich eine Erbengemeinschaft nicht einigen kann?"
+    answer: "Jeder Miterbe kann eine Teilungsversteigerung beim Amtsgericht beantragen. Da der Erlös meist 20–30 % unter dem Marktwert liegt, sollte dies das letzte Mittel sein. Ein neutraler Makler kann als Vermittler helfen, eine bessere Lösung zu finden."
+  - question: "Welche Unterlagen brauche ich für den Verkauf einer Erbimmobilie?"
+    answer: "Sie benötigen einen Erbschein oder ein notarielles Testament mit Eröffnungsprotokoll, Grundbuchauszug, Energieausweis, Grundrisse, Flurkarte und Wohnflächenberechnung. Bei Eigentumswohnungen kommen Teilungserklärung und Versammlungsprotokolle hinzu."
+  - question: "Wie hoch ist die Erbschaftsteuer auf eine geerbte Immobilie?"
+    answer: "Die Höhe hängt vom Verwandtschaftsgrad und Immobilienwert ab. Kinder haben einen Freibetrag von 400.000 €, Ehepartner von 500.000 €. Wird das Familienheim vom Ehepartner oder Kind mindestens 10 Jahre selbst bewohnt, ist die Übertragung steuerfrei."
+  - question: "Muss ich eine Erbimmobilie vor dem Verkauf sanieren?"
+    answer: "Eine Sanierung ist keine Pflicht. Kosmetische Maßnahmen wie frische Wandfarbe und Grundreinigung lohnen sich fast immer. Eine Komplettsanierung rechnet sich hingegen selten – oft ist ein Verkauf im aktuellen Zustand die bessere Strategie."
 ---
 
 ## Immobilie geerbt – und jetzt?

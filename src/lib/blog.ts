@@ -52,6 +52,8 @@ export function getPostBySlug(slug: string): BlogPost | null {
     tags: data.tags || [],
     coverImage: data.coverImage,
     readingTime: calculateReadingTime(content),
+    keyFacts: data.keyFacts || undefined,
+    faq: data.faq || undefined,
   };
 }
 

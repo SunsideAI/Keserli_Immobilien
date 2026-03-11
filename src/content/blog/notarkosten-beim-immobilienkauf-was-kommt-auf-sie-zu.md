@@ -5,6 +5,20 @@ author: "Orhan Keserli"
 category: "Recht & Steuern"
 tags: ["Notarkosten", "Kaufvertrag", "Grundbuch"]
 excerpt: "Der Notar ist beim Immobilienkauf unverzichtbar. Erfahren Sie, welche Kosten auf Sie zukommen und was der Notar macht."
+keyFacts:
+  - "Die notarielle Beurkundung ist bei jedem Immobilienkauf in Deutschland gesetzlich vorgeschrieben."
+  - "Die Notarkosten betragen in der Regel ca. 1,5-2 % des Kaufpreises und sind gesetzlich im GNotKG geregelt."
+  - "Üblicherweise trägt der Käufer die Notarkosten, dies ist jedoch Verhandlungssache."
+  - "Bei einem Kaufpreis von 350.000 Euro liegen die Gesamtkosten für Notar und Grundbuch bei ca. 4.100 Euro."
+faq:
+  - question: "Warum brauche ich einen Notar beim Immobilienkauf?"
+    answer: "In Deutschland ist die notarielle Beurkundung bei jedem Immobilienkauf gesetzlich vorgeschrieben. Der Notar ist ein neutraler Rechtsanwalt, der die Interessen beider Vertragsparteien schützt, den Kaufvertrag erstellt und die Eigentumsumschreibung im Grundbuch veranlasst."
+  - question: "Kann ich die Notarkosten verhandeln?"
+    answer: "Nein, die Notarkosten sind gesetzlich im Gerichts- und Notarkostengesetz (GNotKG) geregelt und nicht verhandelbar. Sie betragen immer ca. 1,5-2 % des Kaufpreises, unabhängig davon, welchen Notar Sie wählen."
+  - question: "Wer bezahlt die Notarkosten – Käufer oder Verkäufer?"
+    answer: "Üblicherweise trägt der Käufer die Notarkosten. Dies ist allerdings Verhandlungssache und kann im Kaufvertrag auch anders geregelt werden. In der Praxis übernimmt fast immer der Käufer die Kosten."
+  - question: "Wie kann ich bei den Grundbuchkosten sparen?"
+    answer: "Grundschulden sind günstiger einzutragen als Hypotheken und flexibler. Wenn bereits eine Grundschuld besteht, kann diese an die neue Bank abgetreten werden statt neu eingetragen zu werden. Zudem sollten Sie Verzögerungen vermeiden, die zu zusätzlichen Kosten führen können."
 ---
 
 ## Warum brauche ich einen Notar?

@@ -1,3 +1,8 @@
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -9,6 +14,8 @@ export interface BlogPost {
   tags: string[];
   coverImage?: string;
   readingTime: number;
+  keyFacts?: string[];
+  faq?: FAQItem[];
 }
 
 export type BlogCategory =

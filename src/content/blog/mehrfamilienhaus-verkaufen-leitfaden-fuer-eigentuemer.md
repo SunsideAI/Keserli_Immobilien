@@ -5,6 +5,20 @@ author: "Orhan Keserli"
 category: "Immobilienverkauf"
 tags: ["Mehrfamilienhaus", "Zinshaus", "Kapitalanlage"]
 excerpt: "Der Verkauf eines Mehrfamilienhauses erfordert besondere Expertise. Erfahren Sie, worauf es ankommt."
+keyFacts:
+  - "Bei Mehrfamilienhäusern wird der Wert in der Regel über das Ertragswertverfahren auf Basis der Mieteinnahmen berechnet."
+  - "Investoren achten besonders auf Bruttomietrendite, Nettomietrendite, Mietsteigerungspotenzial und Leerstandsquote."
+  - "Die Spekulationssteuer entfällt bei Mehrfamilienhäusern nach 10 Jahren Haltedauer."
+  - "Bei mehr als 3 Objektverkäufen in 5 Jahren droht die Einstufung als gewerblicher Grundstückshandel."
+faq:
+  - question: "Wie wird der Wert eines Mehrfamilienhauses ermittelt?"
+    answer: "Beim Mehrfamilienhaus kommt das Ertragswertverfahren zum Einsatz, das den Wert auf Basis der erzielbaren Mieteinnahmen berechnet. Dabei werden Jahresnettokaltmiete, Bewirtschaftungskosten, Liegenschaftszins und Restnutzungsdauer berücksichtigt."
+  - question: "Welche Unterlagen benötige ich für den Verkauf eines Mehrfamilienhauses?"
+    answer: "Sie benötigen eine Mieterliste, Kopien aller Mietverträge, Betriebskostenabrechnungen der letzten 3 Jahre, Aufstellung der Instandhaltungsmaßnahmen, Grundrisse aller Wohneinheiten, den Energieausweis und einen aktuellen Grundbuchauszug."
+  - question: "Welche steuerlichen Aspekte muss ich beim Verkauf beachten?"
+    answer: "Nach 10 Jahren Haltedauer entfällt die Spekulationssteuer. Vorsicht bei mehr als 3 Objektverkäufen in 5 Jahren – dann droht die Einstufung als gewerblicher Grundstückshandel. Bereits vorgenommene Abschreibungen (AfA) können den steuerlichen Gewinn erhöhen."
+  - question: "Worauf achten Investoren beim Kauf eines Mehrfamilienhauses?"
+    answer: "Erfahrene Investoren analysieren genau die Brutto- und Nettomietrendite, das Mietsteigerungspotenzial, die Leerstandsquote und den Zustand des Gebäudes. Eine vollständige und transparente Dokumentation beschleunigt den Verkaufsprozess erheblich."
 ---
 
 ## Mehrfamilienhaus verkaufen – eine besondere Herausforderung

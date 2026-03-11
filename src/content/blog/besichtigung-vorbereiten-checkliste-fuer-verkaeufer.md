@@ -5,6 +5,23 @@ author: "Orhan Keserli"
 category: "Tipps & Ratgeber"
 tags: ["Besichtigung", "Checkliste", "Verkaufsvorbereitung"]
 excerpt: "Eine gut vorbereitete Besichtigung kann den Verkaufspreis entscheidend beeinflussen. Unsere Checkliste hilft."
+keyFacts:
+  - "Die meisten Interessenten bilden sich in den ersten 90 Sekunden einer Besichtigung ein Urteil über die Immobilie."
+  - "Gut vorbereitete Immobilien verkaufen sich im Schnitt 30-40 % schneller als unvorbereitete."
+  - "Eine schlecht vorbereitete Besichtigung kann zu Preisabschlägen von 5-15 % führen."
+  - "Der Energieausweis muss seit 2014 spätestens bei der Besichtigung unaufgefordert vorgelegt werden."
+  - "Einzelbesichtigungen führen erfahrungsgemäß zu höheren Abschlussquoten als Open-House-Veranstaltungen."
+faq:
+  - question: "Wie lange vorher sollte ich mit der Vorbereitung der Besichtigung beginnen?"
+    answer: "Beginnen Sie 2-4 Wochen vorher mit Grundreinigung, Reparaturen und der Vorbereitung der Unterlagen. Eine Woche vorher sollten Sie entrümpeln und am Tag selbst die letzten Feinheiten erledigen."
+  - question: "Sollte ich als Verkäufer bei der Besichtigung anwesend sein?"
+    answer: "Wenn Sie einen Makler haben, ist es oft besser, nicht anwesend zu sein. Käufer sprechen dann offener und fühlen sich weniger unter Druck. Bei Privatverkauf sollten Sie sich dezent im Hintergrund halten."
+  - question: "Wie schaffe ich die richtige Atmosphäre bei der Besichtigung?"
+    answer: "Schalten Sie alle Lichter ein, öffnen Sie Vorhänge für maximales Tageslicht, stellen Sie frische Blumen auf und sorgen Sie für eine angenehme Temperatur von 20-21 °C. Ein dezenter natürlicher Duft wie frischer Kaffee rundet den Eindruck ab."
+  - question: "Welche Unterlagen muss ich bei der Besichtigung bereithalten?"
+    answer: "Sie benötigen mindestens den Energieausweis (gesetzlich vorgeschrieben), Grundrisse, Grundbuchauszug, Nebenkostenübersicht und eine Aufstellung durchgeführter Modernisierungen. Bei Eigentumswohnungen zusätzlich die Teilungserklärung und Protokolle der Eigentümerversammlungen."
+  - question: "Wie viele Besichtigungen sollte ich pro Tag durchführen?"
+    answer: "Maximal 3-4 Einzelbesichtigungen pro Tag mit mindestens 30 Minuten Pause dazwischen sind empfehlenswert. So bleibt genug Zeit für Nachbereitung und die Immobilie in einwandfreiem Zustand."
 ---
 
 ## Die perfekte Besichtigung vorbereiten -- Ihr umfassender Leitfaden

@@ -5,6 +5,20 @@ author: "Orhan Keserli"
 category: "Immobilienverkauf"
 tags: ["Grundstück", "Bauland", "Verkauf"]
 excerpt: "Ein Grundstück zu verkaufen erfordert spezielle Kenntnisse. Erfahren Sie, wie Sie den besten Preis erzielen."
+keyFacts:
+  - "Der wichtigste Wertfaktor bei Grundstücken ist das geltende Baurecht, festgelegt im Bebauungsplan."
+  - "Ein voll erschlossenes Grundstück ist deutlich mehr wert als ein unerschlossenes."
+  - "Ein Bauvorbescheid kann den Grundstückswert steigern, da er die Baugenehmigungsfähigkeit nachweist."
+  - "Die Gemeinde hat in bestimmten Fällen ein Vorkaufsrecht, das vor dem Verkauf geklärt werden sollte."
+faq:
+  - question: "Was bestimmt den Wert eines Grundstücks?"
+    answer: "Der Grundstückswert wird maßgeblich durch das Baurecht (Bebauungsplan, GFZ, GRZ), den Erschließungsgrad, die Lage und den Bodenrichtwert bestimmt. Auch Altlasten, Baumschutzauflagen und die Grundstücksform spielen eine Rolle."
+  - question: "Was ist der Unterschied zwischen Bodenrichtwert und tatsächlichem Grundstückswert?"
+    answer: "Der Bodenrichtwert ist ein Durchschnittswert der Kommune und dient als erster Anhaltspunkt. Der tatsächliche Wert kann je nach Erschließung, Zuschnitt, Bebaubarkeit und weiteren individuellen Faktoren deutlich abweichen."
+  - question: "Sollte ich vor dem Verkauf ein Baugrundgutachten erstellen lassen?"
+    answer: "Ein Baugrundgutachten ist empfehlenswert, da es Auskunft über die Bodenbeschaffenheit und mögliche Altlasten gibt. Es schafft Transparenz für Käufer und kann spätere Streitigkeiten vermeiden."
+  - question: "Kann ich mein Grundstück teilen und einzeln verkaufen?"
+    answer: "Ja, eine Grundstücksteilung kann den Gesamterlös steigern. Ob die Teilung möglich ist, hängt vom Bebauungsplan, der Mindestgrundstücksgröße und den Erschließungsmöglichkeiten ab. Prüfen Sie dies vorab mit einem Experten."
 ---
 
 ## Grundstücksverkauf – die wichtigsten Grundlagen
