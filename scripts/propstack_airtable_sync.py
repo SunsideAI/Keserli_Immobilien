@@ -200,9 +200,10 @@ def map_propstack_to_airtable(unit: dict) -> dict:
     living_space = safe_float(unit.get("living_space")) or safe_float(unit.get("property_space_value"))
     rooms = safe_float(unit.get("number_of_rooms"))
 
-    # Bilder
+    # Bilder – Fallback auf Website-Placeholder wenn kein Bild vorhanden
     images = extract_images(unit)
-    bild_url = images[0] if images else ""
+    fallback_image = f"{WEBSITE_BASE_URL}/images/properties/placeholder.svg"
+    bild_url = images[0] if images else fallback_image
 
     # Status-Mapping
     status_name = get_status_name(unit)
