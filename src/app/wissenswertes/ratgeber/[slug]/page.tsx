@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Download, Phone, ChevronRight, CheckCircle2 } from "lucide-react";
+import { Phone, ChevronRight, CheckCircle2 } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
+import DownloadFormModal from "@/components/ratgeber/DownloadFormModal";
+import DownloadFormButton from "@/components/ratgeber/DownloadFormButton";
 import { ratgeberDownloads } from "@/data/ratgeber-downloads";
 import { siteConfig } from "@/data/site-config";
 
@@ -157,15 +159,10 @@ export default function RatgeberLandingPage({ params }: PageProps) {
                 {ratgeber.description}
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <a
-                  href={ratgeber.downloadUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-primary font-semibold rounded-btn hover:bg-gray-50 transition-colors shadow-btn text-base"
-                >
-                  <Download size={18} />
-                  Kostenlos herunterladen
-                </a>
+                <DownloadFormModal
+                  ratgeberTitle={ratgeber.title}
+                  downloadUrl={ratgeber.downloadUrl}
+                />
                 <a
                   href={`tel:${siteConfig.contact.phoneRaw}`}
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-white/30 text-white font-semibold rounded-btn hover:bg-white/10 transition-colors text-base"
@@ -256,15 +253,11 @@ export default function RatgeberLandingPage({ params }: PageProps) {
                 Von Experten erstellt
               </div>
             </div>
-            <a
-              href={ratgeber.downloadUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-btn hover:bg-primary-800 transition-colors shadow-btn text-base"
-            >
-              <Download size={18} />
-              Ratgeber herunterladen ({ratgeber.pages} Seiten)
-            </a>
+            <DownloadFormButton
+              ratgeberTitle={ratgeber.title}
+              downloadUrl={ratgeber.downloadUrl}
+              pages={ratgeber.pages}
+            />
           </div>
         </Container>
       </section>
@@ -338,7 +331,7 @@ export default function RatgeberLandingPage({ params }: PageProps) {
                 <Link
                   key={item.id}
                   href={`/wissenswertes/ratgeber/${item.slug}`}
-                  className="group bg-white rounded-card shadow-card overflow-hidden hover:shadow-card-hover transition-all hover:-translate-y-1 duration-300 flex flex-col"
+                  className="group bg-white rounded-card shadow-card overflow-hidden hover:shadow-card-hover transition-shadow duration-300 flex flex-col"
                 >
                   <div className="p-5 flex flex-col items-center text-center">
                     <div className="w-36 h-44 relative mb-4">

@@ -82,13 +82,13 @@ export default function RatgeberDownloadsPage() {
               <Link
                 key={item.id}
                 href={`/wissenswertes/ratgeber/${item.slug}`}
-                className="group bg-white rounded-card shadow-card overflow-hidden hover:shadow-card-hover transition-all hover:-translate-y-1 duration-300 flex flex-col"
+                className="group bg-white rounded-card shadow-card overflow-hidden hover:shadow-card-hover transition-shadow duration-300 flex flex-col"
               >
                 <div className="p-6 flex flex-col items-center text-center flex-1">
-                  <h3 className="font-bold text-lg text-primary mb-4 group-hover:text-primary-800 transition-colors min-h-[3.5rem] flex items-center">
+                  <h3 className="font-bold text-lg text-primary mb-3 group-hover:text-primary-800 transition-colors min-h-[3.5rem] flex items-center">
                     {item.title}
                   </h3>
-                  <div className="w-44 h-56 relative mb-5">
+                  <div className="w-44 h-56 relative mb-4">
                     <Image
                       src={item.coverImage}
                       alt={`Ratgeber: ${item.title}`}
@@ -96,6 +96,9 @@ export default function RatgeberDownloadsPage() {
                       className="object-cover rounded-lg shadow-md"
                     />
                   </div>
+                  <p className="text-sm text-slate-body line-clamp-3 mb-4 flex-1">
+                    {item.description}
+                  </p>
                   <span className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 bg-primary text-white text-sm font-semibold rounded-btn group-hover:bg-primary-700 transition-colors shadow-btn mt-auto">
                     Mehr erfahren
                   </span>
