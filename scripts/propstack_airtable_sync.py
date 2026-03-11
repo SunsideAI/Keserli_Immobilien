@@ -42,6 +42,9 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 # Nur Immobilien mit diesen Status synchronisieren
 PUBLISHED_STATUSES = {"in vermarktung", "reserviert", "verkauft"}
 
+# Base-URL der eigenen Website (für Airtable "Webseite"-Feld)
+WEBSITE_BASE_URL = os.getenv("WEBSITE_BASE_URL", "https://homefin-website.netlify.app")
+
 # ===========================================================================
 # PROPSTACK API
 # ===========================================================================
@@ -269,7 +272,7 @@ def map_propstack_to_airtable(unit: dict) -> dict:
 
     record = {
         "Titel": title,
-        "Webseite": safe_str(unit.get("public_expose_url")),
+        "Webseite": f"{WEBSITE_BASE_URL}/angebote/{unit.get('id', '')}/",
         "Objektnummer": str(unit.get("id", "")),
         "Objektart": map_objektart(unit),
         "Kategorie": map_kategorie(unit),
