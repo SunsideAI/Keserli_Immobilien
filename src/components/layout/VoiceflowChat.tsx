@@ -1,121 +1,131 @@
-"use client";
+'use client'
 
-import { useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
+import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 declare global {
   interface Window {
     voiceflow?: {
-      chat: {
-        load: (config: Record<string, unknown>) => Promise<void>;
-        open: () => void;
+      chat?: {
+        load: (config: unknown) => Promise<void>
+        open: () => void
         proactive: {
-          clear: () => void;
-          push: (msg: Record<string, unknown>) => void;
-        };
-      };
-    };
+          clear: () => void
+          push: (message: { type: string; payload: { message: string } }) => void
+        }
+        destroy: () => void
+      }
+    }
   }
 }
 
-function initChat(pathname: string) {
-  window.voiceflow?.chat
-    .load({
-      verify: { projectID: "69b1401debe70d737b8a750c" },
-      url: "https://general-runtime.voiceflow.com",
-      versionID: "production",
-      voice: {
-        url: "https://runtime-api.voiceflow.com",
-      },
-    })
-    .then(() => {
-      const isPropertyPage = pathname.startsWith("/angebote/");
-
-      // Proaktive Nachricht je nach Seitenart
-      setTimeout(() => {
-        window.voiceflow?.chat.proactive.clear();
-        if (isPropertyPage) {
-          window.voiceflow?.chat.proactive.push({
-            type: "text",
-            payload: {
-              message:
-                "Diese Immobilie könnte Ihr neues Zuhause sein! Ich beantworte alle Fragen und sende Ihnen alle Details – starten Sie jetzt! 🏡😊",
-            },
-          });
-        } else {
-          window.voiceflow?.chat.proactive.push({
-            type: "text",
-            payload: {
-              message:
-                "Ich bin Ihre intelligente Assistentin Sophia! Immobilien kaufen, verkaufen oder bewerten? Ich helfe Ihnen sofort – starten Sie jetzt! 🏡😊",
-            },
-          });
-        }
-      }, 1000);
-
-      // Chat-Öffnungszähler aus localStorage
-      const openCount = parseInt(
-        localStorage.getItem("chatOpenCount") || "0",
-        10
-      );
-
-      if (openCount < 1) {
-        setTimeout(() => {
-          window.voiceflow?.chat.open();
-          localStorage.setItem("chatOpenCount", String(openCount + 1));
-        }, 6000);
-      } else if (openCount < 2) {
-        setTimeout(() => {
-          window.voiceflow?.chat.open();
-          localStorage.setItem("chatOpenCount", String(openCount + 1));
-        }, 12000);
-      }
-
-      // chatOpenCount nach 5 Minuten zurücksetzen
-      setInterval(() => {
-        localStorage.removeItem("chatOpenCount");
-      }, 300000);
-    });
-}
-
 export default function VoiceflowChat() {
-  const pathname = usePathname();
-  const scriptLoaded = useRef(false);
+  const pathname = usePathname()
 
-  // Load the script once
   useEffect(() => {
-    if (scriptLoaded.current) return;
-    if (document.querySelector('script[src*="voiceflow.com/widget-next/bundle.mjs"]')) {
-      scriptLoaded.current = true;
-      return;
+    // Remove existing widget and script completely
+    const existingWidget = document.getElementById('voiceflow-chat')
+    if (existingWidget) {
+      existingWidget.remove()
     }
 
-    const script = document.createElement("script");
-    script.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
-    script.type = "text/javascript";
-    script.onload = () => {
-      scriptLoaded.current = true;
-    };
-    document.body.appendChild(script);
-  }, []);
-
-  // Re-initialize chat on every page change
-  useEffect(() => {
-    if (window.voiceflow) {
-      initChat(pathname);
-      return;
-    }
-
-    // Script may still be loading – wait for it
-    const interval = setInterval(() => {
-      if (window.voiceflow) {
-        clearInterval(interval);
-        initChat(pathname);
+    // Destroy existing instance if any
+    if (window.voiceflow?.chat?.destroy) {
+      try {
+        window.voiceflow.chat.destroy()
+      } catch {
+        // Ignore errors during destroy
       }
-    }, 200);
+    }
 
-    return () => clearInterval(interval);
-  }, [pathname]);
+    // Remove existing script
+    const existingScript = document.getElementById('voiceflow-widget')
+    if (existingScript) {
+      existingScript.remove()
+    }
 
-  return null;
+    // Clear voiceflow from window
+    delete window.voiceflow
+
+    // Load fresh script
+    const script = document.createElement('script')
+    script.id = 'voiceflow-widget'
+    script.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs'
+    script.type = 'text/javascript'
+
+    script.onload = () => {
+      if (!window.voiceflow?.chat) return
+
+      window.voiceflow.chat.load({
+        verify: { projectID: '69b1401debe70d737b8a750c' },
+        url: 'https://general-runtime.voiceflow.com',
+        versionID: 'production',
+        voice: {
+          url: 'https://runtime-api.voiceflow.com'
+        },
+        launch: {
+          event: {
+            type: 'launch',
+            payload: {
+              url: window.location.href
+            }
+          }
+        }
+      }).then(() => {
+        const isPropertyPage = window.location.pathname.startsWith('/angebote/') &&
+          window.location.pathname !== '/angebote/' &&
+          window.location.pathname !== '/angebote'
+
+        // Proaktive Nachricht je nach Seitenart
+        setTimeout(() => {
+          if (!window.voiceflow?.chat) return
+          window.voiceflow.chat.proactive.clear()
+          if (isPropertyPage) {
+            window.voiceflow.chat.proactive.push({
+              type: 'text',
+              payload: {
+                message: 'Diese Immobilie könnte Ihr neues Zuhause sein! Ich beantworte alle Fragen und sende Ihnen alle Details – starten Sie jetzt!'
+              }
+            })
+          } else {
+            window.voiceflow.chat.proactive.push({
+              type: 'text',
+              payload: {
+                message: 'Ich bin Ihre intelligente Assistentin Sophia! Immobilien kaufen, verkaufen oder bewerten? Ich helfe Ihnen sofort – starten Sie jetzt!'
+              }
+            })
+          }
+        }, 1000)
+
+        // Chat nur 1x pro Session automatisch öffnen (nach 5 Sekunden)
+        // Nicht auf Mobile (< 768px) automatisch öffnen
+        const hasOpenedThisSession = sessionStorage.getItem('chatOpenedOnce')
+        const isMobile = window.innerWidth < 768
+
+        if (!hasOpenedThisSession && !isMobile) {
+          setTimeout(() => {
+            if (window.voiceflow?.chat) {
+              window.voiceflow.chat.open()
+              sessionStorage.setItem('chatOpenedOnce', 'true')
+            }
+          }, 5000)
+        }
+      })
+    }
+
+    document.head.appendChild(script)
+
+    // Cleanup on unmount or path change
+    return () => {
+      if (window.voiceflow?.chat?.destroy) {
+        try {
+          window.voiceflow.chat.destroy()
+        } catch {
+          // Ignore errors
+        }
+      }
+    }
+  }, [pathname])
+
+  return null
 }
