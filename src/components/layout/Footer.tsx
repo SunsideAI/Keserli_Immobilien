@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="inline-block mb-4">
               <img
-                src="/Homefin_Logo.svg"
+                src="/Logo_Weiß.png"
                 alt="homefin"
                 className="h-9 w-auto"
               />

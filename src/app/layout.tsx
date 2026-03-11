@@ -6,6 +6,10 @@ import SchemaMarkup from "@/components/seo/SchemaMarkup";
 import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/sm2x.png",
+    apple: "/sm2x.png",
+  },
   metadataBase: new URL(siteConfig.url),
   title: {
     default:
