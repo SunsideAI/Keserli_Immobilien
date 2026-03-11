@@ -7,8 +7,8 @@ import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
   icons: {
-    icon: "/sm2x.png",
-    apple: "/sm2x.png",
+    icon: "/Homefin_Favicon.png",
+    apple: "/Homefin_Favicon.png",
   },
   metadataBase: new URL(siteConfig.url),
   title: {
