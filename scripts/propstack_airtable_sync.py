@@ -421,6 +421,8 @@ def generate_kurzbeschreibung(record: dict) -> str:
             temperature=0.0,
         )
         result = response.choices[0].message.content.strip()
+        # Zeilenumbrüche durch " | " ersetzen (Voiceflow kann keine \n darstellen)
+        result = " | ".join(line.strip() for line in result.splitlines() if line.strip())
         if obj_nr:
             _kurz_cache[obj_nr] = result
         return result
@@ -466,7 +468,25 @@ def airtable_list_all() -> Tuple[List[str], List[dict]]:
 
 
 def airtable_existing_fields() -> set:
-    """Ermittle vorhandene Feldnamen in der Tabelle"""
+    """Ermittle vorhandene Feldnamen über die Airtable Metadata API.
+
+    Fällt auf Record-basierte Erkennung zurück, wenn Metadata API
+    fehlschlägt (z.B. bei eingeschränkten Token-Berechtigungen).
+    """
+    # Methode 1: Metadata API (funktioniert auch bei leerer Tabelle)
+    try:
+        meta_url = f"https://api.airtable.com/v0/meta/bases/{AIRTABLE_BASE}/tables"
+        r = requests.get(meta_url, headers=_at_headers(), timeout=30)
+        if r.ok:
+            for table in r.json().get("tables", []):
+                if table.get("id") == AIRTABLE_TABLE_ID or table.get("name") == AIRTABLE_TABLE_ID:
+                    fields = {f["name"] for f in table.get("fields", [])}
+                    if fields:
+                        return fields
+    except Exception as e:
+        print(f"[WARN] Metadata API fehlgeschlagen: {e}")
+
+    # Methode 2: Fallback – Feldnamen aus vorhandenen Records ableiten
     _, all_fields = airtable_list_all()
     if not all_fields:
         return set()
@@ -479,8 +499,13 @@ def airtable_existing_fields() -> set:
 def airtable_batch_create(records: List[dict]):
     for i in range(0, len(records), 10):
         batch = records[i:i + 10]
-        payload = {"records": [{"fields": r} for r in batch]}
+        payload = {
+            "records": [{"fields": r} for r in batch],
+            "typecast": True,
+        }
         r = requests.post(_at_url(), headers=_at_headers(), json=payload, timeout=30)
+        if not r.ok:
+            print(f"[ERROR] Airtable CREATE {r.status_code}: {r.text}")
         r.raise_for_status()
         print(f"  → {min(i + 10, len(records))}/{len(records)} erstellt")
         time.sleep(0.2)
@@ -489,7 +514,10 @@ def airtable_batch_create(records: List[dict]):
 def airtable_batch_update(updates: List[dict]):
     for i in range(0, len(updates), 10):
         batch = updates[i:i + 10]
-        r = requests.patch(_at_url(), headers=_at_headers(), json={"records": batch}, timeout=30)
+        payload = {"records": batch, "typecast": True}
+        r = requests.patch(_at_url(), headers=_at_headers(), json=payload, timeout=30)
+        if not r.ok:
+            print(f"[ERROR] Airtable UPDATE {r.status_code}: {r.text}")
         r.raise_for_status()
         print(f"  → {min(i + 10, len(updates))}/{len(updates)} aktualisiert")
         time.sleep(0.2)
