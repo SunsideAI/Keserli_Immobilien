@@ -114,23 +114,22 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* ── Makler — right side, standing on stats bar ── */}
-      <div
-        className={`hidden lg:block absolute bottom-[60px] lg:bottom-[68px] right-[8%] xl:right-[11%] z-20 transition-all duration-1000 ease-out delay-[900ms] ${
-          visible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-10"
-        }`}
-      >
-        <img
-          src="/Keseli_Makler.png"
-          alt="Ihr Immobilienmakler"
-          className="h-[390px] xl:h-[430px] 2xl:h-[470px] w-auto object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
-        />
-      </div>
-
       {/* ═══════════ Hero content ═══════════ */}
       <Container className="relative z-10">
+        {/* ── Makler — right side, standing on stats bar ── */}
+        <div
+          className={`hidden lg:block absolute bottom-[60px] lg:bottom-[68px] right-0 xl:right-[3%] z-20 transition-all duration-1000 ease-out delay-[900ms] ${
+            visible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}
+        >
+          <img
+            src="/Keseli_Makler.png"
+            alt="Ihr Immobilienmakler"
+            className="h-[390px] xl:h-[430px] 2xl:h-[470px] w-auto object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
+          />
+        </div>
         <div className="relative min-h-[calc(100svh-5rem)] lg:min-h-[620px] xl:min-h-[680px]">
 
           {/* ── IDA Award — centered horizontally, pushed down (z-10) ── */}
