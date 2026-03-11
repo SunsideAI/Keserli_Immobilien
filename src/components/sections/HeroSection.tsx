@@ -259,7 +259,7 @@ export default function HeroSection() {
             {/* IDA Award — centered, no Makler on mobile */}
             <div className={`relative mt-4 ${anim(visible, "delay-[400ms]")}`}>
               <img
-                src="/IDA_Award.png"
+                src="/Ida_Award_Mobile.png"
                 alt="IDA Immobilien Dienstleister Award 2022"
                 className="w-44 sm:w-52 h-auto object-contain drop-shadow-lg mx-auto opacity-90"
               />
