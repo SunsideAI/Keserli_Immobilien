@@ -115,6 +115,11 @@ function mapMarketingLabel(marketingType?: string): string {
   return marketingType.toUpperCase() === "RENT" ? "Kaltmiete" : "Kaufpreis";
 }
 
+function mapKategorie(marketingType?: string): Property["kategorie"] {
+  if (!marketingType) return "Kaufen";
+  return marketingType.toUpperCase() === "RENT" ? "Mieten" : "Kaufen";
+}
+
 function slugify(text: string): string {
   return text
     .toLowerCase()
@@ -217,6 +222,7 @@ function mapPropstackToProperty(unit: AnyObject): Property {
     slug: slugify(`${title}-${unit.id}`),
     type: mapPropertyType(unit),
     subType: mapSubType(unit),
+    kategorie: mapKategorie(unit.marketing_type),
     status: mapStatus(status),
     price,
     priceLabel: price > 0 ? mapMarketingLabel(unit.marketing_type) : "Preis auf Anfrage",

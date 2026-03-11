@@ -174,9 +174,9 @@ def map_objektart(unit: dict) -> str:
 
 
 def map_kategorie(unit: dict) -> str:
-    """Kauf oder Miete"""
+    """Kaufen oder Mieten"""
     mt = safe_str(unit.get("marketing_type")).upper()
-    return "Miete" if mt == "RENT" else "Kauf"
+    return "Mieten" if mt == "RENT" else "Kaufen"
 
 
 def build_address(unit: dict) -> str:

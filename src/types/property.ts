@@ -4,6 +4,7 @@ export interface Property {
   slug: string;
   type: "Wohnung" | "Haus" | "Grundstück" | "Gewerbe";
   subType?: string;
+  kategorie: "Kaufen" | "Mieten";
   status: "Verfügbar" | "Reserviert" | "Verkauft";
   price: number;
   priceLabel?: string;
