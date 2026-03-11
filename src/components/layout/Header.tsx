@@ -1,17 +1,28 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { mainNavItems } from "@/data/navigation";
 import { cn } from "@/lib/utils";
 import Button from "@/components/ui/Button";
+import { NavItem } from "@/types";
+
+function isActive(item: NavItem, pathname: string): boolean {
+  if (pathname === item.href) return true;
+  if (item.children) {
+    return item.children.some((child) => pathname.startsWith(child.href));
+  }
+  return false;
+}
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const pathname = usePathname();
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -21,7 +32,19 @@ export default function Header() {
 
   useEffect(() => {
     setMobileOpen(false);
+    setOpenDropdown(null);
   }, [pathname]);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
 
   return (
     <header
@@ -40,21 +63,72 @@ export default function Header() {
             />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-8">
-            {mainNavItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "text-sm font-medium transition-colors duration-200 hover:text-primary relative",
-                  pathname === item.href
-                    ? "text-primary after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-0.5 after:bg-primary after:rounded-full"
-                    : "text-slate-body"
-                )}
-              >
-                {item.label}
-              </Link>
-            ))}
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-8" ref={dropdownRef}>
+            {mainNavItems.map((item) =>
+              item.children ? (
+                <div key={item.href} className="relative">
+                  <button
+                    onClick={() =>
+                      setOpenDropdown(openDropdown === item.label ? null : item.label)
+                    }
+                    className={cn(
+                      "flex items-center gap-1 text-sm font-medium transition-colors duration-200 hover:text-primary relative",
+                      isActive(item, pathname)
+                        ? "text-primary after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-0.5 after:bg-primary after:rounded-full"
+                        : "text-slate-body"
+                    )}
+                  >
+                    {item.label}
+                    <ChevronDown
+                      size={14}
+                      className={cn(
+                        "transition-transform duration-200",
+                        openDropdown === item.label && "rotate-180"
+                      )}
+                    />
+                  </button>
+
+                  {/* Dropdown */}
+                  <div
+                    className={cn(
+                      "absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-200 origin-top",
+                      openDropdown === item.label
+                        ? "opacity-100 scale-100 pointer-events-auto"
+                        : "opacity-0 scale-95 pointer-events-none"
+                    )}
+                  >
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className={cn(
+                          "block px-5 py-3 text-sm font-medium transition-colors",
+                          pathname.startsWith(child.href)
+                            ? "bg-primary-50 text-primary"
+                            : "text-slate-body hover:bg-gray-50 hover:text-primary"
+                        )}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    "text-sm font-medium transition-colors duration-200 hover:text-primary relative",
+                    pathname === item.href
+                      ? "text-primary after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-0.5 after:bg-primary after:rounded-full"
+                      : "text-slate-body"
+                  )}
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
           </nav>
 
           <div className="hidden lg:block">
@@ -73,27 +147,74 @@ export default function Header() {
         </div>
       </div>
 
+      {/* Mobile Nav */}
       <div
         className={cn(
           "lg:hidden bg-white border-t border-gray-100 overflow-hidden transition-all duration-300",
-          mobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          mobileOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
         )}
       >
         <nav className="px-4 py-4 space-y-1">
-          {mainNavItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "block px-4 py-3 rounded-btn text-base font-medium transition-colors",
-                pathname === item.href
-                  ? "bg-primary-50 text-primary"
-                  : "text-slate-body hover:bg-gray-50"
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {mainNavItems.map((item) =>
+            item.children ? (
+              <div key={item.href}>
+                <button
+                  onClick={() =>
+                    setOpenDropdown(openDropdown === item.label ? null : item.label)
+                  }
+                  className={cn(
+                    "flex items-center justify-between w-full px-4 py-3 rounded-btn text-base font-medium transition-colors",
+                    isActive(item, pathname)
+                      ? "bg-primary-50 text-primary"
+                      : "text-slate-body hover:bg-gray-50"
+                  )}
+                >
+                  {item.label}
+                  <ChevronDown
+                    size={16}
+                    className={cn(
+                      "transition-transform duration-200",
+                      openDropdown === item.label && "rotate-180"
+                    )}
+                  />
+                </button>
+                <div
+                  className={cn(
+                    "overflow-hidden transition-all duration-200",
+                    openDropdown === item.label ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                  )}
+                >
+                  {item.children.map((child) => (
+                    <Link
+                      key={child.href}
+                      href={child.href}
+                      className={cn(
+                        "block pl-8 pr-4 py-2.5 text-sm font-medium transition-colors rounded-btn",
+                        pathname.startsWith(child.href)
+                          ? "text-primary"
+                          : "text-slate-body hover:text-primary"
+                      )}
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "block px-4 py-3 rounded-btn text-base font-medium transition-colors",
+                  pathname === item.href
+                    ? "bg-primary-50 text-primary"
+                    : "text-slate-body hover:bg-gray-50"
+                )}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
           <div className="pt-3 px-4">
             <Button href="/immobilienbewertung" className="w-full">
               Jetzt bewerten
