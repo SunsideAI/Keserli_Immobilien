@@ -36,4 +36,10 @@ export const siteConfig = {
     googleReviews: 50,
   },
   url: "https://www.myhomefin.de",
+  social: {
+    facebook: "https://www.facebook.com/profile.php?id=100082985930034",
+    instagram: "https://www.instagram.com/homefin_official/",
+    x: "https://x.com/myhomefin",
+    youtube: "https://www.youtube.com/channel/UCguWrXlx7MJ3wYdJz7hgKdQ",
+  },
 };
