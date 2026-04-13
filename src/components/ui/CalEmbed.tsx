@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { CalendarDays } from "lucide-react";
 
 export default function CalEmbed() {
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    // Inject the exact Cal.com snippet as an inline script
     const containerId = "my-cal-inline-15min";
     const scriptId = "cal-inline-init";
 
@@ -63,16 +65,45 @@ export default function CalEmbed() {
     `;
     document.body.appendChild(script);
 
+    // Hide loading skeleton once iframe appears
+    const observer = new MutationObserver(() => {
+      const container = document.getElementById(containerId);
+      if (container && container.querySelector("iframe")) {
+        setLoading(false);
+        observer.disconnect();
+      }
+    });
+    const container = document.getElementById(containerId);
+    if (container) {
+      observer.observe(container, { childList: true, subtree: true });
+    }
+
+    // Fallback: hide after 5s regardless
+    const fallback = setTimeout(() => setLoading(false), 5000);
+
     return () => {
       const el = document.getElementById(scriptId);
       if (el) el.remove();
+      observer.disconnect();
+      clearTimeout(fallback);
     };
   }, []);
 
   return (
-    <div
-      id="my-cal-inline-15min"
-      className="w-full min-h-[600px] overflow-auto rounded-card"
-    />
+    <div className="relative">
+      {/* Loading skeleton */}
+      {loading && (
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white min-h-[600px]">
+          <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4 animate-pulse">
+            <CalendarDays size={24} className="text-primary" />
+          </div>
+          <p className="text-sm text-slate-body">Kalender wird geladen...</p>
+        </div>
+      )}
+      <div
+        id="my-cal-inline-15min"
+        className="w-full min-h-[600px] overflow-hidden rounded-card"
+      />
+    </div>
   );
 }

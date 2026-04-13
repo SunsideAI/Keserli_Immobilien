@@ -25,7 +25,6 @@ export const mainNavItems: NavItem[] = [
     ],
   },
   { label: "Über uns", href: "/ueber-uns" },
-  { label: "Kontakt", href: "/kontakt" },
 ];
 
 export const footerNavItems = {
