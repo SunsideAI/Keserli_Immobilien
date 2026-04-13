@@ -1,16 +1,16 @@
 "use client";
 
 const partners = [
-  { src: "/images/partners/ImmoScout24-Siegel_Partner-200x200.png", alt: "ImmoScout24 Partner", height: 50 },
-  { src: "/images/partners/Immowelt.png", alt: "Immowelt", height: 40 },
-  { src: "/images/partners/NEU_Logo_IVD-Immobilienunternehmer_CMYK.png", alt: "IVD Immobilienunternehmer", height: 50 },
-  { src: "/images/partners/ka_horizontal_lightgreen_rgb.png", alt: "Kautionsfrei", height: 38 },
-  { src: "/images/partners/Backbone.png", alt: "Backbone", height: 36 },
-  { src: "/images/partners/MS_Logo_line_RGB_black_yellow.png", alt: "MS Immobilien", height: 40 },
-  { src: "/images/partners/logo-rgb-immonet.webp", alt: "Immonet", height: 36 },
-  { src: "/images/partners/Monheimer_Lokalhelden.png", alt: "Monheimer Lokalhelden", height: 45 },
-  { src: "/images/partners/radio_koeln.png", alt: "Radio Köln", height: 42 },
-  { src: "/images/partners/image.png", alt: "Partner", height: 40 },
+  { src: "/images/partners/ImmoScout24-Siegel_Partner-200x200.png", alt: "ImmoScout24 Partner", height: 60 },
+  { src: "/images/partners/Immowelt.png", alt: "Immowelt", height: 50 },
+  { src: "/images/partners/NEU_Logo_IVD-Immobilienunternehmer_CMYK.png", alt: "IVD Immobilienunternehmer", height: 60 },
+  { src: "/images/partners/ka_horizontal_lightgreen_rgb.png", alt: "Kautionsfrei", height: 48 },
+  { src: "/images/partners/Backbone.png", alt: "Backbone", height: 44 },
+  { src: "/images/partners/MS_Logo_line_RGB_black_yellow.png", alt: "MS Immobilien", height: 50 },
+  { src: "/images/partners/logo-rgb-immonet.webp", alt: "Immonet", height: 44 },
+  { src: "/images/partners/Monheimer_Lokalhelden.png", alt: "Monheimer Lokalhelden", height: 55 },
+  { src: "/images/partners/radio_koeln.png", alt: "Radio Köln", height: 52 },
+  { src: "/images/partners/image.png", alt: "Partner", height: 50 },
 ];
 
 function LogoSet({ duplicate }: { duplicate?: boolean }) {
@@ -28,7 +28,7 @@ function LogoSet({ duplicate }: { duplicate?: boolean }) {
           <img
             src={p.src}
             alt={p.alt}
-            className="w-auto max-w-[160px] object-contain"
+            className="w-auto max-w-[200px] object-contain"
             style={{ height: p.height }}
             loading="lazy"
           />

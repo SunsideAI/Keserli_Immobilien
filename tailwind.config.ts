@@ -111,7 +111,7 @@ const config: Config = {
         "counter-up": "counter-up 0.4s ease-out forwards",
         float: "float 3s ease-in-out infinite",
         "pulse-soft": "pulse-soft 2s ease-in-out infinite",
-        marquee: "marquee 30s linear infinite",
+        marquee: "marquee 45s linear infinite",
       },
     },
   },
