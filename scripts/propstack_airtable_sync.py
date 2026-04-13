@@ -40,7 +40,7 @@ AIRTABLE_TABLE_ID = os.getenv("AIRTABLE_TABLE_ID", "")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 
 # Nur Immobilien mit diesen Status synchronisieren
-PUBLISHED_STATUSES = {"in vermarktung", "reserviert", "verkauft"}
+PUBLISHED_STATUSES = {"in vorbereitung", "in vermarktung", "reserviert", "verkauft"}
 
 # Base-URL der eigenen Website (für Airtable "Webseite"-Feld)
 WEBSITE_BASE_URL = os.getenv("WEBSITE_BASE_URL", "https://homefin-website.netlify.app")
@@ -218,10 +218,14 @@ def map_propstack_to_airtable(unit: dict) -> dict:
     # Status-Mapping
     status_name = get_status_name(unit)
     status_lower = status_name.lower()
-    if "reserviert" in status_lower:
+    if "vorbereitung" in status_lower:
+        status = "IN VORBEREITUNG"
+    elif "reserviert" in status_lower:
         status = "RESERVIERT"
     elif "verkauft" in status_lower:
         status = "VERKAUFT"
+    elif "vermarktung" in status_lower:
+        status = "VERFÜGBAR"
     else:
         status = ""
 
