@@ -1,62 +1,71 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 export default function CalEmbed() {
-  const initialized = useRef(false);
-
   useEffect(() => {
-    if (initialized.current) return;
-    initialized.current = true;
+    // Inject the exact Cal.com snippet as an inline script
+    const containerId = "my-cal-inline-15min";
+    const scriptId = "cal-inline-init";
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const win = window as any;
+    // Remove old init script if navigating back
+    const old = document.getElementById(scriptId);
+    if (old) old.remove();
 
-    // Load Cal.com script
-    const scriptId = "cal-embed-script";
-    if (!document.getElementById(scriptId)) {
-      const script = document.createElement("script");
-      script.id = scriptId;
-      script.src = "https://app.cal.com/embed/embed.js";
-      script.async = true;
-      document.head.appendChild(script);
-    }
+    const script = document.createElement("script");
+    script.id = scriptId;
+    script.type = "text/javascript";
+    script.textContent = `
+      (function (C, A, L) {
+        let p = function (a, ar) { a.q.push(ar); };
+        let d = C.document;
+        C.Cal = C.Cal || function () {
+          let cal = C.Cal;
+          let ar = arguments;
+          if (!cal.loaded) {
+            cal.ns = {};
+            cal.q = cal.q || [];
+            d.head.appendChild(d.createElement("script")).src = A;
+            cal.loaded = true;
+          }
+          if (ar[0] === L) {
+            const api = function () { p(api, arguments); };
+            const namespace = ar[1];
+            api.q = api.q || [];
+            if (typeof namespace === "string") {
+              cal.ns[namespace] = cal.ns[namespace] || api;
+              p(cal.ns[namespace], ar);
+              p(cal, ["initNamespace", namespace]);
+            } else p(cal, ar);
+            return;
+          }
+          p(cal, ar);
+        };
+      })(window, "https://app.cal.com/embed/embed.js", "init");
 
-    function tryInit() {
-      if (!win.Cal) return false;
+      Cal("init", "15min", {origin:"https://app.cal.com"});
 
-      try {
-        win.Cal("init", "15min", { origin: "https://app.cal.com" });
+      Cal.ns["15min"]("inline", {
+        elementOrSelector:"#${containerId}",
+        config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+        calLink: "homefin-gmbh-zzd9t6/15min",
+      });
 
-        win.Cal.ns["15min"]("inline", {
-          elementOrSelector: "#my-cal-inline-15min",
-          config: { layout: "month_view", useSlotsViewOnSmallScreen: "true" },
-          calLink: "homefin-gmbh-zzd9t6/15min",
-        });
+      Cal.ns["15min"]("ui", {
+        "cssVarsPerTheme":{
+          "light":{"cal-brand":"#2F7D77"},
+          "dark":{"cal-brand":"#E6F2F1"}
+        },
+        "hideEventTypeDetails":false,
+        "layout":"month_view"
+      });
+    `;
+    document.body.appendChild(script);
 
-        win.Cal.ns["15min"]("ui", {
-          cssVarsPerTheme: {
-            light: { "cal-brand": "#2F7D77" },
-            dark: { "cal-brand": "#E6F2F1" },
-          },
-          hideEventTypeDetails: false,
-          layout: "month_view",
-        });
-      } catch (e) {
-        console.warn("Cal.com init error:", e);
-        return false;
-      }
-
-      return true;
-    }
-
-    // Poll until Cal is available
-    if (!tryInit()) {
-      const interval = setInterval(() => {
-        if (tryInit()) clearInterval(interval);
-      }, 200);
-      setTimeout(() => clearInterval(interval), 15000);
-    }
+    return () => {
+      const el = document.getElementById(scriptId);
+      if (el) el.remove();
+    };
   }, []);
 
   return (
