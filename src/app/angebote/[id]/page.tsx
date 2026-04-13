@@ -46,6 +46,8 @@ export default async function PropertyDetailPage({ params }: PageProps) {
   const statusVariant =
     property.status === "Verfügbar"
       ? "success"
+      : property.status === "In Vorbereitung"
+      ? "primary"
       : property.status === "Reserviert"
       ? "gold"
       : "neutral";

@@ -5,7 +5,7 @@ export interface Property {
   type: "Wohnung" | "Haus" | "Grundstück" | "Gewerbe";
   subType?: string;
   kategorie: "Kaufen" | "Mieten";
-  status: "Verfügbar" | "Reserviert" | "Verkauft";
+  status: "Verfügbar" | "In Vorbereitung" | "Reserviert" | "Verkauft";
   price: number;
   priceLabel?: string;
   pricePerSqm?: number;

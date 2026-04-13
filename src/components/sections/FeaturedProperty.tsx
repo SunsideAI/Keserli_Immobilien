@@ -34,7 +34,7 @@ export default async function FeaturedProperty() {
                   className="w-full h-full object-cover"
                 />
                 <Badge
-                  variant={featured.status === "Verfügbar" ? "success" : "neutral"}
+                  variant={featured.status === "Verfügbar" ? "success" : featured.status === "In Vorbereitung" ? "primary" : featured.status === "Reserviert" ? "gold" : "neutral"}
                   className="absolute top-4 left-4"
                 >
                   {featured.status}

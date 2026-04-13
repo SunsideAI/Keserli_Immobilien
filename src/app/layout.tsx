@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default:
-      "homefin GmbH – Immobilienmakler Monheim am Rhein | Faire Provision ab 1,95%",
-    template: "%s | homefin GmbH – Immobilienmakler",
+      "homefin GmbH – Immobilienmakler (IHK) Monheim am Rhein | Faire Provision ab 1,95%",
+    template: "%s | homefin GmbH – Immobilienmakler (IHK)",
   },
   description:
     "Ihr lokaler Immobilienmakler in Monheim am Rhein, Langenfeld, Leverkusen, Köln & Düsseldorf. Professioneller Maklerservice ab 1,95% inkl. MwSt. Kostenlose Immobilienbewertung in 48h.",
@@ -41,14 +41,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "de_DE",
     siteName: "homefin GmbH",
-    title: "homefin GmbH – Immobilienmakler | Faire Provision ab 1,95%",
+    title: "homefin GmbH – Immobilienmakler (IHK) | Faire Provision ab 1,95%",
     description:
       "Professioneller Maklerservice ab 1,95% inkl. MwSt. Kostenlose Immobilienbewertung in Monheim, Langenfeld, Leverkusen, Köln & Düsseldorf.",
     url: siteConfig.url,
   },
   twitter: {
     card: "summary_large_image",
-    title: "homefin GmbH – Immobilienmakler | Faire Provision ab 1,95%",
+    title: "homefin GmbH – Immobilienmakler (IHK) | Faire Provision ab 1,95%",
     description:
       "Professioneller Maklerservice ab 1,95% inkl. MwSt. Kostenlose Immobilienbewertung in der Region.",
   },

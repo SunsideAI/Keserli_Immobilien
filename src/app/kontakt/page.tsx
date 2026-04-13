@@ -9,10 +9,10 @@ import { siteConfig } from "@/data/site-config";
 export const metadata: Metadata = {
   title: "Kontakt – Kostenlose Beratung anfordern",
   description:
-    "Kontaktieren Sie homefin GmbH – Ihren Immobilienmakler in Monheim am Rhein. Kostenlose Beratung unter 0800 5888 015 oder per E-Mail an info@myhomefin.de.",
+    "Kontaktieren Sie homefin GmbH – Ihren Immobilienmakler (IHK) in Monheim am Rhein. Kostenlose Beratung unter 0800 5888 015 oder per E-Mail an info@myhomefin.de.",
   alternates: { canonical: "https://www.myhomefin.de/kontakt" },
   openGraph: {
-    title: "Kontakt | homefin GmbH – Immobilienmakler",
+    title: "Kontakt | homefin GmbH – Immobilienmakler (IHK)",
     description: "Kostenlose und unverbindliche Beratung – rufen Sie uns an oder schreiben Sie uns.",
     url: "https://www.myhomefin.de/kontakt",
     type: "website",

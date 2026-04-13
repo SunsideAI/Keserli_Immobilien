@@ -19,9 +19,9 @@ export default function HomePage() {
       <HeroSection />
       <PartnerLogos />
       <BenefitsSection />
+      <FeaturedProperty />
       <ProcessSection />
       <BewertungSection />
-      <FeaturedProperty />
       <TestimonialsSection />
       <KaeuferdatenbankCTA />
       <PromiseSection />

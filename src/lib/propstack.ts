@@ -92,6 +92,7 @@ function mapStatus(status: unknown): Property["status"] {
   const name = getStatusName(status);
   if (!name) return "Verfügbar";
   const s = name.toLowerCase();
+  if (s.includes("vorbereitung")) return "In Vorbereitung";
   if (s.includes("reserviert")) return "Reserviert";
   if (s.includes("verkauft")) return "Verkauft";
   return "Verfügbar";
@@ -99,15 +100,16 @@ function mapStatus(status: unknown): Property["status"] {
 
 /**
  * Only allow properties with an explicitly public status.
- * "In Vermarktung" = actively marketed, "Reserviert" = reserved, "Verkauft" = sold.
- * Everything else (Akquise, Aktiv, In Vorbereitung, Neuer Lead, Verloren, etc.)
+ * "In Vorbereitung" = coming soon, "In Vermarktung" = actively marketed,
+ * "Reserviert" = reserved, "Verkauft" = sold.
+ * Everything else (Akquise, Aktiv, Neuer Lead, Verloren, etc.)
  * are internal workflow stages and must not appear on the website.
  */
 function isPublishedStatus(status: unknown): boolean {
   const name = getStatusName(status);
   if (!name) return false;
   const s = name.toLowerCase();
-  return s.includes("vermarktung") || s.includes("reserviert") || s.includes("verkauft");
+  return s.includes("vorbereitung") || s.includes("vermarktung") || s.includes("reserviert") || s.includes("verkauft");
 }
 
 function mapMarketingLabel(marketingType?: string): string {

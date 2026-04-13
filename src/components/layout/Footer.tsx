@@ -18,7 +18,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed mb-5">
-              Ihr lokaler Immobilienmakler in {siteConfig.contact.address.city}.
+              Ihr lokaler Immobilienmakler (IHK) in {siteConfig.contact.address.city}.
               Professioneller Maklerservice zum fairsten Preis der Region.
             </p>
             <div className="flex items-center gap-3">

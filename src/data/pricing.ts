@@ -16,7 +16,7 @@ export const pricingTiers: PricingTier[] = [
     ],
     highlighted: false,
     ctaText: "Jetzt starten",
-    ctaHref: "/kontakt",
+    ctaHref: "/kontakt?paket=basis",
   },
   {
     id: "premium",
@@ -35,7 +35,7 @@ export const pricingTiers: PricingTier[] = [
     ],
     highlighted: true,
     ctaText: "Empfohlen",
-    ctaHref: "/kontakt",
+    ctaHref: "/kontakt?paket=premium",
   },
   {
     id: "select",
@@ -51,6 +51,6 @@ export const pricingTiers: PricingTier[] = [
     ],
     highlighted: false,
     ctaText: "Mehr erfahren",
-    ctaHref: "/kontakt",
+    ctaHref: "/kontakt?paket=select",
   },
 ];

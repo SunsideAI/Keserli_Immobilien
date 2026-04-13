@@ -12,6 +12,8 @@ export default function PropertyCard({ property }: PropertyCardProps) {
   const statusVariant =
     property.status === "Verfügbar"
       ? "success"
+      : property.status === "In Vorbereitung"
+      ? "primary"
       : property.status === "Reserviert"
       ? "gold"
       : "neutral";

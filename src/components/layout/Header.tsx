@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { mainNavItems } from "@/data/navigation";
 import { cn } from "@/lib/utils";
 import Button from "@/components/ui/Button";
@@ -131,7 +131,14 @@ export default function Header() {
             )}
           </nav>
 
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-3">
+            <a
+              href="tel:+4921739599100"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-primary border border-primary rounded-btn hover:bg-primary hover:text-white transition-colors duration-200"
+            >
+              <Phone size={16} />
+              Rückruf
+            </a>
             <Button href="/immobilienbewertung" size="sm">
               Jetzt bewerten
             </Button>
@@ -215,7 +222,14 @@ export default function Header() {
               </Link>
             )
           )}
-          <div className="pt-3 px-4">
+          <div className="pt-3 px-4 flex flex-col gap-2">
+            <a
+              href="tel:+4921739599100"
+              className="flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-semibold text-primary border border-primary rounded-btn hover:bg-primary hover:text-white transition-colors duration-200"
+            >
+              <Phone size={16} />
+              Rückruf anfordern
+            </a>
             <Button href="/immobilienbewertung" className="w-full">
               Jetzt bewerten
             </Button>

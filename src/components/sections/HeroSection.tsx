@@ -127,7 +127,7 @@ export default function HeroSection() {
         >
           <img
             src="/Keseli_Makler.png"
-            alt="Ihr Immobilienmakler"
+            alt="Ihr Immobilienmakler (IHK)"
             className="h-[390px] xl:h-[430px] 2xl:h-[470px] w-auto object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
           />
         </div>

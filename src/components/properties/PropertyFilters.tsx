@@ -7,6 +7,7 @@ import { siteConfig } from "@/data/site-config";
 import { Property } from "@/types/property";
 
 const propertyTypes = ["Alle", "Haus", "Wohnung", "Grundstück", "Gewerbe"];
+const statusOptions = ["Alle", "Verfügbar", "In Vorbereitung", "Reserviert", "Verkauft"];
 
 interface PropertyFiltersProps {
   properties: Property[];
@@ -15,6 +16,7 @@ interface PropertyFiltersProps {
 export default function PropertyFilters({ properties }: PropertyFiltersProps) {
   const [typeFilter, setTypeFilter] = useState("Alle");
   const [regionFilter, setRegionFilter] = useState("Alle");
+  const [statusFilter, setStatusFilter] = useState("Alle");
   const [sortBy, setSortBy] = useState("newest");
 
   let filtered = properties;
@@ -24,6 +26,9 @@ export default function PropertyFilters({ properties }: PropertyFiltersProps) {
   }
   if (regionFilter !== "Alle") {
     filtered = filtered.filter((p) => p.address.region === regionFilter);
+  }
+  if (statusFilter !== "Alle") {
+    filtered = filtered.filter((p) => p.status === statusFilter);
   }
 
   if (sortBy === "price-asc") {
@@ -45,7 +50,7 @@ export default function PropertyFilters({ properties }: PropertyFiltersProps) {
     <div>
       {/* Filters */}
       <div className="bg-white rounded-card shadow-card p-4 sm:p-6 mb-8">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div>
             <label className="block text-sm font-medium text-slate-dark mb-1">
               Immobilientyp
@@ -76,6 +81,23 @@ export default function PropertyFilters({ properties }: PropertyFiltersProps) {
               {siteConfig.regions.map((region) => (
                 <option key={region} value={region}>
                   {region}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-slate-dark mb-1">
+              Status
+            </label>
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-btn focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+            >
+              {statusOptions.map((s) => (
+                <option key={s} value={s}>
+                  {s === "Alle" ? "Alle Status" : s}
                 </option>
               ))}
             </select>

@@ -1,17 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "./Button";
 
 interface ContactFormProps {
   variant?: "default" | "bewertung";
+  paket?: string;
   className?: string;
 }
 
-export default function ContactForm({ variant = "default", className }: ContactFormProps) {
+const paketMap: Record<string, string> = {
+  basis: "Homefin Basis (1,95%)",
+  premium: "Homefin Premium+ (2,94%)",
+  select: "Homefin Select (ab 99€/Monat)",
+};
+
+export default function ContactForm({ variant = "default", paket: paketProp, className }: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(false);
+  const [selectedPaket, setSelectedPaket] = useState(paketProp || "");
+
+  // Read ?paket= from URL on mount
+  useEffect(() => {
+    if (typeof window !== "undefined" && !paketProp) {
+      const params = new URLSearchParams(window.location.search);
+      const p = params.get("paket");
+      if (p && paketMap[p]) setSelectedPaket(paketMap[p]);
+    }
+  }, [paketProp]);
 
   const formName = variant === "bewertung" ? "bewertung" : "kontakt";
 
@@ -39,6 +56,7 @@ export default function ContactForm({ variant = "default", className }: ContactF
         telefon: formData.get("telefon") || "",
         nachricht: formData.get("nachricht") || "",
         adresse: formData.get("adresse") || "",
+        paket: formData.get("paket") || "",
         formType: formName,
       };
 
@@ -162,6 +180,26 @@ export default function ContactForm({ variant = "default", className }: ContactF
           />
         </div>
       </div>
+
+      {variant === "default" && (
+        <div className="mb-4">
+          <label htmlFor={`${formName}-paket`} className="block text-sm font-medium text-slate-dark mb-1">
+            Gewünschtes Paket
+          </label>
+          <select
+            id={`${formName}-paket`}
+            name="paket"
+            value={selectedPaket}
+            onChange={(e) => setSelectedPaket(e.target.value)}
+            className="w-full px-4 py-3 border border-gray-300 rounded-btn focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
+          >
+            <option value="">Kein Paket ausgewählt</option>
+            <option value="Homefin Basis (1,95%)">Homefin Basis (1,95%)</option>
+            <option value="Homefin Premium+ (2,94%)">Homefin Premium+ (2,94%)</option>
+            <option value="Homefin Select (ab 99€/Monat)">Homefin Select (ab 99€/Monat)</option>
+          </select>
+        </div>
+      )}
 
       <div className="mb-6">
         <label htmlFor={`${formName}-nachricht`} className="block text-sm font-medium text-slate-dark mb-1">
