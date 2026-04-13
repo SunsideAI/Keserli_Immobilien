@@ -1,11 +1,10 @@
-import { Award } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Card from "@/components/ui/Card";
 import StarRating from "@/components/ui/StarRating";
 import ScrollAnimator from "@/components/ui/ScrollAnimator";
 import { testimonials } from "@/data/testimonials";
-import { siteConfig } from "@/data/site-config";
+import TrustWidgetsRow from "@/components/sections/TrustWidgetsRow";
 
 export default function TestimonialsSection() {
   return (
@@ -15,23 +14,11 @@ export default function TestimonialsSection() {
           <SectionHeading
             badge="KUNDENSTIMMEN"
             title="Was unsere Kunden sagen"
-            subtitle={`${siteConfig.stats.googleRating} von 5 Sternen bei Google – unsere Kunden bestätigen unsere Qualität.`}
+            subtitle="Echte Bewertungen unserer Kunden auf Trustpilot, ProvenExpert und Google."
           />
 
-          <div className="flex items-center justify-center gap-6 mb-12">
-            <div className="flex items-center gap-3">
-              <StarRating rating={siteConfig.stats.googleRating} size={24} />
-              <span className="text-slate-body text-sm">
-                ({siteConfig.stats.googleReviews} Bewertungen)
-              </span>
-            </div>
-            <div className="flex items-center gap-2 text-gold">
-              <Award size={24} />
-              <span className="text-sm font-semibold text-slate-dark">
-                IDA Award
-              </span>
-            </div>
-          </div>
+          {/* ── Live Trust-Widgets (Trustpilot + Trustlocal) ── */}
+          <TrustWidgetsRow />
         </ScrollAnimator>
 
         <ScrollAnimator stagger>
