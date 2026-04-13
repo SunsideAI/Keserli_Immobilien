@@ -42,80 +42,71 @@ export default function KontaktPage() {
         </Container>
       </section>
 
-      <section className="section-padding bg-white">
+      {/* Contact Info Bar */}
+      <section className="bg-white pt-12 pb-4">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Info */}
-            <div>
-              <h2 className="text-2xl font-bold text-slate-dark mb-6">
-                So erreichen Sie uns
-              </h2>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <Phone size={18} className="text-primary" />
+              </div>
+              <div>
+                <div className="text-xs text-slate-body">Telefon</div>
+                <a
+                  href={`tel:${siteConfig.contact.phoneRaw}`}
+                  className="text-sm font-semibold text-primary hover:underline"
+                >
+                  {siteConfig.contact.phone}
+                </a>
+              </div>
+            </div>
 
-              <div className="space-y-6 mb-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Phone size={18} className="text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-dark mb-1">Telefon</h3>
-                    <a
-                      href={`tel:${siteConfig.contact.phoneRaw}`}
-                      className="text-primary hover:underline text-lg"
-                    >
-                      {siteConfig.contact.phone}
-                    </a>
-                  </div>
-                </div>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <Mail size={18} className="text-primary" />
+              </div>
+              <div>
+                <div className="text-xs text-slate-body">E-Mail</div>
+                <a
+                  href={`mailto:${siteConfig.contact.email}`}
+                  className="text-sm font-semibold text-primary hover:underline"
+                >
+                  {siteConfig.contact.email}
+                </a>
+              </div>
+            </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Mail size={18} className="text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-dark mb-1">E-Mail</h3>
-                    <a
-                      href={`mailto:${siteConfig.contact.email}`}
-                      className="text-primary hover:underline text-lg"
-                    >
-                      {siteConfig.contact.email}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <MapPin size={18} className="text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-dark mb-1">Adresse</h3>
-                    <p className="text-slate-body text-lg">
-                      {siteConfig.contact.address.street}
-                      <br />
-                      {siteConfig.contact.address.zip}{" "}
-                      {siteConfig.contact.address.city}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Clock size={18} className="text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-dark mb-1">
-                      Öffnungszeiten
-                    </h3>
-                    <p className="text-slate-body">
-                      Mo – Fr: 09:00 – 18:00 Uhr
-                      <br />
-                      Sa: nach Vereinbarung
-                    </p>
-                  </div>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <MapPin size={18} className="text-primary" />
+              </div>
+              <div>
+                <div className="text-xs text-slate-body">Adresse</div>
+                <div className="text-sm font-semibold text-slate-dark">
+                  {siteConfig.contact.address.street}, {siteConfig.contact.address.zip} {siteConfig.contact.address.city}
                 </div>
               </div>
             </div>
 
-            {/* Toggle: Termin buchen / Nachricht senden */}
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <Clock size={18} className="text-primary" />
+              </div>
+              <div>
+                <div className="text-xs text-slate-body">Öffnungszeiten</div>
+                <div className="text-sm font-semibold text-slate-dark">
+                  Mo–Fr 09–18 Uhr
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Centered Toggle: Termin buchen / Nachricht senden */}
+      <section className="section-padding bg-white">
+        <Container>
+          <div className="max-w-3xl mx-auto">
             <KontaktToggle />
           </div>
         </Container>
