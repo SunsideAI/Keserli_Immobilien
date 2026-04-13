@@ -298,6 +298,26 @@ async function fetchFromPropstack(endpoint: string): Promise<unknown> {
   return res.json();
 }
 
+/**
+ * Fetch all units across all pages.
+ * Propstack ignores per_page > 20 and defaults to 20 per page.
+ */
+async function fetchAllUnits(): Promise<AnyObject[]> {
+  const allUnits: AnyObject[] = [];
+  let page = 1;
+  const maxPages = 20; // safety limit
+
+  while (page <= maxPages) {
+    const data = await fetchFromPropstack(`/units?per_page=20&page=${page}`) as AnyObject[];
+    if (!Array.isArray(data) || data.length === 0) break;
+    allUnits.push(...data);
+    if (data.length < 20) break; // last page
+    page++;
+  }
+
+  return allUnits;
+}
+
 export async function fetchProperties(): Promise<Property[]> {
   if (!API_KEY) {
     console.warn("PROPSTACK_API_KEY not set, using fallback data");
@@ -306,7 +326,7 @@ export async function fetchProperties(): Promise<Property[]> {
   }
 
   try {
-    const data = await fetchFromPropstack("/units?per_page=100") as AnyObject[];
+    const data = await fetchAllUnits();
 
     const properties = data
       .filter((unit) => isPublishedStatus(unit.property_status || unit.status))
@@ -363,7 +383,7 @@ export async function fetchPropertyIds(): Promise<string[]> {
   }
 
   try {
-    const data = await fetchFromPropstack("/units?per_page=100") as AnyObject[];
+    const data = await fetchAllUnits();
     return data
       .filter((unit) => isPublishedStatus(unit.property_status || unit.status))
       .map((unit) => String(unit.id));

@@ -57,11 +57,21 @@ def propstack_headers() -> dict:
 
 
 def fetch_propstack_units() -> List[dict]:
-    """Alle Units aus Propstack laden (List-Endpoint)"""
-    url = f"{PROPSTACK_API_URL}/units?per_page=100"
-    r = requests.get(url, headers=propstack_headers(), timeout=30)
-    r.raise_for_status()
-    return r.json()
+    """Alle Units aus Propstack laden (paginiert, max 20 pro Seite)"""
+    all_units: List[dict] = []
+    page = 1
+    while page <= 20:  # safety limit
+        url = f"{PROPSTACK_API_URL}/units?per_page=20&page={page}"
+        r = requests.get(url, headers=propstack_headers(), timeout=30)
+        r.raise_for_status()
+        data = r.json()
+        if not isinstance(data, list) or len(data) == 0:
+            break
+        all_units.extend(data)
+        if len(data) < 20:
+            break  # last page
+        page += 1
+    return all_units
 
 
 def fetch_propstack_detail(unit_id: int) -> dict:
