@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowRight, TrendingUp, Users } from "lucide-react";
+import { ArrowRight, Star, TrendingUp, Users } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { TrustpilotMicro } from "@/components/ui/TrustWidgets";
@@ -203,6 +203,11 @@ export default function HeroSection() {
                   />
                 </Button>
               </div>
+
+              {/* Trustpilot */}
+              <div className={`mt-6 max-w-[280px] ${anim(visible, "delay-[450ms]")}`}>
+                <TrustpilotMicro />
+              </div>
             </div>
           </div>
 
@@ -255,6 +260,11 @@ export default function HeroSection() {
                   className="ml-2 transition-transform duration-300 group-hover:translate-x-1"
                 />
               </Button>
+            </div>
+
+            {/* Trustpilot */}
+            <div className={`mt-5 w-full max-w-[260px] ${anim(visible, "delay-[380ms]")}`}>
+              <TrustpilotMicro />
             </div>
 
             {/* IDA Award — with subtle glow */}
@@ -318,10 +328,50 @@ export default function HeroSection() {
                   </div>
                 </div>
 
-                {/* Stat 3 — Trustpilot Bewertung */}
-                <div className="flex items-center justify-center lg:px-8 lg:py-4 py-2 min-h-[60px]">
-                  <div className="w-full min-w-[200px] max-w-[280px]">
-                    <TrustpilotMicro />
+                {/* Stat 3 — Google Bewertung */}
+                <div className="flex flex-col items-center text-center gap-1 sm:flex-row sm:text-left sm:items-center sm:gap-4 lg:px-8 lg:py-6 py-2 group cursor-default">
+                  {/* Avatar stack hidden on mobile, show icon instead */}
+                  <div className="flex-shrink-0">
+                    <div className="hidden sm:flex -space-x-2.5">
+                      {[
+                        { bg: "bg-primary-700", initials: "OK" },
+                        { bg: "bg-primary-500", initials: "TM" },
+                        { bg: "bg-teal-dark", initials: "JS" },
+                        { bg: "bg-primary", initials: "MR" },
+                      ].map((a, i) => (
+                        <div
+                          key={i}
+                          className={`w-9 h-9 rounded-full ${a.bg} border-2 border-white flex items-center justify-center text-white text-[10px] font-bold shadow-sm transition-transform duration-300 group-hover:scale-110`}
+                          style={{ transitionDelay: `${i * 50}ms` }}
+                        >
+                          {a.initials}
+                        </div>
+                      ))}
+                    </div>
+                    <div className="sm:hidden w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Star size={20} className="text-primary fill-primary" />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-0.5 mb-0.5 justify-center sm:justify-start">
+                      {[1, 2, 3, 4, 5].map((s) => (
+                        <Star
+                          key={s}
+                          size={13}
+                          className={`sm:w-[15px] sm:h-[15px] ${
+                            s <= Math.floor(siteConfig.stats.googleRating)
+                              ? "fill-gold text-gold"
+                              : "fill-gold/30 text-gold/30"
+                          }`}
+                        />
+                      ))}
+                      <span className="ml-1 text-sm sm:text-sm font-bold text-slate-dark">
+                        {siteConfig.stats.googleRating}
+                      </span>
+                    </div>
+                    <div className="text-[10px] sm:text-sm text-slate-body leading-tight">
+                      Google
+                    </div>
                   </div>
                 </div>
               </div>
