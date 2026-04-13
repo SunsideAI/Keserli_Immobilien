@@ -154,7 +154,7 @@ export default function HeroSection() {
 
           {/* ── Desktop: Text overlapping Award (z-20) ── */}
           <div className="hidden lg:flex min-h-[inherit] items-center relative z-20">
-            <div className="pt-20 pb-36 max-w-[520px] xl:max-w-[560px]">
+            <div className="pt-20 pb-44 max-w-[520px] xl:max-w-[560px]">
               {/* Badge */}
               <div className={anim(visible, "delay-[0ms]")}>
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest bg-primary/10 text-primary border border-primary/10 backdrop-blur-sm mb-6">
