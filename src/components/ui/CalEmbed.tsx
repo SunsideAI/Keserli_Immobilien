@@ -53,8 +53,9 @@ export default function CalEmbed() {
 
       Cal.ns["15min"]("ui", {
         "theme":"light",
+        "styles":{"branding":{"brandColor":"#2D7A7A"}},
         "cssVarsPerTheme":{
-          "light":{"cal-brand":"#2D7A7A"}
+          "light":{"cal-brand":"#2D7A7A","cal-bg":"transparent","cal-bg-emphasis":"#f9fafb"}
         },
         "hideEventTypeDetails":false,
         "layout":"month_view"

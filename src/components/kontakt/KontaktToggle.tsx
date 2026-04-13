@@ -44,26 +44,24 @@ export default function KontaktToggle() {
       </div>
 
       {/* Content */}
-      <div className="bg-gray-50 rounded-card p-6 sm:p-8">
-        {tab === "termin" ? (
-          <div>
-            <h2 className="text-xl font-bold text-slate-dark mb-2 text-center">
-              Termin vereinbaren
-            </h2>
-            <p className="text-sm text-slate-body mb-6 text-center">
-              Wählen Sie einen passenden Termin für Ihr kostenloses Beratungsgespräch.
-            </p>
-            <CalEmbed />
-          </div>
-        ) : (
-          <div>
-            <h2 className="text-xl font-bold text-slate-dark mb-6">
-              Nachricht senden
-            </h2>
-            <ContactForm />
-          </div>
-        )}
-      </div>
+      {tab === "termin" ? (
+        <div>
+          <h2 className="text-xl font-bold text-slate-dark mb-2 text-center">
+            Termin vereinbaren
+          </h2>
+          <p className="text-sm text-slate-body mb-6 text-center">
+            Wählen Sie einen passenden Termin für Ihr kostenloses Beratungsgespräch.
+          </p>
+          <CalEmbed />
+        </div>
+      ) : (
+        <div className="bg-gray-50 rounded-card p-6 sm:p-8">
+          <h2 className="text-xl font-bold text-slate-dark mb-6">
+            Nachricht senden
+          </h2>
+          <ContactForm />
+        </div>
+      )}
     </div>
   );
 }
