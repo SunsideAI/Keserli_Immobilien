@@ -3,12 +3,20 @@
 import { useEffect, useState } from "react";
 import { CalendarDays } from "lucide-react";
 
-export default function CalEmbed() {
+interface CalEmbedProps {
+  namespace?: string;
+  calLink?: string;
+}
+
+export default function CalEmbed({
+  namespace = "15min",
+  calLink = "homefin-gmbh-zzd9t6/15min",
+}: CalEmbedProps) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const containerId = "my-cal-inline-15min";
-    const scriptId = "cal-inline-init";
+    const containerId = `my-cal-inline-${namespace}`;
+    const scriptId = `cal-inline-init-${namespace}`;
 
     // Remove old init script if navigating back
     const old = document.getElementById(scriptId);
@@ -45,15 +53,15 @@ export default function CalEmbed() {
         };
       })(window, "https://app.cal.com/embed/embed.js", "init");
 
-      Cal("init", "15min", {origin:"https://app.cal.com"});
+      Cal("init", "${namespace}", {origin:"https://app.cal.com"});
 
-      Cal.ns["15min"]("inline", {
+      Cal.ns["${namespace}"]("inline", {
         elementOrSelector:"#${containerId}",
         config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
-        calLink: "homefin-gmbh-zzd9t6/15min",
+        calLink: "${calLink}",
       });
 
-      Cal.ns["15min"]("ui", {
+      Cal.ns["${namespace}"]("ui", {
         "theme":"light",
         "styles":{"branding":{"brandColor":"#2D7A7A"}},
         "cssVarsPerTheme":{
@@ -87,7 +95,7 @@ export default function CalEmbed() {
       observer.disconnect();
       clearTimeout(fallback);
     };
-  }, []);
+  }, [namespace, calLink]);
 
   return (
     <div className="relative">
@@ -101,7 +109,7 @@ export default function CalEmbed() {
         </div>
       )}
       <div
-        id="my-cal-inline-15min"
+        id={`my-cal-inline-${namespace}`}
         className="w-full min-h-[600px] overflow-hidden rounded-card"
       />
     </div>

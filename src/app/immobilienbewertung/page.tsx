@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { CheckCircle, Clock, Award, Shield } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Badge from "@/components/ui/Badge";
-import ContactForm from "@/components/ui/ContactForm";
 import { siteConfig } from "@/data/site-config";
+import BewertungToggle from "@/components/bewertung/BewertungToggle";
+import ImmoScoutWidget from "@/components/ui/ImmoScoutWidget";
 
 export const metadata: Metadata = {
   title: "Kostenlose Immobilienbewertung in 48h – Was ist Ihre Immobilie wert?",
@@ -60,7 +61,7 @@ export default function ImmobilienbewertungPage() {
                 step: "1",
                 title: "Anfrage stellen",
                 description:
-                  "Füllen Sie unser Formular aus oder rufen Sie uns an. Teilen Sie uns die wichtigsten Eckdaten Ihrer Immobilie mit.",
+                  "Füllen Sie unser Formular aus oder buchen Sie direkt einen Termin. Teilen Sie uns die wichtigsten Eckdaten Ihrer Immobilie mit.",
               },
               {
                 icon: Clock,
@@ -97,52 +98,66 @@ export default function ImmobilienbewertungPage() {
         </Container>
       </section>
 
-      {/* Form Section */}
+      {/* Booking / Contact Section */}
       <section className="section-padding bg-gray-50">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div>
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-slate-dark mb-4">
                 Jetzt Bewertung anfordern
               </h2>
-              <p className="text-lg text-slate-body mb-8">
-                Füllen Sie das Formular aus und wir melden uns innerhalb von 24
-                Stunden bei Ihnen für einen Besichtigungstermin.
+              <p className="text-lg text-slate-body">
+                Buchen Sie direkt einen Termin oder senden Sie uns eine Nachricht.
               </p>
+            </div>
+            <BewertungToggle />
+          </div>
+        </Container>
+      </section>
 
-              <div className="space-y-4 mb-8">
-                {[
-                  "IHK-zertifizierter Immobilienmakler",
-                  "Über 1.000 erfolgreiche Bewertungen",
-                  "Tiefe lokale Marktkenntnis",
-                  "100% kostenlos und unverbindlich",
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <Shield size={18} className="text-primary flex-shrink-0" />
-                    <span className="text-slate-dark">{item}</span>
-                  </div>
-                ))}
-              </div>
+      {/* Trust & Credentials */}
+      <section className="section-padding bg-white">
+        <Container>
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-2xl font-bold text-slate-dark mb-6">
+                  Warum homefin?
+                </h2>
+                <div className="space-y-4 mb-8">
+                  {[
+                    "IHK-zertifizierter Immobilienmakler",
+                    "Über 1.000 erfolgreiche Bewertungen",
+                    "Tiefe lokale Marktkenntnis",
+                    "100% kostenlos und unverbindlich",
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-3">
+                      <Shield size={18} className="text-primary flex-shrink-0" />
+                      <span className="text-slate-dark">{item}</span>
+                    </div>
+                  ))}
+                </div>
 
-              <div className="flex items-center gap-4 p-4 bg-white rounded-card shadow-card">
-                <img
-                  src={siteConfig.owner.photo}
-                  alt={siteConfig.owner.name}
-                  className="w-14 h-14 rounded-full object-cover object-top border-2 border-primary/20"
-                />
-                <div>
-                  <div className="font-semibold text-slate-dark">
-                    {siteConfig.owner.name}
-                  </div>
-                  <div className="text-sm text-slate-body">
-                    {siteConfig.owner.title}
+                <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-card shadow-card">
+                  <img
+                    src={siteConfig.owner.photo}
+                    alt={siteConfig.owner.name}
+                    className="w-14 h-14 rounded-full object-cover object-top border-2 border-primary/20"
+                  />
+                  <div>
+                    <div className="font-semibold text-slate-dark">
+                      {siteConfig.owner.name}
+                    </div>
+                    <div className="text-sm text-slate-body">
+                      {siteConfig.owner.title}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className="bg-white rounded-card shadow-card p-6 sm:p-8">
-              <ContactForm variant="bewertung" />
+              <div className="flex justify-center">
+                <ImmoScoutWidget />
+              </div>
             </div>
           </div>
         </Container>

@@ -359,12 +359,12 @@ export default function VerkaufPage() {
                 </div>
                 <ul className="space-y-3 mb-8">
                   {tier.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2">
+                    <li key={feature.text} className="flex items-start gap-2">
                       <Check
                         size={16}
                         className="text-primary mt-0.5 flex-shrink-0"
                       />
-                      <span className="text-sm text-slate-body">{feature}</span>
+                      <span className="text-sm text-slate-body">{feature.text}</span>
                     </li>
                   ))}
                 </ul>

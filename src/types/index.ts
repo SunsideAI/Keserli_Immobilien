@@ -18,14 +18,27 @@ export interface FAQItem {
   category?: string;
 }
 
+export interface PricingFeature {
+  text: string;
+  icon?: string;
+}
+
+export interface PricingExpandableSection {
+  label: string;
+  items: PricingFeature[];
+}
+
 export interface PricingTier {
   id: string;
   name: string;
   price: string;
   priceNote: string;
   description: string;
-  features: string[];
+  features: PricingFeature[];
+  expandable?: PricingExpandableSection;
   highlighted?: boolean;
+  badge?: string;
+  note?: string;
   ctaText: string;
   ctaHref: string;
 }

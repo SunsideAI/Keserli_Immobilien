@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Check, HelpCircle } from "lucide-react";
+import { HelpCircle } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Badge from "@/components/ui/Badge";
-import Button from "@/components/ui/Button";
 import Accordion from "@/components/ui/Accordion";
 import { pricingTiers } from "@/data/pricing";
-import { cn } from "@/lib/utils";
+import PricingCard from "@/components/preise/PricingCard";
+import PricingCTA from "@/components/preise/PricingCTA";
 
 export const metadata: Metadata = {
   title: "Preise & Leistungen – Faire Maklerprovision ab 1,95%",
@@ -21,7 +21,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.myhomefin.de/preise" },
   openGraph: {
     title: "Faire Maklerprovision ab 1,95% | homefin GmbH",
-    description: "Transparente Preise, keine versteckten Kosten. Vergleichen Sie unsere Leistungspakete.",
+    description:
+      "Transparente Preise, keine versteckten Kosten. Vergleichen Sie unsere Leistungspakete.",
     url: "https://www.myhomefin.de/preise",
     type: "website",
     locale: "de_DE",
@@ -45,11 +46,22 @@ const pricingFAQ = [
     answer:
       "Ja, Sie können jederzeit auf ein höheres Paket upgraden. Wir beraten Sie gerne, welches Paket am besten zu Ihrer Situation passt.",
   },
+  {
+    question: "Was bedeutet Bestpreisgarantie?",
+    answer:
+      "Mit unserer Bestpreisgarantie im Premium+ Paket setzen wir alle Hebel in Bewegung, um den bestmöglichen Verkaufspreis für Ihre Immobilie zu erzielen. Das umfasst professionelle Vermarktung, gezielte Käufer-Vorqualifizierung und strategische Verhandlungsführung.",
+  },
+  {
+    question: "Kann ich einzelne Leistungen aus Select auch separat buchen?",
+    answer:
+      "Ja, genau dafür ist unser Select-Modell gedacht. Sie wählen nur die Leistungen, die Sie wirklich brauchen – z.B. nur Fotografie, nur eine Marktwertermittlung oder nur die Exposé-Erstellung. Die Preise besprechen wir individuell.",
+  },
 ];
 
 export default function PreisePage() {
   return (
     <>
+      {/* Hero */}
       <section className="bg-gradient-to-br from-mint-light to-mint py-20">
         <Container>
           <div className="max-w-3xl mx-auto text-center">
@@ -68,61 +80,21 @@ export default function PreisePage() {
         </Container>
       </section>
 
+      {/* Pricing Cards */}
       <section className="section-padding bg-white">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-start">
             {pricingTiers.map((tier) => (
-              <div
-                key={tier.id}
-                className={cn(
-                  "bg-white rounded-card p-6 sm:p-8 relative",
-                  tier.highlighted
-                    ? "ring-2 ring-primary shadow-card-hover scale-[1.02]"
-                    : "shadow-card border border-gray-100"
-                )}
-              >
-                {tier.highlighted && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="bg-primary text-white text-xs font-bold px-4 py-1 rounded-full">
-                      EMPFOHLEN
-                    </span>
-                  </div>
-                )}
-                <div className="text-center mb-6">
-                  <h3 className="text-lg font-bold text-slate-dark mb-2">
-                    {tier.name}
-                  </h3>
-                  <div className="text-4xl font-extrabold text-primary">
-                    {tier.price}
-                  </div>
-                  <div className="text-sm text-slate-body mt-1">
-                    {tier.priceNote}
-                  </div>
-                  <p className="text-sm text-slate-body mt-3">
-                    {tier.description}
-                  </p>
-                </div>
-                <ul className="space-y-3 mb-8">
-                  {tier.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2">
-                      <Check size={16} className="text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-slate-body">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button
-                  href={tier.ctaHref}
-                  variant={tier.highlighted ? "primary" : "secondary"}
-                  className="w-full"
-                >
-                  {tier.ctaText}
-                </Button>
-              </div>
+              <PricingCard key={tier.id} tier={tier} />
             ))}
           </div>
         </Container>
       </section>
 
+      {/* Conversion Block */}
+      <PricingCTA />
+
+      {/* FAQ */}
       <section className="section-padding bg-gray-50">
         <Container>
           <div className="max-w-3xl mx-auto">
