@@ -23,6 +23,40 @@ function statusPriority(status: Property["status"]): number {
   }
 }
 
+/**
+ * Smart pagination: always show first, last, and a window around current page.
+ * e.g. 1 2 3 ... 16  or  1 ... 5 6 7 ... 16  or  1 ... 14 15 16
+ */
+function getPageNumbers(current: number, total: number): (number | "...")[] {
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+
+  const pages: (number | "...")[] = [];
+
+  // Always show page 1
+  pages.push(1);
+
+  if (current <= 4) {
+    // Near the start: 1 2 3 4 5 ... last
+    for (let i = 2; i <= 5; i++) pages.push(i);
+    pages.push("...");
+    pages.push(total);
+  } else if (current >= total - 3) {
+    // Near the end: 1 ... last-4 last-3 last-2 last-1 last
+    pages.push("...");
+    for (let i = total - 4; i <= total; i++) pages.push(i);
+  } else {
+    // Middle: 1 ... cur-1 cur cur+1 ... last
+    pages.push("...");
+    pages.push(current - 1);
+    pages.push(current);
+    pages.push(current + 1);
+    pages.push("...");
+    pages.push(total);
+  }
+
+  return pages;
+}
+
 interface PropertyFiltersProps {
   properties: Property[];
 }
@@ -179,7 +213,7 @@ export default function PropertyFilters({ properties }: PropertyFiltersProps) {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-2 mt-10">
+        <div className="flex items-center justify-center gap-1.5 mt-10">
           <button
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={currentPage <= 1}
@@ -189,19 +223,25 @@ export default function PropertyFilters({ properties }: PropertyFiltersProps) {
             Zurück
           </button>
 
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-            <button
-              key={p}
-              onClick={() => setPage(p)}
-              className={
-                p === currentPage
-                  ? "w-10 h-10 rounded-btn text-sm font-bold bg-primary text-white"
-                  : "w-10 h-10 rounded-btn text-sm font-medium text-slate-dark hover:bg-gray-100 transition-colors"
-              }
-            >
-              {p}
-            </button>
-          ))}
+          {getPageNumbers(currentPage, totalPages).map((item, idx) =>
+            item === "..." ? (
+              <span key={`dots-${idx}`} className="w-10 h-10 flex items-center justify-center text-sm text-gray-400">
+                ...
+              </span>
+            ) : (
+              <button
+                key={item}
+                onClick={() => setPage(item as number)}
+                className={
+                  item === currentPage
+                    ? "w-10 h-10 rounded-btn text-sm font-bold bg-primary text-white"
+                    : "w-10 h-10 rounded-btn text-sm font-medium text-slate-dark hover:bg-gray-100 transition-colors"
+                }
+              >
+                {item}
+              </button>
+            )
+          )}
 
           <button
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
