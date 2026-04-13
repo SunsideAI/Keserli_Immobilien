@@ -319,8 +319,8 @@ export default function HeroSection() {
                 </div>
 
                 {/* Stat 3 — Trustpilot Bewertung */}
-                <div className="flex items-center justify-center lg:px-8 lg:py-5 py-2">
-                  <div className="w-full max-w-[220px]">
+                <div className="flex items-center justify-center lg:px-8 lg:py-4 py-2 min-h-[60px]">
+                  <div className="w-full min-w-[200px] max-w-[280px]">
                     <TrustpilotMicro />
                   </div>
                 </div>
