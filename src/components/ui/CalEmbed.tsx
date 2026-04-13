@@ -52,9 +52,9 @@ export default function CalEmbed() {
       });
 
       Cal.ns["15min"]("ui", {
+        "theme":"light",
         "cssVarsPerTheme":{
-          "light":{"cal-brand":"#2F7D77"},
-          "dark":{"cal-brand":"#E6F2F1"}
+          "light":{"cal-brand":"#2D7A7A"}
         },
         "hideEventTypeDetails":false,
         "layout":"month_view"
