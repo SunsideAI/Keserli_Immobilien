@@ -1,4 +1,5 @@
 import HeroSection from "@/components/sections/HeroSection";
+import PartnerLogos from "@/components/sections/PartnerLogos";
 import BenefitsSection from "@/components/sections/BenefitsSection";
 import ProcessSection from "@/components/sections/ProcessSection";
 import BewertungSection from "@/components/sections/BewertungSection";
@@ -16,6 +17,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <PartnerLogos />
       <BenefitsSection />
       <ProcessSection />
       <BewertungSection />
