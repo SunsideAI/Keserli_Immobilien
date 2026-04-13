@@ -1,7 +1,7 @@
 "use client";
 
 const partners = [
-  { src: "/images/partners/ImmoScout24-Siegel_Partner-200x200.png", alt: "ImmoScout24 Partner", height: 60 },
+  { src: "/images/partners/Immoscout_Logo_Updated.png", alt: "ImmoScout24 Partner", height: 60 },
   { src: "/images/partners/Immowelt.png", alt: "Immowelt", height: 50 },
   { src: "/images/partners/NEU_Logo_IVD-Immobilienunternehmer_CMYK.png", alt: "IVD Immobilienunternehmer", height: 60 },
   { src: "/images/partners/ka_horizontal_lightgreen_rgb.png", alt: "Kautionsfrei", height: 48 },
