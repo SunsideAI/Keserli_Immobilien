@@ -131,16 +131,10 @@ export default function Header() {
             )}
           </nav>
 
-          <div className="hidden lg:flex items-center gap-3">
-            <a
-              href="tel:+4921739599100"
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-primary border border-primary rounded-btn hover:bg-primary hover:text-white transition-colors duration-200"
-            >
-              <Phone size={16} />
-              Rückruf
-            </a>
-            <Button href="/immobilienbewertung" size="sm">
-              Jetzt bewerten
+          <div className="hidden lg:flex items-center">
+            <Button href="/kontakt" size="sm">
+              <Phone size={16} className="mr-2" />
+              Jetzt Kontakt aufnehmen
             </Button>
           </div>
 
@@ -222,16 +216,10 @@ export default function Header() {
               </Link>
             )
           )}
-          <div className="pt-3 px-4 flex flex-col gap-2">
-            <a
-              href="tel:+4921739599100"
-              className="flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-semibold text-primary border border-primary rounded-btn hover:bg-primary hover:text-white transition-colors duration-200"
-            >
-              <Phone size={16} />
-              Rückruf anfordern
-            </a>
-            <Button href="/immobilienbewertung" className="w-full">
-              Jetzt bewerten
+          <div className="pt-3 px-4">
+            <Button href="/kontakt" className="w-full">
+              <Phone size={16} className="mr-2" />
+              Jetzt Kontakt aufnehmen
             </Button>
           </div>
         </nav>

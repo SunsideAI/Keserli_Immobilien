@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Badge from "@/components/ui/Badge";
-import ContactForm from "@/components/ui/ContactForm";
+import KontaktToggle from "@/components/kontakt/KontaktToggle";
 import MapWrapper from "@/components/map/MapWrapper";
 import { siteConfig } from "@/data/site-config";
 
@@ -115,13 +115,8 @@ export default function KontaktPage() {
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div className="bg-gray-50 rounded-card p-6 sm:p-8">
-              <h2 className="text-xl font-bold text-slate-dark mb-6">
-                Nachricht senden
-              </h2>
-              <ContactForm />
-            </div>
+            {/* Toggle: Termin buchen / Nachricht senden */}
+            <KontaktToggle />
           </div>
         </Container>
       </section>
