@@ -1,7 +1,5 @@
 "use client";
 
-import { TrustpilotMicro } from "@/components/ui/TrustWidgets";
-
 const partners = [
   { src: "/images/partners/Immoscout_Logo_Updated.png", alt: "ImmoScout24 Partner", height: 60 },
   { src: "/images/partners/Immowelt.png", alt: "Immowelt", height: 50 },
@@ -57,11 +55,6 @@ export default function PartnerLogos() {
           <LogoSet />
           <LogoSet duplicate />
         </div>
-      </div>
-
-      {/* Trustpilot Micro Review Count */}
-      <div className="mt-6 max-w-md mx-auto px-4">
-        <TrustpilotMicro />
       </div>
     </section>
   );

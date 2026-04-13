@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowRight, Star, TrendingUp, Users } from "lucide-react";
+import { ArrowRight, TrendingUp, Users } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import { TrustpilotMicro } from "@/components/ui/TrustWidgets";
 import { siteConfig } from "@/data/site-config";
 
 function useCountUp(target: number, duration = 2000, start = false) {
@@ -317,50 +318,10 @@ export default function HeroSection() {
                   </div>
                 </div>
 
-                {/* Stat 3 — Google Bewertung */}
-                <div className="flex flex-col items-center text-center gap-1 sm:flex-row sm:text-left sm:items-center sm:gap-4 lg:px-8 lg:py-6 py-2 group cursor-default">
-                  {/* Avatar stack hidden on mobile, show icon instead */}
-                  <div className="flex-shrink-0">
-                    <div className="hidden sm:flex -space-x-2.5">
-                      {[
-                        { bg: "bg-primary-700", initials: "OK" },
-                        { bg: "bg-primary-500", initials: "TM" },
-                        { bg: "bg-teal-dark", initials: "JS" },
-                        { bg: "bg-primary", initials: "MR" },
-                      ].map((a, i) => (
-                        <div
-                          key={i}
-                          className={`w-9 h-9 rounded-full ${a.bg} border-2 border-white flex items-center justify-center text-white text-[10px] font-bold shadow-sm transition-transform duration-300 group-hover:scale-110`}
-                          style={{ transitionDelay: `${i * 50}ms` }}
-                        >
-                          {a.initials}
-                        </div>
-                      ))}
-                    </div>
-                    <div className="sm:hidden w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                      <Star size={20} className="text-primary fill-primary" />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-0.5 mb-0.5 justify-center sm:justify-start">
-                      {[1, 2, 3, 4, 5].map((s) => (
-                        <Star
-                          key={s}
-                          size={13}
-                          className={`sm:w-[15px] sm:h-[15px] ${
-                            s <= Math.floor(siteConfig.stats.googleRating)
-                              ? "fill-gold text-gold"
-                              : "fill-gold/30 text-gold/30"
-                          }`}
-                        />
-                      ))}
-                      <span className="ml-1 text-sm sm:text-sm font-bold text-slate-dark">
-                        {siteConfig.stats.googleRating}
-                      </span>
-                    </div>
-                    <div className="text-[10px] sm:text-sm text-slate-body leading-tight">
-                      Google
-                    </div>
+                {/* Stat 3 — Trustpilot Bewertung */}
+                <div className="flex items-center justify-center lg:px-8 lg:py-5 py-2">
+                  <div className="w-full max-w-[220px]">
+                    <TrustpilotMicro />
                   </div>
                 </div>
               </div>
