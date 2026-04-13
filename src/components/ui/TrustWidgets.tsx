@@ -1,32 +1,45 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 /**
- * Loads the Trustpilot bootstrap script once, then tells Trustpilot to scan
- * for new widgets every time this component mounts (SPA navigation).
+ * Loads the Trustpilot bootstrap script once.
+ * Returns a function to re-initialize a specific widget element.
  */
-function useTrustpilot() {
+function useTrustpilot(ref: React.RefObject<HTMLDivElement | null>) {
   useEffect(() => {
     const id = "tp-widget-bootstrap";
-    if (!document.getElementById(id)) {
+    const existing = document.getElementById(id);
+
+    function initWidget() {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const tp = (window as any).Trustpilot;
+      if (tp && ref.current) {
+        tp.loadFromElement(ref.current, true);
+      }
+    }
+
+    if (!existing) {
       const s = document.createElement("script");
       s.id = id;
       s.src = "https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
       s.async = true;
+      s.onload = () => {
+        // Small delay for Trustpilot to initialize
+        setTimeout(initWidget, 300);
+      };
       document.head.appendChild(s);
+    } else {
+      // Script already loaded – just re-init this widget
+      // Poll briefly in case Trustpilot object isn't ready yet
+      const timer = setTimeout(initWidget, 200);
+      const timer2 = setTimeout(initWidget, 800);
+      return () => {
+        clearTimeout(timer);
+        clearTimeout(timer2);
+      };
     }
-    // Re-scan for widgets after hydration / SPA nav
-    const timer = setTimeout(() => {
-      if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).Trustpilot) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (window as any).Trustpilot.loadFromElement(
-          document.querySelectorAll(".trustpilot-widget")
-        );
-      }
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
+  }, [ref]);
 }
 
 /**
@@ -47,9 +60,11 @@ function useTrustlocal() {
 
 /* ─────────────── Trustpilot: Micro Review Count ─────────────── */
 export function TrustpilotMicro() {
-  useTrustpilot();
+  const ref = useRef<HTMLDivElement>(null);
+  useTrustpilot(ref);
   return (
     <div
+      ref={ref}
       className="trustpilot-widget"
       data-locale="de-DE"
       data-template-id="5419b6a8b0d04a076446a9ad"
@@ -73,9 +88,11 @@ export function TrustpilotMicro() {
 
 /* ─────────────── Trustpilot: Review Collector ─────────────── */
 export function TrustpilotReviewCollector() {
-  useTrustpilot();
+  const ref = useRef<HTMLDivElement>(null);
+  useTrustpilot(ref);
   return (
     <div
+      ref={ref}
       className="trustpilot-widget"
       data-locale="de-DE"
       data-template-id="56278e9abfbbba0bdcd568bc"
