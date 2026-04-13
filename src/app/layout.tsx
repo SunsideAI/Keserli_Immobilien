@@ -80,6 +80,15 @@ export default function RootLayout({
         <Header />
         <main className="pt-16 lg:pt-20">{children}</main>
         <Footer />
+        {/* Hidden Netlify form detection */}
+        <form name="suchprofil" data-netlify="true" hidden>
+          <input type="hidden" name="form-name" value="suchprofil" />
+          <input name="vorname" />
+          <input name="nachname" />
+          <input name="email" />
+          <input name="telefon" />
+          <textarea name="suchprofil" />
+        </form>
         <VoiceflowChat />
       </body>
     </html>
