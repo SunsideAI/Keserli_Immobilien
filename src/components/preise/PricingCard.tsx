@@ -8,9 +8,10 @@ import { PricingTier } from "@/types";
 
 interface PricingCardProps {
   tier: PricingTier;
+  onSelect?: () => void;
 }
 
-export default function PricingCard({ tier }: PricingCardProps) {
+export default function PricingCard({ tier, onSelect }: PricingCardProps) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -91,7 +92,8 @@ export default function PricingCard({ tier }: PricingCardProps) {
 
       {/* CTA */}
       <Button
-        href={tier.ctaHref}
+        href={onSelect ? undefined : tier.ctaHref}
+        onClick={onSelect}
         variant={tier.highlighted ? "primary" : "secondary"}
         className="w-full"
       >

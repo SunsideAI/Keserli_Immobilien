@@ -4,7 +4,7 @@ import Container from "@/components/ui/Container";
 import Badge from "@/components/ui/Badge";
 import Accordion from "@/components/ui/Accordion";
 import { pricingTiers } from "@/data/pricing";
-import PricingCard from "@/components/preise/PricingCard";
+import PricingSelector from "@/components/preise/PricingSelector";
 import PricingCTA from "@/components/preise/PricingCTA";
 
 export const metadata: Metadata = {
@@ -83,11 +83,7 @@ export default function PreisePage() {
       {/* Pricing Cards */}
       <section className="section-padding bg-white">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-start">
-            {pricingTiers.map((tier) => (
-              <PricingCard key={tier.id} tier={tier} />
-            ))}
-          </div>
+          <PricingSelector tiers={pricingTiers} />
         </Container>
       </section>
 

@@ -11,8 +11,8 @@ interface ContactFormProps {
 
 const paketMap: Record<string, string> = {
   basis: "Homefin Basis (1,95%)",
-  premium: "Homefin Premium+ (2,94%)",
-  select: "Homefin Select (ab 99€/Monat)",
+  premium: "Homefin Premium+ (2,49%)",
+  select: "Homefin Select (ab 89€)",
 };
 
 export default function ContactForm({ variant = "default", paket: paketProp, className }: ContactFormProps) {
@@ -195,8 +195,8 @@ export default function ContactForm({ variant = "default", paket: paketProp, cla
           >
             <option value="">Kein Paket ausgewählt</option>
             <option value="Homefin Basis (1,95%)">Homefin Basis (1,95%)</option>
-            <option value="Homefin Premium+ (2,94%)">Homefin Premium+ (2,94%)</option>
-            <option value="Homefin Select (ab 99€/Monat)">Homefin Select (ab 99€/Monat)</option>
+            <option value="Homefin Premium+ (2,49%)">Homefin Premium+ (2,49%)</option>
+            <option value="Homefin Select (ab 89€)">Homefin Select (ab 89€)</option>
           </select>
         </div>
       )}
