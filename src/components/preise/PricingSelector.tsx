@@ -8,7 +8,7 @@ import { PricingTier } from "@/types";
 import { cn } from "@/lib/utils";
 
 const paketFriendlyName: Record<string, string> = {
-  basis: "Homefin Basis (1,95%)",
+  basis: "Homefin Basic (1,95%)",
   premium: "Homefin Premium+ (2,49%)",
   select: "Homefin Select (ab 89€)",
 };

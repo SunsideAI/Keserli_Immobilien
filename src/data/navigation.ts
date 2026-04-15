@@ -2,7 +2,14 @@ import { NavItem } from "@/types";
 
 export const mainNavItems: NavItem[] = [
   { label: "Verkauf", href: "/verkauf" },
-  { label: "Bewertung", href: "/immobilienbewertung" },
+  {
+    label: "Bewertung",
+    href: "/immobilienbewertung",
+    children: [
+      { label: "Immobilienbewertung", href: "/immobilienbewertung" },
+      { label: "Grundstücksbewertung", href: "/grundstuecksbewertung" },
+    ],
+  },
   {
     label: "Finanzierung",
     href: "/finanzierung",
@@ -31,6 +38,7 @@ export const footerNavItems = {
   service: [
     { label: "Immobilie verkaufen", href: "/verkauf" },
     { label: "Immobilienbewertung", href: "/immobilienbewertung" },
+    { label: "Grundstücksbewertung", href: "/grundstuecksbewertung" },
     { label: "Finanzierung", href: "/finanzierung" },
     { label: "Immobilienangebote", href: "/angebote" },
     { label: "Preise & Leistungen", href: "/preise" },

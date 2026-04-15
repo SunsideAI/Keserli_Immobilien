@@ -5,6 +5,7 @@ import Badge from "@/components/ui/Badge";
 import { siteConfig } from "@/data/site-config";
 import BewertungToggle from "@/components/bewertung/BewertungToggle";
 import ImmoScoutWidget from "@/components/ui/ImmoScoutWidget";
+import BottimmoEmbed from "@/components/ui/BottimmoEmbed";
 
 export const metadata: Metadata = {
   title: "Kostenlose Immobilienbewertung in 48h – Was ist Ihre Immobilie wert?",
@@ -51,17 +52,40 @@ export default function ImmobilienbewertungPage() {
         </Container>
       </section>
 
-      {/* Process Steps */}
+      {/* Bottimmo Bewertungs-Funnel */}
       <section className="section-padding bg-white">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-dark mb-3">
+                Jetzt Immobilie bewerten
+              </h2>
+              <p className="text-slate-body">
+                In wenigen Schritten erhalten Sie eine erste Einschätzung zum
+                Marktwert Ihrer Immobilie.
+              </p>
+            </div>
+            <BottimmoEmbed widget="valuation" className="min-h-[400px]" />
+          </div>
+        </Container>
+      </section>
+
+      {/* Process Steps */}
+      <section className="section-padding bg-gray-50">
+        <Container>
+          <div className="text-center mb-10">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-dark mb-3">
+              So läuft die professionelle Bewertung ab
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 icon: CheckCircle,
                 step: "1",
                 title: "Anfrage stellen",
                 description:
-                  "Füllen Sie unser Formular aus oder buchen Sie direkt einen Termin. Teilen Sie uns die wichtigsten Eckdaten Ihrer Immobilie mit.",
+                  "Nutzen Sie unseren Bewertungsrechner oben oder buchen Sie direkt einen Termin.",
               },
               {
                 icon: Clock,
@@ -99,15 +123,16 @@ export default function ImmobilienbewertungPage() {
       </section>
 
       {/* Booking / Contact Section */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-white">
         <Container>
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-slate-dark mb-4">
-                Jetzt Bewertung anfordern
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-dark mb-4">
+                Persönlichen Termin vereinbaren
               </h2>
               <p className="text-lg text-slate-body">
-                Buchen Sie direkt einen Termin oder senden Sie uns eine Nachricht.
+                Sie möchten eine ausführliche Bewertung vor Ort? Buchen Sie direkt
+                einen Termin oder senden Sie uns eine Nachricht.
               </p>
             </div>
             <BewertungToggle />
@@ -116,7 +141,7 @@ export default function ImmobilienbewertungPage() {
       </section>
 
       {/* Trust & Credentials */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-gray-50">
         <Container>
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -138,7 +163,7 @@ export default function ImmobilienbewertungPage() {
                   ))}
                 </div>
 
-                <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-card shadow-card">
+                <div className="flex items-center gap-4 p-4 bg-white rounded-card shadow-card">
                   <img
                     src={siteConfig.owner.photo}
                     alt={siteConfig.owner.name}
