@@ -369,7 +369,7 @@ export default function VerkaufPage() {
                   ))}
                 </ul>
                 <Button
-                  href={tier.ctaHref}
+                  href="/preise"
                   variant={tier.highlighted ? "primary" : "secondary"}
                   className="w-full"
                 >

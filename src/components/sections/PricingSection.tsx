@@ -68,7 +68,7 @@ export default function PricingSection() {
                 </ul>
 
                 <Button
-                  href={tier.ctaHref}
+                  href="/preise"
                   variant={tier.highlighted ? "primary" : "secondary"}
                   className="w-full mt-auto"
                 >
