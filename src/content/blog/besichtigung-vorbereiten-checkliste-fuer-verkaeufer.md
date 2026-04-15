@@ -28,7 +28,7 @@ faq:
 
 Der erste Eindruck zählt -- und bei einer Immobilienbesichtigung haben Sie oft nur eine einzige Chance, potenzielle Käufer zu überzeugen. Studien zeigen, dass sich die meisten Interessenten bereits in den ersten 90 Sekunden einer Besichtigung ein Urteil über eine Immobilie bilden. Dieses erste Bauchgefühl ist danach nur schwer zu korrigieren. Umso wichtiger ist es, dass Sie Ihre Immobilie optimal vorbereiten -- vom Vorgarten bis zum Keller, vom Geruch in der Luft bis zur Temperatur in den Räumen.
 
-Als erfahrener Immobilienmakler in Monheim am Rhein habe ich hunderte Besichtigungen begleitet und genau beobachtet, was Käufer begeistert und was sie abschreckt. In diesem ausführlichen Ratgeber teile ich meine Erfahrungen und gebe Ihnen eine vollständige Checkliste an die Hand, mit der Sie Ihre Besichtigung professionell vorbereiten.
+Als IHK-zertifizierter Immobilienmakler in Monheim am Rhein habe ich hunderte Besichtigungen begleitet und genau beobachtet, was Käufer begeistert und was sie abschreckt. In diesem ausführlichen Ratgeber teile ich meine Erfahrungen und gebe Ihnen eine vollständige Checkliste an die Hand, mit der Sie Ihre Besichtigung professionell vorbereiten.
 
 ---
 

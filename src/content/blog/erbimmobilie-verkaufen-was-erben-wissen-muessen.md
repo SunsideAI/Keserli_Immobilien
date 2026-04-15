@@ -247,7 +247,7 @@ Der Verkauf einer Erbimmobilie erfordert Einfühlungsvermögen, Fachkompetenz un
 
 ## homefin -- Ihr Partner für Erbimmobilien in Monheim am Rhein
 
-Als erfahrener Immobilienmakler hat Orhan Keserli von homefin bereits zahlreiche Erben und Erbengemeinschaften beim Verkauf begleitet. Wir kennen die besonderen Herausforderungen, die mit einer Erbimmobilie verbunden sind, und unterstützen Sie mit:
+Als IHK-zertifizierter Immobilienmakler hat Orhan Keserli von homefin bereits zahlreiche Erben und Erbengemeinschaften beim Verkauf begleitet. Wir kennen die besonderen Herausforderungen, die mit einer Erbimmobilie verbunden sind, und unterstützen Sie mit:
 
 - **Kostenlose Erstbewertung** Ihrer Erbimmobilie
 - **Erfahrung mit Erbengemeinschaften** und neutraler Vermittlung

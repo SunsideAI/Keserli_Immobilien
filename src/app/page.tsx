@@ -4,6 +4,7 @@ import BenefitsSection from "@/components/sections/BenefitsSection";
 import ProcessSection from "@/components/sections/ProcessSection";
 import BewertungSection from "@/components/sections/BewertungSection";
 import FeaturedProperty from "@/components/sections/FeaturedProperty";
+import ServicePillarsSection from "@/components/sections/ServicePillarsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import KaeuferdatenbankCTA from "@/components/sections/KaeuferdatenbankCTA";
 import PromiseSection from "@/components/sections/PromiseSection";
@@ -18,9 +19,10 @@ export default function HomePage() {
     <>
       <HeroSection />
       <PartnerLogos />
-      <BenefitsSection />
       <FeaturedProperty />
+      <BenefitsSection />
       <ProcessSection />
+      <ServicePillarsSection />
       <BewertungSection />
       <TestimonialsSection />
       <KaeuferdatenbankCTA />

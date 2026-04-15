@@ -49,7 +49,7 @@ export default function Button({
       : "";
 
   const classes = cn(
-    "inline-flex items-center justify-center font-semibold rounded-btn transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]",
+    "inline-flex items-center justify-center font-semibold rounded-btn transition-colors duration-200",
     variants[variant],
     sizes[size],
     shimmerClass,
