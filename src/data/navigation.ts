@@ -18,7 +18,6 @@ export const mainNavItems: NavItem[] = [
       { label: "Zinsrechner", href: "/finanzierung/zinsrechner" },
       { label: "Tilgungsrechner", href: "/finanzierung/tilgungsrechner" },
       { label: "Sollzinsbindung", href: "/finanzierung/sollzinsbindung" },
-      { label: "Baufinanzierungszertifikat", href: "/finanzierung/baufinanzierungszertifikat" },
     ],
   },
   { label: "Angebote", href: "/angebote" },

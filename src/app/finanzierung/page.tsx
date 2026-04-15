@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Calculator, TrendingDown, BarChart3, Clock, Shield, Phone, CheckCircle2, ArrowRight } from "lucide-react";
+import { Calculator, TrendingDown, BarChart3, Clock, Phone, ArrowRight } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
@@ -16,7 +16,6 @@ export const metadata: Metadata = {
     "Budgetrechner",
     "Zinsrechner",
     "Tilgungsrechner",
-    "Baufinanzierungszertifikat",
   ],
   alternates: { canonical: `${siteConfig.url}/finanzierung` },
 };
@@ -109,50 +108,6 @@ export default function FinanzierungPage() {
                 </span>
               </Link>
             ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Baufinanzierungszertifikat */}
-      <section className="section-padding bg-white">
-        <Container>
-          <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            <div>
-              <Badge variant="gold" className="mb-4">NEU</Badge>
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-dark mb-4">
-                Das Baufinanzierungs&shy;zertifikat
-              </h2>
-              <p className="text-slate-body mb-6">
-                Zeigen Sie Verkäufern und Maklern, dass Sie finanziell bereit sind.
-                Unser digitales Zertifikat mit NFC-Technologie bestätigt Ihre Finanzierungsfähigkeit – SCHUFA-neutral und sofort verfügbar.
-              </p>
-              <div className="space-y-3 mb-6">
-                {[
-                  "SCHUFA-neutral – kein Einfluss auf Ihren Score",
-                  "Digitale NFC-Karte – papierlos und modern",
-                  "Schnellere Kaufzusagen – Verkäufer bevorzugen verifizierte Käufer",
-                  "Über 700 Partnerbanken – bestes Angebot garantiert",
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-2 text-sm">
-                    <CheckCircle2 size={18} className="text-primary shrink-0 mt-0.5" />
-                    <span className="text-slate-body">{item}</span>
-                  </div>
-                ))}
-              </div>
-              <Button href="/finanzierung/baufinanzierungszertifikat">
-                <Shield size={18} className="mr-2" />
-                Mehr erfahren
-              </Button>
-            </div>
-            <div className="bg-gradient-to-br from-primary-100 to-mint-light rounded-2xl p-8 flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-24 h-24 mx-auto bg-white rounded-2xl shadow-lg flex items-center justify-center mb-4">
-                  <Shield size={48} className="text-primary" />
-                </div>
-                <p className="font-bold text-slate-dark text-lg">Baufinanzierungs&shy;zertifikat</p>
-                <p className="text-sm text-slate-body mt-1">Ihre digitale Finanzierungsbestätigung</p>
-              </div>
-            </div>
           </div>
         </Container>
       </section>
