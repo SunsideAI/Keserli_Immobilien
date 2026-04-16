@@ -22,7 +22,7 @@ export const pricingTiers: PricingTier[] = [
   {
     id: "premium",
     name: "Homefin Premium+",
-    price: "2,49%",
+    price: "2,94%",
     priceNote: "inkl. MwSt.",
     description: "Voller Maklerservice mit Premium-Vermarktung",
     badge: "BESTPREISGARANTIE",

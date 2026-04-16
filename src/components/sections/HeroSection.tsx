@@ -1,28 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowRight, Star, TrendingUp, Users } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
-import { TrustpilotMicro } from "@/components/ui/TrustWidgets";
+import { TrustpilotMicro, TrustlocalPortrait } from "@/components/ui/TrustWidgets";
 import { siteConfig } from "@/data/site-config";
-
-function useCountUp(target: number, duration = 2000, start = false) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    if (!start) return;
-    let startTime: number | null = null;
-    const step = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * target));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [target, duration, start]);
-  return count;
-}
 
 function anim(visible: boolean, delay: string) {
   return `transition-all duration-700 ease-out ${delay} ${
@@ -51,16 +34,6 @@ export default function HeroSection() {
     const timer = setTimeout(() => setVisible(true), 150);
     return () => clearTimeout(timer);
   }, []);
-
-  const soldNumber =
-    parseInt(siteConfig.stats.propertiesSold.replace(/\D/g, "")) || 1000;
-  const animatedCount = useCountUp(soldNumber, 2400, visible);
-  const formattedCount =
-    animatedCount >= 1000
-      ? `${Math.floor(animatedCount / 1000)}.${String(
-          animatedCount % 1000
-        ).padStart(3, "0")}+`
-      : `${animatedCount}+`;
 
   return (
     <section className="relative">
@@ -204,10 +177,6 @@ export default function HeroSection() {
                 </Button>
               </div>
 
-              {/* Trustpilot */}
-              <div className={`mt-6 max-w-[280px] ${anim(visible, "delay-[450ms]")}`}>
-                <TrustpilotMicro />
-              </div>
             </div>
           </div>
 
@@ -262,11 +231,6 @@ export default function HeroSection() {
               </Button>
             </div>
 
-            {/* Trustpilot */}
-            <div className={`mt-5 w-full max-w-[260px] ${anim(visible, "delay-[380ms]")}`}>
-              <TrustpilotMicro />
-            </div>
-
             {/* IDA Award — with subtle glow */}
             <div className={`relative mt-8 ${anim(visible, "delay-[400ms]")}`}>
               <div className="absolute inset-0 w-40 h-40 mx-auto rounded-full bg-gradient-to-br from-gold/10 via-primary/5 to-transparent blur-2xl" />
@@ -290,66 +254,27 @@ export default function HeroSection() {
                 : "opacity-0 translate-y-12"
             }`}
           >
-            <div className="bg-white rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-gray-100 p-3 sm:p-5 lg:p-0 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-shadow duration-500">
-              <div className="grid grid-cols-3 gap-2 sm:gap-5 lg:gap-0 lg:divide-x lg:divide-gray-100">
-                {/* Stat 1 — Faire Provision */}
-                <div className="flex flex-col items-center text-center gap-1 sm:flex-row sm:text-left sm:items-center sm:gap-4 lg:px-8 lg:py-6 py-2 group cursor-default">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 group-hover:shadow-btn">
-                    <TrendingUp
-                      size={20}
-                      className="text-primary transition-colors duration-300 group-hover:text-white sm:w-5 sm:h-5"
-                    />
-                  </div>
-                  <div>
-                    <div className="text-lg sm:text-xl font-extrabold text-slate-dark leading-tight">
-                      1,95&nbsp;%
-                    </div>
-                    <div className="text-[10px] sm:text-sm text-slate-body leading-tight mt-0.5">
-                      Faire Provision
-                    </div>
+            <div className="bg-white rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-gray-100 p-3 sm:p-4 lg:p-0 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-shadow duration-500">
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 lg:gap-0 lg:divide-x lg:divide-gray-100 items-center">
+                {/* Trustpilot */}
+                <div className="flex items-center justify-center lg:px-6 lg:py-5 py-2 min-h-[60px]">
+                  <div className="w-full max-w-[200px]">
+                    <TrustpilotMicro />
                   </div>
                 </div>
 
-                {/* Stat 2 — Vermittelte Immobilien */}
-                <div className="flex flex-col items-center text-center gap-1 sm:flex-row sm:text-left sm:items-center sm:gap-4 lg:px-8 lg:py-6 py-2 group cursor-default">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 group-hover:shadow-btn">
-                    <Users
-                      size={20}
-                      className="text-primary transition-colors duration-300 group-hover:text-white sm:w-5 sm:h-5"
-                    />
-                  </div>
-                  <div>
-                    <div className="text-lg sm:text-xl font-extrabold text-slate-dark leading-tight tabular-nums">
-                      {formattedCount}
-                    </div>
-                    <div className="text-[10px] sm:text-sm text-slate-body leading-tight mt-0.5">
-                      Immobilien
-                    </div>
+                {/* Trustlocal */}
+                <div className="flex items-center justify-center lg:px-6 lg:py-5 py-2 min-h-[60px]">
+                  <div className="w-full max-w-[200px]">
+                    <TrustlocalPortrait />
                   </div>
                 </div>
 
-                {/* Stat 3 — Google Bewertung */}
-                <div className="flex flex-col items-center text-center gap-1 sm:flex-row sm:text-left sm:items-center sm:gap-4 lg:px-8 lg:py-6 py-2 group cursor-default">
-                  {/* Avatar stack hidden on mobile, show icon instead */}
+                {/* Google Bewertung */}
+                <div className="flex flex-col items-center text-center gap-1 sm:flex-row sm:text-left sm:items-center sm:gap-3 lg:px-6 lg:py-5 py-2 group cursor-default">
                   <div className="flex-shrink-0">
-                    <div className="hidden sm:flex -space-x-2.5">
-                      {[
-                        { bg: "bg-primary-700", initials: "OK" },
-                        { bg: "bg-primary-500", initials: "TM" },
-                        { bg: "bg-teal-dark", initials: "JS" },
-                        { bg: "bg-primary", initials: "MR" },
-                      ].map((a, i) => (
-                        <div
-                          key={i}
-                          className={`w-9 h-9 rounded-full ${a.bg} border-2 border-white flex items-center justify-center text-white text-[10px] font-bold shadow-sm transition-transform duration-300 group-hover:scale-110`}
-                          style={{ transitionDelay: `${i * 50}ms` }}
-                        >
-                          {a.initials}
-                        </div>
-                      ))}
-                    </div>
-                    <div className="sm:hidden w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                      <Star size={20} className="text-primary fill-primary" />
+                    <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Star size={20} className="text-gold fill-gold" />
                     </div>
                   </div>
                   <div>
@@ -365,12 +290,12 @@ export default function HeroSection() {
                           }`}
                         />
                       ))}
-                      <span className="ml-1 text-sm sm:text-sm font-bold text-slate-dark">
+                      <span className="ml-1 text-sm font-bold text-slate-dark">
                         {siteConfig.stats.googleRating}
                       </span>
                     </div>
                     <div className="text-[10px] sm:text-sm text-slate-body leading-tight">
-                      Google
+                      Google Bewertungen
                     </div>
                   </div>
                 </div>

@@ -5,7 +5,7 @@ export const faqItems: FAQItem[] = [
     id: "1",
     question: "Wie funktioniert die kostenlose Immobilienbewertung?",
     answer:
-      "Unsere kostenlose Immobilienbewertung erfolgt in drei Schritten: Zunächst nehmen Sie Kontakt mit uns auf und teilen uns die wichtigsten Eckdaten Ihrer Immobilie mit. Anschließend besichtigen wir Ihre Immobilie persönlich vor Ort, um alle wertrelevanten Faktoren zu erfassen. Innerhalb von 48 Stunden erhalten Sie eine fundierte Marktwertanalyse – komplett kostenlos und unverbindlich.",
+      "Unsere kostenlose Immobilienbewertung erfolgt in drei Schritten: Zunächst nehmen Sie Kontakt mit uns auf und teilen uns die wichtigsten Eckdaten Ihrer Immobilie mit. Online erhalten Sie ein Sofortergebnis. Für eine persönliche Bewertung besichtigen wir Ihre Immobilie vor Ort und erstellen eine fundierte Marktwertanalyse – komplett kostenlos und unverbindlich.",
     category: "Bewertung",
   },
   {

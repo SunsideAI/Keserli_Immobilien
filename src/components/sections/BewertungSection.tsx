@@ -23,7 +23,7 @@ export default function BewertungSection() {
                 {[
                   "Professionelle Marktwertanalyse",
                   "Persönliche Besichtigung vor Ort",
-                  "Ergebnis innerhalb von 48 Stunden",
+                  "Sofortergebnis online oder nach Besichtigung",
                   "100% kostenlos & unverbindlich",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3">

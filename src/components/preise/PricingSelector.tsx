@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 const paketFriendlyName: Record<string, string> = {
   basis: "Homefin Basic (1,95%)",
-  premium: "Homefin Premium+ (2,49%)",
+  premium: "Homefin Premium+ (2,94%)",
   select: "Homefin Select (ab 89€)",
 };
 

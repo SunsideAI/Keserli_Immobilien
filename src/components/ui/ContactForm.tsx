@@ -11,7 +11,7 @@ interface ContactFormProps {
 
 const paketMap: Record<string, string> = {
   basis: "Homefin Basic (1,95%)",
-  premium: "Homefin Premium+ (2,49%)",
+  premium: "Homefin Premium+ (2,94%)",
   select: "Homefin Select (ab 89€)",
 };
 
@@ -181,24 +181,9 @@ export default function ContactForm({ variant = "default", paket: paketProp, cla
         </div>
       </div>
 
-      {variant === "default" && (
-        <div className="mb-4">
-          <label htmlFor={`${formName}-paket`} className="block text-sm font-medium text-slate-dark mb-1">
-            Gewünschtes Paket
-          </label>
-          <select
-            id={`${formName}-paket`}
-            name="paket"
-            value={selectedPaket}
-            onChange={(e) => setSelectedPaket(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-btn focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
-          >
-            <option value="">Kein Paket ausgewählt</option>
-            <option value="Homefin Basic (1,95%)">Homefin Basic (1,95%)</option>
-            <option value="Homefin Premium+ (2,49%)">Homefin Premium+ (2,49%)</option>
-            <option value="Homefin Select (ab 89€)">Homefin Select (ab 89€)</option>
-          </select>
-        </div>
+      {/* Hidden field: only submitted when paket is pre-selected via PricingSelector */}
+      {selectedPaket && (
+        <input type="hidden" name="paket" value={selectedPaket} />
       )}
 
       <div className="mb-6">

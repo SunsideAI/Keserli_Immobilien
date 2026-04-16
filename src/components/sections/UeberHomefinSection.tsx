@@ -23,7 +23,7 @@ export default function UeberHomefinSection() {
                 Über Homefin
               </h2>
               <p className="text-lg text-slate-body mb-6 leading-relaxed">
-                Als IHK-zertifizierter Immobilienmakler in {siteConfig.contact.address.city}{" "}
+                Als Immobilienmakler (IHK) in {siteConfig.contact.address.city}{" "}
                 kennen wir den Markt wie unsere Westentasche. Seit über 10 Jahren
                 begleiten wir Eigentümer und Käufer in{" "}
                 {siteConfig.regions.join(", ")} bei einem der wichtigsten

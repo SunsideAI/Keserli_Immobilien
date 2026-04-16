@@ -23,7 +23,7 @@ export default function AuthorBox() {
           <div className="flex flex-wrap gap-3 text-xs text-slate-body">
             <span className="inline-flex items-center gap-1">
               <Shield size={12} className="text-primary" />
-              IHK-zertifiziert
+              Immobilienmakler (IHK)
             </span>
             <span className="inline-flex items-center gap-1">
               <Award size={12} className="text-gold" />

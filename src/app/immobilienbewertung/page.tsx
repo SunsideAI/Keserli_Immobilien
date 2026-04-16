@@ -8,9 +8,9 @@ import ImmoScoutWidget from "@/components/ui/ImmoScoutWidget";
 import BottimmoEmbed from "@/components/ui/BottimmoEmbed";
 
 export const metadata: Metadata = {
-  title: "Kostenlose Immobilienbewertung in 48h – Was ist Ihre Immobilie wert?",
+  title: "Kostenlose Immobilienbewertung mit Sofortergebnis – Was ist Ihre Immobilie wert?",
   description:
-    "Kostenlose Immobilienbewertung in Monheim am Rhein, Langenfeld, Leverkusen, Köln & Düsseldorf. Professionelle Marktwertanalyse innerhalb von 48 Stunden – unverbindlich und kostenlos.",
+    "Kostenlose Immobilienbewertung in Monheim am Rhein, Langenfeld, Leverkusen, Köln & Düsseldorf. Professionelle Marktwertanalyse mit Sofortergebnis – online oder persönlich, unverbindlich und kostenlos.",
   keywords: [
     "Immobilienbewertung kostenlos",
     "Haus bewerten lassen",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://www.myhomefin.de/immobilienbewertung" },
   openGraph: {
-    title: "Kostenlose Immobilienbewertung in 48h | homefin",
+    title: "Kostenlose Immobilienbewertung mit Sofortergebnis | homefin",
     description: "Professionelle Marktwertanalyse – kostenlos und unverbindlich.",
     url: "https://www.myhomefin.de/immobilienbewertung",
     type: "website",
@@ -42,7 +42,7 @@ export default function ImmobilienbewertungPage() {
             </Badge>
             <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-dark mb-6">
               Kostenlose Immobilienbewertung{" "}
-              <span className="text-primary">in 48 Stunden</span>
+              <span className="text-primary">mit Sofortergebnis</span>
             </h1>
             <p className="text-lg text-slate-body max-w-2xl mx-auto">
               Erfahren Sie den aktuellen Marktwert Ihrer Immobilie – professionell
@@ -99,7 +99,7 @@ export default function ImmobilienbewertungPage() {
                 step: "3",
                 title: "Bewertung erhalten",
                 description:
-                  "Innerhalb von 48 Stunden erhalten Sie eine fundierte Marktwertanalyse mit ausführlicher Dokumentation.",
+                  "Sie erhalten eine fundierte Marktwertanalyse – online sofort oder nach persönlicher Besichtigung.",
               },
             ].map((item) => {
               const Icon = item.icon;
@@ -151,7 +151,7 @@ export default function ImmobilienbewertungPage() {
                 </h2>
                 <div className="space-y-4 mb-8">
                   {[
-                    "IHK-zertifizierter Immobilienmakler",
+                    "Immobilienmakler (IHK)",
                     "Über 1.000 erfolgreiche Bewertungen",
                     "Tiefe lokale Marktkenntnis",
                     "100% kostenlos und unverbindlich",

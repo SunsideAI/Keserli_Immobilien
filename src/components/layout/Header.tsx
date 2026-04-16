@@ -138,13 +138,22 @@ export default function Header() {
             </Button>
           </div>
 
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 text-slate-dark hover:bg-gray-100 rounded-btn transition-colors"
-            aria-label="Menü öffnen"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-1 lg:hidden">
+            <a
+              href="tel:+498005888015"
+              className="p-2 text-primary hover:bg-primary/10 rounded-btn transition-colors"
+              aria-label="Jetzt anrufen"
+            >
+              <Phone size={22} />
+            </a>
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="p-2 text-slate-dark hover:bg-gray-100 rounded-btn transition-colors"
+              aria-label="Menü öffnen"
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 

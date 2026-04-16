@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s | homefin GmbH – Immobilienmakler (IHK)",
   },
   description:
-    "Ihr IHK-zertifizierter Immobilienmakler in Monheim am Rhein, Langenfeld, Leverkusen, Köln & Düsseldorf. Professioneller Maklerservice ab 1,95% inkl. MwSt. Kostenlose Immobilienbewertung in 48h.",
+    "Ihr Immobilienmakler (IHK) in Monheim am Rhein, Langenfeld, Leverkusen, Köln & Düsseldorf. Professioneller Maklerservice ab 1,95% inkl. MwSt. Kostenlose Immobilienbewertung mit Sofortergebnis.",
   keywords: [
     "Immobilienmakler (IHK) Monheim am Rhein",
     "Immobilienmakler (IHK) Langenfeld",

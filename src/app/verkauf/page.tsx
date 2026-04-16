@@ -22,7 +22,7 @@ import { pricingTiers } from "@/data/pricing";
 export const metadata: Metadata = {
   title: "Immobilie verkaufen – Ihr Makler in Monheim & Umgebung",
   description:
-    "Immobilie verkaufen in Monheim am Rhein, Langenfeld, Leverkusen, Köln & Düsseldorf. Faire Provision ab 1,95% inkl. MwSt. Kostenlose Bewertung in 48h.",
+    "Immobilie verkaufen in Monheim am Rhein, Langenfeld, Leverkusen, Köln & Düsseldorf. Faire Provision ab 1,95% inkl. MwSt. Kostenlose Bewertung mit Sofortergebnis.",
   keywords: [
     "Immobilie verkaufen",
     "Haus verkaufen",
