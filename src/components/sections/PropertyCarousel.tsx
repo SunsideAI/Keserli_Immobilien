@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import {
   Home,
   Maximize2,
@@ -21,62 +21,148 @@ function statusVariant(status: Property["status"]) {
   return "neutral" as const;
 }
 
-function CompactCard({
+/* ---------- Single property card (used for every slide) ---------- */
+function PropertyCard({
   property,
+  isActive,
   onClick,
-  side,
 }: {
   property: Property;
-  onClick: () => void;
-  side: "left" | "right";
+  isActive: boolean;
+  onClick?: () => void;
 }) {
   return (
-    <button
-      onClick={onClick}
+    <div
+      onClick={!isActive ? onClick : undefined}
       className={cn(
-        "hidden lg:flex flex-col bg-white rounded-card shadow-card overflow-hidden border border-gray-100 cursor-pointer transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 w-full text-left",
-        side === "left" ? "opacity-70 hover:opacity-100" : "opacity-70 hover:opacity-100"
+        "bg-white rounded-card shadow-card overflow-hidden border border-gray-100 transition-all duration-500 h-full",
+        !isActive && "cursor-pointer opacity-60 scale-[0.92] hover:opacity-80"
       )}
     >
-      <div className="relative h-40 bg-primary/10">
-        <img
-          src={property.thumbnailImage}
-          alt={property.title}
-          className="w-full h-full object-cover"
-        />
-        <Badge
-          variant={statusVariant(property.status)}
-          className="absolute top-3 left-3 text-xs"
-        >
-          {property.status}
-        </Badge>
-      </div>
-      <div className="p-4 flex-1 flex flex-col">
-        <h4 className="text-sm font-bold text-slate-dark mb-1 line-clamp-2">
-          {property.title}
-        </h4>
-        <div className="flex items-center gap-3 text-xs text-slate-body mb-3 mt-auto">
-          {property.features.rooms > 0 && (
-            <span className="flex items-center gap-1">
-              <Home size={12} className="text-primary" />
-              {property.features.rooms} Zi.
-            </span>
-          )}
-          {property.features.livingArea > 0 && (
-            <span className="flex items-center gap-1">
-              <Maximize2 size={12} className="text-primary" />
-              {property.features.livingArea} m²
-            </span>
-          )}
+      {/* Landscape card with image left, info right */}
+      <div className={cn("grid h-full", isActive ? "grid-cols-1 lg:grid-cols-2" : "grid-cols-1")}>
+        {/* Image */}
+        <div className="relative bg-primary/10 overflow-hidden">
+          <div className={cn(isActive ? "h-64 lg:h-full min-h-[300px]" : "h-48 lg:h-56")}>
+            <img
+              src={property.thumbnailImage}
+              alt={property.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <Badge
+            variant={statusVariant(property.status)}
+            className="absolute top-3 left-3"
+          >
+            {property.status}
+          </Badge>
         </div>
-        <div className="text-base font-bold text-primary">
-          {property.price > 0 ? formatCurrency(property.price) : "Auf Anfrage"}
+
+        {/* Info */}
+        <div className={cn("flex flex-col", isActive ? "p-6 sm:p-8" : "p-4")}>
+          <h3
+            className={cn(
+              "font-bold text-slate-dark mb-1",
+              isActive ? "text-xl sm:text-2xl mb-2" : "text-sm line-clamp-2"
+            )}
+          >
+            {property.title}
+          </h3>
+
+          {isActive && (
+            <p className="text-slate-body mb-5 text-sm sm:text-base">
+              {property.shortDescription}
+            </p>
+          )}
+
+          {isActive && property.highlights.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-5">
+              {property.highlights.map((h) => (
+                <span
+                  key={h}
+                  className="px-3 py-1 bg-mint text-primary text-sm rounded-full font-medium"
+                >
+                  {h}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Stats row */}
+          <div
+            className={cn(
+              "flex items-center gap-4",
+              isActive
+                ? "mb-5 pb-5 border-b border-gray-100 flex-wrap"
+                : "mb-3 text-xs"
+            )}
+          >
+            {property.features.rooms > 0 && (
+              <div className={cn("flex items-center gap-1.5", isActive && "flex-col text-center")}>
+                <Home size={isActive ? 18 : 14} className="text-primary" />
+                <span className={cn("font-semibold text-slate-dark", isActive ? "text-sm" : "text-xs")}>
+                  {property.features.rooms} {isActive ? "Zimmer" : "Zi."}
+                </span>
+              </div>
+            )}
+            {property.features.livingArea > 0 && (
+              <div className={cn("flex items-center gap-1.5", isActive && "flex-col text-center")}>
+                <Maximize2 size={isActive ? 18 : 14} className="text-primary" />
+                <span className={cn("font-semibold text-slate-dark", isActive ? "text-sm" : "text-xs")}>
+                  {property.features.livingArea} m²
+                </span>
+              </div>
+            )}
+            {isActive && property.features.yearBuilt && (
+              <div className="flex flex-col items-center text-center">
+                <Calendar size={18} className="text-primary" />
+                <span className="text-sm font-semibold text-slate-dark">
+                  Bj. {property.features.yearBuilt}
+                </span>
+              </div>
+            )}
+            {isActive && property.features.garage && (
+              <div className="flex flex-col items-center text-center">
+                <Car size={18} className="text-primary" />
+                <span className="text-sm font-semibold text-slate-dark">Garage</span>
+              </div>
+            )}
+          </div>
+
+          {/* Price + CTAs */}
+          <div className={cn("mt-auto", isActive ? "" : "")}>
+            <div className={cn(isActive ? "text-sm" : "text-xs")} >
+              <span className="text-slate-body">{property.priceLabel || "Kaufpreis"}</span>
+            </div>
+            <div
+              className={cn(
+                "font-bold text-primary",
+                isActive ? "text-2xl" : "text-base"
+              )}
+            >
+              {property.price > 0
+                ? formatCurrency(property.price)
+                : "Preis auf Anfrage"}
+            </div>
+
+            {isActive && (
+              <div className="flex gap-3 mt-4">
+                <Button href={`/angebote/${property.id}`} size="sm">
+                  Exposé anfordern
+                </Button>
+                <Button href="/kontakt" variant="secondary" size="sm">
+                  Besichtigung
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </button>
+    </div>
   );
 }
 
+/* ---------- Carousel wrapper ---------- */
 interface PropertyCarouselProps {
   properties: Property[];
 }
@@ -84,199 +170,96 @@ interface PropertyCarouselProps {
 export default function PropertyCarousel({ properties }: PropertyCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const goPrev = useCallback(() => {
+    setActiveIndex((i) => (i === 0 ? properties.length - 1 : i - 1));
+  }, [properties.length]);
+
+  const goNext = useCallback(() => {
+    setActiveIndex((i) => (i === properties.length - 1 ? 0 : i + 1));
+  }, [properties.length]);
+
   if (properties.length === 0) return null;
 
-  const featured = properties[activeIndex];
-  const hasPrev = activeIndex > 0;
-  const hasNext = activeIndex < properties.length - 1;
-  const prevProperty = hasPrev ? properties[activeIndex - 1] : null;
-  const nextProperty = hasNext ? properties[activeIndex + 1] : null;
+  // Build the visible 3-card set (left, center, right) with wrapping
+  const prevIndex =
+    activeIndex === 0 ? properties.length - 1 : activeIndex - 1;
+  const nextIndex =
+    activeIndex === properties.length - 1 ? 0 : activeIndex + 1;
 
-  function goPrev() {
-    if (hasPrev) setActiveIndex((i) => i - 1);
-  }
-
-  function goNext() {
-    if (hasNext) setActiveIndex((i) => i + 1);
+  // For single property, no carousel needed
+  if (properties.length === 1) {
+    return <PropertyCard property={properties[0]} isActive />;
   }
 
   return (
-    <div>
-      {/* Three-column layout: prev | featured | next */}
-      <div className="flex gap-4 items-stretch">
-        {/* Left preview card */}
-        <div className="hidden lg:flex w-56 flex-shrink-0">
-          {prevProperty ? (
-            <CompactCard property={prevProperty} onClick={goPrev} side="left" />
-          ) : (
-            <div className="w-full" />
-          )}
-        </div>
-
-        {/* Main featured card */}
-        <div className="flex-1 min-w-0">
-          <div className="bg-white rounded-card shadow-card overflow-hidden border border-gray-100">
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              <div className="relative h-64 lg:h-auto min-h-[300px] bg-primary/10">
-                <img
-                  src={featured.thumbnailImage}
-                  alt={featured.title}
-                  className="w-full h-full object-cover"
-                />
-                <Badge
-                  variant={statusVariant(featured.status)}
-                  className="absolute top-4 left-4"
-                >
-                  {featured.status}
-                </Badge>
-              </div>
-
-              <div className="p-6 sm:p-8">
-                <h3 className="text-2xl font-bold text-slate-dark mb-2">
-                  {featured.title}
-                </h3>
-                <p className="text-slate-body mb-6">
-                  {featured.shortDescription}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {featured.highlights.map((h) => (
-                    <span
-                      key={h}
-                      className="px-3 py-1 bg-mint text-primary text-sm rounded-full font-medium"
-                    >
-                      {h}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6 pb-6 border-b border-gray-100">
-                  {featured.features.rooms > 0 && (
-                    <div className="text-center">
-                      <Home size={18} className="mx-auto text-primary mb-1" />
-                      <div className="text-sm font-semibold text-slate-dark">
-                        {featured.features.rooms} Zimmer
-                      </div>
-                    </div>
-                  )}
-                  {featured.features.livingArea > 0 && (
-                    <div className="text-center">
-                      <Maximize2
-                        size={18}
-                        className="mx-auto text-primary mb-1"
-                      />
-                      <div className="text-sm font-semibold text-slate-dark">
-                        {featured.features.livingArea} m²
-                      </div>
-                    </div>
-                  )}
-                  {featured.features.yearBuilt && (
-                    <div className="text-center">
-                      <Calendar
-                        size={18}
-                        className="mx-auto text-primary mb-1"
-                      />
-                      <div className="text-sm font-semibold text-slate-dark">
-                        Bj. {featured.features.yearBuilt}
-                      </div>
-                    </div>
-                  )}
-                  {featured.features.garage && (
-                    <div className="text-center">
-                      <Car size={18} className="mx-auto text-primary mb-1" />
-                      <div className="text-sm font-semibold text-slate-dark">
-                        Garage
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                  <div>
-                    <div className="text-sm text-slate-body">
-                      {featured.priceLabel || "Kaufpreis"}
-                    </div>
-                    <div className="text-2xl font-bold text-primary">
-                      {featured.price > 0
-                        ? formatCurrency(featured.price)
-                        : "Preis auf Anfrage"}
-                    </div>
-                  </div>
-                  <div className="flex gap-3">
-                    <Button href={`/angebote/${featured.id}`} size="sm">
-                      Exposé anfordern
-                    </Button>
-                    <Button href="/kontakt" variant="secondary" size="sm">
-                      Besichtigung
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile navigation arrows + dots */}
-          {properties.length > 1 && (
-            <div className="flex items-center justify-center gap-4 mt-4 lg:hidden">
-              <button
-                onClick={goPrev}
-                disabled={!hasPrev}
-                className="w-10 h-10 rounded-full bg-white shadow-card flex items-center justify-center text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-opacity"
-              >
-                <ChevronLeft size={20} />
-              </button>
-              <div className="flex gap-2">
-                {properties.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveIndex(i)}
-                    className={cn(
-                      "w-2.5 h-2.5 rounded-full transition-colors",
-                      i === activeIndex ? "bg-primary" : "bg-gray-300"
-                    )}
-                  />
-                ))}
-              </div>
-              <button
-                onClick={goNext}
-                disabled={!hasNext}
-                className="w-10 h-10 rounded-full bg-white shadow-card flex items-center justify-center text-primary disabled:opacity-30 disabled:cursor-not-allowed transition-opacity"
-              >
-                <ChevronRight size={20} />
-              </button>
-            </div>
-          )}
-        </div>
-
-        {/* Right preview card */}
-        <div className="hidden lg:flex w-56 flex-shrink-0">
-          {nextProperty ? (
-            <CompactCard
-              property={nextProperty}
-              onClick={goNext}
-              side="right"
-            />
-          ) : (
-            <div className="w-full" />
-          )}
-        </div>
+    <div className="relative">
+      {/* ---- Desktop: 3-column layout with side peeks ---- */}
+      <div className="hidden lg:grid lg:grid-cols-[1fr_3fr_1fr] gap-5 items-stretch">
+        <PropertyCard
+          property={properties[prevIndex]}
+          isActive={false}
+          onClick={goPrev}
+        />
+        <PropertyCard property={properties[activeIndex]} isActive />
+        <PropertyCard
+          property={properties[nextIndex]}
+          isActive={false}
+          onClick={goNext}
+        />
       </div>
 
-      {/* Desktop dots */}
-      {properties.length > 1 && (
-        <div className="hidden lg:flex items-center justify-center gap-2 mt-6">
+      {/* ---- Mobile: single card with swipe area ---- */}
+      <div className="lg:hidden">
+        <PropertyCard property={properties[activeIndex]} isActive />
+      </div>
+
+      {/* Navigation arrows (desktop) */}
+      <button
+        onClick={goPrev}
+        className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-11 h-11 rounded-full bg-white shadow-lg items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors z-10"
+        aria-label="Vorherige Immobilie"
+      >
+        <ChevronLeft size={22} />
+      </button>
+      <button
+        onClick={goNext}
+        className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-11 h-11 rounded-full bg-white shadow-lg items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors z-10"
+        aria-label="Nächste Immobilie"
+      >
+        <ChevronRight size={22} />
+      </button>
+
+      {/* Navigation (all screens) */}
+      <div className="flex items-center justify-center gap-4 mt-6">
+        <button
+          onClick={goPrev}
+          className="lg:hidden w-10 h-10 rounded-full bg-white shadow-card flex items-center justify-center text-primary transition-colors hover:bg-primary hover:text-white"
+        >
+          <ChevronLeft size={20} />
+        </button>
+
+        <div className="flex gap-2">
           {properties.map((_, i) => (
             <button
               key={i}
               onClick={() => setActiveIndex(i)}
               className={cn(
-                "w-2.5 h-2.5 rounded-full transition-colors",
-                i === activeIndex ? "bg-primary" : "bg-gray-300"
+                "rounded-full transition-all duration-300",
+                i === activeIndex
+                  ? "w-8 h-2.5 bg-primary"
+                  : "w-2.5 h-2.5 bg-gray-300 hover:bg-gray-400"
               )}
             />
           ))}
         </div>
-      )}
+
+        <button
+          onClick={goNext}
+          className="lg:hidden w-10 h-10 rounded-full bg-white shadow-card flex items-center justify-center text-primary transition-colors hover:bg-primary hover:text-white"
+        >
+          <ChevronRight size={20} />
+        </button>
+      </div>
     </div>
   );
 }
