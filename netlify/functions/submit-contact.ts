@@ -12,6 +12,8 @@ interface FormPayload {
   nachricht?: string;
   adresse?: string;
   ratgeber?: string;
+  propertyId?: string;
+  propertyTitle?: string;
   formType: "kontakt" | "bewertung" | "download";
 }
 
@@ -125,6 +127,8 @@ const handler: Handler = async (event) => {
           telefon: data.telefon,
           nachricht: data.nachricht,
           adresse: data.adresse,
+          propertyId: data.propertyId,
+          propertyTitle: data.propertyTitle,
           formType: data.formType,
         });
       }

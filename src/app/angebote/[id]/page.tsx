@@ -347,7 +347,7 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                   )}
                 </div>
 
-                <ContactForm />
+                <ContactForm propertyId={String(property.id)} propertyTitle={property.title} />
               </div>
             </div>
           </div>

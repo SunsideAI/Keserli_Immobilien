@@ -6,6 +6,8 @@ import Button from "./Button";
 interface ContactFormProps {
   variant?: "default" | "bewertung";
   paket?: string;
+  propertyId?: string;
+  propertyTitle?: string;
   className?: string;
 }
 
@@ -15,7 +17,7 @@ const paketMap: Record<string, string> = {
   select: "Homefin Select (ab 89€)",
 };
 
-export default function ContactForm({ variant = "default", paket: paketProp, className }: ContactFormProps) {
+export default function ContactForm({ variant = "default", paket: paketProp, propertyId, propertyTitle, className }: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(false);
@@ -49,16 +51,18 @@ export default function ContactForm({ variant = "default", paket: paketProp, cla
       });
 
       // 2. Propstack CRM (Kontakt anlegen)
-      const propstackPayload = {
-        vorname: formData.get("vorname") || "",
-        nachname: formData.get("nachname") || "",
-        email: formData.get("email") || "",
-        telefon: formData.get("telefon") || "",
-        nachricht: formData.get("nachricht") || "",
-        adresse: formData.get("adresse") || "",
-        paket: formData.get("paket") || "",
+      const propstackPayload: Record<string, string> = {
+        vorname: formData.get("vorname") as string || "",
+        nachname: formData.get("nachname") as string || "",
+        email: formData.get("email") as string || "",
+        telefon: formData.get("telefon") as string || "",
+        nachricht: formData.get("nachricht") as string || "",
+        adresse: formData.get("adresse") as string || "",
+        paket: formData.get("paket") as string || "",
         formType: formName,
       };
+      if (propertyId) propstackPayload.propertyId = propertyId;
+      if (propertyTitle) propstackPayload.propertyTitle = propertyTitle;
 
       const propstackPromise = fetch("/.netlify/functions/submit-contact", {
         method: "POST",

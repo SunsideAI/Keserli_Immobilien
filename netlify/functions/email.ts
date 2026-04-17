@@ -112,13 +112,13 @@ function getEmailWrapper(title: string, subtitle: string, content: string, times
 
           <!-- Header with Logo -->
           <tr>
-            <td style="background: linear-gradient(135deg, ${PRIMARY} 0%, ${PRIMARY_DARK} 100%); padding: 28px 32px;">
+            <td style="background-color: #ffffff; padding: 28px 32px; border-bottom: 1px solid #e2e8f0;">
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td>
-                    <img src="${LOGO_URL}" alt="homefin" width="140" style="display: block; margin-bottom: 12px;" />
-                    <h1 style="color: #ffffff; margin: 0; font-size: 22px; font-weight: 700;">${title}</h1>
-                    <p style="color: rgba(255,255,255,0.8); margin: 4px 0 0 0; font-size: 14px;">${subtitle}</p>
+                    <img src="${LOGO_URL}" alt="homefin" width="160" style="display: block; margin-bottom: 16px;" />
+                    <h1 style="color: ${SLATE_DARK}; margin: 0; font-size: 22px; font-weight: 700;">${title}</h1>
+                    <p style="color: #94a3b8; margin: 4px 0 0 0; font-size: 14px;">${subtitle}</p>
                   </td>
                 </tr>
               </table>
@@ -173,6 +173,8 @@ export interface ContactLeadData {
   telefon?: string
   nachricht?: string
   adresse?: string
+  propertyId?: string
+  propertyTitle?: string
   formType: string
 }
 
@@ -215,6 +217,19 @@ function getContactEmailHtml(data: ContactLeadData): string {
         </td>
       </tr>
     </table>
+
+    ${data.propertyTitle ? `
+    <!-- Property Interest -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: ${MINT}; margin-bottom: 24px; border-radius: 8px;">
+      <tr>
+        <td style="padding: 16px; border-left: 4px solid ${PRIMARY}; border-radius: 8px;">
+          <p style="color: #94a3b8; margin: 0 0 4px 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Interessiert an Immobilie</p>
+          <p style="color: ${SLATE_DARK}; margin: 0; font-size: 16px; font-weight: 600;">${data.propertyTitle}</p>
+          ${data.propertyId ? `<p style="color: #94a3b8; margin: 4px 0 0 0; font-size: 13px;">Objekt-ID: ${data.propertyId} &middot; <a href="https://myhomefin.de/angebote/${data.propertyId}/" style="color: ${PRIMARY}; text-decoration: none;">Zum Angebot &rarr;</a></p>` : ''}
+        </td>
+      </tr>
+    </table>
+    ` : ''}
 
     ${data.adresse ? `
     <!-- Property Address -->
@@ -339,11 +354,14 @@ export async function sendContactNotification(data: ContactLeadData): Promise<{ 
     bewertung: 'Bewertungsanfrage',
   }
   const label = formTypeLabels[data.formType] || 'Kontaktanfrage'
+  const subject = data.propertyTitle
+    ? `${label}: ${fullName} – ${data.propertyTitle}`
+    : `Neue ${label} von ${fullName}`
 
   return sendViaResendApi({
     from: `${SENDER_NAME} <${SENDER_EMAIL}>`,
     to: NOTIFICATION_RECIPIENTS,
-    subject: `Neue ${label} von ${fullName}`,
+    subject,
     html: getContactEmailHtml(data),
     reply_to: data.email,
   })
