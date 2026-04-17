@@ -46,8 +46,8 @@ export default function UeberHomefinSection() {
                 ))}
               </ul>
 
-              <Button href="/ueber-uns" variant="secondary">
-                Mehr über uns erfahren
+              <Button href="/kontakt" variant="secondary">
+                Jetzt Kontakt aufnehmen
                 <ArrowRight size={16} className="ml-2" />
               </Button>
             </div>

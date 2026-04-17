@@ -30,7 +30,6 @@ export const mainNavItems: NavItem[] = [
       { label: "Checklisten", href: "/wissenswertes/checklisten" },
     ],
   },
-  { label: "Über uns", href: "/ueber-uns" },
 ];
 
 export const footerNavItems = {
@@ -46,7 +45,6 @@ export const footerNavItems = {
     { label: "Checklisten", href: "/wissenswertes/checklisten" },
   ],
   company: [
-    { label: "Über uns", href: "/ueber-uns" },
     { label: "Kontakt", href: "/kontakt" },
   ],
   legal: [

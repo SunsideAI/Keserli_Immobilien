@@ -9,11 +9,11 @@ keyFacts:
   - "Die Lage ist mit 40–50 % des Wertes der wichtigste Faktor bei der Immobilienbewertung."
   - "Online-Bewertungen weichen typischerweise ±15–25 % vom tatsächlichen Marktwert ab, persönliche Bewertungen nur ±5–10 %."
   - "Es gibt drei anerkannte Bewertungsverfahren: Vergleichswert-, Ertragswert- und Sachwertverfahren."
-  - "Eine professionelle Bewertung bei homefin ist kostenlos und liefert ein Ergebnis innerhalb von 48 Stunden."
+  - "Eine professionelle Bewertung bei homefin ist kostenlos – mit Sofortergebnis online oder nach persönlicher Besichtigung."
   - "Energieeffizienz macht mittlerweile ca. 5–10 % des Immobilienwerts aus und gewinnt stetig an Bedeutung."
 faq:
   - question: "Wie läuft eine kostenlose Immobilienbewertung ab?"
-    answer: "Nach der Kontaktaufnahme besichtigt ein Experte Ihre Immobilie vor Ort und erfasst Zustand, Ausstattung und Besonderheiten. Anschließend werden Marktdaten analysiert, und Sie erhalten innerhalb von 48 Stunden eine fundierte Marktwertanalyse."
+    answer: "Online erhalten Sie ein Sofortergebnis. Für eine persönliche Bewertung besichtigt ein Experte Ihre Immobilie vor Ort, erfasst Zustand, Ausstattung und Besonderheiten und erstellt eine fundierte Marktwertanalyse."
   - question: "Was ist der Unterschied zwischen Vergleichswert- und Sachwertverfahren?"
     answer: "Das Vergleichswertverfahren vergleicht Ihre Immobilie mit kürzlich verkauften, ähnlichen Objekten und eignet sich besonders für Wohnungen und Reihenhäuser. Das Sachwertverfahren ermittelt den Wert anhand der Herstellungskosten und ist ideal für Einfamilienhäuser ohne ausreichend Vergleichsobjekte."
   - question: "Warum ist eine Online-Bewertung ungenau?"
@@ -87,7 +87,7 @@ Im Internet finden Sie zahlreiche Tools, die eine Immobilienbewertung in wenigen
 | **Modernisierungen** | Kaum erfasst | Vollständig erfasst |
 | **Besonderheiten** | Standardisiert | Individuell bewertet |
 | **Kosten** | Kostenlos | Bei homefin ebenfalls kostenlos |
-| **Dauer** | Sofort | Ergebnis innerhalb von 48 Stunden |
+| **Dauer** | Sofort | Sofortergebnis online, persönliche Bewertung nach Besichtigung |
 
 Unsere klare Empfehlung: Nutzen Sie Online-Tools allenfalls für eine erste Orientierung, verlassen Sie sich aber bei einer so wichtigen Entscheidung wie dem Immobilienverkauf auf eine persönliche Bewertung vor Ort.
 
@@ -114,7 +114,7 @@ Wir werten alle relevanten Daten und Marktinformationen aus. Dazu gehören aktue
 
 ### Schritt 4: Ergebnis
 
-Sie erhalten eine fundierte Marktwertanalyse innerhalb von 48 Stunden – inklusive einer detaillierten Erläuterung, wie der Wert zustande kommt und welche Preisstrategie wir empfehlen.
+Sie erhalten eine fundierte Marktwertanalyse – inklusive einer detaillierten Erläuterung, wie der Wert zustande kommt und welche Preisstrategie wir empfehlen.
 
 ## Welche Faktoren beeinflussen den Immobilienwert am stärksten?
 

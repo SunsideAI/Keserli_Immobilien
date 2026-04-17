@@ -105,7 +105,7 @@ Bei homefin nutzen wir das Vergleichswertverfahren mit aktuellen Transaktionsdat
 - Persönliche Besichtigung vor Ort
 - Analyse vergleichbarer Verkäufe in der Nachbarschaft
 - Berücksichtigung von Zustand, Ausstattung und Modernisierungen
-- Fundierte Marktwertanalyse innerhalb von 48 Stunden
+- Fundierte Marktwertanalyse mit Sofortergebnis – online oder persönlich
 
 ### 2. Unterlagen vorbereiten
 
