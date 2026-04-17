@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { ArrowRight, Star } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
-import { TrustpilotMicro, TrustpilotMicroStar, TrustlocalPortrait } from "@/components/ui/TrustWidgets";
+import { TrustpilotMicro, TrustpilotMicroStar, TrustlocalPortrait, TrustlocalLandscape } from "@/components/ui/TrustWidgets";
 import { siteConfig } from "@/data/site-config";
 
 function anim(visible: boolean, delay: string) {
@@ -279,7 +279,7 @@ export default function HeroSection() {
                     </div>
                   </div>
                   <div className="hidden lg:block">
-                    <TrustlocalPortrait />
+                    <TrustlocalLandscape />
                   </div>
                 </a>
 
