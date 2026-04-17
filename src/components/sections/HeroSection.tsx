@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { ArrowRight, Star } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
@@ -38,15 +39,18 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative">
+    <section className="relative lg:min-h-[720px] xl:min-h-[780px] 2xl:min-h-[820px]">
       {/* ═══════════ Background: House image + gradient overlays ═══════════ */}
       <div className="absolute inset-0 overflow-hidden will-change-transform">
         {/* House photo - blurred background */}
-        <img
+        <Image
           src="/images/hero-bg.jpg"
           alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover scale-105 will-change-transform"
+          aria-hidden
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover scale-105 will-change-transform"
         />
         {/* Gradient overlays for the mint/teal brand look */}
         <div className="absolute inset-0 bg-gradient-to-br from-mint/90 via-mint-light/85 to-white/80" />
@@ -102,9 +106,11 @@ export default function HeroSection() {
               : "opacity-0 translate-y-10"
           }`}
         >
-          <img
+          <Image
             src="/Keseli_Makler.png"
             alt="Ihr Immobilienmakler (IHK)"
+            width={2000}
+            height={2000}
             className="h-[390px] xl:h-[430px] 2xl:h-[470px] w-auto object-contain object-bottom drop-shadow-[0_8px_30px_rgba(0,0,0,0.15)]"
           />
         </div>
@@ -122,9 +128,11 @@ export default function HeroSection() {
             <div className="absolute w-[500px] h-[500px] rounded-full bg-gradient-to-br from-primary/8 via-gold/8 to-primary/4 blur-3xl animate-pulse-soft" />
 
             {/* Award image — BIG & LOW */}
-            <img
+            <Image
               src="/IDA_Award.png"
               alt="IDA Immobilien Dienstleister Award 2022"
+              width={700}
+              height={700}
               className="w-[320px] xl:w-[380px] 2xl:w-[420px] h-auto object-contain drop-shadow-2xl animate-float opacity-85"
             />
           </div>
@@ -261,7 +269,7 @@ export default function HeroSection() {
             <div className="bg-white rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-gray-100 p-3 sm:p-5 lg:p-0 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-shadow duration-500">
               <div className="grid grid-cols-3 gap-2 sm:gap-5 lg:gap-0 lg:divide-x lg:divide-gray-100 items-center">
                 {/* Trustpilot — Micro Widget mit Text */}
-                <div className="flex items-center justify-center lg:px-8 lg:py-5 py-2">
+                <div className="flex items-center justify-center lg:px-8 lg:py-5 py-2 lg:min-h-[80px]">
                   <div className="w-full max-w-[110px] sm:max-w-[160px] lg:max-w-[200px]">
                     <TrustpilotMicro />
                   </div>
@@ -272,7 +280,7 @@ export default function HeroSection() {
                   href="https://www.trustlocal.de/bewertung/homefin-gmbh"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center py-2 lg:px-4 lg:py-3 overflow-hidden"
+                  className="flex items-center justify-center py-2 lg:px-4 lg:py-3 lg:min-h-[80px] overflow-hidden"
                 >
                   <div className="lg:hidden flex items-center justify-center h-[55px]">
                     <div className="transform scale-[0.45] sm:scale-[0.5] origin-center">
@@ -285,7 +293,7 @@ export default function HeroSection() {
                 </a>
 
                 {/* Google Bewertung */}
-                <div className="flex flex-col items-center text-center gap-0.5 sm:flex-row sm:text-left sm:items-center sm:gap-3 lg:px-8 lg:py-5 py-2 cursor-default">
+                <div className="flex flex-col items-center text-center gap-0.5 sm:flex-row sm:text-left sm:items-center sm:gap-3 lg:px-8 lg:py-5 py-2 lg:min-h-[80px] cursor-default">
                   <div className="flex-shrink-0">
                     <svg viewBox="0 0 24 24" className="w-7 h-7 sm:w-8 sm:h-8">
                       <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
