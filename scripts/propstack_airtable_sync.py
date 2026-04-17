@@ -43,7 +43,7 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 PUBLISHED_STATUSES = {"in vorbereitung", "in vermarktung", "reserviert", "verkauft"}
 
 # Base-URL der eigenen Website (für Airtable "Webseite"-Feld)
-WEBSITE_BASE_URL = os.getenv("WEBSITE_BASE_URL", "https://homefin-website.netlify.app")
+WEBSITE_BASE_URL = os.getenv("WEBSITE_BASE_URL", "https://myhomefin.de")
 
 # ===========================================================================
 # PROPSTACK API
