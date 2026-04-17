@@ -39,7 +39,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[780px] sm:min-h-[840px] lg:min-h-[720px] xl:min-h-[780px] 2xl:min-h-[820px]">
+    <section className="relative lg:min-h-[720px] xl:min-h-[780px] 2xl:min-h-[820px]">
       {/* ═══════════ Background: House image + gradient overlays ═══════════ */}
       <div className="absolute inset-0 overflow-hidden will-change-transform">
         {/* House photo - blurred background */}
