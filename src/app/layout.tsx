@@ -81,6 +81,24 @@ export default function RootLayout({
         <main className="pt-16 lg:pt-20">{children}</main>
         <Footer />
         {/* Hidden Netlify form detection */}
+        <form name="kontakt" data-netlify="true" hidden>
+          <input type="hidden" name="form-name" value="kontakt" />
+          <input name="vorname" />
+          <input name="nachname" />
+          <input name="email" />
+          <input name="telefon" />
+          <input name="paket" />
+          <textarea name="nachricht" />
+        </form>
+        <form name="bewertung" data-netlify="true" hidden>
+          <input type="hidden" name="form-name" value="bewertung" />
+          <input name="vorname" />
+          <input name="nachname" />
+          <input name="email" />
+          <input name="telefon" />
+          <input name="adresse" />
+          <textarea name="nachricht" />
+        </form>
         <form name="suchprofil" data-netlify="true" hidden>
           <input type="hidden" name="form-name" value="suchprofil" />
           <input name="vorname" />
