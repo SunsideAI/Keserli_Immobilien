@@ -1,28 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowRight, Star, TrendingUp, Users } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { TrustpilotMicro } from "@/components/ui/TrustWidgets";
 import { siteConfig } from "@/data/site-config";
-
-function useCountUp(target: number, duration = 2000, start = false) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    if (!start) return;
-    let startTime: number | null = null;
-    const step = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * target));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [target, duration, start]);
-  return count;
-}
 
 function anim(visible: boolean, delay: string) {
   return `transition-all duration-700 ease-out ${delay} ${
@@ -51,16 +34,6 @@ export default function HeroSection() {
     const timer = setTimeout(() => setVisible(true), 150);
     return () => clearTimeout(timer);
   }, []);
-
-  const soldNumber =
-    parseInt(siteConfig.stats.propertiesSold.replace(/\D/g, "")) || 1000;
-  const animatedCount = useCountUp(soldNumber, 2400, visible);
-  const formattedCount =
-    animatedCount >= 1000
-      ? `${Math.floor(animatedCount / 1000)}.${String(
-          animatedCount % 1000
-        ).padStart(3, "0")}+`
-      : `${animatedCount}+`;
 
   return (
     <section className="relative">
@@ -204,10 +177,6 @@ export default function HeroSection() {
                 </Button>
               </div>
 
-              {/* Trustpilot */}
-              <div className={`mt-6 max-w-[280px] ${anim(visible, "delay-[450ms]")}`}>
-                <TrustpilotMicro />
-              </div>
             </div>
           </div>
 
@@ -262,11 +231,6 @@ export default function HeroSection() {
               </Button>
             </div>
 
-            {/* Trustpilot */}
-            <div className={`mt-5 w-full max-w-[260px] ${anim(visible, "delay-[380ms]")}`}>
-              <TrustpilotMicro />
-            </div>
-
             {/* IDA Award — with subtle glow */}
             <div className={`relative mt-8 ${anim(visible, "delay-[400ms]")}`}>
               <div className="absolute inset-0 w-40 h-40 mx-auto rounded-full bg-gradient-to-br from-gold/10 via-primary/5 to-transparent blur-2xl" />
@@ -291,68 +255,53 @@ export default function HeroSection() {
             }`}
           >
             <div className="bg-white rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-gray-100 p-3 sm:p-5 lg:p-0 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-shadow duration-500">
-              <div className="grid grid-cols-3 gap-2 sm:gap-5 lg:gap-0 lg:divide-x lg:divide-gray-100">
-                {/* Stat 1 — Faire Provision */}
-                <div className="flex flex-col items-center text-center gap-1 sm:flex-row sm:text-left sm:items-center sm:gap-4 lg:px-8 lg:py-6 py-2 group cursor-default">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 group-hover:shadow-btn">
-                    <TrendingUp
-                      size={20}
-                      className="text-primary transition-colors duration-300 group-hover:text-white sm:w-5 sm:h-5"
-                    />
+              <div className="grid grid-cols-3 gap-2 sm:gap-5 lg:gap-0 lg:divide-x lg:divide-gray-100 items-center">
+                {/* Trustpilot */}
+                <div className="flex items-center justify-center lg:px-8 lg:py-5 py-2 overflow-hidden">
+                  <div className="w-full max-w-[220px]" style={{ height: 55 }}>
+                    <TrustpilotMicro />
+                  </div>
+                </div>
+
+                {/* Trustlocal */}
+                <a
+                  href="https://www.trustlocal.de/bewertung/homefin-gmbh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center text-center gap-0.5 sm:flex-row sm:text-left sm:items-center sm:gap-3 lg:px-8 lg:py-5 py-2 group cursor-pointer"
+                >
+                  <div className="flex-shrink-0 w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#1B4D8E]/10 flex items-center justify-center">
+                    <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6" fill="none">
+                      <path d="M12 2l2.09 6.26L20.18 9l-5 4.09L16.82 20 12 16.54 7.18 20l1.64-6.91L3.82 9l6.09-.74Z" fill="#1B4D8E" />
+                      <circle cx="12" cy="12" r="3.5" fill="#fff" />
+                      <text x="12" y="14" textAnchor="middle" fontSize="5" fontWeight="bold" fill="#1B4D8E">9.5</text>
+                    </svg>
                   </div>
                   <div>
                     <div className="text-lg sm:text-xl font-extrabold text-slate-dark leading-tight">
-                      1,95&nbsp;%
+                      9,5
                     </div>
                     <div className="text-[10px] sm:text-sm text-slate-body leading-tight mt-0.5">
-                      Faire Provision
+                      trustlocal
                     </div>
                   </div>
-                </div>
+                </a>
 
-                {/* Stat 2 — Vermittelte Immobilien */}
-                <div className="flex flex-col items-center text-center gap-1 sm:flex-row sm:text-left sm:items-center sm:gap-4 lg:px-8 lg:py-6 py-2 group cursor-default">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-110 group-hover:shadow-btn">
-                    <Users
-                      size={20}
-                      className="text-primary transition-colors duration-300 group-hover:text-white sm:w-5 sm:h-5"
-                    />
-                  </div>
-                  <div>
-                    <div className="text-lg sm:text-xl font-extrabold text-slate-dark leading-tight tabular-nums">
-                      {formattedCount}
-                    </div>
-                    <div className="text-[10px] sm:text-sm text-slate-body leading-tight mt-0.5">
-                      Immobilien
-                    </div>
-                  </div>
-                </div>
-
-                {/* Stat 3 — Google Bewertung */}
-                <div className="flex flex-col items-center text-center gap-1 sm:flex-row sm:text-left sm:items-center sm:gap-4 lg:px-8 lg:py-6 py-2 group cursor-default">
+                {/* Google Bewertung */}
+                <div className="flex flex-col items-center text-center gap-0.5 sm:flex-row sm:text-left sm:items-center sm:gap-3 lg:px-8 lg:py-5 py-2 cursor-default">
                   <div className="flex-shrink-0">
-                    <div className="hidden sm:flex -space-x-2.5">
-                      {[
-                        { bg: "bg-primary-700", initials: "OK" },
-                        { bg: "bg-primary-500", initials: "TM" },
-                        { bg: "bg-teal-dark", initials: "JS" },
-                        { bg: "bg-primary", initials: "MR" },
-                      ].map((a, i) => (
-                        <div
-                          key={i}
-                          className={`w-9 h-9 rounded-full ${a.bg} border-2 border-white flex items-center justify-center text-white text-[10px] font-bold shadow-sm transition-transform duration-300 group-hover:scale-110`}
-                          style={{ transitionDelay: `${i * 50}ms` }}
-                        >
-                          {a.initials}
-                        </div>
-                      ))}
-                    </div>
-                    <div className="sm:hidden w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                      <Star size={20} className="text-primary fill-primary" />
-                    </div>
+                    <svg viewBox="0 0 24 24" className="w-7 h-7 sm:w-8 sm:h-8">
+                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                    </svg>
                   </div>
                   <div>
                     <div className="flex items-center gap-0.5 mb-0.5 justify-center sm:justify-start">
+                      <span className="text-sm sm:text-base font-bold text-slate-dark mr-1">
+                        {siteConfig.stats.googleRating}
+                      </span>
                       {[1, 2, 3, 4, 5].map((s) => (
                         <Star
                           key={s}
@@ -364,12 +313,9 @@ export default function HeroSection() {
                           }`}
                         />
                       ))}
-                      <span className="ml-1 text-sm sm:text-sm font-bold text-slate-dark">
-                        {siteConfig.stats.googleRating}
-                      </span>
                     </div>
                     <div className="text-[10px] sm:text-sm text-slate-body leading-tight">
-                      Google
+                      Kundenrezensionen
                     </div>
                   </div>
                 </div>
