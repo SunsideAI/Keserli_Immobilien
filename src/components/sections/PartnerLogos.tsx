@@ -10,7 +10,7 @@ const partners = [
   { src: "/images/partners/logo-rgb-immonet.webp", alt: "Immonet", height: 44 },
   { src: "/images/partners/Monheimer_Lokalhelden.png", alt: "Monheimer Lokalhelden", height: 55 },
   { src: "/images/partners/radio_koeln.png", alt: "Radio Köln", height: 52 },
-  { src: "/images/partners/image.png", alt: "Partner", height: 50 },
+  { src: "/images/partners/Alpha-Energieausweis.png", alt: "Alpha Energieausweis", height: 50 },
 ];
 
 function LogoSet({ duplicate }: { duplicate?: boolean }) {
