@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { ArrowRight, Star } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
-import { TrustpilotMicro, TrustpilotMicroStar, TrustlocalCompact, TrustlocalLandscape } from "@/components/ui/TrustWidgets";
+import { TrustpilotMicro, TrustlocalCompact, TrustlocalLandscape } from "@/components/ui/TrustWidgets";
 import { siteConfig } from "@/data/site-config";
 
 function anim(visible: boolean, delay: string) {
@@ -256,13 +256,10 @@ export default function HeroSection() {
           >
             <div className="bg-white rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-gray-100 p-3 sm:p-5 lg:p-0 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-shadow duration-500">
               <div className="grid grid-cols-3 gap-2 sm:gap-5 lg:gap-0 lg:divide-x lg:divide-gray-100 items-center">
-                {/* Trustpilot — Desktop: mit Text, Mobile: nur Sterne */}
-                <div className="flex items-center justify-center lg:px-8 lg:py-5 py-3">
-                  <div className="hidden lg:block w-full max-w-[200px]">
+                {/* Trustpilot — Micro Widget mit Text */}
+                <div className="flex items-center justify-center lg:px-8 lg:py-5 py-2">
+                  <div className="w-full max-w-[120px] sm:max-w-[160px] lg:max-w-[200px]">
                     <TrustpilotMicro />
-                  </div>
-                  <div className="lg:hidden w-full max-w-[130px]">
-                    <TrustpilotMicroStar />
                   </div>
                 </div>
 
