@@ -40,7 +40,7 @@ function LogoSet({ duplicate }: { duplicate?: boolean }) {
 
 export default function PartnerLogos() {
   return (
-    <section className="relative z-20 pt-16 pb-6 overflow-hidden bg-transparent">
+    <section className="relative z-20 pt-8 pb-6 overflow-hidden bg-transparent">
       <p className="text-center text-sm text-slate-body font-medium tracking-wide uppercase mb-6">
         Unsere Partner &amp; Netzwerk
       </p>
