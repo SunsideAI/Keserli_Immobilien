@@ -271,10 +271,12 @@ export default function HeroSection() {
                   href="https://www.trustlocal.de/bewertung/homefin-gmbh"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center py-2 lg:px-4 lg:py-3"
+                  className="flex items-center justify-center py-2 lg:px-4 lg:py-3 overflow-hidden"
                 >
-                  <div className="lg:hidden flex items-center justify-center">
-                    <TrustlocalCompact />
+                  <div className="lg:hidden flex items-center justify-center h-[55px]">
+                    <div className="transform scale-[0.45] sm:scale-[0.5] origin-center">
+                      <TrustlocalCompact />
+                    </div>
                   </div>
                   <div className="hidden lg:block transform scale-[0.85] origin-center">
                     <TrustlocalLandscape />
