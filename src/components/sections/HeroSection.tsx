@@ -46,7 +46,7 @@ export default function HeroSection() {
           src="/images/hero-bg.jpg"
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover scale-110 blur-[2px] will-change-transform"
+          className="absolute inset-0 w-full h-full object-cover scale-105 will-change-transform"
         />
         {/* Gradient overlays for the mint/teal brand look */}
         <div className="absolute inset-0 bg-gradient-to-br from-mint/90 via-mint-light/85 to-white/80" />
