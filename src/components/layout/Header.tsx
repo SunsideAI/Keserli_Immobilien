@@ -160,17 +160,13 @@ export default function Header() {
       {/* Mobile Nav */}
       <div
         className={cn(
-          "lg:hidden bg-white border-t border-gray-100 grid transition-[grid-template-rows] duration-300 ease-in-out",
-          mobileOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+          "lg:hidden absolute left-0 right-0 top-full bg-white border-t border-gray-100 shadow-md transition-[opacity,transform] duration-250 ease-out will-change-[opacity,transform]",
+          mobileOpen
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-2 pointer-events-none"
         )}
       >
-        <div className="overflow-hidden">
-        <nav
-          className={cn(
-            "px-4 py-4 space-y-1 transition-opacity duration-200",
-            mobileOpen ? "opacity-100 delay-75" : "opacity-0"
-          )}
-        >
+        <nav className="px-4 py-4 space-y-1">
           {mainNavItems.map((item) =>
             item.children ? (
               <div key={item.href}>
@@ -196,14 +192,11 @@ export default function Header() {
                 </button>
                 <div
                   className={cn(
-                    "grid transition-[grid-template-rows] duration-250 ease-in-out",
+                    "grid transition-[grid-template-rows] duration-200 ease-in-out",
                     openDropdown === item.label ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                   )}
                 >
-                  <div className={cn(
-                    "overflow-hidden transition-opacity duration-150",
-                    openDropdown === item.label ? "opacity-100 delay-75" : "opacity-0"
-                  )}>
+                  <div className="overflow-hidden">
                     {item.children.map((child) => (
                       <Link
                         key={child.href}
@@ -243,7 +236,6 @@ export default function Header() {
             </Button>
           </div>
         </nav>
-        </div>
       </div>
     </header>
   );
