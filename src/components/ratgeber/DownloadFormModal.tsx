@@ -50,7 +50,8 @@ export default function DownloadFormModal({
           email: form.email,
           telefon: form.phone,
           nachricht: `Download: ${ratgeberTitle}`,
-          formType: "kontakt",
+          ratgeber: ratgeberTitle,
+          formType: "download",
         }),
       });
 

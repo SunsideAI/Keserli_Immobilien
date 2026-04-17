@@ -1,4 +1,5 @@
 import type { Handler } from "@netlify/functions";
+import { sendContactNotification, sendDownloadNotification } from "./email";
 
 const PROPSTACK_API_KEY = process.env.PROPSTACK_API_KEY || "";
 const PROPSTACK_API_URL = "https://api.propstack.de/v1";
@@ -10,7 +11,8 @@ interface FormPayload {
   telefon?: string;
   nachricht?: string;
   adresse?: string;
-  formType: "kontakt" | "bewertung";
+  ratgeber?: string;
+  formType: "kontakt" | "bewertung" | "download";
 }
 
 const handler: Handler = async (event) => {
@@ -104,6 +106,31 @@ const handler: Handler = async (event) => {
 
     const contact = await response.json();
     console.log(`Contact created/updated in Propstack: ID ${contact.id}`);
+
+    // Send email notification (fire-and-forget, don't block response)
+    try {
+      if (data.formType === "download" && data.ratgeber) {
+        await sendDownloadNotification({
+          vorname: data.vorname,
+          nachname: data.nachname,
+          email: data.email,
+          telefon: data.telefon,
+          ratgeber: data.ratgeber,
+        });
+      } else {
+        await sendContactNotification({
+          vorname: data.vorname,
+          nachname: data.nachname,
+          email: data.email,
+          telefon: data.telefon,
+          nachricht: data.nachricht,
+          adresse: data.adresse,
+          formType: data.formType,
+        });
+      }
+    } catch (emailErr) {
+      console.warn("Email notification failed:", emailErr);
+    }
 
     return {
       statusCode: 200,
