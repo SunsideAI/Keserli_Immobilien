@@ -258,7 +258,7 @@ export default function HeroSection() {
               <div className="grid grid-cols-3 gap-2 sm:gap-5 lg:gap-0 lg:divide-x lg:divide-gray-100 items-center">
                 {/* Trustpilot — Micro Widget mit Text */}
                 <div className="flex items-center justify-center lg:px-8 lg:py-5 py-2">
-                  <div className="w-full max-w-[120px] sm:max-w-[160px] lg:max-w-[200px] transform scale-[0.85] sm:scale-95 lg:scale-100 origin-center">
+                  <div className="w-full max-w-[110px] sm:max-w-[160px] lg:max-w-[200px]">
                     <TrustpilotMicro />
                   </div>
                 </div>

@@ -69,7 +69,7 @@ export function TrustpilotMicro() {
       data-locale="de-DE"
       data-template-id="5419b6a8b0d04a076446a9ad"
       data-businessunit-id="6290e4d5bdfd41093cd9e1b5"
-      data-style-height="55px"
+      data-style-height="75px"
       data-style-width="100%"
       data-token="6d9c77f2-0873-4e3f-87c2-f5fcae0583f9"
       data-min-review-count="10"
