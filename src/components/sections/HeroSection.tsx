@@ -38,7 +38,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative">
       {/* ═══════════ Background: House image + gradient overlays ═══════════ */}
       <div className="absolute inset-0 overflow-hidden will-change-transform">
         {/* House photo - blurred background */}
