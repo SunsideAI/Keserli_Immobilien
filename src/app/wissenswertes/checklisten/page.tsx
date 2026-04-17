@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CheckSquare, FileText, Zap, Home, ChevronRight } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Badge from "@/components/ui/Badge";
+import DownloadFormButton from "@/components/ratgeber/DownloadFormButton";
 import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
@@ -21,6 +22,8 @@ const checklists = [
     description:
       "Kleine Maßnahmen, große Wirkung: Erfahren Sie, wie Sie Ihre Immobilie optimal für den Verkauf vorbereiten – von Home Staging bis zur Gartenpflege.",
     icon: Home,
+    downloadUrl: "/checklisten-downloads/aufbereitung-der-immobilie.pdf",
+    pages: 4,
     items: [
       "Entrümpeln und Depersonalisieren",
       "Kleine Reparaturen durchführen (Türklinken, Silikonfugen, Wandfarbe)",
@@ -36,6 +39,8 @@ const checklists = [
     description:
       "Seit 2014 ist der Energieausweis bei Verkauf und Vermietung Pflicht. Unsere Checkliste zeigt, welchen Ausweis Sie brauchen und wie Sie ihn beantragen.",
     icon: Zap,
+    downloadUrl: "/checklisten-downloads/energieausweis.pdf",
+    pages: 12,
     items: [
       "Bedarfs- oder Verbrauchsausweis? Den richtigen Typ bestimmen",
       "Baujahr und Gebäudetyp für die Ausweispflicht prüfen",
@@ -52,6 +57,8 @@ const checklists = [
     description:
       "Ein vollständiger Unterlagen-Ordner beschleunigt den Verkauf und schafft Vertrauen. Diese Dokumente sollten Sie bereithalten.",
     icon: FileText,
+    downloadUrl: "/checklisten-downloads/unterlagen-fuer-den-verkauf.pdf",
+    pages: 4,
     items: [
       "Aktueller Grundbuchauszug (nicht älter als 3 Monate)",
       "Flurkarte / Liegenschaftskarte",
@@ -72,6 +79,8 @@ const checklists = [
     description:
       "Das Exposé ist die Visitenkarte Ihrer Immobilie. Erfahren Sie, welche Inhalte ein überzeugendes Exposé enthalten muss.",
     icon: CheckSquare,
+    downloadUrl: "/checklisten-downloads/was-gehoert-in-ein-expose.pdf",
+    pages: 4,
     items: [
       "Professionelle Fotos (mindestens 15–20 Bilder, inklusive Außenansicht)",
       "Aussagekräftige Überschrift mit den wichtigsten Merkmalen",
@@ -143,6 +152,13 @@ export default function ChecklistenPage() {
                     </li>
                   ))}
                 </ul>
+                <div className="mt-6">
+                  <DownloadFormButton
+                    ratgeberTitle={cl.title}
+                    downloadUrl={cl.downloadUrl}
+                    pages={cl.pages}
+                  />
+                </div>
               </div>
             ))}
           </div>
