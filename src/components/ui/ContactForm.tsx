@@ -66,12 +66,21 @@ export default function ContactForm({ variant = "default", paket: paketProp, cla
         body: JSON.stringify(propstackPayload),
       });
 
-      // Beide parallel ausführen, Netlify Forms ist führend für Erfolg/Fehler
-      const [netlifyRes] = await Promise.all([netlifyPromise, propstackPromise.catch((err) => {
-        console.warn("Propstack submission failed:", err);
-      })]);
+      const [netlifyRes, propstackRes] = await Promise.all([
+        netlifyPromise.catch((err) => {
+          console.warn("Netlify Forms submission failed:", err);
+          return null;
+        }),
+        propstackPromise.catch((err) => {
+          console.warn("Propstack submission failed:", err);
+          return null;
+        }),
+      ]);
 
-      if (netlifyRes.ok) {
+      const propstackOk = propstackRes && propstackRes.ok;
+      const netlifyOk = netlifyRes && netlifyRes.ok;
+
+      if (propstackOk || netlifyOk) {
         setSubmitted(true);
       } else {
         setError(true);
