@@ -38,15 +38,15 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative">
+    <section className="relative overflow-hidden">
       {/* ═══════════ Background: House image + gradient overlays ═══════════ */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden will-change-transform">
         {/* House photo - blurred background */}
         <img
           src="/images/hero-bg.jpg"
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover scale-110 blur-[2px]"
+          className="absolute inset-0 w-full h-full object-cover scale-110 blur-[2px] will-change-transform"
         />
         {/* Gradient overlays for the mint/teal brand look */}
         <div className="absolute inset-0 bg-gradient-to-br from-mint/90 via-mint-light/85 to-white/80" />
