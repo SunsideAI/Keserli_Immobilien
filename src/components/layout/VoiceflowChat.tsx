@@ -91,7 +91,7 @@ export default function VoiceflowChat() {
             window.voiceflow.chat.proactive.push({
               type: 'text',
               payload: {
-                message: 'Ich bin Ihre intelligente Assistentin Sophia! Immobilien kaufen, verkaufen oder bewerten? Ich helfe Ihnen sofort – starten Sie jetzt! 🏡😊'
+                message: 'Ich bin Ihre intelligente Assistentin Jana! Immobilien kaufen, verkaufen oder bewerten? Ich helfe Ihnen sofort – starten Sie jetzt! 🏡😊'
               }
             })
           }
