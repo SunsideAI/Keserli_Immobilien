@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import {
   Home,
   Maximize2,
@@ -169,6 +169,8 @@ interface PropertyCarouselProps {
 
 export default function PropertyCarousel({ properties }: PropertyCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+  const touchDeltaX = useRef(0);
 
   const goPrev = useCallback(() => {
     setActiveIndex((i) => (i === 0 ? properties.length - 1 : i - 1));
@@ -177,6 +179,25 @@ export default function PropertyCarousel({ properties }: PropertyCarouselProps) 
   const goNext = useCallback(() => {
     setActiveIndex((i) => (i === properties.length - 1 ? 0 : i + 1));
   }, [properties.length]);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchDeltaX.current = 0;
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    touchDeltaX.current = e.touches[0].clientX - touchStartX.current;
+  };
+
+  const onTouchEnd = () => {
+    if (touchStartX.current === null) return;
+    const threshold = 50;
+    if (touchDeltaX.current > threshold) goPrev();
+    else if (touchDeltaX.current < -threshold) goNext();
+    touchStartX.current = null;
+    touchDeltaX.current = 0;
+  };
 
   if (properties.length === 0) return null;
 
@@ -194,7 +215,12 @@ export default function PropertyCarousel({ properties }: PropertyCarouselProps) 
   return (
     <div className="relative">
       {/* ---- Desktop: 3-column layout with side peeks ---- */}
-      <div className="hidden lg:grid lg:grid-cols-[1fr_3fr_1fr] gap-5 items-stretch">
+      <div
+        className="hidden lg:grid lg:grid-cols-[1fr_3fr_1fr] gap-5 items-stretch touch-pan-y"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
         <PropertyCard
           property={properties[prevIndex]}
           isActive={false}
@@ -209,7 +235,12 @@ export default function PropertyCarousel({ properties }: PropertyCarouselProps) 
       </div>
 
       {/* ---- Mobile: single card with swipe area ---- */}
-      <div className="lg:hidden">
+      <div
+        className="lg:hidden touch-pan-y"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
         <PropertyCard property={properties[activeIndex]} isActive />
       </div>
 
