@@ -95,8 +95,8 @@ export default function ContactForm({ variant = "default", paket: paketProp, cla
   if (submitted) {
     return (
       <div className={className}>
-        <div className="bg-green-50 border border-green-200 rounded-card p-8 text-center">
-          <div className="text-4xl mb-4">&#10003;</div>
+        <div className="bg-mint border border-primary/20 rounded-card p-8 text-center">
+          <div className="text-4xl mb-4 text-primary">&#10003;</div>
           <h3 className="text-xl font-bold text-slate-dark mb-2">
             Vielen Dank für Ihre Anfrage!
           </h3>
