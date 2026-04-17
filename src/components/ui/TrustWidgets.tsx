@@ -86,6 +86,32 @@ export function TrustpilotMicro() {
   );
 }
 
+/* ─────────────── Trustpilot: Micro Star (compact) ─────────────── */
+export function TrustpilotMicroStar() {
+  const ref = useRef<HTMLDivElement>(null);
+  useTrustpilot(ref);
+  return (
+    <div
+      ref={ref}
+      className="trustpilot-widget"
+      data-locale="de-DE"
+      data-template-id="5419b732fbfb950b10de65e5"
+      data-businessunit-id="6290e4d5bdfd41093cd9e1b5"
+      data-style-height="24px"
+      data-style-width="100%"
+      data-theme="light"
+    >
+      <a
+        href="https://de.trustpilot.com/review/myhomefin.de"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Trustpilot
+      </a>
+    </div>
+  );
+}
+
 /* ─────────────── Trustpilot: Review Collector ─────────────── */
 export function TrustpilotReviewCollector() {
   const ref = useRef<HTMLDivElement>(null);

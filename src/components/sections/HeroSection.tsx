@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ArrowRight, Star } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import { TrustpilotMicroStar, TrustlocalLandscape } from "@/components/ui/TrustWidgets";
 import { siteConfig } from "@/data/site-config";
 
 function anim(visible: boolean, delay: string) {
@@ -255,56 +256,21 @@ export default function HeroSection() {
           >
             <div className="bg-white rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-gray-100 p-3 sm:p-5 lg:p-0 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-shadow duration-500">
               <div className="grid grid-cols-3 gap-2 sm:gap-5 lg:gap-0 lg:divide-x lg:divide-gray-100 items-center">
-                {/* Trustpilot */}
-                <a
-                  href="https://de.trustpilot.com/review/myhomefin.de"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center text-center gap-0.5 sm:flex-row sm:text-left sm:items-center sm:gap-3 lg:px-8 lg:py-5 py-2 group cursor-pointer"
-                >
-                  <div className="flex-shrink-0 w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#00B67A]/10 flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6">
-                      <path d="M12 1l3.09 6.26L22 8.27l-5 4.87 1.18 6.88L12 16.77l-6.18 3.25L7 13.14 2 8.27l6.91-1.01L12 1z" fill="#00B67A"/>
-                    </svg>
+                {/* Trustpilot — Micro Star widget (compact: logo + stars only) */}
+                <div className="flex items-center justify-center lg:px-8 lg:py-5 py-3">
+                  <div className="w-full max-w-[150px] sm:max-w-[180px]">
+                    <TrustpilotMicroStar />
                   </div>
-                  <div>
-                    <div className="flex items-center gap-0.5 mb-0.5 justify-center sm:justify-start">
-                      {[1, 2, 3, 4, 5].map((s) => (
-                        <Star
-                          key={s}
-                          size={13}
-                          className="sm:w-[15px] sm:h-[15px] fill-[#00B67A] text-[#00B67A]"
-                        />
-                      ))}
-                    </div>
-                    <div className="text-[10px] sm:text-sm text-slate-body leading-tight">
-                      Trustpilot
-                    </div>
-                  </div>
-                </a>
+                </div>
 
-                {/* Trustlocal */}
+                {/* Trustlocal — official widget (landscape, small) */}
                 <a
                   href="https://www.trustlocal.de/bewertung/homefin-gmbh"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center text-center gap-0.5 sm:flex-row sm:text-left sm:items-center sm:gap-3 lg:px-8 lg:py-5 py-2 group cursor-pointer"
+                  className="flex items-center justify-center lg:px-6 lg:py-4 py-2"
                 >
-                  <div className="flex-shrink-0 w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#1B4D8E]/10 flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6" fill="none">
-                      <path d="M12 2l2.09 6.26L20.18 9l-5 4.09L16.82 20 12 16.54 7.18 20l1.64-6.91L3.82 9l6.09-.74Z" fill="#1B4D8E" />
-                      <circle cx="12" cy="12" r="3.5" fill="#fff" />
-                      <text x="12" y="14" textAnchor="middle" fontSize="5" fontWeight="bold" fill="#1B4D8E">9.5</text>
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="text-lg sm:text-xl font-extrabold text-slate-dark leading-tight">
-                      9,5
-                    </div>
-                    <div className="text-[10px] sm:text-sm text-slate-body leading-tight mt-0.5">
-                      trustlocal
-                    </div>
-                  </div>
+                  <TrustlocalLandscape />
                 </a>
 
                 {/* Google Bewertung */}
