@@ -89,6 +89,14 @@ export default function RootLayout({
           <input name="telefon" />
           <textarea name="suchprofil" />
         </form>
+        <form name="download" data-netlify="true" hidden>
+          <input type="hidden" name="form-name" value="download" />
+          <input name="vorname" />
+          <input name="nachname" />
+          <input name="email" />
+          <input name="telefon" />
+          <input name="ratgeber" />
+        </form>
         <VoiceflowChat />
       </body>
     </html>

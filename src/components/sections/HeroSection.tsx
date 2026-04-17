@@ -8,7 +8,7 @@ import { TrustpilotMicro, TrustlocalCompact, TrustlocalLandscape } from "@/compo
 import { siteConfig } from "@/data/site-config";
 
 function anim(visible: boolean, delay: string) {
-  return `transition-all duration-700 ease-out ${delay} ${
+  return `transition-[opacity,transform] duration-700 ease-out ${delay} ${
     visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
   }`;
 }
@@ -31,8 +31,10 @@ export default function HeroSection() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 150);
-    return () => clearTimeout(timer);
+    const id = requestAnimationFrame(() => {
+      requestAnimationFrame(() => setVisible(true));
+    });
+    return () => cancelAnimationFrame(id);
   }, []);
 
   return (
@@ -54,45 +56,47 @@ export default function HeroSection() {
 
       {/* ═══════════ Background effects ═══════════ */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Gradient orbs */}
-        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-primary/[0.07] blur-3xl" />
-        <div className="absolute bottom-0 -left-32 w-[500px] h-[500px] rounded-full bg-primary/[0.05] blur-3xl" />
-        <div className="absolute top-1/3 right-0 w-[450px] h-[450px] rounded-full bg-gold/[0.05] blur-3xl" />
+        <div className="hidden md:block">
+          {/* Gradient orbs */}
+          <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-primary/[0.07] blur-3xl" />
+          <div className="absolute bottom-0 -left-32 w-[500px] h-[500px] rounded-full bg-primary/[0.05] blur-3xl" />
+          <div className="absolute top-1/3 right-0 w-[450px] h-[450px] rounded-full bg-gold/[0.05] blur-3xl" />
 
-        {/* Bokeh sparkles */}
-        {sparkles.map((s, i) => (
+          {/* Bokeh sparkles */}
+          {sparkles.map((s, i) => (
+            <div
+              key={i}
+              className="absolute rounded-full bg-gold animate-float"
+              style={{
+                top: s.top,
+                right: s.right,
+                left: (s as { left?: string }).left,
+                width: s.w,
+                height: s.w,
+                opacity: s.o,
+                animationDelay: `${s.d}s`,
+                animationDuration: `${s.dur}s`,
+              }}
+            />
+          ))}
+
+          {/* Subtle grid overlay */}
           <div
-            key={i}
-            className="absolute rounded-full bg-gold animate-float"
+            className="absolute inset-0 opacity-[0.012]"
             style={{
-              top: s.top,
-              right: s.right,
-              left: (s as { left?: string }).left,
-              width: s.w,
-              height: s.w,
-              opacity: s.o,
-              animationDelay: `${s.d}s`,
-              animationDuration: `${s.dur}s`,
+              backgroundImage:
+                "linear-gradient(#2D7A7A 1px, transparent 1px), linear-gradient(90deg, #2D7A7A 1px, transparent 1px)",
+              backgroundSize: "64px 64px",
             }}
           />
-        ))}
-
-        {/* Subtle grid overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.012]"
-          style={{
-            backgroundImage:
-              "linear-gradient(#2D7A7A 1px, transparent 1px), linear-gradient(90deg, #2D7A7A 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-          }}
-        />
+        </div>
       </div>
 
       {/* ═══════════ Hero content ═══════════ */}
       <Container className="relative z-10">
         {/* ── Makler — right side, standing on stats bar ── */}
         <div
-          className={`hidden lg:block absolute bottom-0 lg:bottom-0 -right-[2%] xl:right-0 z-20 transition-all duration-1000 ease-out delay-[900ms] ${
+          className={`hidden lg:block absolute bottom-0 lg:bottom-0 -right-[2%] xl:right-0 z-20 transition-[opacity,transform] duration-1000 ease-out delay-[900ms] will-change-[opacity,transform] ${
             visible
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-10"
@@ -108,7 +112,7 @@ export default function HeroSection() {
 
           {/* ── IDA Award — centered horizontally, pushed down (z-10) ── */}
           <div
-            className={`hidden lg:flex absolute inset-0 items-end justify-center pb-2 z-10 pointer-events-none transition-all duration-1000 ease-out delay-300 ${
+            className={`hidden lg:flex absolute inset-0 items-end justify-center pb-2 z-10 pointer-events-none transition-[opacity,transform] duration-1000 ease-out delay-300 will-change-[opacity,transform] ${
               visible
                 ? "opacity-100 scale-100"
                 : "opacity-0 scale-90"
@@ -248,7 +252,7 @@ export default function HeroSection() {
       <div className="relative z-30 -mt-4 lg:-mt-12 mb-[-40px] lg:mb-[-48px]">
         <Container>
           <div
-            className={`transition-all duration-700 ease-out delay-[650ms] ${
+            className={`transition-[opacity,transform] duration-700 ease-out delay-[650ms] ${
               visible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-12"
