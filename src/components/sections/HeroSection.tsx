@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { ArrowRight, Star } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
-import { TrustpilotMicroStar, TrustlocalLandscape } from "@/components/ui/TrustWidgets";
+import { TrustpilotMicro, TrustpilotMicroStar, TrustlocalPortrait } from "@/components/ui/TrustWidgets";
 import { siteConfig } from "@/data/site-config";
 
 function anim(visible: boolean, delay: string) {
@@ -256,21 +256,28 @@ export default function HeroSection() {
           >
             <div className="bg-white rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-gray-100 p-3 sm:p-5 lg:p-0 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-shadow duration-500">
               <div className="grid grid-cols-3 gap-2 sm:gap-5 lg:gap-0 lg:divide-x lg:divide-gray-100 items-center">
-                {/* Trustpilot — Micro Star widget (compact: logo + stars only) */}
+                {/* Trustpilot — Desktop: mit Text, Mobile: nur Sterne */}
                 <div className="flex items-center justify-center lg:px-8 lg:py-5 py-3">
-                  <div className="w-full max-w-[150px] sm:max-w-[180px]">
+                  <div className="hidden lg:block w-full max-w-[200px]">
+                    <TrustpilotMicro />
+                  </div>
+                  <div className="lg:hidden w-full max-w-[130px]">
                     <TrustpilotMicroStar />
                   </div>
                 </div>
 
-                {/* Trustlocal — official widget (landscape, small) */}
+                {/* Trustlocal — offizielles Portrait-Widget, skaliert */}
                 <a
                   href="https://www.trustlocal.de/bewertung/homefin-gmbh"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center lg:px-6 lg:py-4 py-2"
+                  className="relative flex items-center justify-center lg:px-6 lg:py-5 py-2 h-[65px] lg:h-[70px]"
                 >
-                  <TrustlocalLandscape />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="transform scale-[0.35] sm:scale-[0.4] lg:scale-[0.45] origin-center">
+                      <TrustlocalPortrait />
+                    </div>
+                  </div>
                 </a>
 
                 {/* Google Bewertung */}
