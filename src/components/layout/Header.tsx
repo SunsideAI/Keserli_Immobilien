@@ -160,11 +160,16 @@ export default function Header() {
       {/* Mobile Nav */}
       <div
         className={cn(
-          "lg:hidden bg-white border-t border-gray-100 overflow-hidden transition-all duration-300",
-          mobileOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+          "lg:hidden bg-white border-t border-gray-100 grid transition-[grid-template-rows] duration-200 ease-out",
+          mobileOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         )}
       >
-        <nav className="px-4 py-4 space-y-1">
+        <nav
+          className={cn(
+            "overflow-hidden px-4 space-y-1 transition-[padding,opacity] duration-200 ease-out",
+            mobileOpen ? "py-4 opacity-100" : "py-0 opacity-0"
+          )}
+        >
           {mainNavItems.map((item) =>
             item.children ? (
               <div key={item.href}>
@@ -190,24 +195,26 @@ export default function Header() {
                 </button>
                 <div
                   className={cn(
-                    "overflow-hidden transition-all duration-200",
-                    openDropdown === item.label ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                    "grid transition-[grid-template-rows,opacity] duration-200 ease-out",
+                    openDropdown === item.label ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                   )}
                 >
-                  {item.children.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      className={cn(
-                        "block pl-8 pr-4 py-2.5 text-sm font-medium transition-colors rounded-btn",
-                        pathname.startsWith(child.href)
-                          ? "text-primary"
-                          : "text-slate-body hover:text-primary"
-                      )}
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
+                  <div className="overflow-hidden">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className={cn(
+                          "block pl-8 pr-4 py-2.5 text-sm font-medium transition-colors rounded-btn",
+                          pathname.startsWith(child.href)
+                            ? "text-primary"
+                            : "text-slate-body hover:text-primary"
+                        )}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
             ) : (
