@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { ArrowRight, Star } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
-import { TrustpilotMicro, TrustpilotMicroStar, TrustlocalPortrait, TrustlocalLandscape } from "@/components/ui/TrustWidgets";
+import { TrustpilotMicro, TrustpilotMicroStar, TrustlocalCompact, TrustlocalLandscape } from "@/components/ui/TrustWidgets";
 import { siteConfig } from "@/data/site-config";
 
 function anim(visible: boolean, delay: string) {
@@ -271,14 +271,12 @@ export default function HeroSection() {
                   href="https://www.trustlocal.de/bewertung/homefin-gmbh"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative flex items-center justify-center py-2 h-[65px] lg:h-auto"
+                  className="flex items-center justify-center py-2 lg:px-4 lg:py-3"
                 >
-                  <div className="lg:hidden absolute inset-0 flex items-center justify-center">
-                    <div className="transform scale-[0.35] sm:scale-[0.4] origin-center">
-                      <TrustlocalPortrait />
-                    </div>
+                  <div className="lg:hidden flex items-center justify-center">
+                    <TrustlocalCompact />
                   </div>
-                  <div className="hidden lg:block">
+                  <div className="hidden lg:block transform scale-[0.85] origin-center">
                     <TrustlocalLandscape />
                   </div>
                 </a>

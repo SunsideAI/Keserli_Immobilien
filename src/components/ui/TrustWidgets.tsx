@@ -138,6 +138,27 @@ export function TrustpilotReviewCollector() {
   );
 }
 
+/* ─────────────── Trustlocal: Portrait (small, no badge) ─────────────── */
+export function TrustlocalCompact() {
+  useTrustlocal();
+  return (
+    <div
+      className="trustlocal-widget"
+      data-id="EDb-2JjKh2K3l9bvQmLducWP6URS0QDllDQNWK8wJSfsBw"
+      data-language-code="de"
+      data-country-code="DE"
+      data-badge="hidden"
+      data-quote="default"
+      data-size="small"
+      data-type="portrait"
+      data-border="hidden"
+      data-theme="light"
+      data-background="transparent"
+      data-google="hidden"
+    />
+  );
+}
+
 /* ─────────────── Trustlocal: Portrait (small) ─────────────── */
 export function TrustlocalPortrait() {
   useTrustlocal();
