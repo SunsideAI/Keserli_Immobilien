@@ -101,7 +101,7 @@ export default function CalEmbed({
     <div className="relative">
       {/* Loading skeleton */}
       {loading && (
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white min-h-[600px]">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white min-h-[700px]">
           <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4 animate-pulse">
             <CalendarDays size={24} className="text-primary" />
           </div>
@@ -110,7 +110,7 @@ export default function CalEmbed({
       )}
       <div
         id={`my-cal-inline-${namespace}`}
-        className="w-full min-h-[600px] overflow-hidden rounded-card"
+        className="w-full min-h-[700px] overflow-visible rounded-card"
       />
     </div>
   );
