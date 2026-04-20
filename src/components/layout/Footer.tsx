@@ -135,6 +135,17 @@ export default function Footer() {
               <CookieSettingsButton />
             </div>
           </div>
+          <div className="mt-4 text-center text-xs text-gray-600">
+            Powered by{" "}
+            <a
+              href="https://www.sunsideai.de"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              SunsideAI
+            </a>
+          </div>
         </div>
       </div>
     </footer>
