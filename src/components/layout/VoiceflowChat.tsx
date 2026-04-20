@@ -1,7 +1,8 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import { getConsent } from './CookieConsent'
 
 declare global {
   interface Window {
@@ -21,15 +22,28 @@ declare global {
 
 export default function VoiceflowChat() {
   const pathname = usePathname()
+  const [allowed, setAllowed] = useState(false)
 
   useEffect(() => {
-    // Remove existing widget and script completely
+    const consent = getConsent()
+    setAllowed(consent?.functional === true)
+
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent).detail
+      setAllowed(detail?.functional === true)
+    }
+    window.addEventListener('cookie-consent-update', handler)
+    return () => window.removeEventListener('cookie-consent-update', handler)
+  }, [])
+
+  useEffect(() => {
+    if (!allowed) return
+
     const existingWidget = document.getElementById('voiceflow-chat')
     if (existingWidget) {
       existingWidget.remove()
     }
 
-    // Destroy existing instance if any
     if (window.voiceflow?.chat?.destroy) {
       try {
         window.voiceflow.chat.destroy()
@@ -38,16 +52,13 @@ export default function VoiceflowChat() {
       }
     }
 
-    // Remove existing script
     const existingScript = document.getElementById('voiceflow-widget')
     if (existingScript) {
       existingScript.remove()
     }
 
-    // Clear voiceflow from window
     delete window.voiceflow
 
-    // Load fresh script
     const script = document.createElement('script')
     script.id = 'voiceflow-widget'
     script.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs'
@@ -76,7 +87,6 @@ export default function VoiceflowChat() {
           window.location.pathname !== '/angebote/' &&
           window.location.pathname !== '/angebote'
 
-        // Proaktive Nachricht je nach Seitenart
         setTimeout(() => {
           if (!window.voiceflow?.chat) return
           window.voiceflow.chat.proactive.clear()
@@ -97,8 +107,6 @@ export default function VoiceflowChat() {
           }
         }, 1000)
 
-        // Chat nur 1x pro Session automatisch öffnen (nach 5 Sekunden)
-        // Nicht auf Mobile (< 768px) automatisch öffnen
         const hasOpenedThisSession = sessionStorage.getItem('chatOpenedOnce')
         const isMobile = window.innerWidth < 768
 
@@ -115,7 +123,6 @@ export default function VoiceflowChat() {
 
     document.head.appendChild(script)
 
-    // Cleanup on unmount or path change
     return () => {
       if (window.voiceflow?.chat?.destroy) {
         try {
@@ -125,7 +132,7 @@ export default function VoiceflowChat() {
         }
       }
     }
-  }, [pathname])
+  }, [pathname, allowed])
 
   return null
 }

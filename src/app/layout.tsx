@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SchemaMarkup from "@/components/seo/SchemaMarkup";
 import VoiceflowChat from "@/components/layout/VoiceflowChat";
+import CookieConsent from "@/components/layout/CookieConsent";
 import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
@@ -116,6 +117,7 @@ export default function RootLayout({
           <input name="ratgeber" />
         </form>
         <VoiceflowChat />
+        <CookieConsent />
       </body>
     </html>
   );

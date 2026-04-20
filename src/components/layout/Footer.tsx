@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { footerNavItems } from "@/data/navigation";
 import { siteConfig } from "@/data/site-config";
+import CookieSettingsButton from "./CookieSettingsButton";
 
 export default function Footer() {
   return (
@@ -131,6 +132,7 @@ export default function Footer() {
               <Link href="/datenschutz" className="hover:text-white transition-colors">
                 Datenschutz
               </Link>
+              <CookieSettingsButton />
             </div>
           </div>
         </div>
