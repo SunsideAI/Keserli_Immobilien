@@ -28,22 +28,7 @@ export default function DownloadFormButton({
     const nachname = nameParts.slice(1).join(" ") || vorname;
 
     try {
-      const netlifyBody = new URLSearchParams({
-        "form-name": "download",
-        vorname,
-        nachname,
-        email: form.email,
-        telefon: form.phone,
-        ratgeber: ratgeberTitle,
-      });
-
-      const netlifyPromise = fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: netlifyBody.toString(),
-      });
-
-      const propstackPromise = fetch("/.netlify/functions/submit-contact", {
+      await fetch("/.netlify/functions/submit-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -56,11 +41,6 @@ export default function DownloadFormButton({
           formType: "download",
         }),
       });
-
-      await Promise.all([
-        netlifyPromise,
-        propstackPromise.catch((err) => console.warn("Propstack submission failed:", err)),
-      ]);
     } catch (err) {
       console.warn("Form submission failed:", err);
     }

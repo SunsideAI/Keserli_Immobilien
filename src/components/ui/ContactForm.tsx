@@ -43,14 +43,6 @@ export default function ContactForm({ variant = "default", paket: paketProp, pro
     const formData = new FormData(form);
 
     try {
-      // 1. Netlify Forms (Backup / E-Mail-Benachrichtigung)
-      const netlifyPromise = fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
-      });
-
-      // 2. Propstack CRM (Kontakt anlegen)
       const propstackPayload: Record<string, string> = {
         vorname: formData.get("vorname") as string || "",
         nachname: formData.get("nachname") as string || "",
@@ -64,27 +56,13 @@ export default function ContactForm({ variant = "default", paket: paketProp, pro
       if (propertyId) propstackPayload.propertyId = propertyId;
       if (propertyTitle) propstackPayload.propertyTitle = propertyTitle;
 
-      const propstackPromise = fetch("/.netlify/functions/submit-contact", {
+      const res = await fetch("/.netlify/functions/submit-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(propstackPayload),
       });
 
-      const [netlifyRes, propstackRes] = await Promise.all([
-        netlifyPromise.catch((err) => {
-          console.warn("Netlify Forms submission failed:", err);
-          return null;
-        }),
-        propstackPromise.catch((err) => {
-          console.warn("Propstack submission failed:", err);
-          return null;
-        }),
-      ]);
-
-      const propstackOk = propstackRes && propstackRes.ok;
-      const netlifyOk = netlifyRes && netlifyRes.ok;
-
-      if (propstackOk || netlifyOk) {
+      if (res.ok) {
         setSubmitted(true);
       } else {
         setError(true);
@@ -115,12 +93,8 @@ export default function ContactForm({ variant = "default", paket: paketProp, pro
   return (
     <form
       className={className}
-      data-netlify="true"
-      name={formName}
-      method="POST"
       onSubmit={handleSubmit}
     >
-      <input type="hidden" name="form-name" value={formName} />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
         <div>
           <label htmlFor={`${formName}-vorname`} className="block text-sm font-medium text-slate-dark mb-1">
