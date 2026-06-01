@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@netlify/functions": "^5.1.2",
+    "@netlify/plugin-nextjs": "^5.15.11",
     "@types/leaflet": "^1.9.21",
     "@types/node": "^20",
     "@types/react": "^18",

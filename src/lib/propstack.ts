@@ -313,7 +313,7 @@ async function fetchFromPropstack(endpoint: string): Promise<unknown> {
       "X-API-KEY": API_KEY,
       "Accept": "application/json",
     },
-    next: { revalidate: 3600 },
+    next: { revalidate: 300 },
   });
 
   if (!res.ok) {

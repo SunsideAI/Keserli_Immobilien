@@ -20,6 +20,9 @@ import PropertyMapWrapper from "@/components/properties/PropertyMapWrapper";
 import { fetchProperty, fetchPropertyIds } from "@/lib/propstack";
 import { formatCurrency } from "@/lib/utils";
 
+export const revalidate = 300;
+export const dynamicParams = true;
+
 interface PageProps {
   params: { id: string };
 }

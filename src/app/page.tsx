@@ -1,3 +1,5 @@
+export const revalidate = 300;
+
 import HeroSection from "@/components/sections/HeroSection";
 import PartnerLogos from "@/components/sections/PartnerLogos";
 import BenefitsSection from "@/components/sections/BenefitsSection";
