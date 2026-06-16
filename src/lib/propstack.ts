@@ -192,10 +192,35 @@ function unwrapStringArray(val: unknown): string[] | undefined {
   return undefined;
 }
 
+const subTypeLabels: Record<string, string> = {
+  SEMIDETACHED_HOUSE: "Doppelhaushälfte",
+  DETACHED_HOUSE: "Einfamilienhaus",
+  TERRACED_HOUSE: "Reihenhaus",
+  END_TERRACED_HOUSE: "Reihenendhaus",
+  MID_TERRACED_HOUSE: "Reihenmittelhaus",
+  MULTI_FAMILY_HOUSE: "Mehrfamilienhaus",
+  BUNGALOW: "Bungalow",
+  VILLA: "Villa",
+  FARMHOUSE: "Bauernhaus",
+  CASTLE: "Schloss/Burg",
+  APARTMENT: "Wohnung",
+  PENTHOUSE: "Penthouse",
+  MAISONETTE: "Maisonette",
+  LOFT: "Loft",
+  GROUND_FLOOR: "Erdgeschosswohnung",
+  ROOF_STOREY: "Dachgeschosswohnung",
+  ATTIC_FLAT: "Dachgeschosswohnung",
+  RAISED_GROUND_FLOOR: "Hochparterre",
+  HALF_BASEMENT: "Souterrain",
+  OTHER: "Sonstige",
+};
+
 function mapSubType(unit: AnyObject): string | undefined {
   const cat = unwrapString(unit.rs_category);
   const aptType = unwrapString(unit.apartment_type);
-  return aptType || cat || undefined;
+  const raw = aptType || cat || undefined;
+  if (!raw) return undefined;
+  return subTypeLabels[raw.toUpperCase()] || raw.replace(/_/g, " ").toLowerCase().replace(/^\w/, (c) => c.toUpperCase());
 }
 
 function mapPropstackToProperty(unit: AnyObject): Property {
@@ -288,7 +313,7 @@ async function fetchFromPropstack(endpoint: string): Promise<unknown> {
       "X-API-KEY": API_KEY,
       "Accept": "application/json",
     },
-    next: { revalidate: 3600 },
+    next: { revalidate: 300 },
   });
 
   if (!res.ok) {

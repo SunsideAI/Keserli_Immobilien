@@ -200,24 +200,7 @@ export default function SuchprofilFunnel() {
     if (data.notes) descParts.push(`Anmerkungen: ${data.notes}`);
 
     try {
-      // Submit to Netlify Forms
-      const formData = new URLSearchParams({
-        "form-name": "suchprofil",
-        vorname: data.firstName,
-        nachname: data.lastName,
-        email: data.email,
-        telefon: data.phone,
-        suchprofil: descParts.join("\n"),
-      });
-
-      const netlifyPromise = fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: formData.toString(),
-      });
-
-      // Submit to Propstack
-      const propstackPromise = fetch("/.netlify/functions/submit-contact", {
+      const res = await fetch("/.netlify/functions/submit-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -230,12 +213,7 @@ export default function SuchprofilFunnel() {
         }),
       });
 
-      const [netlifyRes] = await Promise.all([
-        netlifyPromise,
-        propstackPromise.catch((err) => console.warn("Propstack submission failed:", err)),
-      ]);
-
-      if (netlifyRes.ok) {
+      if (res.ok) {
         setSubmitted(true);
       } else {
         setError("Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.");

@@ -6,6 +6,8 @@ import Button from "./Button";
 interface ContactFormProps {
   variant?: "default" | "bewertung";
   paket?: string;
+  propertyId?: string;
+  propertyTitle?: string;
   className?: string;
 }
 
@@ -15,7 +17,7 @@ const paketMap: Record<string, string> = {
   select: "Homefin Select (ab 89€)",
 };
 
-export default function ContactForm({ variant = "default", paket: paketProp, className }: ContactFormProps) {
+export default function ContactForm({ variant = "default", paket: paketProp, propertyId, propertyTitle, className }: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(false);
@@ -41,37 +43,26 @@ export default function ContactForm({ variant = "default", paket: paketProp, cla
     const formData = new FormData(form);
 
     try {
-      // 1. Netlify Forms (Backup / E-Mail-Benachrichtigung)
-      const netlifyPromise = fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
-      });
-
-      // 2. Propstack CRM (Kontakt anlegen)
-      const propstackPayload = {
-        vorname: formData.get("vorname") || "",
-        nachname: formData.get("nachname") || "",
-        email: formData.get("email") || "",
-        telefon: formData.get("telefon") || "",
-        nachricht: formData.get("nachricht") || "",
-        adresse: formData.get("adresse") || "",
-        paket: formData.get("paket") || "",
+      const propstackPayload: Record<string, string> = {
+        vorname: formData.get("vorname") as string || "",
+        nachname: formData.get("nachname") as string || "",
+        email: formData.get("email") as string || "",
+        telefon: formData.get("telefon") as string || "",
+        nachricht: formData.get("nachricht") as string || "",
+        adresse: formData.get("adresse") as string || "",
+        paket: formData.get("paket") as string || "",
         formType: formName,
       };
+      if (propertyId) propstackPayload.propertyId = propertyId;
+      if (propertyTitle) propstackPayload.propertyTitle = propertyTitle;
 
-      const propstackPromise = fetch("/.netlify/functions/submit-contact", {
+      const res = await fetch("/.netlify/functions/submit-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(propstackPayload),
       });
 
-      // Beide parallel ausführen, Netlify Forms ist führend für Erfolg/Fehler
-      const [netlifyRes] = await Promise.all([netlifyPromise, propstackPromise.catch((err) => {
-        console.warn("Propstack submission failed:", err);
-      })]);
-
-      if (netlifyRes.ok) {
+      if (res.ok) {
         setSubmitted(true);
       } else {
         setError(true);
@@ -86,8 +77,8 @@ export default function ContactForm({ variant = "default", paket: paketProp, cla
   if (submitted) {
     return (
       <div className={className}>
-        <div className="bg-green-50 border border-green-200 rounded-card p-8 text-center">
-          <div className="text-4xl mb-4">&#10003;</div>
+        <div className="bg-mint border border-primary/20 rounded-card p-8 text-center">
+          <div className="text-4xl mb-4 text-primary">&#10003;</div>
           <h3 className="text-xl font-bold text-slate-dark mb-2">
             Vielen Dank für Ihre Anfrage!
           </h3>
@@ -102,12 +93,8 @@ export default function ContactForm({ variant = "default", paket: paketProp, cla
   return (
     <form
       className={className}
-      data-netlify="true"
-      name={formName}
-      method="POST"
       onSubmit={handleSubmit}
     >
-      <input type="hidden" name="form-name" value={formName} />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
         <div>
           <label htmlFor={`${formName}-vorname`} className="block text-sm font-medium text-slate-dark mb-1">

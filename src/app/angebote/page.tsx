@@ -4,6 +4,8 @@ import Badge from "@/components/ui/Badge";
 import PropertyFilters from "@/components/properties/PropertyFilters";
 import { fetchProperties } from "@/lib/propstack";
 
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: "Aktuelle Immobilienangebote – Häuser, Wohnungen & Grundstücke",
   description:

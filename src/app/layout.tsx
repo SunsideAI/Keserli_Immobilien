@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SchemaMarkup from "@/components/seo/SchemaMarkup";
 import VoiceflowChat from "@/components/layout/VoiceflowChat";
+import CookieConsent from "@/components/layout/CookieConsent";
 import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
@@ -80,24 +81,8 @@ export default function RootLayout({
         <Header />
         <main className="pt-16 lg:pt-20">{children}</main>
         <Footer />
-        {/* Hidden Netlify form detection */}
-        <form name="suchprofil" data-netlify="true" hidden>
-          <input type="hidden" name="form-name" value="suchprofil" />
-          <input name="vorname" />
-          <input name="nachname" />
-          <input name="email" />
-          <input name="telefon" />
-          <textarea name="suchprofil" />
-        </form>
-        <form name="download" data-netlify="true" hidden>
-          <input type="hidden" name="form-name" value="download" />
-          <input name="vorname" />
-          <input name="nachname" />
-          <input name="email" />
-          <input name="telefon" />
-          <input name="ratgeber" />
-        </form>
         <VoiceflowChat />
+        <CookieConsent />
       </body>
     </html>
   );

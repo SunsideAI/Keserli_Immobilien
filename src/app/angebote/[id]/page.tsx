@@ -20,6 +20,9 @@ import PropertyMapWrapper from "@/components/properties/PropertyMapWrapper";
 import { fetchProperty, fetchPropertyIds } from "@/lib/propstack";
 import { formatCurrency } from "@/lib/utils";
 
+export const revalidate = 300;
+export const dynamicParams = true;
+
 interface PageProps {
   params: { id: string };
 }
@@ -347,7 +350,7 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                   )}
                 </div>
 
-                <ContactForm />
+                <ContactForm propertyId={String(property.id)} propertyTitle={property.title} />
               </div>
             </div>
           </div>

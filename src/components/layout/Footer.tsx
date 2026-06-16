@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { footerNavItems } from "@/data/navigation";
 import { siteConfig } from "@/data/site-config";
+import CookieSettingsButton from "./CookieSettingsButton";
 
 export default function Footer() {
   return (
@@ -131,7 +132,19 @@ export default function Footer() {
               <Link href="/datenschutz" className="hover:text-white transition-colors">
                 Datenschutz
               </Link>
+              <CookieSettingsButton />
             </div>
+          </div>
+          <div className="mt-4 text-center text-xs text-gray-600">
+            Powered by{" "}
+            <a
+              href="https://www.sunsideai.de"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              SunsideAI
+            </a>
           </div>
         </div>
       </div>
