@@ -46,11 +46,11 @@ export default function HeroSection() {
         <Image
           src="/images/hero-bg.jpg"
           alt=""
-          aria-hidden
+          aria-hidden="true"
           fill
           priority
           sizes="100vw"
-          className="object-cover scale-105 will-change-transform"
+          className="absolute inset-0 w-full h-full object-cover scale-105 will-change-transform"
         />
         {/* Gradient overlays for the mint/teal brand look */}
         <div className="absolute inset-0 bg-gradient-to-br from-mint/90 via-mint-light/85 to-white/80" />
@@ -246,9 +246,11 @@ export default function HeroSection() {
             {/* IDA Award — with subtle glow */}
             <div className={`relative mt-8 ${anim(visible, "delay-[400ms]")}`}>
               <div className="absolute inset-0 w-40 h-40 mx-auto rounded-full bg-gradient-to-br from-gold/10 via-primary/5 to-transparent blur-2xl" />
-              <img
+              <Image
                 src="/Ida_Award_Mobile.png"
                 alt="IDA Immobilien Dienstleister Award 2022"
+                width={572}
+                height={342}
                 className="relative w-36 sm:w-44 h-auto object-contain drop-shadow-lg mx-auto"
               />
             </div>
@@ -269,7 +271,7 @@ export default function HeroSection() {
             <div className="bg-white rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-gray-100 p-3 sm:p-5 lg:p-0 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] transition-shadow duration-500">
               <div className="grid grid-cols-3 gap-2 sm:gap-5 lg:gap-0 lg:divide-x lg:divide-gray-100 items-center">
                 {/* Trustpilot — Micro Widget mit Text */}
-                <div className="flex items-center justify-center lg:px-8 lg:py-5 py-2 lg:min-h-[80px]">
+                <div className="flex items-center justify-center lg:px-8 lg:py-5 py-2 min-h-[60px] lg:min-h-[90px]">
                   <div className="w-full max-w-[110px] sm:max-w-[160px] lg:max-w-[200px]">
                     <TrustpilotMicro />
                   </div>
@@ -280,7 +282,7 @@ export default function HeroSection() {
                   href="https://www.trustlocal.de/bewertung/homefin-gmbh"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center py-2 lg:px-4 lg:py-3 lg:min-h-[80px] overflow-hidden"
+                  className="flex items-center justify-center py-2 lg:px-4 lg:py-3 overflow-hidden min-h-[60px] lg:min-h-[90px]"
                 >
                   <div className="lg:hidden flex items-center justify-center h-[55px]">
                     <div className="transform scale-[0.45] sm:scale-[0.5] origin-center">
@@ -293,7 +295,7 @@ export default function HeroSection() {
                 </a>
 
                 {/* Google Bewertung */}
-                <div className="flex flex-col items-center text-center gap-0.5 sm:flex-row sm:text-left sm:items-center sm:gap-3 lg:px-8 lg:py-5 py-2 lg:min-h-[80px] cursor-default">
+                <div className="flex flex-col items-center text-center gap-0.5 sm:flex-row sm:text-left sm:items-center sm:gap-3 lg:px-8 lg:py-5 py-2 cursor-default min-h-[60px] lg:min-h-[90px]">
                   <div className="flex-shrink-0">
                     <svg viewBox="0 0 24 24" className="w-7 h-7 sm:w-8 sm:h-8">
                       <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
