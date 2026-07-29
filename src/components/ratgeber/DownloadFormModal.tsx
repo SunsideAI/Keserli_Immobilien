@@ -15,18 +15,20 @@ export default function DownloadFormModal({
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "" });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setIsError(false);
 
     const nameParts = form.name.trim().split(/\s+/);
     const vorname = nameParts[0] || "";
     const nachname = nameParts.slice(1).join(" ") || vorname;
 
     try {
-      await fetch("/.netlify/functions/submit-contact", {
+      const res = await fetch("/.netlify/functions/submit-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -39,8 +41,14 @@ export default function DownloadFormModal({
           formType: "download",
         }),
       });
+      // Ohne diese Prüfung galt jede Antwort als Erfolg — auch 500 oder 502.
+      // Der Nutzer bekam sein PDF und sah "Vielen Dank", der Lead war weg.
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
     } catch (err) {
       console.warn("Form submission failed:", err);
+      setIsSubmitting(false);
+      setIsError(true);
+      return;
     }
 
     setIsSubmitting(false);
@@ -170,6 +178,21 @@ export default function DownloadFormModal({
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all"
                     />
                   </div>
+
+                  {isError && (
+                    <div className="bg-red-50 border border-red-200 rounded-btn p-3 text-sm text-red-700">
+                      Ihre Anfrage konnte nicht übermittelt werden. Bitte
+                      versuchen Sie es erneut.{" "}
+                      <a
+                        href={downloadUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline font-semibold"
+                      >
+                        Ratgeber direkt herunterladen
+                      </a>
+                    </div>
+                  )}
 
                   <button
                     type="submit"
