@@ -99,17 +99,17 @@ function mapStatus(status: unknown): Property["status"] {
 
 /**
  * Only allow properties that are actively marketable.
- * "In Vorbereitung" = coming soon, "In Vermarktung" = actively marketed,
+ * "In Vermarktung" = actively marketed,
  * "Reserviert" = reserved (still shown, negotiation in progress).
- * Everything else — including Verkauft, Abgeschlossen, Verloren,
- * Zurückgezogen, Akquise, Aktiv, Neuer Lead — is either internal
- * workflow or a closed deal and must not appear on the website.
+ * Everything else — including In Vorbereitung, Verkauft, Abgeschlossen,
+ * Verloren, Zurückgezogen, Akquise, Aktiv, Neuer Lead — is either
+ * internal workflow or a closed deal and must not appear on the website.
  */
 function isPublishedStatus(status: unknown): boolean {
   const name = getStatusName(status);
   if (!name) return false;
   const s = name.toLowerCase();
-  return s.includes("vorbereitung") || s.includes("vermarktung") || s.includes("reserviert");
+  return s.includes("vermarktung") || s.includes("reserviert");
 }
 
 function mapMarketingLabel(marketingType?: string): string {
